@@ -53,9 +53,10 @@ function Node({ x, y, w, h, tone, title, lines, href, on, status }: NodeProps) {
     <Link href={href} className="pl-node">
       <g>
         {on && <rect x={x - 5} y={y - 5} width={w + 10} height={h + 10} rx={18} className="pl-glow" style={{ stroke: tone }} />}
-        <rect x={x} y={y} width={w} height={h} rx={14} style={{ fill: `color-mix(in srgb, ${tone} 16%, var(--surface))`, stroke: tone }} strokeWidth={1.5} />
-        <text x={x + 16} y={y + 26} className="pl-title" style={{ fill: tone }}>{title}</text>
-        <text x={x + w - 14} y={y + 26} textAnchor="end" className={`pl-status ${on ? "pl-on" : ""}`}>{status}</text>
+        <rect x={x} y={y} width={w} height={h} rx={14} style={{ fill: `color-mix(in srgb, ${tone} 10%, var(--es-charcoal-raised))`, stroke: tone }} strokeWidth={1.5} />
+        <rect x={x + 16} y={y + 15} width={4} height={14} style={{ fill: tone }} />
+        <text x={x + 28} y={y + 27} className="pl-title">{title}</text>
+        <text x={x + w - 14} y={y + h - 12} textAnchor="end" className={`pl-status ${on ? "pl-on" : ""}`}>{status}</text>
         {lines.map((l, i) => <text key={i} x={x + 16} y={y + 50 + i * 19} className="pl-line">{l}</text>)}
       </g>
     </Link>
@@ -74,7 +75,7 @@ function Edge({ d, label, lx, ly, on }: { d: string; label?: string; lx?: number
 export function Pipeline() {
   const s = state();
   const a = (st: Stage) => s.active.has(st);
-  const TRICK = "#b16cf0", DESIGN = "var(--info)", SNIFF = "#e5675f", NEUTRAL = "var(--muted)", RATE = "var(--accent)";
+  const TRICK = "var(--es-violet)", DESIGN = "var(--es-peach)", SNIFF = "var(--es-error)", NEUTRAL = "var(--es-cream-dim)", RATE = "var(--es-ember)";
   const evaluating = a("run");
 
   return (
@@ -82,7 +83,7 @@ export function Pipeline() {
       <div className="scroll-x">
         <svg viewBox="0 0 1180 600" role="img" aria-label="Riptide pipeline status" className="pipeline min-w-[760px]">
           <defs>
-            {[["pl-arrow", "var(--muted)"], ["pl-arrow-on", "var(--accent)"]].map(([id, c]) => (
+            {[["pl-arrow", "var(--es-cream-dim)"], ["pl-arrow-on", "var(--es-ember)"]].map(([id, c]) => (
               <marker key={id} id={id} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                 <path d="M0 0 L10 5 L0 10 z" style={{ fill: c }} />
               </marker>
@@ -126,7 +127,7 @@ export function Pipeline() {
           <text x={268} y={482} textAnchor="middle" className="pl-label" style={{ fontSize: 12 }}>{s.lessons ? `${s.lessons} lessons file(s)` : "(learn loop not built yet)"}</text>
         </svg>
       </div>
-      <p className="mt-2 text-xs text-[var(--muted)]">
+      <p className="mt-3 text-sm text-[var(--muted)]">
         {s.running.filter((j) => !j.service).length
           ? <>Now: {s.running.filter((j) => !j.service).map((j) => `${j.title} (step ${j.step + 1}/${j.steps.length})`).join(" · ")} · <Link className="link" href="/jobs">logs</Link></>
           : "Nothing running. Click a box to open that stage."}

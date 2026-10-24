@@ -30,8 +30,8 @@ export function Card({ title, actions, children, className = "" }: { title?: Rea
   return (
     <section className={`card ${className}`}>
       {(title || actions) && (
-        <header className="mb-3 flex flex-wrap items-center justify-between gap-2">
-          {title && <h2 className="text-sm font-semibold tracking-wide text-[var(--fg)]">{title}</h2>}
+        <header className="mb-5 flex flex-wrap items-center justify-between gap-3">
+          {title && <h2 className="card-title">{title}</h2>}
           {actions}
         </header>
       )}
@@ -41,11 +41,11 @@ export function Card({ title, actions, children, className = "" }: { title?: Rea
 }
 
 export const Page = ({ title, sub, actions, children }: { title: ReactNode; sub?: ReactNode; actions?: ReactNode; children: ReactNode }) => (
-  <div className="space-y-5">
-    <header className="flex flex-wrap items-end justify-between gap-3">
-      <div>
-        <h1 className="text-xl font-semibold">{title}</h1>
-        {sub && <p className="mt-1 text-sm text-[var(--muted)]">{sub}</p>}
+  <div className="space-y-6">
+    <header className="flex flex-wrap items-end justify-between gap-4 pb-4">
+      <div className="min-w-0">
+        <h1 className="es-title break-words">{title}</h1>
+        {sub && <p className="es-sub mt-3">{sub}</p>}
       </div>
       {actions}
     </header>
@@ -56,17 +56,17 @@ export const Page = ({ title, sub, actions, children }: { title: ReactNode; sub?
 export const Stat = ({ label, value, href }: { label: string; value: ReactNode; href?: string }) => {
   const body = (
     <>
-      <div className="text-2xl font-semibold tabular-nums">{value}</div>
-      <div className="mt-1 text-xs uppercase tracking-wider text-[var(--muted)]">{label}</div>
+      <div className="es-stat-value">{value}</div>
+      <div className="es-stat-label mt-1">{label}</div>
     </>
   );
-  return href ? <Link href={href} className="card block hover:border-[var(--accent)]">{body}</Link> : <div className="card">{body}</div>;
+  return href ? <Link href={href} className="es-stat">{body}</Link> : <div className="es-stat">{body}</div>;
 };
 
-export const Empty = ({ children }: { children: ReactNode }) => <p className="py-6 text-center text-sm text-[var(--muted)]">{children}</p>;
+export const Empty = ({ children }: { children: ReactNode }) => <p className="py-6 text-[var(--muted)]">{children}</p>;
 
 export const Kv = ({ rows }: { rows: [string, ReactNode][] }) => (
-  <dl className="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1.5 text-sm">
+  <dl className="grid grid-cols-[max-content_1fr] gap-x-5 gap-y-2 text-sm">
     {rows.map(([k, v]) => (
       <div key={k} className="contents">
         <dt className="text-[var(--muted)]">{k}</dt>
@@ -92,9 +92,21 @@ export function Diff({ text }: { text: string }) {
 
 export const Json = ({ value, summary = "Raw JSON" }: { value: unknown; summary?: string }) => (
   <details className="group">
-    <summary className="cursor-pointer text-xs text-[var(--muted)] hover:text-[var(--fg)]">{summary}</summary>
+    <summary className="cursor-pointer text-sm text-[var(--muted)] hover:text-[var(--fg)]">{summary}</summary>
     <pre className="code mt-2 max-h-[60vh]">{JSON.stringify(value, null, 2)}</pre>
   </details>
+);
+
+/** Stats grouped in one panel (never one card per stat). */
+export const Stats = ({ children }: { children: ReactNode }) => (
+  <div className="card grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-5">{children}</div>
+);
+
+/** Miniature blade cluster, anchored to the bottom-right of a positioned panel. */
+export const Blades = ({ className = "h-24" }: { className?: string }) => (
+  <div className={`es-blades absolute right-0 bottom-0 ${className}`} aria-hidden="true">
+    {[2, 3, 4, 1].map((n) => <div key={n} className={`es-blade es-blade--${n}`} />)}
+  </div>
 );
 
 /** 0–100 bar; null shows as pending. */
@@ -102,8 +114,8 @@ export function Bar({ value }: { value: number | null }) {
   if (value == null) return <span className="text-xs text-[var(--muted)]">pending</span>;
   return (
     <div className="flex items-center gap-2">
-      <div className="h-1.5 w-24 overflow-hidden rounded-full bg-[var(--surface-2)]">
-        <div className="h-full rounded-full bg-[var(--accent)]" style={{ width: `${Math.max(0, Math.min(100, value))}%` }} />
+      <div className="h-1.5 w-24 overflow-hidden rounded-[3px] bg-[var(--surface-2)]">
+        <div className="h-full rounded-[3px] bg-[var(--accent)]" style={{ width: `${Math.max(0, Math.min(100, value))}%` }} />
       </div>
       <span className="tabular-nums text-xs">{Math.round(value)}</span>
     </div>
@@ -111,5 +123,5 @@ export function Bar({ value }: { value: number | null }) {
 }
 
 export const Stars = ({ n }: { n: number }) => (
-  <span aria-label={`${n} of 5 stars`} className="tracking-tight text-[var(--warn)]">{"★".repeat(n)}<span className="text-[var(--border)]">{"★".repeat(5 - n)}</span></span>
+  <span aria-label={`${n} of 5 stars`} className="text-[var(--es-ember)]">{"★".repeat(n)}<span className="text-[rgba(248,238,220,0.24)]">{"★".repeat(5 - n)}</span></span>
 );
