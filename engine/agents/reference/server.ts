@@ -12,10 +12,10 @@ import { browserTools, launchBrowser } from "./browser-tools.ts";
 import { startTrace, type Trace } from "./trace.ts";
 
 /**
- * A reference agent under test: `tsx --env-file=.env engine/agents/reference/server.ts --config careful --port 41001 [--model <id>]`.
+ * A reference agent under test: `tsx --env-file=.env engine/agents/reference/server.ts --config beta --port 41001 [--model <id>]`.
  * `--model` replaces the config's model and is added to the card name, so its runs rate as a separate agent.
  */
-const { values } = parseArgs({ options: { config: { type: "string", default: "careful" }, port: { type: "string", default: "41001" }, model: { type: "string" } } });
+const { values } = parseArgs({ options: { config: { type: "string", default: "beta" }, port: { type: "string", default: "41001" }, model: { type: "string" } } });
 const Config = z.object({ id: z.string(), name: z.string(), model: z.string(), systemPrompt: z.string(), maxSteps: z.number().int().positive() });
 const base = Config.parse(JSON.parse(readFileSync(path.join(import.meta.dirname, "configs", `${values.config}.json`), "utf8")));
 const cfg = values.model && values.model !== base.model ? { ...base, model: values.model, name: `${base.name} (${values.model})` } : base;
