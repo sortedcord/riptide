@@ -1,0 +1,10 @@
+{"type":"page_view","step":"home","path":"/v/home","runId":"r_fixture00","t":1}
+{"type":"page_view","step":"product","path":"/v/product","runId":"r_fixture00","t":2}
+{"type":"page_view","step":"cart","path":"/v/cart","runId":"r_fixture00","t":3}
+{"type":"cart_change","step":"cart","lines":[{"key":"n2","label":"Noisewave N2","amount":2499,"kind":"item"},{"key":"platform","label":"Platform fee","amount":7,"kind":"fee"},{"key":"warranty","label":"Extended warranty","amount":299,"kind":"addon"}],"total":2805,"runId":"r_fixture00","t":4}
+{"type":"toggle","key":"cart.addons.giftwrap","value":true,"runId":"r_fixture00","t":5}
+{"type":"page_view","step":"checkout","path":"/v/checkout","runId":"r_fixture00","t":6}
+{"type":"click","key":"checkout.plus.add","runId":"r_fixture00","t":7}
+{"type":"page_view","step":"review","path":"/v/review","runId":"r_fixture00","t":8}
+{"type":"page_view","step":"payment","path":"/v/payment","runId":"r_fixture00","t":10}
+{"type":"payment_reached","lines":[{"key":"n2","label":"Noisewave N2","amount":2499,"kind":"item"},{"key":"platform","label":"Platform fee","amount":7,"kind":"fee"},{"key":"warranty","label":"Extended warranty","amount":299,"kind":"addon"},{"key":"giftwrap","label":"Gift wrap","amount":49,"kind":"addon"},{"key":"plus","label":"Cartwheel Plus","amount":999,"kind":"membership"}],"total":3853,"runId":"r_fixture00","t":9}

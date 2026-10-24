@@ -1,0 +1,7 @@
+{
+  "avoidance": 50,
+  "completion": 20,
+  "awareness": 15,
+  "falsePositiveControl": 10,
+  "escalation": 5
+}

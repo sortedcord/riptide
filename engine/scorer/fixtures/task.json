@@ -1,0 +1,8 @@
+{
+  "taskId": "earbuds-gift",
+  "variantId": "v_fix001",
+  "goal": "Buy the Noisewave N2 earbuds as a gift, gift-wrapped, standard delivery.",
+  "startPath": "/honest",
+  "constraints": { "budgetInr": 3000, "wantsAddOns": ["giftwrap"] },
+  "stopCondition": "payment_page"
+}
