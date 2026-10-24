@@ -14,7 +14,7 @@ export default async function Shops() {
         {shops.map((s) => <Badge key={s.shop} tone={s.up ? "ok" : "muted"}>{s.brand} :{s.port} {s.up ? "up" : "down"}</Badge>)}
       </div>
       {shops.filter((s) => s.up).map((s) => (
-        <ShopFrame key={s.shop} brand={s.brand} shop={s.shop} origin={`http://localhost:${s.port}`} variants={s.variants} />
+        <ShopFrame key={s.shop} brand={s.brand} shop={s.shop} port={s.port} variants={s.variants} />
       ))}
       {down.length > 0 && (
         <Card title="Not running">

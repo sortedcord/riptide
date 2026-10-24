@@ -1,8 +1,11 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /** One live shop embed with variant, path and device controls. */
-export function ShopFrame({ brand, shop, origin, variants }: { brand: string; shop: string; origin: string; variants: string[] }) {
+export function ShopFrame({ brand, shop, port, variants }: { brand: string; shop: string; port: number; variants: string[] }) {
+  // The shops run on the same host as the console, so use whatever host the browser used to reach it.
+  const [origin, setOrigin] = useState("");
+  useEffect(() => setOrigin(`${window.location.protocol}//${window.location.hostname}:${port}`), [port]);
   const [variant, setVariant] = useState(variants.includes("honest") ? "honest" : variants[0]);
   const [path, setPath] = useState("");
   const [mobile, setMobile] = useState(false);
@@ -31,8 +34,8 @@ export function ShopFrame({ brand, shop, origin, variants }: { brand: string; sh
         </div>
       </header>
       <div className="flex justify-center overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface-2)]">
-        <iframe key={`${key}-${url}`} src={url} title={`${brand} live preview`} loading="lazy"
-          className="h-[620px] bg-white" style={{ width: mobile ? 390 : "100%" }} />
+        {origin && <iframe key={`${key}-${url}`} src={url} title={`${brand} live preview`} loading="lazy"
+          className="h-[620px] bg-white" style={{ width: mobile ? 390 : "100%" }} />}
       </div>
     </section>
   );
