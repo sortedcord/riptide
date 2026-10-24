@@ -3,7 +3,7 @@ export * from "./util";
 export * from "./pricing";
 export { indexOverrides, validateManifest, validateRegistry, type SlotOverrides } from "./overrides";
 export { paymentSlots } from "./slots";
-export { RiptideProvider, useRiptide, useOverrides, useSlotDefault, useSession, usePrice, useLineToggle, useFlow } from "./RiptideProvider";
+export { RiptideProvider, useRiptide, useOverrides, useSlotDefault, useSession, usePrice, useQuote, useLineToggle, useFlow } from "./RiptideProvider";
 export { Slot, SlotButton } from "./Slot";
 export { RenderBlock } from "./Blocks";
 export { InterstitialPage } from "./Interstitial";

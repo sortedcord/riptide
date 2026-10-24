@@ -47,6 +47,7 @@ URLs: `http://localhost:{port}/{variant}/...`. Ports: market 3001, food 3002, ai
 **Ownership rules**
 - A shop builder creates and edits files only under `shops/{its shop}/`.
 - Never edit `shops/_core/`, another shop, or the root files. Don't add npm dependencies. If you need a shared change, write it in `shops/{shop}/SHARED_REQUESTS.md` (what, why, proposed API) and work around it locally.
+- Ship `app/icon.svg` (your brand mark). Without it every page logs a favicon 404 console error.
 - Icons are inline SVG that you draw yourself, in a style that fits your brand. No icon packages.
 
 ---
@@ -130,6 +131,7 @@ All imports come from `@riptide/core` (client and isomorphic) or `@riptide/core/
 `shop.config.ts` exports `config: ShopConfig<YourState>`:
 - `buildLines(state) → LineItem[]` is pure and builds the honest lines from session state: items, every fee, tax and discount, plus each optional add-on as `optional: true, selected: false`. Put **all** mandatory fees at the first step a price is shown (`visibleFromStep: "cart"`, or `"results"` for air, `"plans"` for saas/ott, …).
 - `usePrice(step)` returns `{ lines, total }` as seen at that step, with manifest `addLine`/`setLine` applied. **Never hard-code a total or a fee in a component.** Read it from `usePrice`. Catalogue unit prices (a product card's price) can come from data, but every subtotal, fee and total comes from the engine.
+- `useQuote(step, patch)` prices a hypothetical selection, such as a plan card's "price of plan X", without changing the session.
 - `useLineToggle(key)` returns `[on, setOn]` for an optional line, stored in `session.selected[key]`.
 - `formatINR(n)` formats amounts.
 
@@ -140,7 +142,7 @@ All imports come from `@riptide/core` (client and isomorphic) or `@riptide/core/
 `config.flows` maps a flow name to ordered `{ step, path }` entries, with `path` relative to `/{variant}/`. Move forward with `useFlow("purchase").next("cart")` instead of a hard-coded href, so manifest `insertStep`s are honoured. Every shop has a `purchase` flow ending in `payment`; saas and ott also have a `cancel` flow.
 
 ### Payment finish line
-`app/[variant]/payment/page.tsx` renders `<PaymentPage backHref=… />`. It shows every selected line as `payment.summary.line.{key}`, plus `payment.summary.total`, method tabs (UPI/Card/Netbanking/Wallet) styled by your tokens, and a "Pay ₹X" button. The inputs are non-functional. Pay posts only the order summary to `/api/pay` (which stores nothing) and goes to `/{variant}/sandbox-complete`. You may wrap `PaymentPage` with your own chrome or progress indicator, but don't reimplement it.
+`app/[variant]/payment/page.tsx` renders `<PaymentPage backHref=… />`. It shows every selected line as `payment.summary.line.{key}`, plus `payment.summary.total`, method tabs (UPI/Card/Netbanking/Wallet) styled by your tokens, and a "Pay ₹X" button. The inputs are non-functional. Pay posts only the order summary to `/api/pay` (which stores nothing) and goes to `/{variant}/sandbox-complete`. Wrap it in your page's `<main>` with your own chrome or progress indicator. Its root `<div>` carries `data-riptide-step="payment"`. Pass `onPaid(order)` to react to a completed mock payment (start a membership, clear the cart). Don't reimplement it.
 
 ### Manifests
 `manifests/{variant}.json` is validated with zod at request time. Unknown targets, unknown flows/steps and malformed JSON throw an error page and log `[riptide] …` to the server console. An unknown variant returns 404.

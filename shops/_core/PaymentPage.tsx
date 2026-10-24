@@ -22,7 +22,11 @@ export type LastOrder = { orderId: string; total: number; lines: { key: string; 
  * The finish line of every purchase flow. Summary comes from the pricing engine (source of truth).
  * Payment inputs have no `name`, are never read and never stored. "Pay" posts only the order summary to /api/pay.
  */
-export function PaymentPage({ backHref, backLabel = "Back", heading = "Payment" }: { backHref: string; backLabel?: string; heading?: string }) {
+export function PaymentPage({ backHref, backLabel = "Back", heading = "Payment", onPaid }: {
+  backHref: string; backLabel?: string; heading?: string;
+  /** Runs after the mock payment succeeds, before navigating to sandbox-complete (e.g. start a membership, clear the cart). */
+  onPaid?: (order: LastOrder) => void;
+}) {
   const { config, variant, base } = useRiptide();
   const price = usePrice("payment");
   const [, set] = useSession<{ lastOrder?: LastOrder }>();
@@ -38,7 +42,9 @@ export function PaymentPage({ backHref, backLabel = "Back", heading = "Payment" 
     const order = { shop: config.shop, variant, total: price.total, lines: lines.map(({ key, label, amount }) => ({ key, label, amount })) };
     const res = await fetch("/api/pay", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(order) });
     const { orderId } = (await res.json()) as { orderId: string };
-    set({ lastOrder: { orderId, total: order.total, lines: order.lines } });
+    const last: LastOrder = { orderId, total: order.total, lines: order.lines };
+    set({ lastOrder: last });
+    onPaid?.(last);
     router.push(`${base}/sandbox-complete`);
   }
 

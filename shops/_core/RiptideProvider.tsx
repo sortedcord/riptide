@@ -70,6 +70,15 @@ export function usePrice(step: string): PriceResult {
   return useMemo(() => computePrice(config, state, manifest.overrides, step), [config, state, manifest, step]);
 }
 
+/** Price a hypothetical selection (e.g. "plan X") without touching the session: `{ ...session, ...patch }` at `step`. */
+export function useQuote<S extends object>(step: string, patch: Partial<S>): PriceResult {
+  const { config, manifest } = useRiptide();
+  const [state] = useSession<S>();
+  const key = JSON.stringify(patch);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- patch is compared by value via key
+  return useMemo(() => computePrice(config, { ...state, ...patch }, manifest.overrides, step), [config, state, manifest, step, key]);
+}
+
 /** Toggle an optional pricing line on/off in the session. */
 export function useLineToggle(key: string): [boolean, (on: boolean) => void] {
   const [state, set] = useSession<{ selected?: Record<string, boolean> }>();
