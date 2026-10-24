@@ -59,7 +59,7 @@
 .rt-card__body { margin: 0 0 .75rem; color: var(--rt-muted); font-size: .9rem; }
 .rt-card__actions, .rt-modal__actions, .rt-interstitial__actions { display: flex; gap: .6rem; flex-wrap: wrap; }
 .rt-countdown { display: inline-flex; gap: .4rem; align-items: baseline; padding: .4rem .75rem; border-radius: var(--rt-radius-sm); background: var(--rt-surface-2); font-variant-numeric: tabular-nums; }
-.rt-modal { border: none; border-radius: var(--rt-radius); padding: 1.5rem; max-width: min(440px, calc(100vw - 32px)); background: var(--rt-surface); color: var(--rt-fg); box-shadow: 0 20px 60px rgb(0 0 0 / .25); font-family: var(--rt-font-body); }
+.rt-modal { margin: auto; border: none; border-radius: var(--rt-radius); padding: 1.5rem; max-width: min(440px, calc(100vw - 32px)); background: var(--rt-surface); color: var(--rt-fg); box-shadow: 0 20px 60px rgb(0 0 0 / .25); font-family: var(--rt-font-body); }
 .rt-modal::backdrop { background: rgb(0 0 0 / .45); }
 .rt-modal__close { position: absolute; top: .5rem; right: .6rem; width: 36px; height: 36px; border: 0; background: none; font-size: 1.5rem; cursor: pointer; color: var(--rt-muted); }
 .rt-modal__title { font: 600 1.2rem/1.3 var(--rt-font-heading); margin: 0 1.5rem .5rem 0; }
