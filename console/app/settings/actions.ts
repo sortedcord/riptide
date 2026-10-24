@@ -6,7 +6,8 @@ export type SaveState = { ok: boolean; message: string };
 
 export async function save(_: SaveState, form: FormData): Promise<SaveState> {
   try {
-    saveSettings({ shopBaseUrl: String(form.get("shopBaseUrl") ?? "") });
+    const field = (k: string) => String(form.get(k) ?? "");
+    saveSettings({ shopBaseUrl: field("shopBaseUrl"), tricksterModel: field("tricksterModel"), snifferModel: field("snifferModel") });
   } catch (e) {
     return { ok: false, message: (e as Error).message };
   }

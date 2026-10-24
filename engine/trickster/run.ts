@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, rmSync,
 import path from "node:path";
 import { z } from "zod";
 import { MutationRecord, Task, TricksterOutput, type Shop } from "../contracts/index.ts";
-import { toolLoop, type Tool } from "../llm.ts";
+import { DEFAULT_MODEL, toolLoop, type Tool } from "../llm.ts";
 import { DATA, ROOT, listJson, p, writeJson } from "../paths.ts";
 import { SCOPE, branchOf, changedFiles, runGates } from "./gates.ts";
 import { ensureWorktree, git } from "./serve.ts";
@@ -130,7 +130,7 @@ function hunksByFile(branch: string): Record<string, string[]> {
 }
 
 /** riptide mutate: new variant branch + mutation record + tasks, then gates (≤2 retries). */
-export async function mutate(opts: { shop: Shop; version?: string }): Promise<{ variantId: string; passed: boolean }> {
+export async function mutate(opts: { shop: Shop; version?: string; model?: string }): Promise<{ variantId: string; passed: boolean }> {
   const { shop } = opts;
   const version = opts.version ?? "v1";
   const skill = readFileSync(path.join(import.meta.dirname, "versions", version, "SKILL.md"), "utf8").replaceAll("{shop}", shop);
@@ -138,13 +138,14 @@ export async function mutate(opts: { shop: Shop; version?: string }): Promise<{ 
   const branch = branchOf({ shop, variantId });
   const baseCommit = git(["rev-parse", "master"]);
   const dir = ensureWorktree(variantId, baseCommit, branch);
-  console.log(`[mutate] ${variantId} on ${branch} at ${dir}`);
+  console.log(`[mutate] ${variantId} on ${branch} at ${dir} with ${opts.model ?? DEFAULT_MODEL}`);
 
   const base = inputs(shop);
   let feedback = "";
   let passed = false;
   for (let attempt = 1; attempt <= MAX_RETRIES + 1; attempt++) {
     const r = await toolLoop({
+      model: opts.model,
       instructions: skill,
       input: feedback ? `${base}\n\n## Previous attempt failed\n${feedback}` : base,
       tools: tools(dir, shop),

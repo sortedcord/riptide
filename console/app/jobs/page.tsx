@@ -1,4 +1,5 @@
 import { referenceConfigs } from "@/lib/data";
+import { getSettings } from "@/lib/settings";
 import { agentServers } from "@/lib/jobs";
 import { Badge, Card, Page } from "@/components/ui";
 import { Field, JobsLive, LaunchForm } from "@/components/client";
@@ -8,6 +9,7 @@ export const dynamic = "force-dynamic";
 export default async function Jobs({ searchParams }: { searchParams: Promise<{ job?: string }> }) {
   const { job } = await searchParams;
   const configs = referenceConfigs();
+  const { snifferModel } = getSettings();
   const running = agentServers();
   const usedPorts = new Set(running.map((j) => Number(j.url?.split(":").pop())));
   const portFor = (i: number) => { let p = 41001 + i; while (usedPorts.has(p)) p += 10; return p; };
@@ -24,7 +26,7 @@ export default async function Jobs({ searchParams }: { searchParams: Promise<{ j
                   <h3 className="text-lg font-medium">{c.id}</h3>
                   {live ? <Badge>running</Badge> : <Badge tone="muted">stopped</Badge>}
                 </div>
-                <p className="mt-1 font-mono text-xs text-[var(--muted)]">{c.model} · ≤{c.maxSteps} steps</p>
+                <p className="mt-1 font-mono text-xs text-[var(--muted)]">{snifferModel && snifferModel !== c.model ? <>{snifferModel} <span title={`Settings override; config uses ${c.model}`}>(from settings)</span></> : c.model} · ≤{c.maxSteps} steps</p>
                 <details className="mt-2">
                   <summary className="cursor-pointer text-xs text-[var(--muted)]">System prompt</summary>
                   <p className="mt-1 whitespace-pre-wrap text-xs">{c.systemPrompt}</p>

@@ -3,6 +3,7 @@ import { spawn, type ChildProcess } from "node:child_process";
 import { appendFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { DATA, ROOT, SHOPS, referenceConfigs } from "./data";
+import { MODEL_ID, getSettings } from "./settings";
 
 /**
  * Background jobs: each is a list of commands run one after another from the repo root, output captured.
@@ -98,8 +99,10 @@ export function launch(b: Launch): Job {
       need((SHOPS as readonly string[]).includes(shop), "unknown shop");
       need(Number.isInteger(n) && n >= 1 && n <= 5, "count must be 1–5");
       need(!b.version || ID.test(b.version), "bad version");
-      const args = ["mutate", "--shop", shop, ...(b.version ? ["--version", b.version] : [])];
-      return start("mutate", `Mutate ${shop} ×${n}`, Array.from({ length: n }, () => cli(...args)));
+      const model = getSettings().tricksterModel;
+      need(!model || MODEL_ID.test(model), "bad Trickster model in settings");
+      const args = ["mutate", "--shop", shop, ...(b.version ? ["--version", b.version] : []), ...(model ? ["--model", model] : [])];
+      return start("mutate", `Mutate ${shop} ×${n}${model ? ` · ${model}` : ""}`, Array.from({ length: n }, () => cli(...args)));
     }
     case "gates":
       need(VARIANT.test(b.variant ?? ""), "bad variant id");
@@ -117,7 +120,9 @@ export function launch(b: Launch): Job {
       const port = Number(b.port);
       need(Number.isInteger(port) && port >= 1024 && port < 65536, "bad port");
       need(!agentServers().some((j) => j.url === `http://127.0.0.1:${port}`), "port already used by a running agent");
-      return start("agent", `Agent ${cfg!.id} :${port}`, [[TSX, "--env-file-if-exists=.env", "engine/agents/reference/server.ts", "--config", cfg!.id, "--port", String(port)]],
+      const model = getSettings().snifferModel;
+      need(!model || MODEL_ID.test(model), "bad sniffer model in settings");
+      return start("agent", `Agent ${cfg!.id} :${port}${model ? ` · ${model}` : ""}`, [[TSX, "--env-file-if-exists=.env", "engine/agents/reference/server.ts", "--config", cfg!.id, "--port", String(port), ...(model ? ["--model", model] : [])]],
         { service: true, url: `http://127.0.0.1:${port}` });
     }
     case "evaluate": {

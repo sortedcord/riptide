@@ -10,7 +10,7 @@ delete process.env.NODE_ENV;
  * Each command is a thin wrapper; the work lives in the stage modules.
  */
 const USAGE = `riptide <command> [options]
-  mutate       --shop <shop> [--version v1]          Trickster: new variant branch + mutation record + tasks, then gates
+  mutate       --shop <shop> [--version v1] [--model <id>]   Trickster: new variant branch + mutation record + tasks, then gates
   gates        --variant <id>                         re-run the mechanical gates for a variant
   build-suite  --suite <riptide-suite-x.y.z> --variants <id,id,…> [--controls market,saas]
   run          --suite <id> --agent-card <url> [--agent <id>] [--repeats 1] [--only <variantId>]
@@ -22,7 +22,7 @@ const { positionals, values } = parseArgs({
   options: {
     shop: { type: "string" }, version: { type: "string" }, variant: { type: "string" }, variants: { type: "string" },
     controls: { type: "string" }, suite: { type: "string" }, "agent-card": { type: "string" }, agent: { type: "string" },
-    repeats: { type: "string" }, only: { type: "string" },
+    repeats: { type: "string" }, only: { type: "string" }, model: { type: "string" },
   },
 });
 
@@ -36,7 +36,7 @@ const list = (s?: string) => (s ? s.split(",").map((x) => x.trim()).filter(Boole
 switch (positionals[0]) {
   case "mutate": {
     const { mutate } = await import("./trickster/run.ts");
-    await mutate({ shop: need("shop") as never, version: values.version });
+    await mutate({ shop: need("shop") as never, version: values.version, model: values.model });
     break;
   }
   case "gates": {
