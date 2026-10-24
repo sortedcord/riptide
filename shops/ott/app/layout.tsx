@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
+import { Bricolage_Grotesque, Onest } from "next/font/google";
 import { brand } from "@/brand";
 import "./globals.css";
 
-const body = Inter({ subsets: ["latin"], variable: "--font-cw-body" });
-const heading = Inter_Tight({ subsets: ["latin"], variable: "--font-cw-heading" });
+const body = Onest({ subsets: ["latin"], variable: "--font-rb-body" });
+const heading = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-rb-heading" });
 
 export const metadata: Metadata = { robots: { index: false, follow: false } };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-IN" className={`${body.variable} ${heading.variable}`}>
-      <body style={{ ...brand.tokens, "--rt-font-body": "var(--font-cw-body)", "--rt-font-heading": "var(--font-cw-heading)" } as React.CSSProperties}>
+      <body style={{ ...brand.tokens, "--rt-font-body": "var(--font-rb-body)", "--rt-font-heading": "var(--font-rb-heading)" } as React.CSSProperties}>
         {children}
       </body>
     </html>
