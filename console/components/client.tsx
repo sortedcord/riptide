@@ -42,7 +42,7 @@ export function LaunchForm({ kind, children, submit, confirm: ask, className = "
 }
 
 export const Field = ({ label, children }: { label: string; children: ReactNode }) => (
-  <label className="flex flex-col gap-1 text-xs text-[var(--muted)]">{label}{children}</label>
+  <label className="es-label">{label}{children}</label>
 );
 
 /** Re-renders server pages every few seconds while any job runs, so new data shows up. */
@@ -100,17 +100,17 @@ export function JobsLive({ initial }: { initial?: string }) {
   const current = jobs.find((j) => j.id === (sel ?? jobs[0]?.id));
   return (
     <div className="grid gap-4 lg:grid-cols-[320px_1fr]">
-      <ul className="card max-h-[75vh] space-y-1 overflow-auto p-2" aria-label="Jobs">
+      <ul className="card max-h-[75vh] space-y-1 overflow-auto p-2.5" aria-label="Jobs">
         {!jobs.length && <li className="p-4 text-sm text-[var(--muted)]">No jobs yet. Start one from Variants, Suites or Agents.</li>}
         {jobs.map((j) => (
           <li key={j.id}>
             <button onClick={() => { setSel(j.id); stick.current = true; }}
-              className={`w-full rounded-md px-3 py-2 text-left text-sm hover:bg-[var(--surface-2)] ${current?.id === j.id ? "bg-[var(--surface-2)]" : ""}`}>
+              className={`w-full rounded-[10px] px-3 py-2.5 text-left text-sm transition-colors ${current?.id === j.id ? "bg-[var(--es-cream)] text-[var(--es-ink-on-light)]" : "hover:bg-[var(--surface-2)]"}`}>
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: STATUS_DOT[j.status] }} />
                 <span className="truncate font-medium">{j.title}</span>
               </div>
-              <div className="mt-0.5 pl-4 text-xs text-[var(--muted)]">
+              <div className="mt-0.5 pl-4 text-xs opacity-70">
                 {j.status}{j.service ? " · service" : ` · step ${Math.min(j.step + 1, j.steps.length)}/${j.steps.length}`} · {new Date(j.startedAt).toLocaleTimeString()}
               </div>
             </button>
@@ -122,7 +122,7 @@ export function JobsLive({ initial }: { initial?: string }) {
           <>
             <header className="mb-3 flex flex-wrap items-center justify-between gap-2">
               <div>
-                <h2 className="font-semibold">{current.title}</h2>
+                <h2 className="card-title">{current.title}</h2>
                 <p className="text-xs text-[var(--muted)]">
                   {current.status}{current.url && <> · <a className="link" href={`${current.url}/.well-known/agent-card.json`} target="_blank">{current.url}</a></>}
                 </p>
@@ -146,10 +146,10 @@ export function AgentPicker() {
   useEffect(() => {
     fetch("/api/jobs").then((r) => r.json()).then((js: JobRow[]) => setAgents(js.filter((j) => j.kind === "agent" && j.status === "running")));
   }, []);
-  if (!agents) return <span className="text-xs text-[var(--muted)]">Loading agents…</span>;
+  if (!agents) return <span className="text-sm text-[var(--muted)]">Loading agents…</span>;
   return (
-    <fieldset className="flex flex-col gap-1 text-xs text-[var(--muted)]">
-      <legend className="mb-1">Agents under test</legend>
+    <fieldset className="flex flex-col gap-2 text-sm text-[var(--muted)]">
+      <legend className="mb-2 font-medium">Agents under test</legend>
       {agents.map((a) => (
         <label key={a.id} className="flex items-center gap-2 text-sm text-[var(--fg)]">
           <input type="checkbox" name="agents" value={a.url} defaultChecked /> {a.title.replace(/^Agent /, "")}

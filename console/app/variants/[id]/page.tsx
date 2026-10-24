@@ -32,7 +32,7 @@ export default async function VariantPage({ params }: { params: Promise<{ id: st
           {rec ? (
             <ol className="space-y-4">
               {rec.patterns.map((p) => (
-                <li key={p.patternId} className="rounded-lg border border-[var(--border)] p-3">
+                <li key={p.patternId} className="rounded-[10px] border border-[var(--border)] p-4">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="font-mono text-xs text-[var(--muted)]">{p.patternId}</span>
                     <Badge tone={p.category.startsWith("exp_") ? "warn" : "info"}>{p.category.replaceAll("_", " ")}</Badge>

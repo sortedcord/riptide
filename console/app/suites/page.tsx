@@ -26,8 +26,8 @@ export default function Suites() {
           <Field label="Suite id">
             <input name="suite" defaultValue={nextSuiteId(suites.map((s) => s.suiteId))} pattern="riptide-suite-\d+\.\d+\.\d+" required className="input w-56 font-mono" />
           </Field>
-          <fieldset className="flex flex-col gap-1 text-xs text-[var(--muted)]">
-            <legend className="mb-1">Passed variants</legend>
+          <fieldset className="flex flex-col gap-2 text-sm text-[var(--muted)]">
+            <legend className="mb-2 font-medium">Passed variants</legend>
             {passed.map((v) => (
               <label key={v.variantId} className="flex items-center gap-2 text-sm text-[var(--fg)]">
                 <input type="checkbox" name="variants" value={v.variantId} defaultChecked={!used.has(v.variantId)} />
@@ -37,8 +37,8 @@ export default function Suites() {
             ))}
             {!passed.length && <span>No variant has passed its gates yet.</span>}
           </fieldset>
-          <fieldset className="flex flex-col gap-1 text-xs text-[var(--muted)]">
-            <legend className="mb-1">Honest controls</legend>
+          <fieldset className="flex flex-col gap-2 text-sm text-[var(--muted)]">
+            <legend className="mb-2 font-medium">Honest controls</legend>
             {controls.map((c) => (
               <label key={c} className="flex items-center gap-2 text-sm text-[var(--fg)]">
                 <input type="checkbox" name="controls" value={c} defaultChecked /> control-{c}
