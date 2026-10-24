@@ -19,9 +19,9 @@ export default async function Jobs({ searchParams }: { searchParams: Promise<{ j
           {configs.map((c, i) => {
             const live = running.find((j) => j.title.startsWith(`Agent ${c.id} `));
             return (
-              <div key={c.id} className="rounded-lg border border-[var(--border)] p-3">
+              <div key={c.id} className="rounded-[10px] border border-[var(--border)] p-4">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-semibold">{c.id}</h3>
+                  <h3 className="text-lg font-medium">{c.id}</h3>
                   {live ? <Badge>running</Badge> : <Badge tone="muted">stopped</Badge>}
                 </div>
                 <p className="mt-1 font-mono text-xs text-[var(--muted)]">{c.model} · ≤{c.maxSteps} steps</p>

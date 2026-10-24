@@ -66,12 +66,12 @@ export default async function RunPage({ params }: { params: Promise<{ id: string
                 ["Cart", report.cart.map((c) => `${c.item} ${inr(c.priceInr)}`).join(" · ") || "—"],
               ]} />
               <div>
-                <h3 className="mb-1 text-xs uppercase tracking-wider text-[var(--muted)]">Concerns ({report.concerns.length})</h3>
+                <h3 className="mb-1 text-sm font-medium text-[var(--muted)]">Concerns ({report.concerns.length})</h3>
                 <ul className="space-y-1.5">
                   {report.concerns.map((c, i) => <li key={i}><Badge>{c.action}</Badge> <b>{c.where}</b>: {c.what}</li>)}
                 </ul>
               </div>
-              {report.askUser?.length ? <div><h3 className="mb-1 text-xs uppercase tracking-wider text-[var(--muted)]">Would ask the user</h3><ul className="list-disc pl-4">{report.askUser.map((q) => <li key={q}>{q}</li>)}</ul></div> : null}
+              {report.askUser?.length ? <div><h3 className="mb-1 text-sm font-medium text-[var(--muted)]">Would ask the user</h3><ul className="list-disc pl-4">{report.askUser.map((q) => <li key={q}>{q}</li>)}</ul></div> : null}
             </div>
           ) : <Empty>No valid report.</Empty>}
         </Card>

@@ -67,13 +67,13 @@ export default async function SuitePage({ params }: { params: Promise<{ id: stri
         <Card key={r.agentId} title={<span id={r.agentId}>{r.agentId} · {r.overall} <Stars n={r.stars} /></span>}>
           <div className="grid gap-5 md:grid-cols-3">
             <div>
-              <h3 className="mb-2 text-xs uppercase tracking-wider text-[var(--muted)]">Weaknesses</h3>
+              <h3 className="mb-2 text-sm font-medium text-[var(--muted)]">Weaknesses</h3>
               <ul className="list-disc space-y-1 pl-4 text-sm">{r.insights.weaknesses.map((w) => <li key={w}>{w}</li>)}{!r.insights.weaknesses.length && <li className="list-none text-[var(--muted)]">none</li>}</ul>
-              <h3 className="mt-4 mb-2 text-xs uppercase tracking-wider text-[var(--muted)]">Reliably caught</h3>
+              <h3 className="mt-4 mb-2 text-sm font-medium text-[var(--muted)]">Reliably caught</h3>
               <ul className="list-disc space-y-1 pl-4 text-sm">{r.insights.reliablyCaught.map((w) => <li key={w}>{w}</li>)}{!r.insights.reliablyCaught.length && <li className="list-none text-[var(--muted)]">none</li>}</ul>
             </div>
             <div>
-              <h3 className="mb-2 text-xs uppercase tracking-wider text-[var(--muted)]">By category (caught / total)</h3>
+              <h3 className="mb-2 text-sm font-medium text-[var(--muted)]">By category (caught / total)</h3>
               <ul className="space-y-1 text-sm">
                 {Object.entries({ ...r.byCategory, ...r.experimental }).map(([c, v]) => (
                   <li key={c} className="flex justify-between gap-2"><span>{c.replaceAll("_", " ")}{c.startsWith("exp_") && <Badge tone="warn">exp</Badge>}</span><span className="tabular-nums">{v.caught}/{v.total}</span></li>
@@ -84,7 +84,7 @@ export default async function SuitePage({ params }: { params: Promise<{ id: stri
             <div className="text-sm">
               <p>Avg overpayment <b>{inr(r.avgOverpaymentInr)}</b></p>
               <p className="mt-1 text-[var(--muted)]">Weights applied: {Object.entries(r.weights).map(([k, w]) => `${k} ${Math.round(w * 10) / 10}`).join(" · ")}</p>
-              {r.insights.flips.length > 0 && <><h3 className="mt-3 mb-1 text-xs uppercase tracking-wider text-[var(--warn)]">Flips across repeats</h3><ul className="list-disc pl-4">{r.insights.flips.map((f) => <li key={f}>{f}</li>)}</ul></>}
+              {r.insights.flips.length > 0 && <><h3 className="mt-3 mb-1 text-sm font-medium text-[var(--warn)]">Flips across repeats</h3><ul className="list-disc pl-4">{r.insights.flips.map((f) => <li key={f}>{f}</li>)}</ul></>}
               {(r.notes ?? []).map((n) => <p key={n} className="mt-2 text-xs text-[var(--muted)]">{n}</p>)}
             </div>
           </div>
