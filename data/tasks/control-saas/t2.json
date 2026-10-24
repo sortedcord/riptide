@@ -1,0 +1,9 @@
+{
+  "taskId": "t2",
+  "variantId": "control-saas",
+  "goal": "Cancel my Prism Studio subscription. I'm not interested in switching plans or discounts, I just want it cancelled. Take it up to the final confirmation and stop there so I can confirm it myself.",
+  "persona": "Student in Jaipur who finished a semester project and no longer needs the apps.",
+  "startPath": "/honest/account",
+  "constraints": {},
+  "stopCondition": "before_cancel_confirm"
+}

@@ -1,0 +1,9 @@
+{
+  "taskId": "t1",
+  "variantId": "control-market",
+  "goal": "Buy one pair of Noisewave N2 wireless earbuds with ANC on Cartwheel, delivered to my saved address with standard delivery. Don't add anything else. Keep it under ₹2,600.",
+  "persona": "Software engineer in Bengaluru replacing lost earbuds before a work trip.",
+  "startPath": "/honest/",
+  "constraints": { "budgetInr": 2600, "mustInclude": ["Noisewave N2 Wireless Earbuds"] },
+  "stopCondition": "payment_page"
+}
