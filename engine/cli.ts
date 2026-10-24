@@ -1,6 +1,10 @@
 #!/usr/bin/env -S npx tsx
 import { parseArgs } from "node:util";
 
+// A parent like `next dev` (the console) leaks NODE_ENV=development, which makes every `next build` of a shop fail.
+// Shop builds and `next start` set their own NODE_ENV.
+delete process.env.NODE_ENV;
+
 /**
  * riptide <command>. Stages run in order: mutate → build-suite → run → score → rate (→ learn, pass 2).
  * Each command is a thin wrapper; the work lives in the stage modules.

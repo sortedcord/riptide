@@ -12,3 +12,12 @@ artifacts/screens/
 artifacts/review-tools/node_modules/
 data/recorder/
 data/console/
+# Answer keys and scored-suite data stay local: this repo is public (see ENGINE_GUIDE "Secrecy rules").
+data/mutations/
+data/rubrics/
+data/gates/
+data/suites/
+data/runs/
+data/ratings/
+data/lessons/
+data/tasks/v_*/

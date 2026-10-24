@@ -28,7 +28,8 @@ export function evalRule(rule: VerifyRule, events: RecorderEvent[], ctx: { hones
     case "total_delta_from_honest": {
       if (ctx.honestTotal == null) return r(false, "honest total unknown");
       if (!pay) return r(false, "no payment reached");
-      const d = pay.total - ctx.honestTotal;
+      // Rupee amounts carry paise (GST), so compare at paisa precision: 3832.64 - 3538.82 is 293.8199999999997 in floats.
+      const d = Math.round((pay.total - ctx.honestTotal) * 100) / 100;
       return r(d >= rule.min && d <= rule.max, `delta ${d} vs [${rule.min}, ${rule.max}]`);
     }
     case "element_toggled": {
