@@ -3,7 +3,9 @@ import { createContext, useContext, useEffect, useMemo, type ReactNode } from "r
 import type { AnyShopConfig, FlowStep, InterstitialStep, Manifest } from "./contracts";
 import { indexOverrides, type OverrideIndex, type SlotOverrides } from "./overrides";
 import { computePrice, type PriceResult } from "./pricing";
-import { sessionKey, useStore, type SetSession } from "./session";
+import { sessionKey, useHydrated, useStore, type SetSession } from "./session";
+import { useRecorder } from "./recorder";
+import { usePathname } from "next/navigation";
 
 type Ctx = {
   config: AnyShopConfig;
@@ -25,7 +27,8 @@ export function RiptideProvider({ config, manifest, variant, children }: {
     registryIds: new Set(config.registry.map((d) => d.id)),
     base: `/${variant}`,
   }), [config, manifest, variant]);
-  const [, , reset] = useStore(sessionKey(config.shop, variant), config.initialState);
+  const [state, , reset] = useStore(sessionKey(config.shop, variant), config.initialState);
+  useRecorder(config, manifest, state, useHydrated(), usePathname());
 
   // ?reset=1 on any page clears this shop+variant session.
   useEffect(() => {
