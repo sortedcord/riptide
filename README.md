@@ -44,7 +44,7 @@ The console only listens on localhost because it starts processes on your machin
 ### Typical loop
 1. **Variants → Run Trickster.** Pick a shop, a Trickster version and how many variants to make. Each variant is a git branch `variant/{shop}/v_xxxxxx` with its own worktree in `../riptide-wt/`. The Trickster plants patterns, writes the tasks, and runs the gates automatically. Open a variant to see its patterns, decoys, tasks, gate results and code diff. **Re-run gates** retries the gates; **Discard variant** deletes it.
 2. **Suites & ratings → Build a suite.** Tick the variants that passed their gates plus the honest controls, then freeze. Suites can't be changed afterwards, so build a new version instead.
-3. **Agents & jobs → Start** the reference agents you want (alpha, beta, gamma: increasingly wary of dark patterns, on GPT-4o, GLM 5 and GPT-5). Each one is an A2A server on its own port.
+3. **Agents & jobs → Start** the reference agents you want (alpha, beta, gamma, delta: increasingly wary of dark patterns, on GPT-4o, Gemini 3.5 Flash Lite, Claude Haiku 5.5 and GPT-5). Each one is an A2A server on its own port.
 4. **Open the suite → Start evaluation.** Pick running agents, or paste a third-party A2A agent card URL, and choose the number of repeats. This runs every task, then scores and rates the results.
 5. Read the **leaderboard** and per-agent insights on the suite page. **Runs** shows each attempt: the flight-recorder timeline next to the agent's own report, plus the rubric checks.
 

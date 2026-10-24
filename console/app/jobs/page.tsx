@@ -18,7 +18,7 @@ export default async function Jobs({ searchParams }: { searchParams: Promise<{ j
   return (
     <Page title="Agents & jobs" sub="Reference agents are A2A servers; third-party agents only need their agent card URL.">
       <Card title="Reference agents">
-        <div id="agents" className="grid gap-3 md:grid-cols-3">
+        <div id="agents" className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           {configs.map((c, i) => {
             const live = running.find((j) => j.title.startsWith(`Agent ${c.id} `));
             return (
