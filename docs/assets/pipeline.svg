@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-labelledby="t d">
+  <title id="t">How a Riptide run flows between the engine and the agent</title>
+  <desc id="d">The Trickster writes a variant and its answer key. The engine sends a task over A2A to a sniffer agent, which browses the variant shop. The shop logs events to a flight recorder. The scorer compares those events with the rubric and produces a rating. The answer key never crosses the A2A boundary.</desc>
+  <style>
+    .sans { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .hl   { opacity: 0; animation: hl 12.6s ease-in-out infinite backwards; }
+    .flow { animation: flow 1.2s linear infinite; }
+    @keyframes hl   { 0% { opacity: 0; } 3% { opacity: 1; } 11.3% { opacity: 1; } 14.3%, 100% { opacity: 0; } }
+    @keyframes flow { to { stroke-dashoffset: -12; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f08c2e"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="560" rx="20" fill="#0b0a07"/>
+
+  <rect x="24" y="24" width="1152" height="212" rx="16" fill="#15130e" stroke="#f8eedc" stroke-opacity="0.1"/>
+  <text x="48" y="58" class="mono" font-size="13" letter-spacing="1.8" fill="#f08c2e">ENGINE  /  HOLDS THE ANSWER KEY</text>
+
+  <rect x="24" y="324" width="1152" height="212" rx="16" fill="#15130e" stroke="#f8eedc" stroke-opacity="0.1"/>
+  <text x="48" y="358" class="mono" font-size="13" letter-spacing="1.8" fill="#f08c2e">AGENT SIDE  /  SEES ONE TASK AND ONE SHOP</text>
+
+  <line x1="24" y1="280" x2="1176" y2="280" stroke="#f8eedc" stroke-opacity="0.35" stroke-dasharray="3 7"/>
+  <text x="1160" y="272" class="mono" font-size="13" text-anchor="end" fill="#f8eedc" fill-opacity="0.6">A2A boundary</text>
+
+  <g>
+    <rect x="56" y="100" width="220" height="96" rx="12" fill="#211e17" stroke="#f8eedc" stroke-opacity="0.22"/>
+    <rect class="hl" style="animation-delay:0.00s" x="56" y="100" width="220" height="96" rx="12" fill="none" stroke="#f08c2e" stroke-width="2.5"/>
+    <text x="74" y="134" class="sans" font-size="20" font-weight="600" fill="#f8eedc">Trickster</text>
+    <text x="74" y="160" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">edits one shop on a branch</text>
+    <text x="74" y="180" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">plants 2 to 5 dark patterns</text>
+  </g>
+  <g>
+    <rect x="356" y="100" width="220" height="96" rx="12" fill="#211e17" stroke="#f8eedc" stroke-opacity="0.22"/>
+    <rect class="hl" style="animation-delay:1.80s" x="356" y="100" width="220" height="96" rx="12" fill="none" stroke="#f08c2e" stroke-width="2.5"/>
+    <text x="374" y="134" class="sans" font-size="20" font-weight="600" fill="#f8eedc">Variant + answer key</text>
+    <text x="374" y="160" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">tasks, rubric, gate result</text>
+    <text x="374" y="180" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">stays in data/, never served</text>
+  </g>
+  <g>
+    <rect x="656" y="100" width="220" height="96" rx="12" fill="#211e17" stroke="#f8eedc" stroke-opacity="0.22"/>
+    <rect class="hl" style="animation-delay:9.00s" x="656" y="100" width="220" height="96" rx="12" fill="none" stroke="#f08c2e" stroke-width="2.5"/>
+    <text x="674" y="134" class="sans" font-size="20" font-weight="600" fill="#f8eedc">Scorer</text>
+    <text x="674" y="160" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">recorder events vs rubric</text>
+    <text x="674" y="180" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">avoidance, overpayment</text>
+  </g>
+  <g>
+    <rect x="956" y="100" width="220" height="96" rx="12" fill="#211e17" stroke="#f8eedc" stroke-opacity="0.22"/>
+    <rect class="hl" style="animation-delay:10.80s" x="956" y="100" width="220" height="96" rx="12" fill="none" stroke="#f08c2e" stroke-width="2.5"/>
+    <text x="974" y="134" class="sans" font-size="20" font-weight="600" fill="#f8eedc">Rating</text>
+    <text x="974" y="160" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">0 to 100 and 1 to 5 stars</text>
+    <text x="974" y="180" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">per agent, per suite</text>
+  </g>
+  <g>
+    <rect x="56" y="414" width="220" height="96" rx="12" fill="#211e17" stroke="#f8eedc" stroke-opacity="0.22"/>
+    <rect class="hl" style="animation-delay:3.60s" x="56" y="414" width="220" height="96" rx="12" fill="none" stroke="#f08c2e" stroke-width="2.5"/>
+    <text x="74" y="448" class="sans" font-size="20" font-weight="600" fill="#f8eedc">Sniffer agent</text>
+    <text x="74" y="474" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">alpha to delta profiles</text>
+    <text x="74" y="494" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">drives headless Chromium</text>
+  </g>
+  <g>
+    <rect x="356" y="414" width="220" height="96" rx="12" fill="#211e17" stroke="#f8eedc" stroke-opacity="0.22"/>
+    <rect class="hl" style="animation-delay:5.40s" x="356" y="414" width="220" height="96" rx="12" fill="none" stroke="#f08c2e" stroke-width="2.5"/>
+    <text x="374" y="448" class="sans" font-size="20" font-weight="600" fill="#f8eedc">Variant shop</text>
+    <text x="374" y="474" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">Next.js on 127.0.0.1</text>
+    <text x="374" y="494" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">looks like a normal store</text>
+  </g>
+  <g>
+    <rect x="656" y="414" width="220" height="96" rx="12" fill="#211e17" stroke="#f8eedc" stroke-opacity="0.22"/>
+    <rect class="hl" style="animation-delay:7.20s" x="656" y="414" width="220" height="96" rx="12" fill="none" stroke="#f08c2e" stroke-width="2.5"/>
+    <text x="674" y="448" class="sans" font-size="20" font-weight="600" fill="#f8eedc">Flight recorder</text>
+    <text x="674" y="474" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">page, click, cart, payment</text>
+    <text x="674" y="494" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">appended to a .jsonl file</text>
+  </g>
+
+  <path class="flow" d="M276 148 H350" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
+  <text x="313" y="138" class="mono" font-size="13" text-anchor="middle" fill="#f8eedc" fill-opacity="0.85">mutate</text>
+
+  <path class="flow" d="M576 148 H650" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
+  <text x="613" y="138" class="mono" font-size="13" text-anchor="middle" fill="#f8eedc" fill-opacity="0.85">rubric</text>
+
+  <path class="flow" d="M876 148 H950" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
+  <text x="913" y="138" class="mono" font-size="13" text-anchor="middle" fill="#f8eedc" fill-opacity="0.85">rate</text>
+
+  <path class="flow" d="M110 196 V408" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
+  <text x="118" y="318" class="mono" font-size="13" text-anchor="start" fill="#f8eedc" fill-opacity="0.85">task</text>
+
+  <path class="flow" d="M222 410 V198" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
+  <text x="214" y="318" class="mono" font-size="13" text-anchor="end" fill="#f8eedc" fill-opacity="0.85">report</text>
+
+  <path class="flow" d="M466 196 V408" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
+  <text x="474" y="318" class="mono" font-size="13" text-anchor="start" fill="#f8eedc" fill-opacity="0.85">serve</text>
+
+  <path class="flow" d="M276 462 H350" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
+  <text x="313" y="452" class="mono" font-size="13" text-anchor="middle" fill="#f8eedc" fill-opacity="0.85">browses</text>
+
+  <path class="flow" d="M576 462 H650" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
+  <text x="613" y="452" class="mono" font-size="13" text-anchor="middle" fill="#f8eedc" fill-opacity="0.85">beacons</text>
+
+  <path class="flow" d="M766 410 V198" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
+  <text x="774" y="318" class="mono" font-size="13" text-anchor="start" fill="#f8eedc" fill-opacity="0.85">events</text>
+  <text class="sans" x="956" y="428" font-size="15" fill="#f8eedc" fill-opacity="0.78">The recorder is the source of truth.</text>
+  <text class="sans" x="956" y="452" font-size="15" fill="#f8eedc" fill-opacity="0.78">The agent&apos;s own report shows what</text>
+  <text class="sans" x="956" y="476" font-size="15" fill="#f8eedc" fill-opacity="0.78">it says it noticed, nothing more.</text>
+</svg>
