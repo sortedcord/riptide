@@ -1,0 +1,18 @@
+{
+  "shopType": "saas",
+  "variant": "_neutral-test",
+  "author": "riptide-saas",
+  "overrides": [
+    { "op": "setText", "target": "home.hero.title", "value": "One studio for every creative app you use." },
+    { "op": "setVariant", "target": "home.hero.cta", "variant": "secondary" },
+    { "op": "setDefault", "target": "payment.methods.tabs", "value": "card" },
+    { "op": "setAttr", "target": "review.cta.continue", "attr": "title", "value": "Continue to the payment page" },
+    { "op": "hide", "target": "footer.links.careers" },
+    { "op": "reorder", "target": "footer.links.list", "order": ["footer.links.privacy", "footer.links.terms", "footer.links.refunds", "footer.links.help"] },
+    { "op": "addLine", "line": { "key": "invoice", "label": "GST invoice by email (free)", "amount": 0, "kind": "fee", "visibleFromStep": "plans", "optional": false, "selected": true } },
+    { "op": "setLine", "key": "gst", "patch": { "label": "GST (18%, IGST)" } },
+    { "op": "insertBlock", "anchor": "home.promo.banner", "position": "inside", "block": { "type": "banner", "id": "home.promo.info", "tone": "info", "text": "New: Framewise 4.0 adds Tamil and Bengali auto-captions." } },
+    { "op": "insertStep", "flow": "purchase", "after": "signup", "step": { "id": "team-notes", "title": "Team notes", "body": "Anything we should know about how your team will use Prism? This is optional.", "fields": [{ "id": "note", "label": "Notes for onboarding", "type": "textarea" }], "continueText": "Continue to review" } },
+    { "op": "setHead", "meta": { "riptide-variant": "_neutral-test" } }
+  ]
+}
