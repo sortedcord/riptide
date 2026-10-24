@@ -13,9 +13,11 @@ export default async function Shops() {
       <div className="flex flex-wrap gap-2">
         {shops.map((s) => <Badge key={s.shop} tone={s.up ? "ok" : "muted"}>{s.brand} :{s.port} {s.up ? "up" : "down"}</Badge>)}
       </div>
-      {shops.filter((s) => s.up).map((s) => (
-        <ShopFrame key={s.shop} brand={s.brand} shop={s.shop} port={s.port} variants={s.variants} />
-      ))}
+      <div className="grid gap-5 xl:grid-cols-2">
+        {shops.filter((s) => s.up).map((s) => (
+          <ShopFrame key={s.shop} brand={s.brand} shop={s.shop} port={s.port} variants={s.variants} />
+        ))}
+      </div>
       {down.length > 0 && (
         <Card title="Not running">
           <p className="text-sm text-[var(--muted)]">Start them from the repo root to see a preview:</p>
