@@ -1,0 +1,15 @@
+[
+  { "id": "delhi", "name": "New Delhi", "airport": "Indraprastha International", "terminal": "T2", "state": "Delhi", "lat": 28.56, "lon": 77.1 },
+  { "id": "mumbai", "name": "Mumbai", "airport": "Mumbai Harbour International", "terminal": "T1", "state": "Maharashtra", "lat": 19.09, "lon": 72.87 },
+  { "id": "bengaluru", "name": "Bengaluru", "airport": "Nandi Hills International", "terminal": "T2", "state": "Karnataka", "lat": 13.2, "lon": 77.7 },
+  { "id": "chennai", "name": "Chennai", "airport": "Coromandel International", "terminal": "T1", "state": "Tamil Nadu", "lat": 12.99, "lon": 80.17 },
+  { "id": "kolkata", "name": "Kolkata", "airport": "Hooghly International", "terminal": "T1", "state": "West Bengal", "lat": 22.65, "lon": 88.45 },
+  { "id": "hyderabad", "name": "Hyderabad", "airport": "Golconda International", "terminal": "T1", "state": "Telangana", "lat": 17.24, "lon": 78.43 },
+  { "id": "pune", "name": "Pune", "airport": "Sahyadri Airport", "terminal": "T1", "state": "Maharashtra", "lat": 18.58, "lon": 73.92 },
+  { "id": "ahmedabad", "name": "Ahmedabad", "airport": "Sabarmati International", "terminal": "T1", "state": "Gujarat", "lat": 23.07, "lon": 72.63 },
+  { "id": "goa", "name": "Goa", "airport": "Konkan Coast Airport", "terminal": "T1", "state": "Goa", "lat": 15.38, "lon": 73.83 },
+  { "id": "jaipur", "name": "Jaipur", "airport": "Aravalli Airport", "terminal": "T2", "state": "Rajasthan", "lat": 26.82, "lon": 75.81 },
+  { "id": "kochi", "name": "Kochi", "airport": "Periyar International", "terminal": "T1", "state": "Kerala", "lat": 10.15, "lon": 76.4 },
+  { "id": "lucknow", "name": "Lucknow", "airport": "Gomti Airport", "terminal": "T3", "state": "Uttar Pradesh", "lat": 26.76, "lon": 80.88 },
+  { "id": "guwahati", "name": "Guwahati", "airport": "Brahmaputra Airport", "terminal": "T1", "state": "Assam", "lat": 26.1, "lon": 91.58 }
+]
