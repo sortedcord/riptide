@@ -1,7 +1,8 @@
 import path from "node:path";
 import type { NextConfig } from "next";
 
-const root = path.join(__dirname, "../..");
+// cwd, not __dirname: when the native SWC binary is blocked, Next compiles this file as ESM.
+const root = path.join(process.cwd(), "../..");
 
 const config: NextConfig = {
   transpilePackages: ["@riptide/core"],
