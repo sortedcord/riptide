@@ -39,3 +39,20 @@ table.t th { text-align: left; font-weight: 600; font-size: 11px; text-transform
 table.t td { padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
 table.t tr:last-child td { border-bottom: 0; }
 .scroll-x { overflow-x: auto; }
+
+/* Pipeline map */
+.pipeline { width: 100%; height: auto; font-family: inherit; }
+.pl-group { fill: none; stroke: var(--info); stroke-dasharray: 3 5; opacity: .6; }
+.pl-edge { fill: none; stroke: var(--muted); stroke-width: 1.6; }
+.pl-flow { stroke: var(--accent); stroke-width: 2.2; stroke-dasharray: 7 7; animation: pl-dash .7s linear infinite; }
+.pl-label { fill: var(--muted); font-size: 14px; }
+.pl-title { font-size: 16px; font-weight: 700; }
+.pl-line { fill: var(--fg); font-size: 13px; }
+.pl-status { fill: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+.pl-on { fill: var(--accent); font-weight: 700; }
+.pl-glow { fill: none; stroke-width: 2; animation: pl-pulse 1.4s ease-in-out infinite; }
+.pl-node { cursor: pointer; }
+.pl-node:hover rect:not(.pl-glow), .pl-node:focus-visible rect:not(.pl-glow) { stroke-width: 2.5; }
+@keyframes pl-dash { to { stroke-dashoffset: -14; } }
+@keyframes pl-pulse { 50% { opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .pl-flow, .pl-glow { animation: none; } }

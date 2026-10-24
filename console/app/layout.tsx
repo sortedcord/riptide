@@ -8,6 +8,8 @@ export const metadata: Metadata = { title: "Riptide console", robots: { index: f
 
 const NAV = [
   ["/", "Overview"],
+  ["/pipeline", "Pipeline"],
+  ["/shops", "Shops"],
   ["/variants", "Variants"],
   ["/suites", "Suites & ratings"],
   ["/runs", "Runs"],

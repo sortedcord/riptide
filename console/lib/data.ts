@@ -135,3 +135,25 @@ export const referenceConfigs = () =>
 export const tricksterVersions = () => dirs(path.join(ROOT, "engine/trickster/versions"));
 export const SHOPS = ["market", "food", "air", "saas", "ott"] as const;
 export const latestChange = () => Math.max(...["mutations", "gates", "suites", "runs", "ratings"].map((d) => mtime(path.join(DATA, d))));
+
+/** Local dev ports and brands of the shops (same as playwright.config.ts / README). */
+export const SHOP_INFO = [
+  { shop: "market", brand: "Cartwheel", port: 3001 },
+  { shop: "food", brand: "Forkful", port: 3002 },
+  { shop: "air", brand: "Skyline Air", port: 3003 },
+  { shop: "saas", brand: "Prism Studio", port: 3004 },
+  { shop: "ott", brand: "Reelbox", port: 3005 },
+] as const;
+
+/** Is a shop dev server answering on its port? Also returns its manifest variants. */
+export async function shopStatus(port: number): Promise<{ up: boolean; variants: string[] }> {
+  try {
+    const r = await fetch(`http://127.0.0.1:${port}/api/slots`, { signal: AbortSignal.timeout(1500), cache: "no-store" });
+    if (!r.ok) return { up: false, variants: [] };
+    const html = await (await fetch(`http://127.0.0.1:${port}/`, { signal: AbortSignal.timeout(1500), cache: "no-store" })).text();
+    const variants = [...new Set([...html.matchAll(/href="\/([a-z0-9_-]+)"/g)].map((m) => m[1]))];
+    return { up: true, variants: variants.length ? variants : ["honest"] };
+  } catch {
+    return { up: false, variants: [] };
+  }
+}
