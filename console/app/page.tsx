@@ -3,6 +3,7 @@ import { listRuns, listSuites, listVariants, ratings } from "@/lib/data";
 import { list as jobs } from "@/lib/jobs";
 import { Badge, Bar, Card, Empty, Page, Stars, Stat, ago, inr } from "@/components/ui";
 import { MutateForm } from "./variants/forms";
+import { Pipeline } from "@/components/Pipeline";
 
 export const dynamic = "force-dynamic";
 
@@ -24,6 +25,10 @@ export default function Overview() {
         <Stat label="Runs" value={runs.length} href="/runs" />
         <Stat label="Jobs running" value={running.length} href="/jobs" />
       </div>
+
+      <Card title="Pipeline" actions={<Link className="link text-sm" href="/pipeline">Full size</Link>}>
+        <Pipeline />
+      </Card>
 
       <Card title="New variants">
         <MutateForm />
