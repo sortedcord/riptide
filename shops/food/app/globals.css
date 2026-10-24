@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "@riptide/core/riptide.css";
+
+@theme inline {
+  --color-bg: var(--rt-bg);
+  --color-surface: var(--rt-surface);
+  --color-surface-2: var(--rt-surface-2);
+  --color-fg: var(--rt-fg);
+  --color-muted: var(--rt-muted);
+  --color-line: var(--rt-border);
+  --color-primary: var(--rt-primary);
+  --font-body: var(--rt-font-body);
+  --font-heading: var(--rt-font-heading);
+}
+
+body { background: var(--rt-bg); color: var(--rt-fg); font-family: var(--rt-font-body); }

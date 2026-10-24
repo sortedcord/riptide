@@ -1,0 +1,19 @@
+{
+  "name": "riptide",
+  "private": true,
+  "workspaces": ["shops/*"],
+  "scripts": {
+    "dev:market": "npm run dev -w shops/market",
+    "dev:food": "npm run dev -w shops/food",
+    "dev:air": "npm run dev -w shops/air",
+    "dev:saas": "npm run dev -w shops/saas",
+    "dev:ott": "npm run dev -w shops/ott",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
+}

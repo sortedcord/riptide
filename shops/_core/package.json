@@ -1,0 +1,27 @@
+{
+  "name": "@riptide/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./server": "./server.ts",
+    "./riptide.css": "./riptide.css"
+  },
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "lint": "eslint .",
+    "test": "tsx --test pricing.test.ts"
+  },
+  "dependencies": {
+    "zod": "4.3.3"
+  },
+  "peerDependencies": {
+    "next": "*",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15"
+  }
+}

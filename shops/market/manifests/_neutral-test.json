@@ -1,0 +1,18 @@
+{
+  "shopType": "market",
+  "variant": "_neutral-test",
+  "author": "riptide-lead",
+  "overrides": [
+    { "op": "setText", "target": "home.hero.title", "value": "Everything you need, delivered with care." },
+    { "op": "setVariant", "target": "product.cta.add", "variant": "secondary" },
+    { "op": "setDefault", "target": "payment.methods.tabs", "value": "upi" },
+    { "op": "setAttr", "target": "cart.cta.checkout", "attr": "title", "value": "Continue to the payment page" },
+    { "op": "hide", "target": "footer.links.help" },
+    { "op": "reorder", "target": "footer.links.list", "order": ["footer.links.terms", "footer.links.help"] },
+    { "op": "addLine", "line": { "key": "packaging", "label": "Packaging (free)", "amount": 0, "kind": "fee", "visibleFromStep": "cart", "optional": false, "selected": true } },
+    { "op": "setLine", "key": "platform", "patch": { "label": "Platform fee (covers payment processing)" } },
+    { "op": "insertBlock", "anchor": "home.promo.banner", "position": "inside", "block": { "type": "banner", "id": "home.promo.info", "tone": "info", "text": "Free returns within 7 days on most items." } },
+    { "op": "insertStep", "flow": "purchase", "after": "cart", "step": { "id": "order-notes", "title": "Order notes", "body": "Anything the delivery partner should know? This is optional.", "fields": [{ "id": "note", "label": "Note for delivery", "type": "textarea" }], "continueText": "Continue to payment" } },
+    { "op": "setHead", "meta": { "riptide-variant": "_neutral-test" } }
+  ]
+}
