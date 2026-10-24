@@ -11,6 +11,7 @@ const NAV = [
   ["/suites", "Suites & ratings"],
   ["/runs", "Runs"],
   ["/jobs", "Agents & jobs"],
+  ["/settings", "Settings"],
 ] as const;
 
 /** Emberspire "spire strokes" mark. */

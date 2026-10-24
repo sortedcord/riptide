@@ -1,11 +1,15 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useSyncExternalStore } from "react";
+import { shopOrigin } from "@/lib/shopUrl";
+
+const noSubscribe = () => () => {};
+const browserHost = () => `${window.location.protocol}//${window.location.hostname}`;
 
 /** One live shop embed with variant, path and device controls. */
-export function ShopFrame({ brand, shop, port, variants }: { brand: string; shop: string; port: number; variants: string[] }) {
-  // The shops run on the same host as the console, so use whatever host the browser used to reach it.
-  const [origin, setOrigin] = useState("");
-  useEffect(() => setOrigin(`${window.location.protocol}//${window.location.hostname}:${port}`), [port]);
+export function ShopFrame({ brand, shop, port, base, variants }: { brand: string; shop: string; port: number; base: string; variants: string[] }) {
+  // Without a configured base URL the shops are on the host the browser used to reach the console (unknown during SSR).
+  const host = useSyncExternalStore(noSubscribe, browserHost, () => "");
+  const origin = shopOrigin(base, port, host);
   const [variant, setVariant] = useState(variants.includes("honest") ? "honest" : variants[0]);
   const [path, setPath] = useState("");
   const [mobile, setMobile] = useState(false);
