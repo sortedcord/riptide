@@ -1,7 +1,10 @@
 {
   "name": "riptide",
   "private": true,
-  "workspaces": ["shops/*"],
+  "workspaces": [
+    "shops/*",
+    "engine"
+  ],
   "scripts": {
     "dev:market": "npm run dev -w shops/market",
     "dev:food": "npm run dev -w shops/food",
@@ -11,7 +14,8 @@
     "build": "npm run build --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "test": "playwright test"
+    "test": "playwright test",
+    "riptide": "tsx --env-file-if-exists=.env engine/cli.ts"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1"
