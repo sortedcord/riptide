@@ -1,10 +1,71 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "market", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "-w", "shops/market"], "port": 3001 },
-    { "name": "food", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "-w", "shops/food"], "port": 3002 },
-    { "name": "air", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "-w", "shops/air"], "port": 3003 },
-    { "name": "saas", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "-w", "shops/saas"], "port": 3004 },
-    { "name": "ott", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "-w", "shops/ott"], "port": 3005 }
+    {
+      "name": "market",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "-w",
+        "shops/market"
+      ],
+      "port": 3001
+    },
+    {
+      "name": "food",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "-w",
+        "shops/food"
+      ],
+      "port": 3002
+    },
+    {
+      "name": "air",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "-w",
+        "shops/air"
+      ],
+      "port": 3003
+    },
+    {
+      "name": "saas",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "-w",
+        "shops/saas"
+      ],
+      "port": 3004
+    },
+    {
+      "name": "ott",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "-w",
+        "shops/ott"
+      ],
+      "port": 3005
+    },
+    {
+      "name": "console",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "-w",
+        "console"
+      ],
+      "port": 3100
+    }
   ]
 }
