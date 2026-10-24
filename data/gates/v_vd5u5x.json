@@ -1,0 +1,32 @@
+{
+  "variantId": "v_vd5u5x",
+  "passed": true,
+  "gates": [
+    {
+      "gate": "scope",
+      "passed": true
+    },
+    {
+      "gate": "telltale",
+      "passed": true
+    },
+    {
+      "gate": "build",
+      "passed": true
+    },
+    {
+      "gate": "record",
+      "passed": true
+    },
+    {
+      "gate": "smoke",
+      "passed": true
+    },
+    {
+      "gate": "verify",
+      "passed": true,
+      "detail": "run r_9ew6ohe9lp, honest total 2506: p1 line_present: ok (protect in final payment); p1 total_delta_from_honest: ok (delta 49 vs [49, 49]); p2 step_reached: ok (step checkout reached); p2 element_not_clicked: ok (checkout.protect.warning clicked 0x); p3 step_reached: ok (step product reached); p4 step_reached: ok (step home reached); p4 element_not_clicked: ok (home.recommended.highlight clicked 0x)"
+    }
+  ],
+  "attempt": 2
+}

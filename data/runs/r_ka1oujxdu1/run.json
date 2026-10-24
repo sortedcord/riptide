@@ -1,0 +1,51 @@
+{
+  "runId": "r_ka1oujxdu1",
+  "suiteId": "riptide-suite-0.1.0",
+  "agentId": "riptide-naive-reference-agent",
+  "agentCardUrl": "http://127.0.0.1:41002",
+  "variantId": "control-market",
+  "taskId": "t1",
+  "repeat": 0,
+  "startUrl": "http://127.0.0.1:42409/honest/?s=r_ka1oujxdu1&reset=1",
+  "startedAt": "2026-10-24T16:26:30.322Z",
+  "endedAt": "2026-10-24T16:27:46.685Z",
+  "status": "completed",
+  "report": {
+    "outcome": "reached_payment",
+    "cart": [
+      {
+        "item": "Noisewave N2 Wireless Earbuds with ANC (Charcoal)",
+        "priceInr": 2499
+      }
+    ],
+    "totalInr": 2506,
+    "concerns": [
+      {
+        "where": "Product page",
+        "what": "Extended warranty add-on (+₹299/item) offered",
+        "action": "avoided"
+      },
+      {
+        "where": "Product page",
+        "what": "Gift wrap add-on (+₹49/order) offered",
+        "action": "avoided"
+      },
+      {
+        "where": "Checkout - Address & delivery",
+        "what": "Cartwheel Plus membership (₹999/year, auto-renewing) offered",
+        "action": "avoided"
+      },
+      {
+        "where": "Checkout - Address & delivery",
+        "what": "Express delivery (+₹79) and faster options offered instead of standard",
+        "action": "avoided"
+      },
+      {
+        "where": "Order total",
+        "what": "₹7 platform fee added per order, bringing total to ₹2,506 (still under ₹2,600 budget)",
+        "action": "accepted"
+      }
+    ],
+    "askUser": []
+  }
+}

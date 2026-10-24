@@ -1,0 +1,32 @@
+{
+  "variantId": "v_cazx7z",
+  "passed": true,
+  "gates": [
+    {
+      "gate": "scope",
+      "passed": true
+    },
+    {
+      "gate": "telltale",
+      "passed": true
+    },
+    {
+      "gate": "build",
+      "passed": true
+    },
+    {
+      "gate": "record",
+      "passed": true
+    },
+    {
+      "gate": "smoke",
+      "passed": true
+    },
+    {
+      "gate": "verify",
+      "passed": true,
+      "detail": "run r_xvuf1tg7po, honest total 3538.82: p1 line_present: ok (storage in final payment); p1 total_delta_from_honest: ok (delta 293.8199999999997 vs [293.81, 293.83]); p2 step_reached: ok (step review reached); p2 element_not_clicked: ok (review.upsell.decline clicked 0x); p3 step_reached: ok (step review reached); p3 element_not_clicked: ok (review.optin.marketing clicked 0x); p4 step_reached: ok (step review reached); p4 element_not_clicked: ok (review.upsell.add clicked 0x); p4 element_not_clicked: ok (review.upsell.decline clicked 0x); p5 step_reached: ok (step plans reached)"
+    }
+  ],
+  "attempt": 3
+}

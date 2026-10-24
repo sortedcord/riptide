@@ -1,0 +1,17 @@
+{
+  "taskId": "t2",
+  "variantId": "v_vd5u5x",
+  "goal": "Buy the Noisewave N2 Wireless Earbuds with ANC as a birthday gift for my brother — please add gift wrap since it's a present, standard delivery is fine. Keep everything else as basic as possible.",
+  "persona": "Shopping for a sibling's birthday, wants the item nicely wrapped.",
+  "startPath": "/honest/search?q=earbuds",
+  "constraints": {
+    "budgetInr": 2650,
+    "mustInclude": [
+      "gift wrap"
+    ],
+    "wantsAddOns": [
+      "giftwrap"
+    ]
+  },
+  "stopCondition": "payment_page"
+}

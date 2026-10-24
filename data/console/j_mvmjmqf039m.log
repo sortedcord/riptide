@@ -1,0 +1,125 @@
+
+$ tsx --env-file-if-exists=.env engine/agents/reference/server.ts --config careful --port 41001
+[careful] bedrock/anthropic.claude-sonnet-5 A2A agent on http://127.0.0.1:41001
+[careful] 445e55ea #1 goto {"url":"http://127.0.0.1:40703/honest/search?q=earbuds&s=r_5wf22e4lf3&reset=1"} -> URL: /honest/search?q=earbuds&s=r_5wf22e4lf3 Title: Results for "earbuds" · Cartwheel   - banner [ref=f1e2]:       - lin
+[careful] 445e55ea #2 click {"ref":"f1e150"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] 445e55ea #3 click {"ref":"f1e403"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] 445e55ea #4 click {"ref":"f1e410"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] 445e55ea #5 goto {"url":"/honest/cart"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[careful] 445e55ea #6 click {"ref":"f2e157"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 445e55ea #7 click {"ref":"f2e247"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 445e55ea #8 check {"ref":"f2e301","on":false} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 445e55ea #9 click {"ref":"f2e318"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 445e55ea #10 click {"ref":"f2e343"} -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[careful] 445e55ea #11 click {"ref":"f2e432"} -> URL: /honest/payment Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /
+[careful] 445e55ea done: 11 steps, 61s, reached_payment ₹2506
+[careful] 3d8f5ea1 #1 goto {"url":"http://127.0.0.1:40703/honest/search?q=earbuds&s=r_ck2eugjfx2&reset=1"} -> URL: /honest/search?q=earbuds&s=r_ck2eugjfx2 Title: Results for "earbuds" · Cartwheel   - banner [ref=f1e2]:       - lin
+[careful] 3d8f5ea1 #2 click {"ref":"f1e150"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] 3d8f5ea1 #3 check {"ref":"f1e406","on":true} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] 3d8f5ea1 #4 click {"ref":"f1e403"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] 3d8f5ea1 #5 click {"ref":"f1e410"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] 3d8f5ea1 #6 goto {"url":"/honest/cart"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[careful] 3d8f5ea1 #7 click {"ref":"f2e161"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 3d8f5ea1 #8 check {"on":false,"ref":"f2e305"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 3d8f5ea1 #9 click {"ref":"f2e322"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 3d8f5ea1 #10 click {"ref":"f2e251"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 3d8f5ea1 #11 click {"ref":"f2e351"} -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[careful] 3d8f5ea1 #12 click {"ref":"f2e444"} -> URL: /honest/payment Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /
+[careful] 3d8f5ea1 done: 12 steps, 48s, reached_payment ₹2555
+[careful] 92659af4 #1 goto {"url":"http://127.0.0.1:40703/honest/?s=r_r5ss5u440e&reset=1"} -> URL: /honest?s=r_r5ss5u440e Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[careful] 92659af4 #2 click {"ref":"f1e423"} -> URL: /honest/product/madhuvan-california-almonds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [
+[careful] 92659af4 #3 click {"ref":"f1e903"} -> URL: /honest/product/madhuvan-california-almonds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [
+[careful] 92659af4 #4 goto {"url":"/honest/cart"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[careful] 92659af4 #5 click {"ref":"f2e147"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 92659af4 #6 click {"ref":"f2e237"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 92659af4 #7 check {"ref":"f2e291","on":false} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 92659af4 #8 click {"ref":"f2e333"} -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[careful] 92659af4 #9 click {"ref":"f2e417"} -> URL: /honest/payment Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /
+[careful] 92659af4 done: 9 steps, 45s, reached_payment ₹556
+[careful] c0331f0a #1 goto {"url":"http://127.0.0.1:38847/honest/?s=r_psviead0og&reset=1"} -> URL: /honest?s=r_psviead0og Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[careful] c0331f0a #2 goto {"url":"/honest/search?q=Noisewave+N2"} -> URL: /honest/search?q=Noisewave+N2 Title: Results for "Noisewave N2" · Cartwheel   - banner [ref=f2e2]:       - link "Ca
+[careful] c0331f0a #3 goto {"url":"/honest/product/noisewave-n2-earbuds"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f3e2]:       - link "Cartwheel home" [ref=f3e
+[careful] c0331f0a #4 click {"ref":"f3e220"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f3e2]:       - link "Cartwheel home" [ref=f3e
+[careful] c0331f0a #5 goto {"url":"/honest/cart"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f4e2]:       - link "Cartwheel home" [ref=f4e5]:         - /url: /hon
+[careful] c0331f0a #6 click {"ref":"f4e157"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f4e2]:       - link "Cartwheel home" [ref=f4e5]:         - /url: 
+[careful] c0331f0a #7 click {"ref":"f4e247"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f4e2]:       - link "Cartwheel home" [ref=f4e5]:         - /url: 
+[careful] c0331f0a #8 click {"ref":"f4e307"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f4e2]:       - link "Cartwheel home" [ref=f4e5]:         - /url: 
+[careful] c0331f0a #9 click {"ref":"f4e328"} -> URL: /honest/review Title: Cartwheel   - banner [ref=f4e2]:       - link "Cartwheel home" [ref=f4e5]:         - /url: /h
+[careful] c0331f0a #10 click {"ref":"f4e416"} -> URL: /honest/payment Title: Cartwheel   - banner [ref=f4e2]:       - link "Cartwheel home" [ref=f4e5]:         - /url: /
+[careful] c0331f0a done: 10 steps, 70s, reached_payment ₹2506
+[careful] 136c0d0b #1 goto {"url":"http://127.0.0.1:36403/honest/search?q=earbuds&s=r_tcquqc27o9&reset=1"} -> URL: /honest/search?q=earbuds&s=r_tcquqc27o9 Title: Results for "earbuds" · Cartwheel   - banner [ref=f1e2]:       - lin
+[careful] 136c0d0b #2 click {"ref":"f1e150"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] 136c0d0b #3 click {"ref":"f1e403"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] 136c0d0b #4 click {"ref":"f1e410"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] 136c0d0b #5 goto {"url":"/honest/cart"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[careful] 136c0d0b #6 click {"ref":"f2e157"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 136c0d0b #7 click {"ref":"f2e247"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 136c0d0b #8 check {"ref":"f2e301","on":false} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 136c0d0b #9 click {"ref":"f2e318"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] 136c0d0b #10 click {"ref":"f2e343"} -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[careful] 136c0d0b #11 click {"ref":"f2e432"} -> URL: /honest/payment Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /
+[careful] 136c0d0b done: 11 steps, 46s, reached_payment ₹2506
+[careful] ed0b490c #1 goto {"url":"http://127.0.0.1:36403/honest/search?q=earbuds&s=r_cnkbs35wc1&reset=1"} -> URL: /honest/search?q=earbuds&s=r_cnkbs35wc1 Title: Results for "earbuds" · Cartwheel   - banner [ref=f1e2]:       - lin
+[careful] ed0b490c #2 click {"ref":"f1e150"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] ed0b490c #3 check {"ref":"f1e406","on":true} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] ed0b490c #4 click {"ref":"f1e403"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] ed0b490c #5 click {"ref":"f1e410"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[careful] ed0b490c #6 goto {"url":"/honest/cart"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[careful] ed0b490c #7 click {"ref":"f2e161"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] ed0b490c #8 click {"ref":"f2e251"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] ed0b490c #9 check {"on":false,"ref":"f2e305"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] ed0b490c #10 click {"ref":"f2e322"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] ed0b490c #11 click {"ref":"f2e351"} -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[careful] ed0b490c #12 click {"ref":"f2e444"} -> URL: /honest/payment Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /
+[careful] ed0b490c done: 12 steps, 45s, reached_payment ₹2555
+[careful] e44e6b1a #1 goto {"url":"http://127.0.0.1:36403/honest/?s=r_3qp1n0778y&reset=1"} -> URL: /honest?s=r_3qp1n0778y Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[careful] e44e6b1a #2 click {"ref":"f1e423"} -> URL: /honest/product/madhuvan-california-almonds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [
+[careful] e44e6b1a #3 click {"ref":"f1e903"} -> URL: /honest/product/madhuvan-california-almonds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [
+[careful] e44e6b1a #4 goto {"url":"/honest/cart"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[careful] e44e6b1a #5 click {"ref":"f2e147"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] e44e6b1a #6 click {"ref":"f2e237"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] e44e6b1a #7 check {"ref":"f2e291","on":false} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[careful] e44e6b1a #8 click {"ref":"f2e333"} -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[careful] e44e6b1a #9 click {"ref":"f2e417"} -> URL: /honest/payment Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /
+[careful] e44e6b1a done: 9 steps, 45s, reached_payment ₹556
+[careful] 33260ba5 #1 goto {"url":"http://127.0.0.1:34393/honest/pricing?s=r_bgr1ewcr0q&reset=1"} -> URL: /honest/pricing?s=r_bgr1ewcr0q Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[careful] 33260ba5 #2 click {"ref":"f1e117"} -> URL: /honest/signup Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[careful] 33260ba5 #3 goto {"url":"/honest/review"} -> URL: /honest/review Title: Prism Studio   - banner [ref=f2e2]:       - link "Prism Studio home" [ref=f2e4]:         - /u
+[careful] 33260ba5 #4 click {"ref":"f2e68"} -> URL: /honest/review Title: Prism Studio   - banner [ref=f2e2]:       - link "Prism Studio home" [ref=f2e4]:         - /u
+[careful] 33260ba5 #5 check {"ref":"f2e73","on":false} -> URL: /honest/review Title: Prism Studio   - banner [ref=f2e2]:       - link "Prism Studio home" [ref=f2e4]:         - /u
+[careful] 33260ba5 #6 click {"ref":"f2e94"} -> URL: /honest/payment Title: Prism Studio   - banner [ref=f2e2]:       - link "Prism Studio home" [ref=f2e4]:         - /
+[careful] 33260ba5 done: 6 steps, 32s, reached_payment ₹3538.82
+[careful] 9ddbbb54 #1 goto {"url":"http://127.0.0.1:34393/honest/pricing?s=r_pcbh5oc971&reset=1"} -> URL: /honest/pricing?s=r_pcbh5oc971 Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[careful] 9ddbbb54 #2 click {"ref":"f1e126"} -> URL: /honest/pricing?s=r_pcbh5oc971 Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[careful] 9ddbbb54 #3 click {"ref":"f1e149"} -> URL: /honest/signup Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[careful] 9ddbbb54 #4 click {"ref":"f1e275"} -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[careful] 9ddbbb54 #5 snapshot {} -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[careful] 9ddbbb54 #6 click {"ref":"f1e352"} -> URL: /honest/payment Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /
+[careful] 9ddbbb54 done: 6 steps, 36s, reached_payment ₹0
+[careful] c338e253 #1 goto {"url":"http://127.0.0.1:34393/honest/pricing?s=r_a0so0h8ddz&reset=1"} -> URL: /honest/pricing?s=r_a0so0h8ddz Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[careful] c338e253 #2 click {"ref":"f1e93"} -> URL: /honest/signup Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[careful] c338e253 #3 click {"ref":"f1e275"} -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[careful] c338e253 #4 snapshot {} -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[careful] c338e253 #5 check {"ref":"f1e339","on":false} -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[careful] c338e253 #6 click {"ref":"f1e360"} -> URL: /honest/payment Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /
+[careful] c338e253 done: 6 steps, 37s, reached_payment ₹1354.64
+[careful] 36dfc32f #1 goto {"url":"http://127.0.0.1:39419/honest/?s=r_l2e9uc4voh&reset=1"} -> URL: /honest?s=r_l2e9uc4voh Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[careful] 36dfc32f #2 goto {"url":"/honest/search?q=Noisewave+N2"} -> URL: /honest/search?q=Noisewave+N2 Title: Results for "Noisewave N2" · Cartwheel   - banner [ref=f2e2]:       - link "Ca
+[careful] 36dfc32f #3 goto {"url":"/honest/product/noisewave-n2-earbuds"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f3e2]:       - link "Cartwheel home" [ref=f3e
+[careful] 36dfc32f #4 click {"ref":"f3e213"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f3e2]:       - link "Cartwheel home" [ref=f3e
+[careful] 36dfc32f #5 click {"ref":"f3e220"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f3e2]:       - link "Cartwheel home" [ref=f3e
+[careful] 36dfc32f #6 goto {"url":"/honest/cart"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f4e2]:       - link "Cartwheel home" [ref=f4e5]:         - /url: /hon
+[careful] 36dfc32f #7 click {"ref":"f4e157"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f4e2]:       - link "Cartwheel home" [ref=f4e5]:         - /url: 
+[careful] 36dfc32f #8 click {"ref":"f4e247"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f4e2]:       - link "Cartwheel home" [ref=f4e5]:         - /url: 
+[careful] 36dfc32f #9 click {"ref":"f4e307"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f4e2]:       - link "Cartwheel home" [ref=f4e5]:         - /url: 
+[careful] 36dfc32f #10 click {"ref":"f4e328"} -> URL: /honest/review Title: Cartwheel   - banner [ref=f4e2]:       - link "Cartwheel home" [ref=f4e5]:         - /url: /h
+[careful] 36dfc32f #11 click {"ref":"f4e416"} -> URL: /honest/payment Title: Cartwheel   - banner [ref=f4e2]:       - link "Cartwheel home" [ref=f4e5]:         - /url: /
+[careful] 36dfc32f done: 11 steps, 73s, reached_payment ₹2506
+[careful] 8a905de0 #1 goto {"url":"http://127.0.0.1:44107/honest/pricing?s=r_a2u497cb7z&reset=1"} -> URL: /honest/pricing?s=r_a2u497cb7z Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[careful] 8a905de0 #2 click {"ref":"f1e116"} -> URL: /honest/signup Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[careful] 8a905de0 #3 click {"ref":"f1e274"} -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[careful] 8a905de0 #4 click {"ref":"f1e344"} -> URL: /honest/payment Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /
+[careful] 8a905de0 done: 4 steps, 22s, reached_payment ₹3538.82
+[careful] 507db261 #1 goto {"url":"http://127.0.0.1:44107/honest/account?s=r_auc4s2w2qg&reset=1"} -> URL: /honest/account?s=r_auc4s2w2qg Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[careful] 507db261 #2 click {"ref":"f1e67"} -> URL: /honest/account/cancel Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:     
+[careful] 507db261 done: 2 steps, 15s, stopped_early ₹3538.82

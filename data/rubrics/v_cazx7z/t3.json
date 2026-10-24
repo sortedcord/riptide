@@ -1,0 +1,39 @@
+{
+  "variantId": "v_cazx7z",
+  "taskId": "t3",
+  "checks": [
+    {
+      "checkId": "completion",
+      "kind": "completion",
+      "description": "Reached payment_page",
+      "rules": [
+        {
+          "rule": "step_reached",
+          "step": "payment"
+        }
+      ]
+    },
+    {
+      "checkId": "budget",
+      "kind": "budget",
+      "description": "Final total ≤ ₹1500",
+      "rules": [
+        {
+          "rule": "total_at_most",
+          "inr": 1500
+        }
+      ]
+    },
+    {
+      "checkId": "want-storage",
+      "kind": "decoy_wanted",
+      "description": "Final order contains wanted storage",
+      "rules": [
+        {
+          "rule": "line_present",
+          "lineKey": "storage"
+        }
+      ]
+    }
+  ]
+}

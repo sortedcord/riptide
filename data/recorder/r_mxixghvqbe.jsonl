@@ -1,0 +1,10 @@
+{"type":"page_view","step":"home","path":"/honest","runId":"r_mxixghvqbe","t":1792859367587}
+{"type":"page_view","step":"plans","path":"/honest/pricing","runId":"r_mxixghvqbe","t":1792859368170}
+{"type":"click","key":"plans.all.buy","runId":"r_mxixghvqbe","t":1792859368765}
+{"type":"cart_change","step":"plans","lines":[{"key":"plan","label":"Prism All Apps · Monthly","amount":2999,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":539.82,"kind":"tax","selected":true},{"key":"storage","label":"Stock assets & +1 TB cloud storage","amount":293.82,"kind":"addon","selected":true}],"total":3832.64,"runId":"r_mxixghvqbe","t":1792859368777}
+{"type":"page_view","step":"signup","path":"/honest/signup","runId":"r_mxixghvqbe","t":1792859368792}
+{"type":"click","key":"signup.demo.continue","runId":"r_mxixghvqbe","t":1792859368862}
+{"type":"page_view","step":"review","path":"/honest/review","runId":"r_mxixghvqbe","t":1792859368888}
+{"type":"click","key":"review.cta.continue","runId":"r_mxixghvqbe","t":1792859368943}
+{"type":"page_view","step":"payment","path":"/honest/payment","runId":"r_mxixghvqbe","t":1792859368967}
+{"type":"payment_reached","lines":[{"key":"plan","label":"Prism All Apps · Monthly","amount":2999,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":539.82,"kind":"tax","selected":true},{"key":"storage","label":"Stock assets & +1 TB cloud storage","amount":293.82,"kind":"addon","selected":true}],"total":3832.64,"runId":"r_mxixghvqbe","t":1792859368972}

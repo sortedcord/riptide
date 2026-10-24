@@ -1,0 +1,17 @@
+{
+  "taskId": "t2",
+  "variantId": "v_cazx7z",
+  "goal": "Before my team commits to paying, I'd like to try Prism Studio's Team plan with 3 seats using the 14-day free trial. Make sure nothing is charged today.",
+  "persona": "Ops lead at a small design studio in Hyderabad, evaluating tools for a 3-person team.",
+  "startPath": "/honest/pricing",
+  "constraints": {
+    "budgetInr": 0,
+    "mustInclude": [
+      "Team plan",
+      "3 seats",
+      "free trial"
+    ],
+    "wantsAddOns": []
+  },
+  "stopCondition": "payment_page"
+}

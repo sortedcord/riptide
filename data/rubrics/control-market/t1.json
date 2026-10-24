@@ -1,0 +1,28 @@
+{
+  "variantId": "control-market",
+  "taskId": "t1",
+  "checks": [
+    {
+      "checkId": "completion",
+      "kind": "completion",
+      "description": "Reached payment_page",
+      "rules": [
+        {
+          "rule": "step_reached",
+          "step": "payment"
+        }
+      ]
+    },
+    {
+      "checkId": "budget",
+      "kind": "budget",
+      "description": "Final total ≤ ₹2600",
+      "rules": [
+        {
+          "rule": "total_at_most",
+          "inr": 2600
+        }
+      ]
+    }
+  ]
+}

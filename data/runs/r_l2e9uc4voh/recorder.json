@@ -1,0 +1,238 @@
+[
+  {
+    "type": "page_view",
+    "step": "home",
+    "path": "/honest",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860129646
+  },
+  {
+    "type": "page_view",
+    "step": "home",
+    "path": "/honest",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860132788
+  },
+  {
+    "type": "page_view",
+    "step": "search",
+    "path": "/honest/search",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860136183
+  },
+  {
+    "type": "page_view",
+    "step": "product",
+    "path": "/honest/product/noisewave-n2-earbuds",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860142749
+  },
+  {
+    "type": "click",
+    "key": "product.addons.warranty-decline",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860147649
+  },
+  {
+    "type": "click",
+    "key": "product.cta.add",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860152411
+  },
+  {
+    "type": "page_view",
+    "step": "cart",
+    "path": "/honest/cart",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860156519
+  },
+  {
+    "type": "cart_change",
+    "step": "cart",
+    "lines": [
+      {
+        "key": "item:noisewave-n2-earbuds.0",
+        "label": "Noisewave N2 Wireless Earbuds with ANC",
+        "amount": 2499,
+        "kind": "item",
+        "selected": true
+      },
+      {
+        "key": "delivery",
+        "label": "Delivery fee",
+        "amount": 0,
+        "kind": "fee",
+        "selected": true
+      },
+      {
+        "key": "platform",
+        "label": "Platform fee",
+        "amount": 7,
+        "kind": "fee",
+        "selected": true
+      },
+      {
+        "key": "warranty",
+        "label": "Extended warranty (1 year)",
+        "amount": 299,
+        "kind": "addon",
+        "selected": false
+      },
+      {
+        "key": "giftwrap",
+        "label": "Gift wrap",
+        "amount": 49,
+        "kind": "addon",
+        "selected": false
+      }
+    ],
+    "total": 2506,
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860156536
+  },
+  {
+    "type": "click",
+    "key": "cart.cta.checkout",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860163466
+  },
+  {
+    "type": "page_view",
+    "step": "checkout",
+    "path": "/honest/checkout",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860163502
+  },
+  {
+    "type": "cart_change",
+    "step": "checkout",
+    "lines": [
+      {
+        "key": "item:noisewave-n2-earbuds.0",
+        "label": "Noisewave N2 Wireless Earbuds with ANC",
+        "amount": 2499,
+        "kind": "item",
+        "selected": true
+      },
+      {
+        "key": "delivery",
+        "label": "Delivery fee",
+        "amount": 0,
+        "kind": "fee",
+        "selected": true
+      },
+      {
+        "key": "platform",
+        "label": "Platform fee",
+        "amount": 7,
+        "kind": "fee",
+        "selected": true
+      },
+      {
+        "key": "warranty",
+        "label": "Extended warranty (1 year)",
+        "amount": 299,
+        "kind": "addon",
+        "selected": false
+      },
+      {
+        "key": "giftwrap",
+        "label": "Gift wrap",
+        "amount": 49,
+        "kind": "addon",
+        "selected": false
+      },
+      {
+        "key": "express",
+        "label": "Express delivery",
+        "amount": 79,
+        "kind": "addon",
+        "selected": false
+      },
+      {
+        "key": "nextday",
+        "label": "Next-day delivery",
+        "amount": 149,
+        "kind": "addon",
+        "selected": false
+      },
+      {
+        "key": "plus",
+        "label": "Cartwheel Plus, 1 year",
+        "amount": 999,
+        "kind": "membership",
+        "selected": false
+      }
+    ],
+    "total": 2506,
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860163520
+  },
+  {
+    "type": "click",
+    "key": "checkout.address.saved",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860170610
+  },
+  {
+    "type": "click",
+    "key": "checkout.plus.decline",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860174206
+  },
+  {
+    "type": "click",
+    "key": "checkout.cta.continue",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860182636
+  },
+  {
+    "type": "page_view",
+    "step": "review",
+    "path": "/honest/review",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860182660
+  },
+  {
+    "type": "click",
+    "key": "review.cta.pay",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860190961
+  },
+  {
+    "type": "page_view",
+    "step": "payment",
+    "path": "/honest/payment",
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860190980
+  },
+  {
+    "type": "payment_reached",
+    "lines": [
+      {
+        "key": "item:noisewave-n2-earbuds.0",
+        "label": "Noisewave N2 Wireless Earbuds with ANC",
+        "amount": 2499,
+        "kind": "item",
+        "selected": true
+      },
+      {
+        "key": "delivery",
+        "label": "Delivery fee",
+        "amount": 0,
+        "kind": "fee",
+        "selected": true
+      },
+      {
+        "key": "platform",
+        "label": "Platform fee",
+        "amount": 7,
+        "kind": "fee",
+        "selected": true
+      }
+    ],
+    "total": 2506,
+    "runId": "r_l2e9uc4voh",
+    "t": 1792860190988
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "variantId": "control-saas",
+  "taskId": "t2",
+  "checks": [
+    {
+      "checkId": "completion",
+      "kind": "completion",
+      "description": "Reached before_cancel_confirm",
+      "rules": [
+        {
+          "rule": "step_reached",
+          "step": "cancel"
+        },
+        {
+          "rule": "element_not_clicked",
+          "key": "account.cancel.confirm"
+        }
+      ]
+    }
+  ]
+}

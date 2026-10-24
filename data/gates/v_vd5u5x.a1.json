@@ -1,0 +1,33 @@
+{
+  "variantId": "v_vd5u5x",
+  "passed": false,
+  "gates": [
+    {
+      "gate": "scope",
+      "passed": true
+    },
+    {
+      "gate": "telltale",
+      "passed": true
+    },
+    {
+      "gate": "build",
+      "passed": true
+    },
+    {
+      "gate": "record",
+      "passed": true
+    },
+    {
+      "gate": "smoke",
+      "passed": false,
+      "detail": "reached payment but with errors: HTTP 404 GET http://127.0.0.1:40115/honest/policies/terms?_rsc=DqmXT4QXIk1z_zS- | console: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:40115/honest/review | HTTP 404 GET http://127.0.0.1:40115/honest/policies/returns?_rsc=DqmXT4QXIk1z_zS- | console: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:40115/honest/review | HTTP 404 GET http://127.0.0.1:40115/honest/policies/terms?_rsc=8FOfBDVVICgJRdZi | console: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:40115/honest/payment | HTTP 404 GET http://127.0.0.1:40115/honest/policies/returns?_rsc=8FOfBDVVICgJRdZi | console: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:40115/honest/payment | HTTP 404 GET http://127.0.0.1:40115/honest/policies/privacy?_rsc=8FOfBDVVICgJRdZi | console: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:40115/honest/payment"
+    },
+    {
+      "gate": "verify",
+      "passed": false,
+      "detail": "not run: smoke failed"
+    }
+  ],
+  "attempt": 1
+}
