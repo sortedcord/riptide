@@ -16,6 +16,13 @@ npm run riptide -- score --suite riptide-suite-0.0.1
 npm run riptide -- rate --suite riptide-suite-0.0.1
 ```
 
+## Console (control panel)
+`npm run console` → http://127.0.0.1:3100 (binds to localhost only: it can start processes). Read-only views of `data/` and the variant branches, plus buttons that launch the same CLI commands as background jobs with live logs:
+- **Variants**: run the Trickster (shop, version, count), browse patterns/decoys/tasks/gates and the code diff, re-run gates, discard a variant (branch + worktree + data).
+- **Suites & ratings**: freeze a suite from passed variants + honest controls; evaluate (run each picked agent → score → rate); leaderboard and per-agent insights.
+- **Runs**: recorder timeline vs the agent's untrusted report, rubric checks, A2A transcript.
+- **Agents & jobs**: start/stop the reference A2A agents; every job's log. Jobs live in the console process (logs mirrored to `data/console/`), so restarting the console forgets running jobs.
+
 ## Conventions
 - TypeScript, ESM, run with `tsx`. Engine imports use explicit `.ts` extensions. `npm run typecheck -w engine`, `npm test -w engine` (node:test, files `*.test.ts`).
 - **Every artifact has a zod schema in `engine/contracts/index.ts`.** Validate on read (`readJson(file, Schema)` in `engine/paths.ts`) and before write. Only the lead edits contracts: if you need a change, say so in your report and work around it.

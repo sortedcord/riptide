@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "shops/*",
-    "engine"
+    "engine",
+    "console"
   ],
   "scripts": {
     "dev:market": "npm run dev -w shops/market",
@@ -15,7 +16,8 @@
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "playwright test",
-    "riptide": "tsx --env-file-if-exists=.env engine/cli.ts"
+    "riptide": "tsx --env-file-if-exists=.env engine/cli.ts",
+    "console": "npm run dev -w console"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1"
