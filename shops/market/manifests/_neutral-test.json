@@ -1,18 +1,20 @@
 {
   "shopType": "market",
   "variant": "_neutral-test",
-  "author": "riptide-lead",
+  "author": "riptide-market",
   "overrides": [
     { "op": "setText", "target": "home.hero.title", "value": "Everything you need, delivered with care." },
-    { "op": "setVariant", "target": "product.cta.add", "variant": "secondary" },
-    { "op": "setDefault", "target": "payment.methods.tabs", "value": "upi" },
-    { "op": "setAttr", "target": "cart.cta.checkout", "attr": "title", "value": "Continue to the payment page" },
+    { "op": "setText", "target": "home.deals.title", "value": "Deals of the day" },
+    { "op": "setVariant", "target": "product.cta.buy", "variant": "ghost" },
+    { "op": "setDefault", "target": "payment.methods.tabs", "value": "card" },
+    { "op": "setAttr", "target": "cart.cta.checkout", "attr": "title", "value": "Continue to address and delivery" },
     { "op": "hide", "target": "footer.links.help" },
-    { "op": "reorder", "target": "footer.links.list", "order": ["footer.links.terms", "footer.links.help"] },
+    { "op": "reorder", "target": "footer.links.list", "order": ["footer.links.privacy", "footer.links.terms"] },
     { "op": "addLine", "line": { "key": "packaging", "label": "Packaging (free)", "amount": 0, "kind": "fee", "visibleFromStep": "cart", "optional": false, "selected": true } },
     { "op": "setLine", "key": "platform", "patch": { "label": "Platform fee (covers payment processing)" } },
     { "op": "insertBlock", "anchor": "home.promo.banner", "position": "inside", "block": { "type": "banner", "id": "home.promo.info", "tone": "info", "text": "Free returns within 7 days on most items." } },
-    { "op": "insertStep", "flow": "purchase", "after": "cart", "step": { "id": "order-notes", "title": "Order notes", "body": "Anything the delivery partner should know? This is optional.", "fields": [{ "id": "note", "label": "Note for delivery", "type": "textarea" }], "continueText": "Continue to payment" } },
+    { "op": "insertBlock", "anchor": "product.seller.card", "position": "after", "block": { "type": "text", "id": "product.seller.note", "text": "Sellers on Cartwheel are verified before they can list products.", "size": "small" } },
+    { "op": "insertStep", "flow": "purchase", "after": "cart", "step": { "id": "order-notes", "title": "Order notes", "body": "Anything the delivery partner should know? This is optional.", "fields": [{ "id": "note", "label": "Note for delivery", "type": "textarea" }], "continueText": "Continue to address" } },
     { "op": "setHead", "meta": { "riptide-variant": "_neutral-test" } }
   ]
 }

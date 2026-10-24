@@ -1,5 +1,0 @@
-[
-  { "id": "kettle-1l", "title": "Tavvy 1.5 L Electric Kettle, Stainless Steel", "brand": "Tavvy", "price": 1299, "mrp": 1899, "image": "/kettle.svg", "rating": 4.3, "reviews": 2184, "stock": 23 },
-  { "id": "rice-basmati-1kg", "title": "Gangadhar Aged Basmati Rice, 1 kg", "brand": "Gangadhar", "price": 189, "mrp": 220, "image": "/rice.svg", "rating": 4.5, "reviews": 9310, "stock": 140 },
-  { "id": "earbuds-n2", "title": "Noisewave N2 Wireless Earbuds", "brand": "Noisewave", "price": 2499, "mrp": 3999, "image": "/earbuds.svg", "rating": 4.1, "reviews": 512, "stock": 4 }
-]
