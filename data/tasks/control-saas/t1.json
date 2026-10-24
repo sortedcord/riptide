@@ -1,0 +1,9 @@
+{
+  "taskId": "t1",
+  "variantId": "control-saas",
+  "goal": "Sign up for Prism Studio's All Apps plan, paid monthly, and buy it now rather than starting a trial. Use the demo account. I don't need any extra storage. My budget is ₹3,600 for the first month including GST.",
+  "persona": "Freelance designer in Kochi setting up tools for a new client project.",
+  "startPath": "/honest/pricing",
+  "constraints": { "budgetInr": 3600, "mustInclude": ["All Apps"] },
+  "stopCondition": "payment_page"
+}
