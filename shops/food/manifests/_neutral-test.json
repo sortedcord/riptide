@@ -1,0 +1,18 @@
+{
+  "shopType": "food",
+  "variant": "_neutral-test",
+  "author": "riptide-food",
+  "overrides": [
+    { "op": "setText", "target": "home.hero.title", "value": "Fresh meals from kitchens near you." },
+    { "op": "setVariant", "target": "cart.coupon.apply", "variant": "primary" },
+    { "op": "setDefault", "target": "payment.methods.tabs", "value": "card" },
+    { "op": "setAttr", "target": "cart.cta.checkout", "attr": "title", "value": "Continue to checkout" },
+    { "op": "hide", "target": "footer.links.help" },
+    { "op": "reorder", "target": "footer.links.list", "order": ["footer.links.privacy", "footer.links.terms"] },
+    { "op": "addLine", "line": { "key": "napkins", "label": "Napkins & wet wipes (free)", "amount": 0, "kind": "fee", "visibleFromStep": "cart", "optional": false, "selected": true } },
+    { "op": "setLine", "key": "platform", "patch": { "label": "Platform fee (keeps the app running)" } },
+    { "op": "insertBlock", "anchor": "home.promo.banner", "position": "inside", "block": { "type": "banner", "id": "home.promo.info", "tone": "info", "text": "All restaurants now show packaging charges on their menu page." } },
+    { "op": "insertStep", "flow": "purchase", "after": "cart", "step": { "id": "order-notes", "title": "Order notes", "body": "Anything the kitchen should know? This step is optional.", "fields": [{ "id": "note", "label": "Note for the kitchen", "type": "textarea" }], "continueText": "Continue to checkout" } },
+    { "op": "setHead", "meta": { "riptide-variant": "_neutral-test" } }
+  ]
+}

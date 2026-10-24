@@ -1,6 +1,25 @@
 /** Forkful design tokens. Applied as CSS variables on <body>; core UI reads the --rt-* ones. */
 export const brand = {
   name: "Forkful",
-  tagline: "",
-  tokens: {} as Record<string, string>,
+  tagline: "Good food from neighbourhood kitchens.",
+  tokens: {
+    "--rt-bg": "#fbf5ea",
+    "--rt-surface": "#fffdf8",
+    "--rt-surface-2": "#f4ead8",
+    "--rt-fg": "#2b1824",
+    "--rt-muted": "#76606b",
+    "--rt-border": "#e8d9c2",
+    "--rt-primary": "#4a1f3d",
+    "--rt-primary-fg": "#fff6e6",
+    "--rt-accent": "#b86b12",
+    "--rt-success": "#3a7a35",
+    "--rt-warning": "#a26a00",
+    "--rt-danger": "#a8392a",
+    "--rt-radius": "20px",
+    "--rt-radius-sm": "12px",
+    "--rt-shadow": "0 1px 0 rgb(74 31 61 / .05), 0 12px 32px -14px rgb(74 31 61 / .28)",
+    "--ff-turmeric": "#e3a33a",
+    "--ff-veg": "#3a7a35",
+    "--ff-nonveg": "#a8392a",
+  } as Record<string, string>,
 };
