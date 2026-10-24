@@ -121,3 +121,20 @@ export type ShopConfig<S extends object = Record<string, unknown>> = {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- the shared layer is agnostic of each shop's state shape
 export type AnyShopConfig = ShopConfig<any>;
+
+// ------------------------------------------------------------------ flight recorder
+// Mirrors RecorderEventBody in engine/contracts (core can't import the engine). Keep the two in sync.
+
+export const RUN_ID_RE = /^r_[a-z0-9]{10}$/;
+const RecLine = z.object({ key: z.string(), label: z.string(), amount: z.number(), kind: z.string().optional(), selected: z.boolean().optional() });
+export const RecorderEventBodySchema = z.discriminatedUnion("type", [
+  z.object({ type: z.literal("page_view"), step: z.string(), path: z.string() }),
+  z.object({ type: z.literal("click"), key: z.string() }),
+  z.object({ type: z.literal("toggle"), key: z.string(), value: z.union([z.boolean(), z.string(), z.number()]) }),
+  z.object({ type: z.literal("cart_change"), step: z.string(), lines: z.array(RecLine), total: z.number() }),
+  z.object({ type: z.literal("form_submit"), step: z.string(), fields: z.array(z.string()) }),
+  z.object({ type: z.literal("payment_reached"), lines: z.array(RecLine), total: z.number() }),
+  z.object({ type: z.literal("cancel_confirm_reached"), step: z.string() }),
+  z.object({ type: z.literal("subscription"), state: z.string() }),
+]);
+export type RecorderEventBody = z.infer<typeof RecorderEventBodySchema>;

@@ -1,11 +1,12 @@
 import "server-only";
-import { readFile, readdir } from "node:fs/promises";
+import { appendFile, mkdir, readFile, readdir } from "node:fs/promises";
+import { timingSafeEqual } from "node:crypto";
 import path from "node:path";
 import { cache } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { z } from "zod";
-import type { AnyShopConfig, Manifest } from "./contracts";
+import { RUN_ID_RE, RecorderEventBodySchema, type AnyShopConfig, type Manifest } from "./contracts";
 import { validateManifest, validateRegistry } from "./overrides";
 import { hashString } from "./util";
 
@@ -74,4 +75,39 @@ export async function payResponse(req: Request): Promise<Response> {
   const o = parsed.data;
   const ref = hashString(JSON.stringify(o)).toString(36).toUpperCase().padStart(7, "0");
   return Response.json({ orderId: `RT-${o.shop.toUpperCase()}-${ref}`, status: "sandbox-complete", charged: 0 });
+}
+
+// ------------------------------------------------------------------ flight recorder
+
+const MAX_BODY = 64 * 1024;
+// `next start` runs in shops/{shop}, so the repo (or worktree) root is two levels up. The engine sets RECORDER_DIR.
+const recorderDir = () => process.env.RECORDER_DIR ?? path.join(process.cwd(), "..", "..", "data", "recorder");
+const runFile = (runId: string) => path.join(recorderDir(), `${runId}.jsonl`);
+
+/** POST /api/e — append one event to {runId}.jsonl with a server timestamp. Write-only: returns no data. */
+export async function recorderPOST(req: Request): Promise<Response> {
+  if (Number(req.headers.get("content-length") ?? 0) > MAX_BODY) return new Response(null, { status: 413 });
+  const buf = await req.arrayBuffer().catch(() => null);
+  if (!buf || buf.byteLength > MAX_BODY) return new Response(null, { status: buf ? 413 : 400 });
+  let json: unknown;
+  try { json = JSON.parse(new TextDecoder().decode(buf)); } catch { return new Response(null, { status: 400 }); }
+  const runId = (json as { runId?: unknown } | null)?.runId;
+  const ev = RecorderEventBodySchema.safeParse(json);
+  if (typeof runId !== "string" || !RUN_ID_RE.test(runId) || !ev.success) return new Response(null, { status: 400 });
+  await mkdir(recorderDir(), { recursive: true });
+  await appendFile(runFile(runId), JSON.stringify({ ...ev.data, runId, t: Date.now() }) + "\n");
+  return new Response(null, { status: 204 });
+}
+
+/** GET /api/e?runId= — all events of a run. Needs `x-recorder-secret: $RECORDER_SECRET`; unset secret → always 401. */
+export async function recorderGET(req: Request): Promise<Response> {
+  const secret = process.env.RECORDER_SECRET;
+  const given = req.headers.get("x-recorder-secret") ?? "";
+  if (!secret || given.length !== secret.length || !timingSafeEqual(Buffer.from(given), Buffer.from(secret))) {
+    return Response.json({ error: "unauthorized" }, { status: 401 });
+  }
+  const runId = new URL(req.url).searchParams.get("runId") ?? "";
+  if (!RUN_ID_RE.test(runId)) return Response.json({ error: "invalid runId" }, { status: 400 });
+  const raw = await readFile(runFile(runId), "utf8").catch(() => "");
+  return Response.json(raw.split("\n").filter(Boolean).map((l) => JSON.parse(l)), { headers: { "cache-control": "no-store" } });
 }

@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { beacon, recordPaid, wireLines } from "./recorder";
 import { Slot, SlotButton } from "./Slot";
 import { usePrice, useRiptide, useSession, useSlotDefault } from "./RiptideProvider";
 import { formatINR } from "./util";
@@ -37,6 +38,14 @@ export function PaymentPage({ backHref, backLabel = "Back", heading = "Payment",
   const [busy, setBusy] = useState(false);
   const lines = price.lines.filter((l) => l.selected);
 
+  // payment_reached once the stored cart is loaded, and again if the summary changes on this page.
+  const sig = JSON.stringify([wireLines(lines), price.total]);
+  useEffect(() => {
+    if (!hydrated || sig === "[[],0]") return;
+    const [l, total] = JSON.parse(sig) as [ReturnType<typeof wireLines>, number];
+    beacon({ type: "payment_reached", lines: l, total });
+  }, [hydrated, sig]);
+
   async function pay() {
     setBusy(true);
     const order = { shop: config.shop, variant, total: price.total, lines: lines.map(({ key, label, amount }) => ({ key, label, amount })) };
@@ -45,6 +54,7 @@ export function PaymentPage({ backHref, backLabel = "Back", heading = "Payment",
     const last: LastOrder = { orderId, total: order.total, lines: order.lines };
     set({ lastOrder: last });
     onPaid?.(last);
+    recordPaid(lines);
     router.push(`${base}/sandbox-complete`);
   }
 
