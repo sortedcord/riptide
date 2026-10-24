@@ -197,6 +197,42 @@ export const Run = z.object({
 });
 export type Run = z.infer<typeof Run>;
 
+// ------------------------------------------------------------------ visual traces (console agent visualizer)
+
+/**
+ * What a reference agent did in its browser during one task, for live view and replay. Not used for scoring.
+ * Pointer coordinates are CSS px in the viewport; `frame` files live next to the events.
+ */
+export const TraceEventBody = z.discriminatedUnion("type", [
+  z.object({ type: z.literal("frame"), file: z.string() }),
+  z.object({ type: z.literal("nav"), url: z.string() }),
+  z.object({ type: z.literal("action"), step: z.number().int(), tool: z.string(), args: z.record(z.string(), z.unknown()) }),
+  z.object({ type: z.literal("result"), step: z.number().int(), ok: z.boolean(), summary: z.string() }),
+  z.object({ type: z.literal("pointer"), kind: z.enum(["click", "focus"]), x: z.number(), y: z.number(), w: z.number(), h: z.number() }),
+  z.object({ type: z.literal("keys"), mode: z.enum(["type", "select"]), text: z.string() }),
+  z.object({ type: z.literal("end"), status: z.string() }),
+]);
+export type TraceEventBody = z.infer<typeof TraceEventBody>;
+/** One line of data/traces/{id}/events.jsonl: `t` is ms since the trace started. */
+export const TraceEvent = z.intersection(TraceEventBody, z.object({ t: z.number() }));
+export type TraceEvent = z.infer<typeof TraceEvent>;
+
+export const TraceMeta = z.object({
+  /** The run id from the start URL (`?s=`), else `t_` + the A2A task id. */
+  id: z.string(),
+  agentId: z.string(),
+  model: z.string(),
+  port: z.number(),
+  taskId: z.string(),
+  startUrl: z.string(),
+  startedAt: z.string(),
+  viewport: z.object({ width: z.number(), height: z.number() }),
+  endedAt: z.string().optional(),
+  status: z.string().optional(),
+  steps: z.number().optional(),
+});
+export type TraceMeta = z.infer<typeof TraceMeta>;
+
 // ------------------------------------------------------------------ scoring
 
 export const RunScore = z.object({

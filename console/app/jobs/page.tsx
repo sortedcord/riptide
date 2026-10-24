@@ -3,11 +3,12 @@ import { getSettings } from "@/lib/settings";
 import { agentServers } from "@/lib/jobs";
 import { Badge, Card, Page } from "@/components/ui";
 import { Field, JobsLive, LaunchForm } from "@/components/client";
+import { AgentVisualizer } from "@/components/AgentVisualizer";
 
 export const dynamic = "force-dynamic";
 
-export default async function Jobs({ searchParams }: { searchParams: Promise<{ job?: string }> }) {
-  const { job } = await searchParams;
+export default async function Jobs({ searchParams }: { searchParams: Promise<{ job?: string; trace?: string }> }) {
+  const { job, trace } = await searchParams;
   const configs = referenceConfigs();
   const { snifferModel } = getSettings();
   const running = agentServers();
@@ -46,6 +47,8 @@ export default async function Jobs({ searchParams }: { searchParams: Promise<{ j
           })}
         </div>
       </Card>
+
+      <AgentVisualizer initial={trace} />
 
       <JobsLive initial={job} />
     </Page>

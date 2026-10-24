@@ -19,6 +19,8 @@ export const p = {
   recorder: (r: string) => path.join(DATA, "recorder", `${r}.jsonl`),
   rating: (s: string, a: string) => path.join(DATA, "ratings", s, `${a}.json`),
   lessons: (s: string) => path.join(DATA, "lessons", `${s}.json`),
+  /** A reference agent's visual trace of one task: meta.json, events.jsonl, frames/. */
+  trace: (id: string) => path.join(DATA, "traces", id),
 };
 
 export function writeJson(file: string, value: unknown) {

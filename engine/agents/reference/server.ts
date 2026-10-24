@@ -9,6 +9,7 @@ import { z } from "zod";
 import { AgentReport } from "../../contracts/index.ts";
 import { structured, toolLoop } from "../../llm.ts";
 import { browserTools, launchBrowser } from "./browser-tools.ts";
+import { startTrace, type Trace } from "./trace.ts";
 
 /**
  * A reference agent under test: `tsx --env-file=.env engine/agents/reference/server.ts --config careful --port 41001 [--model <id>]`.
@@ -59,14 +60,24 @@ const executor: AgentExecutor = {
     const startUrl = input.match(/https?:\/\/\S+/)?.[0];
     const browserCtx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
     const log: string[] = [];
+    let trace: Trace | undefined;
+    let traceStatus = "failed";
+    let stepsTaken = () => 0;
     try {
       if (!startUrl) throw new Error("no start URL in the request");
       const page = await browserCtx.newPage();
       page.setDefaultTimeout(8000);
+      // Visual trace for the console. Named after the run id in the start URL so it lines up with data/runs.
+      // The id becomes a directory name: accept only a well-formed run id from the (untrusted) message.
+      const runId = new URL(startUrl).searchParams.get("s") ?? "";
+      const traceId = /^r_[a-z0-9]{10}$/.test(runId) ? runId : `t_${taskId.replace(/[^a-z0-9]/gi, "").toLowerCase().slice(0, 10)}`;
+      trace = await startTrace(page, { id: traceId, agentId: cfg.id, model: cfg.model, port, taskId, startUrl })
+        .catch((e) => { console.error(`[${cfg.id}] trace disabled:`, (e as Error).message); return undefined; });
       await page.goto(startUrl);
       // A client may lower the step budget via message metadata; it can never raise it.
       const maxSteps = Math.min(cfg.maxSteps, Number(ctx.userMessage.metadata?.maxSteps) || Infinity);
-      const { tools, steps } = browserTools(page, { startUrl, maxSteps });
+      const { tools, steps } = browserTools(page, { startUrl, maxSteps, trace });
+      stepsTaken = steps;
       const t0 = Date.now();
       // +3 model turns past the tool budget so a model that hits the limit can still write its report.
       const r = await toolLoop({
@@ -75,6 +86,7 @@ const executor: AgentExecutor = {
       });
       const report = await toReport(r.text, log);
       console.log(`[${cfg.id}] ${taskId.slice(0, 8)} done: ${steps()} steps, ${Math.round((Date.now() - t0) / 1000)}s, ${report.outcome} ₹${report.totalInr}`);
+      traceStatus = ac.signal.aborted ? "canceled" : report.outcome;
       if (ac.signal.aborted) return;
       bus.publish(AgentEvent.artifactUpdate({
         taskId, contextId, append: false, lastChunk: true, metadata: {},
@@ -85,11 +97,12 @@ const executor: AgentExecutor = {
       }));
       bus.publish(AgentEvent.statusUpdate(status(taskId, contextId, TaskState.TASK_STATE_COMPLETED)));
     } catch (e) {
-      if (ac.signal.aborted) return; // cancelTask already published CANCELED
+      if (ac.signal.aborted) { traceStatus = "canceled"; return; } // cancelTask already published CANCELED
       console.error(`[${cfg.id}] ${taskId.slice(0, 8)} failed:`, e);
       bus.publish(AgentEvent.statusUpdate(status(taskId, contextId, TaskState.TASK_STATE_FAILED, (e as Error).message)));
     } finally {
       running.delete(taskId);
+      await trace?.end(traceStatus, stepsTaken()).catch(() => {});
       await browserCtx.close().catch(() => {});
       bus.finished();
     }
