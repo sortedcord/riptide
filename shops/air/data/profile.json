@@ -1,0 +1,13 @@
+{
+  "name": "Ananya Rao",
+  "email": "ananya.rao@example.in",
+  "phone": "9876543210",
+  "city": "Bengaluru 560034",
+  "travellers": [
+    { "id": "t1", "type": "adult", "title": "Ms", "first": "Ananya", "last": "Rao" },
+    { "id": "t2", "type": "adult", "title": "Mr", "first": "Vikram", "last": "Rao" },
+    { "id": "t3", "type": "adult", "title": "Mrs", "first": "Lakshmi", "last": "Iyer" },
+    { "id": "t4", "type": "child", "title": "Miss", "first": "Meera", "last": "Rao", "dob": "2017-05-12" },
+    { "id": "t5", "type": "child", "title": "Master", "first": "Aarav", "last": "Rao", "dob": "2019-11-03" }
+  ]
+}

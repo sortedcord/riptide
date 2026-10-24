@@ -1,0 +1,18 @@
+{
+  "shopType": "air",
+  "variant": "_neutral-test",
+  "author": "riptide-air-builder",
+  "overrides": [
+    { "op": "setText", "target": "search.hero.title", "value": "Book domestic flights with every fee shown upfront." },
+    { "op": "setVariant", "target": "review.cta.continue", "variant": "secondary" },
+    { "op": "setDefault", "target": "payment.methods.tabs", "value": "card" },
+    { "op": "setAttr", "target": "search.cta.search", "attr": "title", "value": "Search Skyline Air flights" },
+    { "op": "hide", "target": "search.hero.subtitle" },
+    { "op": "reorder", "target": "footer.links.list", "order": ["footer.links.terms", "footer.links.baggage"] },
+    { "op": "addLine", "line": { "key": "eticket", "label": "E-ticket delivery (free)", "amount": 0, "kind": "fee", "visibleFromStep": "results", "optional": false, "selected": true } },
+    { "op": "setLine", "key": "convenience", "patch": { "label": "Convenience fee (online booking)" } },
+    { "op": "insertBlock", "anchor": "search.promo.banner", "position": "inside", "block": { "type": "banner", "id": "search.promo.info", "tone": "info", "text": "Web check-in opens 48 hours before departure." } },
+    { "op": "insertStep", "flow": "purchase", "after": "passengers", "step": { "id": "trip-notes", "title": "Trip notes", "body": "Anything our crew should know? This is optional.", "fields": [{ "id": "note", "label": "Note for the crew", "type": "textarea" }], "continueText": "Continue to seats" } },
+    { "op": "setHead", "meta": { "riptide-variant": "_neutral-test" } }
+  ]
+}
