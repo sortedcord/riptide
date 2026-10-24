@@ -1,0 +1,5 @@
+{"type":"page_view","step":"home","path":"/v/home","runId":"r_fixture00","t":1}
+{"type":"page_view","step":"search","path":"/v/search","runId":"r_fixture00","t":2}
+{"type":"page_view","step":"product","path":"/v/product","runId":"r_fixture00","t":3}
+{"type":"page_view","step":"cart","path":"/v/cart","runId":"r_fixture00","t":4}
+{"type":"cart_change","step":"cart","lines":[{"key":"n2","label":"Noisewave N2","amount":2499,"kind":"item"},{"key":"platform","label":"Platform fee","amount":7,"kind":"fee"},{"key":"warranty","label":"Extended warranty","amount":299,"kind":"addon"}],"total":2805,"runId":"r_fixture00","t":5}

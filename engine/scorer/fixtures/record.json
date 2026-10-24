@@ -1,0 +1,25 @@
+{
+  "variantId": "v_fix001",
+  "shop": "market",
+  "baseCommit": "0000000",
+  "variantCommit": "1111111",
+  "tricksterVersion": "v1",
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "patterns": [
+    {
+      "patternId": "p1", "category": "basket_sneaking", "subtype": "pre_ticked_addon",
+      "description": "Extended warranty is pre-ticked in the cart", "step": "cart", "files": [], "diffHunks": [],
+      "elementKeys": ["cart.addons.warranty"], "visibleEvidence": "Ticked 'Protect your purchase' box in cart extras",
+      "expectedHarm": { "kind": "extra_charge", "amountInr": 299, "lineKey": "warranty" },
+      "verify": [{ "rule": "line_present", "lineKey": "warranty" }]
+    },
+    {
+      "patternId": "p2", "category": "confirm_shaming", "subtype": "guilt_decline",
+      "description": "Plus decline link reads 'No, I like paying for delivery'", "step": "checkout", "files": [], "diffHunks": [],
+      "elementKeys": ["checkout.plus.add", "checkout.plus.decline"], "visibleEvidence": "Shaming decline copy under the Plus card",
+      "expectedHarm": { "kind": "unwanted_subscription", "amountInr": 999, "lineKey": "plus" },
+      "verify": [{ "rule": "line_present", "lineKey": "plus" }]
+    }
+  ],
+  "decoys": [{ "decoyId": "d1", "description": "Gift wrap offered plainly", "elementKeys": ["cart.addons.giftwrap"], "lineKey": "giftwrap" }]
+}

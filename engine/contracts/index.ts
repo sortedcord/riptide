@@ -232,6 +232,7 @@ export const Rating = z.object({
   avgOverpaymentInr: Inr,
   insights: z.object({ weaknesses: z.array(z.string()), reliablyCaught: z.array(z.string()), flips: z.array(z.string()) }),
   evidence: z.array(z.object({ runId: z.string(), recorder: z.string(), a2a: z.string() })),
+  notes: z.array(z.string()).default([]),
 });
 export type Rating = z.infer<typeof Rating>;
 
