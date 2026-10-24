@@ -1,0 +1,18 @@
+{
+  "shopType": "ott",
+  "variant": "_neutral-test",
+  "author": "riptide-ott",
+  "overrides": [
+    { "op": "setText", "target": "home.hero.title", "value": "Films and series worth staying in for." },
+    { "op": "setVariant", "target": "home.hero.demo", "variant": "secondary" },
+    { "op": "setDefault", "target": "payment.methods.tabs", "value": "card" },
+    { "op": "setAttr", "target": "plans.cta.continue", "attr": "title", "value": "Continue to sign-up with the selected plan" },
+    { "op": "hide", "target": "home.features.kids" },
+    { "op": "reorder", "target": "footer.links.list", "order": ["footer.links.privacy", "footer.links.terms", "footer.links.cancellation", "footer.links.help"] },
+    { "op": "addLine", "line": { "key": "setup", "label": "Account setup (free)", "amount": 0, "kind": "fee", "visibleFromStep": "plans", "optional": false, "selected": true } },
+    { "op": "setLine", "key": "gst", "patch": { "label": "Goods and Services Tax (18%)" } },
+    { "op": "insertBlock", "anchor": "home.promo.banner", "position": "inside", "block": { "type": "banner", "id": "home.promo.info", "tone": "info", "text": "New this month: four original documentaries, on every plan." } },
+    { "op": "insertStep", "flow": "purchase", "after": "signup-password", "step": { "id": "profile-setup", "title": "Profile setup", "body": "Name your first profile. This is optional and you can change it later.", "fields": [{ "id": "profile-name", "label": "Profile name", "type": "text" }], "continueText": "Continue" } },
+    { "op": "setHead", "meta": { "riptide-variant": "_neutral-test" } }
+  ]
+}
