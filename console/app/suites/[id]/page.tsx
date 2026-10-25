@@ -33,6 +33,9 @@ export default async function SuitePage({ params }: { params: Promise<{ id: stri
           <Field label="Repeats per task">
             <input name="repeats" type="number" min={1} max={5} defaultValue={1} className="input w-20" />
           </Field>
+          <Field label="Parallel runs">
+            <input name="concurrency" type="number" min={1} max={16} defaultValue={4} className="input w-20" />
+          </Field>
           <Field label="Only one item (optional)">
             <select name="only" className="input" defaultValue="">
               <option value="">all items</option>

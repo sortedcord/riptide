@@ -1,6 +1,6 @@
 import "server-only";
 import { spawn, type ChildProcess } from "node:child_process";
-import { appendFileSync, mkdirSync } from "node:fs";
+import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { DATA, ROOT, SHOPS, referenceConfigs } from "./data";
 import { MODEL_ID, getSettings } from "./settings";
@@ -20,6 +20,8 @@ export type Job = {
   service: boolean;
   /** For agent servers: the A2A agent card base URL. */
   url?: string;
+  /** Set when started from the Overview stage bar (lib/pipeline.ts). */
+  stage?: string;
   startedAt: number;
   endedAt?: number;
   log: string;
@@ -32,7 +34,7 @@ const LOG_DIR = path.join(DATA, "console");
 const MAX_LOG = 400_000;
 
 const TSX = path.join(ROOT, "node_modules/.bin/tsx");
-const cli = (...args: string[]) => [TSX, "--env-file-if-exists=.env", "engine/cli.ts", ...args];
+export const cli = (...args: string[]) => [TSX, "--env-file-if-exists=.env", "engine/cli.ts", ...args];
 
 function append(job: Job, text: string) {
   job.log = (job.log + text).slice(-MAX_LOG);
@@ -41,7 +43,7 @@ function append(job: Job, text: string) {
 
 function runStep(job: Job) {
   if (job.status !== "running") return;
-  if (job.step >= job.steps.length) { job.status = "done"; job.endedAt = Date.now(); return; }
+  if (job.step >= job.steps.length) { job.status = "done"; job.endedAt = Date.now(); recordDuration(job); return; }
   const [cmd, ...args] = job.steps[job.step];
   append(job, `\n$ ${[cmd === TSX ? "tsx" : cmd, ...args].join(" ")}\n`);
   const child = spawn(cmd, args, { cwd: ROOT, env: { ...process.env, FORCE_COLOR: "0" }, detached: true });
@@ -57,7 +59,20 @@ function runStep(job: Job) {
   });
 }
 
-function start(kind: string, title: string, steps: string[][], extra: Partial<Job> = {}): Job {
+/** Recent successful durations per stage (or kind), for the stage bar's time estimates. Kept in data/console/durations.json. */
+const DURATIONS = path.join(LOG_DIR, "durations.json");
+export function durations(): Record<string, number[]> {
+  try { return JSON.parse(readFileSync(DURATIONS, "utf8")); } catch { return {}; }
+}
+function recordDuration(job: Job) {
+  if (job.service || !job.endedAt) return;
+  const all = durations();
+  const key = job.stage ?? job.kind;
+  all[key] = [...(all[key] ?? []), job.endedAt - job.startedAt].slice(-20);
+  try { writeFileSync(DURATIONS, JSON.stringify(all, null, 2) + "\n"); } catch { /* estimates are best effort */ }
+}
+
+export function start(kind: string, title: string, steps: string[][], extra: Partial<Job> = {}): Job {
   mkdirSync(LOG_DIR, { recursive: true });
   const id = `j_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`;
   const job: Job = { id, kind, title, steps, step: 0, status: "running", service: false, startedAt: Date.now(), log: "", ...extra };
@@ -133,8 +148,11 @@ export function launch(b: Launch): Job {
       need(cards.length > 0 && cards.every((c) => /^https?:\/\/[^\s]+$/.test(c)), "pick at least one agent card URL");
       need(Number.isInteger(repeats) && repeats >= 1 && repeats <= 5, "repeats must be 1–5");
       need(!b.only || VARIANT.test(b.only) || /^control-[a-z]+$/.test(b.only), "bad variant filter");
-      const runs = cards.map((c) => cli("run", "--suite", b.suite!, "--agent-card", c, "--repeats", String(repeats), ...(b.only ? ["--only", b.only] : [])));
-      return start("evaluate", `Evaluate ${b.suite} × ${cards.length} agent(s)`, [...runs, cli("score", "--suite", b.suite!), cli("rate", "--suite", b.suite!)]);
+      const concurrency = Number(b.concurrency ?? 4);
+      need(Number.isInteger(concurrency) && concurrency >= 1 && concurrency <= 16, "parallel runs must be 1–16");
+      // One run step for all agents: shops are built once and runs go through a shared pool.
+      const run = cli("run", "--suite", b.suite!, "--agent-card", cards.join(","), "--repeats", String(repeats), "--concurrency", String(concurrency), ...(b.only ? ["--only", b.only] : []));
+      return start("evaluate", `Evaluate ${b.suite} × ${cards.length} agent(s)`, [run, cli("score", "--suite", b.suite!), cli("rate", "--suite", b.suite!)]);
     }
     case "score":
     case "rate":

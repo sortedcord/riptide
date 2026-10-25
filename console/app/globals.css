@@ -162,3 +162,52 @@ table.t tbody tr:hover td { background: rgba(248, 238, 220, 0.03); }
 @keyframes pl-dash { to { stroke-dashoffset: -14; } }
 @keyframes pl-pulse { 50% { opacity: 0.25; } }
 @media (prefers-reduced-motion: reduce) { .pl-flow, .pl-glow { animation: none; } }
+
+/* Overview stage bar: chevron buttons with a progress outline (components/StageBar.tsx) */
+.stagebar-wrap { overflow-x: auto; padding: 4px 2px 6px; }
+.stagebar { display: flex; min-width: 900px; }
+.stagebar__loading { color: var(--muted); font-size: 13px; padding: 24px 0; }
+.stage { position: relative; flex: 1 1 0; min-width: 180px; height: 76px; }
+.stage__shape { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
+.stage__fill { fill: var(--surface); }
+.stage__edge { fill: none; stroke: var(--border); stroke-width: 1.5; stroke-linejoin: round; }
+.stage__progress { fill: none; stroke: var(--accent); stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; transition: stroke-dasharray .25s linear; filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 55%, transparent)); }
+.stage__progress--over { stroke: var(--warn, var(--accent)); animation: stage-pulse 1.2s ease-in-out infinite; }
+.stage__body { position: relative; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.stage__title { font-weight: 600; font-size: 15px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stage__line { color: var(--muted); font-size: 12px; margin-top: 3px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stage__btn { flex: none; width: 38px; height: 38px; border-radius: 999px; display: grid; place-items: center; cursor: pointer;
+  background: var(--accent); color: var(--accent-fg); border: 0; transition: transform .15s ease, background .15s ease; }
+.stage__btn:hover:not(:disabled) { transform: scale(1.07); }
+.stage__btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.stage__btn:disabled { background: var(--surface-2); color: var(--muted); cursor: not-allowed; }
+.stage--running .stage__fill { fill: var(--surface-2); }
+.stage--running .stage__btn { background: var(--fg); color: var(--bg); }
+.stage--done { filter: saturate(.15); opacity: .72; }
+.stage--done .stage__btn { background: var(--surface-2); color: var(--muted); }
+.stage--failed .stage__edge, .stage--stopped .stage__edge { stroke: var(--bad); stroke-width: 2; }
+.stage--failed .stage__line { color: var(--bad); }
+
+@keyframes stage-pulse { 50% { opacity: .45; } }
+@media (prefers-reduced-motion: reduce) { .stage__progress { transition: none; } .stage__progress--over { animation: none; } }
+
+/* Charts (components/Charts.tsx): recessive grid/axes, text in text tokens, 2px surface ring on markers */
+.viz { position: relative; }
+.viz svg { display: block; overflow: visible; }
+.viz svg:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
+.viz-grid { stroke: var(--border); stroke-width: 1; opacity: .55; }
+.viz-crosshair { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
+.viz-axis { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.viz-axis--sub { font-size: 10px; opacity: .8; }
+.viz-label { fill: var(--fg); font-size: 12px; }
+.viz-value { fill: var(--fg); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.viz-dot { stroke: var(--surface); stroke-width: 2; }
+.viz a:focus-visible text.viz-label { text-decoration: underline; }
+.viz-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 0 8px; padding: 0; list-style: none; font-size: 12px; color: var(--muted); }
+.viz-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.viz-swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.viz-tip { position: absolute; z-index: 5; pointer-events: none; min-width: 150px; background: var(--es-ink, #0b0a07); color: var(--fg);
+  border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; font-size: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.viz-tip__head { display: flex; align-items: center; gap: 6px; font-weight: 600; margin-bottom: 4px; white-space: nowrap; }
+.viz-tip__row { display: flex; align-items: center; gap: 6px; white-space: nowrap; color: var(--muted); }
+.viz-tip__row b { color: var(--fg); font-variant-numeric: tabular-nums; min-width: 2.2em; }

@@ -28,7 +28,7 @@ function describe(e: RecorderEvent, harmKeys: Set<string>) {
 export default async function RunPage({ params }: { params: Promise<{ id: string }> }) {
   const d = runDetail((await params).id);
   if (!d) notFound();
-  const { run, score, events, task, record, rubric } = d;
+  const { run, score, events, task, record, rubric, judge } = d;
   const harmKeys = new Set((record?.patterns ?? []).map((p) => p.expectedHarm.lineKey).filter((k): k is string => !!k && !(task?.constraints.wantsAddOns ?? []).includes(k)));
   const t0 = events[0]?.t ?? 0;
   const pay = [...events].reverse().find((e) => e.type === "payment_reached");
@@ -76,6 +76,37 @@ export default async function RunPage({ params }: { params: Promise<{ id: string
           ) : <Empty>No valid report.</Empty>}
         </Card>
       </div>
+
+      <Card title="Judge (awareness and escalation)" actions={judge && <span className="font-mono text-xs text-[var(--muted)]">{judge.model}</span>}>
+        {judge ? (
+          <div className="space-y-3 text-sm">
+            {judge.verdict?.injectionAttempt && <p role="alert" className="font-semibold text-[var(--bad)]">The report tried to instruct the judge. It was ignored and flagged.</p>}
+            <Kv rows={[
+              ["Awareness", judge.awareness == null ? "n/a (honest shop)" : `${Math.round(judge.awareness * 100)}% · credited ${judge.credited.join(", ") || "none"}`],
+              ["Escalation", judge.escalation == null ? "n/a" : `${Math.round(judge.escalation * 100)}%${judge.verdict ? ` · ${judge.verdict.escalation.justification}` : ""}`],
+              ...(judge.verdict?.decoysFlaggedAsSuspicious.length ? [["Honest decoys called suspicious", judge.verdict.decoysFlaggedAsSuspicious.join(", ")] as [string, string]] : []),
+              ...(judge.note ? [["Note", judge.note] as [string, string]] : []),
+            ]} />
+            {judge.verdict && judge.verdict.patterns.length > 0 && (
+              <table className="t">
+                <thead><tr><th>Pattern</th><th>Concern</th><th>Place</th><th>Mechanism</th><th>Credited</th><th>Why</th></tr></thead>
+                <tbody>
+                  {judge.verdict.patterns.map((v) => (
+                    <tr key={v.patternId}>
+                      <td className="font-mono text-xs">{v.patternId}</td>
+                      <td className="tabular-nums">{v.concernIndex ?? "—"}</td>
+                      <td><Pass ok={v.correctPlace} /></td>
+                      <td><Pass ok={v.mechanismAccurate} /></td>
+                      <td><Badge tone={judge.credited.includes(v.patternId) ? "ok" : "muted"}>{judge.credited.includes(v.patternId) ? "yes" : "no"}</Badge></td>
+                      <td className="text-xs text-[var(--muted)]">{v.justification}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        ) : <Empty>Not judged yet. Run Re-score on the suite page.</Empty>}
+      </Card>
 
       <Card title="Score" actions={score && <Badge tone={score.completed ? "ok" : "bad"}>{score.completed ? "completed" : "not completed"}</Badge>}>
         {score ? (

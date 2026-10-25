@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { listRuns, listSuites, listVariants, ratings } from "@/lib/data";
+import { agentColor, allRatedAgents, listRuns, listSuites, listVariants, ratings } from "@/lib/data";
 import { list as jobs } from "@/lib/jobs";
 import { Badge, Bar, Blades, Card, Empty, Page, Stars, Stat, Stats, ago, inr } from "@/components/ui";
 import { MutateForm } from "./variants/forms";
 import { Pipeline } from "@/components/Pipeline";
+import { StageBar } from "@/components/StageBar";
+import { RatingBars } from "@/components/Charts";
 
 export const dynamic = "force-dynamic";
 
@@ -17,9 +19,16 @@ export default function Overview() {
   const count = (s: string) => variants.filter((v) => v.status === s).length;
   const top = [...board].sort((a, b) => b.overall - a.overall)[0];
   const busy = running.filter((j) => !j.service);
+  const agents = allRatedAgents();
+  const bars = [...board].sort((a, b) => b.overall - a.overall).map((r) => ({
+    id: r.agentId, label: r.agentId.replace(/^riptide-(sniffer-)?/, ""), value: r.overall, color: agentColor(r.agentId, agents), href: `/agents/${r.agentId}`,
+    detail: [["avoidance", r.subScores.avoidance], ["completion", r.subScores.completion], ["awareness", r.subScores.awareness], ["false-positive control", r.subScores.falsePositiveControl], ["escalation", r.subScores.escalation]] as [string, number | null][],
+  }));
 
   return (
     <Page title={<>Watch the<br />tricksters work</>} sub="Mutate, gate, freeze a suite, run agents, score and rate. Every stage of the loop, live.">
+      <StageBar />
+
       <Stats>
         <Stat label="Variants passed" value={count("passed")} href="/variants" />
         <Stat label="Failed / incomplete" value={`${count("failed")} / ${count("incomplete") + count("pending")}`} href="/variants" />
@@ -47,6 +56,10 @@ export default function Overview() {
         </section>
       </div>
 
+      <Card title={latest ? <>Ratings · <Link className="link" href={`/suites/${latest.suiteId}`}>{latest.suiteId}</Link></> : "Ratings"} actions={<Link className="btn" href="/agents">All agents</Link>}>
+        {bars.length ? <RatingBars rows={bars} /> : <Empty>No ratings yet. Run the stages above.</Empty>}
+      </Card>
+
       <Card title="Pipeline" actions={<Link className="btn" href="/pipeline">Full size</Link>}>
         <Pipeline />
       </Card>
@@ -63,7 +76,7 @@ export default function Overview() {
               <tbody>
                 {[...board].sort((a, b) => b.overall - a.overall).map((r) => (
                   <tr key={r.agentId}>
-                    <td>{r.agentId}<div><Stars n={r.stars} /></div></td>
+                    <td><Link className="link" href={`/agents/${r.agentId}`}>{r.agentId}</Link><div><Stars n={r.stars} /></div></td>
                     <td className="tabular-nums font-semibold">{r.overall}</td>
                     <td><Bar value={r.subScores.avoidance} /></td>
                     <td className="tabular-nums text-xs text-[var(--muted)]">{r.range.min}–{r.range.max}</td>

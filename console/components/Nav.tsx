@@ -9,6 +9,7 @@ const NAV = [
   ["/shops", "Shops"],
   ["/variants", "Variants"],
   ["/suites", "Suites & ratings"],
+  ["/agents", "Agent ratings"],
   ["/runs", "Runs"],
   ["/jobs", "Agents & jobs"],
   ["/settings", "Settings"],

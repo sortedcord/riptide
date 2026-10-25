@@ -2,9 +2,9 @@ import "server-only";
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
-import type { GateResult, MutationRecord, Rating, RecorderEvent, Run, RunScore, Suite, Task, Rubric } from "../../engine/contracts/index.ts";
+import type { GateResult, Judgement, MutationRecord, Rating, RecorderEvent, Run, RunScore, Suite, Task, Rubric } from "../../engine/contracts/index.ts";
 
-export type { GateResult, MutationRecord, Rating, RecorderEvent, Run, RunScore, Suite, Task, Rubric };
+export type { GateResult, Judgement, MutationRecord, Rating, RecorderEvent, Run, RunScore, Suite, Task, Rubric };
 
 /** Read-only view of the engine's data/ folder and variant branches. The engine owns every write. */
 export const ROOT = path.resolve(process.cwd(), "..");
@@ -110,6 +110,7 @@ export function runDetail(runId: string) {
     score: json<RunScore>(path.join(dir, "score.json")),
     events: [...events].sort((a, b) => a.t - b.t),
     a2a: json<unknown>(path.join(dir, "a2a.json")),
+    judge: json<Judgement>(path.join(dir, "judge.json")),
     task: task(run.variantId, run.taskId),
     rubric: rubric(run.variantId, run.taskId),
     record: json<MutationRecord>(path.join(DATA, "mutations", `${run.variantId}.json`)),
@@ -157,3 +158,41 @@ export async function shopStatus(port: number): Promise<{ up: boolean; variants:
     return { up: false, variants: [] };
   }
 }
+
+// ------------------------------------------------------------------ agents across suites
+
+const suiteVersion = (id: string) => id.replace("riptide-suite-", "").split(".").map(Number);
+const byVersion = (a: string, b: string) => { const [x, y] = [suiteVersion(a), suiteVersion(b)]; return x[0] - y[0] || x[1] - y[1] || x[2] - y[2]; };
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+/** Categorical slots 1–5 of the reference palette, dark steps, validated against the card surface (#2a2823). */
+export const AGENT_COLORS = ["#3987e5", "#d95926", "#199e70", "#c98500", "#d55181"] as const;
+const OVERFLOW = "#8f8a7d"; // past 5 agents: neutral; every mark is labelled by name anyway
+
+/** Every agent that has a rating, in a fixed order, so each keeps its colour on every chart. */
+export function allRatedAgents(): string[] {
+  const dir = path.join(DATA, "ratings");
+  return [...new Set(dirs(dir).flatMap((s) => files(path.join(dir, s)).filter((f) => f !== "leaderboard.json").map((f) => f.slice(0, -5))))].sort();
+}
+export function agentColor(agentId: string, agents = allRatedAgents()) {
+  const i = agents.indexOf(agentId);
+  return i >= 0 && i < AGENT_COLORS.length ? AGENT_COLORS[i] : OVERFLOW;
+}
+
+export type AgentPoint = { suiteId: string; createdAt: string; tricksterVersions: string[]; rating: Rating };
+
+/** One agent's rating on every suite it was rated on, oldest suite version first. */
+export function agentHistory(agentId: string): AgentPoint[] {
+  if (!/^[a-z0-9-]+$/.test(agentId)) return [];
+  return listSuites()
+    .map((s) => ({ s, rating: json<Rating>(path.join(DATA, "ratings", s.suiteId, `${agentId}.json`)) }))
+    .filter((x): x is { s: Suite; rating: Rating } => !!x.rating)
+    .sort((a, b) => byVersion(a.s.suiteId, b.s.suiteId))
+    .map(({ s, rating }) => ({
+      suiteId: s.suiteId, createdAt: s.createdAt, rating,
+      tricksterVersions: [...new Set(s.items.map((i) => i.tricksterVersion).filter((v): v is string => !!v))].sort(),
+    }));
+}
+
+/** The reference config this agent id was created from (card name slug), if it is one of ours. */
+export const agentConfig = (agentId: string) => referenceConfigs().find((c) => slug(c.name) === agentId) ?? null;
