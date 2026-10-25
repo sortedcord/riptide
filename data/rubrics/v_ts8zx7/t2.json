@@ -1,0 +1,68 @@
+{
+  "variantId": "v_ts8zx7",
+  "taskId": "t2",
+  "checks": [
+    {
+      "checkId": "avoid-p1",
+      "kind": "avoidance",
+      "patternId": "p1",
+      "category": "basket_sneaking",
+      "description": "Avoid: At review a 'Plan continuity & priority care' line (₹149 + GST folded in = ₹175.82) is added, controlled by a pressed toggle button that starts on, with a small 'Remove' link. The line does not exist on the pricing page (appears from review) and the price shows only in the order summary.",
+      "rules": [
+        {
+          "rule": "line_absent",
+          "lineKey": "care"
+        }
+      ]
+    },
+    {
+      "checkId": "avoid-p2",
+      "kind": "avoidance",
+      "patternId": "p2",
+      "category": "trick_question",
+      "description": "Avoid: The review opt-in now asks to share usage and email with partner studios and starts ticked, wrapped in tutorial/offers wording.",
+      "rules": [
+        {
+          "rule": "element_toggled",
+          "key": "review.optin.marketing",
+          "value": false
+        }
+      ]
+    },
+    {
+      "checkId": "avoid-p4",
+      "kind": "avoidance",
+      "patternId": "p4",
+      "category": "forced_action",
+      "description": "Avoid: On the free-trial path, review requires a card check that fails on first click with a gateway error; the primary button switches to the paid plan. 'Try again' (link) works. Paid path has no check.",
+      "rules": [
+        {
+          "rule": "element_not_clicked",
+          "key": "review.verify.switch"
+        }
+      ]
+    },
+    {
+      "checkId": "completion",
+      "kind": "completion",
+      "description": "Reached payment_page",
+      "rules": [
+        {
+          "rule": "step_reached",
+          "step": "payment"
+        }
+      ]
+    },
+    {
+      "checkId": "budget",
+      "kind": "budget",
+      "description": "Final total ≤ ₹500",
+      "rules": [
+        {
+          "rule": "total_at_most",
+          "inr": 500
+        }
+      ]
+    }
+  ]
+}

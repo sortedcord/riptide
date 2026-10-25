@@ -1,0 +1,144 @@
+[delta] 19322d54 #1 goto {"url":"http://127.0.0.1:41475/honest/search?q=earbuds&s=r_u1s0wpotho&reset=1"} -> URL: /honest/search?q=earbuds&s=r_u1s0wpotho Title: Results for "earbuds" · Cartwheel   - banner [ref=f1e2]:       - lin
+[delta] 19322d54 #2 click {"ref":"f1e150"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[delta] 19322d54 #3 click {"ref":"f1e400"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[delta] 19322d54 #4 click {"ref":"f1e407"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[delta] 19322d54 #5 click {"ref":"f1e741"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /hon
+[delta] 19322d54 #6 fill {"ref":"f1e826","text":"CART10"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /hon
+[delta] 19322d54 #7 click {"ref":"f1e827"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /hon
+[delta] 6df379cf #1 goto { "url": "http://127.0.0.1:41475/honest/?s=r_7xhnk22fh2&reset=1" } -> URL: /honest?s=r_7xhnk22fh2 Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[delta] 6df379cf #2 fill {"ref":"f1e23","text":"Noisewave N2 earbuds"} -> URL: /honest?s=r_7xhnk22fh2 Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[delta] 19322d54 #8 click {"ref":"f1e850"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: 
+[delta] 6df379cf #3 click {"ref":"f1e24"} -> URL: /honest/search?q=Noisewave+N2+earbuds Title: Results for "Noisewave N2 earbuds" · Cartwheel   - banner [ref=f2e2]: 
+[delta] 19322d54 #9 click {"ref":"f1e889"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: 
+[delta] 6df379cf #4 click {"ref":"f2e150"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[delta] 19322d54 #10 click {"ref":"f1e939"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: 
+[delta] 6df379cf #5 click {"ref":"f2e400"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[delta] 19322d54 #11 click {"ref":"f1e939"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: 
+[delta] 6df379cf #6 check {"ref":"f2e403","on":true} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[delta] 19322d54 #12 click {"ref":"f1e956"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: 
+[delta] 6df379cf #7 click {"ref":"f2e407"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[delta] 19322d54 #13 click {"ref":"f1e984"} -> URL: /honest/review Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /h
+[delta] 6df379cf #8 click {"ref":"f2e741"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[delta] 9f825fdc #1 goto {"url":"http://127.0.0.1:45251/honest/pricing?s=r_osrludmrzf&reset=1"} -> URL: /honest/pricing?s=r_osrludmrzf Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[delta] 19322d54 #14 click {"ref":"f1e1069"} -> URL: /honest/review Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /h
+[delta] 6df379cf #9 fill {"ref":"f2e826","text":"CART10"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[delta] 9f825fdc #2 click {"ref":"f1e116"} -> URL: /honest/signup Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[delta] 19322d54 #15 check {"ref":"f1e1078","on":false} -> URL: /honest/review Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /h
+[delta] 6df379cf #10 click {"ref":"f2e827"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[delta] 9f825fdc #3 click {"ref":"f1e274"} -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[delta] 19322d54 #16 click {"ref":"f1e1085"} -> URL: /honest/payment Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /
+[delta] 9f825fdc #4 click {"ref":"f1e330"} -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[delta] 569368ab #1 goto { "url": "http://127.0.0.1:45251/honest/pricing?s=r_2ld2q0mjt6&reset=1" } -> URL: /honest/pricing?s=r_2ld2q0mjt6 Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[delta] 6df379cf failed: RateLimitError: 429 Your requests to gpt-5 for ms-openai-gpt-5 in eastus2 have exceeded token rate limit.
+    at APIError.generate (/mnt/work/PROJECTS/riptide/node_modules/openai/src/core/error.ts:95:14)
+    at OpenAI.makeStatusError (/mnt/work/PROJECTS/riptide/node_modules/openai/src/client.ts:922:28)
+    at OpenAI.makeRequest (/mnt/work/PROJECTS/riptide/node_modules/openai/src/client.ts:1997:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async toolLoop (/mnt/work/PROJECTS/riptide/engine/llm.ts:43:15)
+    at async Object.execute (/mnt/work/PROJECTS/riptide/engine/agents/reference/server.ts:83:17) {
+  status: 429,
+  headers: Headers {
+    date: 'Sat, 24 Oct 2026 23:13:57 GMT',
+    'content-type': 'application/json',
+    'content-length': '473',
+    'access-control-allow-headers': 'Content-Type, Authorization, X-Requested-With, X-Stainless-Timeout, X-Api-Key, X-OpenAI-Agents-SDK, X-Operation-ID',
+    'access-control-allow-methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD',
+    'access-control-allow-origin': '',
+    'access-control-max-age': '86400',
+    'apim-request-id': 'a1ae6e17-a01c-4b08-a81b-1de51caf0476',
+    'azureai-fe-is-streaming': 'False',
+    'azureai-fe-offer-type': 'paygo',
+    'content-security-policy': "frame-ancestors 'none'",
+    'permissions-policy': 'camera=(), microphone=(), geolocation=()',
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'retry-after': '1',
+    'retry-after-ms': '1200',
+    server: 'cloudflare',
+    'skip-error-remapping': 'true',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains',
+    vary: 'Origin',
+    'x-bifrost-original-model': 'gpt-5',
+    'x-bifrost-provider': 'azure',
+    'x-bifrost-request-type': 'responses',
+    'x-bifrost-resolved-model': 'gpt-5',
+    'x-bifrost-routing-info-alias-model-id': 'ms-openai-gpt-5',
+    'x-bifrost-routing-info-key': 'niitgpt5',
+    'x-bifrost-routing-info-model': 'gpt-5',
+    'x-bifrost-routing-info-provider': 'azure',
+    'x-bifrost-trace-id': '83366dd089504097ac43d7db19a9cfbd',
+    'x-content-type-options': 'nosniff',
+    'x-frame-options': 'DENY',
+    'x-http2-stream-id': '163',
+    'x-ms-aoai-configured-data-retention-days': '30',
+    'x-ms-fe-error': 'true',
+    'x-ms-is-spilled-over': 'false',
+    'x-ms-region': 'East US 2',
+    'x-ratelimit-abusepenalty-active': 'False',
+    'x-ratelimit-key': 'ms-openai-gpt-5',
+    'x-ratelimit-limit-requests': '2500',
+    'x-ratelimit-limit-tokens': '250000',
+    'x-ratelimit-remaining-requests': '2499',
+    'x-ratelimit-remaining-tokens': '-5004',
+    'x-ratelimit-renewalperiod-requests': '60',
+    'x-ratelimit-renewalperiod-tokens': '60',
+    'x-ratelimit-reset-requests': '0',
+    'x-ratelimit-reset-tokens': '61',
+    'x-request-id': '0e9dc4f7-7d54-48a6-9f74-de612ad65dd7',
+    'cf-cache-status': 'DYNAMIC',
+    nel: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}',
+    'report-to': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=wUN%2Fojo6Aaqe4jB0%2FI8iDMiDhgDrAnOMWSprRB21kBAc%2Bwq1wirsri3JYrG8qiFwp2ts7bmf2464%2Bt6qGHiXd4iLdfcFVYjTepySXLEVitb2CotzqcSP397hXp2BAuY5Qok3tzw%3D"}]}',
+    'cf-ray': 'a4fcacc61db4e195-MRS',
+    'alt-svc': 'h3=":443"; ma=86400'
+  },
+  requestID: '0e9dc4f7-7d54-48a6-9f74-de612ad65dd7',
+  error: {
+    type: 'too_many_requests',
+    code: 'rate_limit_exceeded',
+    message: 'Your requests to gpt-5 for ms-openai-gpt-5 in eastus2 have exceeded token rate limit.'
+  },
+  code: 'rate_limit_exceeded',
+  param: undefined,
+  type: 'too_many_requests'
+}
+[delta] 9f825fdc #5 click {"ref":"f1e355"} -> URL: /honest/payment Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /
+[delta] 569368ab #2 click {"ref":"f1e115"} -> URL: /honest/signup Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[delta] d9e16645 #1 goto {"url":"http://127.0.0.1:45251/honest/account?s=r_yjmfqeuy17&reset=1"} -> URL: /honest/account?s=r_yjmfqeuy17 Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[delta] d9e16645 #2 click {"ref":"f1e67"} -> URL: /honest/account/cancel Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:     
+[delta] 569368ab #3 click {"ref":"f1e274"} -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[delta] 569368ab #4 click {"ref":"f1e332"} -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[delta] d9e16645 #3 check {"ref":"f1e239","on":false} -> URL: /honest/account/cancel Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:     
+[delta] 19322d54 done: 16 steps, 152s, reached_payment ₹2256
+[delta] 9f825fdc done: 5 steps, 63s, reached_payment ₹3538.82
+[delta] d9e16645 #4 click {"ref":"f1e224"} -> URL: /honest/account/cancel Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:     
+[delta] 569368ab #5 click {"ref":"f1e361"} -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[delta] d9e16645 #5 click {"ref":"f1e244"} -> URL: /honest/account/cancelled Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:  
+[delta] 569368ab #6 click {"ref":"f1e363"} -> URL: /honest/payment Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /
+[delta] 9d27e17b #1 goto {"url":"http://127.0.0.1:33797/honest/?s=r_kkx5ja6n0w&reset=1"} -> URL: /honest?s=r_kkx5ja6n0w Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[delta] 9d27e17b #2 fill {"ref":"f1e23","text":"Noisewave N2 wireless earbuds ANC"} -> URL: /honest?s=r_kkx5ja6n0w Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[delta] 9d27e17b #3 click {"ref":"f1e24"} -> URL: /honest/search?q=Noisewave+N2+wireless+earbuds+ANC Title: Results for "Noisewave N2 wireless earbuds ANC" · Cartwhe
+[delta] 9d27e17b #4 click {"ref":"f2e150"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[delta] 9d27e17b #5 click {"ref":"f2e400"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[delta] 569368ab done: 6 steps, 86s, reached_payment ₹0
+[delta] 9d27e17b #6 check {"ref":"f2e403","on":false} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[delta] d9e16645 done: 5 steps, 70s, reached_payment ₹0
+[delta] 9d27e17b #7 click {"ref":"f2e407"} -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[delta] 7cc28ae9 #1 goto {"url":"http://127.0.0.1:43785/honest/pricing?s=r_9e39pw20ii&reset=1"} -> URL: /honest/pricing?s=r_9e39pw20ii Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[delta] 7cc28ae9 #2 click {"ref":"f1e116"} -> URL: /honest/signup Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[delta] 9d27e17b #8 click {"ref":"f2e741"} -> ERROR: locator.evaluate: Timeout 8000ms exceeded. Call log:   - waiting for locator('aria-ref=f2e741') 
+[delta] 9d27e17b #9 click {"ref":"f2e736"} -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[delta] 7cc28ae9 #3 click {"ref":"f1e274"} -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[delta] 3eda564e #1 goto {"url":"http://127.0.0.1:43785/honest/account?s=r_ahb1bir1jd&reset=1"} -> URL: /honest/account?s=r_ahb1bir1jd Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[delta] 7cc28ae9 #4 click {"ref":"f1e344"} -> URL: /honest/payment Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /
+[delta] 3eda564e #2 click {"ref":"f1e67"} -> URL: /honest/account/cancel Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:     
+[delta] 9d27e17b #10 click {"ref":"f2e850"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[delta] 3eda564e #3 click {"ref":"f1e237"} -> URL: /honest/account/cancelled Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:  
+[delta] 9d27e17b #11 click {"ref":"f2e882"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[delta] 9d27e17b #12 click {"ref":"f2e942"} -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[delta] 7cc28ae9 done: 4 steps, 52s, reached_payment ₹3538.82
+[delta] 3eda564e done: 3 steps, 39s, reached_payment ₹0
+[delta] 9d27e17b #13 click {"ref":"f2e963"} -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[delta] 9d27e17b #14 check {"ref":"f2e1048","on":false} -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[delta] 9d27e17b #15 click {"ref":"f2e1051"} -> URL: /honest/payment Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /
+[delta] 9d27e17b done: 15 steps, 171s, reached_payment ₹2506
+
+[stopped]

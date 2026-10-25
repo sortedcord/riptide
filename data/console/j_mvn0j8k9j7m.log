@@ -1,0 +1,3 @@
+
+$ tsx --env-file-if-exists=.env engine/cli.ts build-suite --suite riptide-suite-0.3.0 --variants v_w9my2j,v_ts8zx7 --controls market,saas
+[suite] wrote /mnt/work/PROJECTS/riptide/data/suites/riptide-suite-0.3.0.json: v_w9my2j(t1,t2) v_ts8zx7(t1,t2,t3) control-market(t1) control-saas(t1,t2)

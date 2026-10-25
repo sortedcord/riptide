@@ -1,0 +1,4 @@
+
+$ tsx --env-file-if-exists=.env engine/cli.ts audit --id a_2bbx2bj4
+[audit] a_2bbx2bj4: 36 files, 40 rules, anthropic/claude-sonnet-5-5 via pi RPC
+[audit] a_2bbx2bj4: 62.8% compliant (11 violations, 26 compliant, 3 n/a, 0 unclear) in 63s, 17 tool calls

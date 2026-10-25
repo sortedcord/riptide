@@ -1,0 +1,16 @@
+{
+  "id": "r_ng6u3l1ogl",
+  "agentId": "alpha",
+  "model": "azure/gpt-4o",
+  "port": 41001,
+  "taskId": "816196db-81a9-437a-8686-d00f0377ab6b",
+  "startUrl": "http://127.0.0.1:41475/honest/?s=r_ng6u3l1ogl&reset=1",
+  "startedAt": "2026-10-24T23:11:42.793Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:12:36.360Z",
+  "status": "reached_payment",
+  "steps": 11
+}

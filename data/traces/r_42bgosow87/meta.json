@@ -1,0 +1,16 @@
+{
+  "id": "r_42bgosow87",
+  "agentId": "alpha",
+  "model": "azure/gpt-4o",
+  "port": 41001,
+  "taskId": "a7303be2-1dcd-45e7-8570-c37682a33894",
+  "startUrl": "http://127.0.0.1:41475/honest/search?q=earbuds&s=r_42bgosow87&reset=1",
+  "startedAt": "2026-10-24T23:11:42.789Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:12:13.312Z",
+  "status": "reached_payment",
+  "steps": 8
+}

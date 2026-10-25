@@ -1,0 +1,16 @@
+{
+  "id": "r_cj7zak9puy",
+  "agentId": "gamma",
+  "model": "bedrock/global.anthropic.claude-haiku-5-5",
+  "port": 41003,
+  "taskId": "b797ca61-b78e-4eb5-9b5c-628762b16696",
+  "startUrl": "http://127.0.0.1:45251/honest/pricing?s=r_cj7zak9puy&reset=1",
+  "startedAt": "2026-10-24T23:13:33.326Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:13:54.777Z",
+  "status": "stopped_early",
+  "steps": 7
+}

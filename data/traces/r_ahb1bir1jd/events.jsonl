@@ -1,0 +1,28 @@
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account?s=r_ahb1bir1jd&reset=1","t":23}
+{"type":"frame","file":"00001.jpg","t":29}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account?s=r_ahb1bir1jd&reset=1","t":112}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account?s=r_ahb1bir1jd","t":115}
+{"type":"frame","file":"00002.jpg","t":280}
+{"type":"frame","file":"00003.jpg","t":531}
+{"type":"frame","file":"00004.jpg","t":4127}
+{"type":"action","step":1,"tool":"goto","args":{"url":"http://127.0.0.1:43785/honest/account?s=r_ahb1bir1jd&reset=1"},"t":5674}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account?s=r_ahb1bir1jd&reset=1","t":5686}
+{"type":"frame","file":"00005.jpg","t":5698}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account?s=r_ahb1bir1jd&reset=1","t":5712}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account?s=r_ahb1bir1jd","t":5713}
+{"type":"frame","file":"00006.jpg","t":5952}
+{"type":"result","step":1,"ok":true,"summary":"URL: /honest/account?s=r_ahb1bir1jd · Title: Prism Studio","t":6299}
+{"type":"action","step":2,"tool":"click","args":{"ref":"f1e67"},"t":9221}
+{"type":"pointer","kind":"click","x":294.6484375,"y":506.03125,"w":84.140625,"h":24,"t":9329}
+{"type":"frame","file":"00007.jpg","t":9382}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account/cancel","t":9386}
+{"type":"frame","file":"00008.jpg","t":9637}
+{"type":"result","step":2,"ok":true,"summary":"URL: /honest/account/cancel · Title: Prism Studio","t":9894}
+{"type":"action","step":3,"tool":"click","args":{"ref":"f1e237"},"t":13469}
+{"type":"pointer","kind":"click","x":891,"y":794.859375,"w":330,"h":44,"t":13524}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account/cancelled","t":13581}
+{"type":"frame","file":"00009.jpg","t":13586}
+{"type":"frame","file":"00010.jpg","t":13838}
+{"type":"result","step":3,"ok":true,"summary":"URL: /honest/account/cancelled · Title: Prism Studio","t":14098}
+{"type":"frame","file":"00011.jpg","t":19419}
+{"type":"end","status":"reached_payment","t":39331}

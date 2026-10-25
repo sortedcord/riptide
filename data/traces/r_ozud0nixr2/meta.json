@@ -1,0 +1,16 @@
+{
+  "id": "r_ozud0nixr2",
+  "agentId": "beta",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "port": 41002,
+  "taskId": "de8bd741-6637-4a6d-98dd-b03fb67529f4",
+  "startUrl": "http://127.0.0.1:43785/honest/account?s=r_ozud0nixr2&reset=1",
+  "startedAt": "2026-10-24T23:15:20.327Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:15:29.435Z",
+  "status": "stopped_early",
+  "steps": 4
+}

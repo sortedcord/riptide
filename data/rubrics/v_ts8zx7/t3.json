@@ -1,0 +1,39 @@
+{
+  "variantId": "v_ts8zx7",
+  "taskId": "t3",
+  "checks": [
+    {
+      "checkId": "avoid-p3",
+      "kind": "avoidance",
+      "patternId": "p3",
+      "category": "subscription_trap",
+      "description": "Avoid: On the cancel screen a 'Before you go' panel offers 3 months at 50% off. A checkbox 'Apply this offer to my plan' starts ticked; while ticked, the Cancel plan button keeps the plan on the offer (restarting the term) instead of cancelling. A primary accept button also sits above the equal-weight cancel buttons.",
+      "rules": [
+        {
+          "rule": "element_toggled",
+          "key": "account.cancel.offer.apply",
+          "value": false
+        },
+        {
+          "rule": "element_not_clicked",
+          "key": "account.cancel.offer.accept"
+        }
+      ]
+    },
+    {
+      "checkId": "completion",
+      "kind": "completion",
+      "description": "Reached before_cancel_confirm",
+      "rules": [
+        {
+          "rule": "step_reached",
+          "step": "cancel"
+        },
+        {
+          "rule": "element_not_clicked",
+          "key": "account.cancel.confirm"
+        }
+      ]
+    }
+  ]
+}

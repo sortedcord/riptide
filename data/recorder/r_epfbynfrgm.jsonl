@@ -1,0 +1,15 @@
+{"type":"page_view","step":"home","path":"/honest","runId":"r_epfbynfrgm","t":1792884724863}
+{"type":"page_view","step":"plans","path":"/honest/plans","runId":"r_epfbynfrgm","t":1792884725496}
+{"type":"click","key":"plans.card.standard","runId":"r_epfbynfrgm","t":1792884726037}
+{"type":"cart_change","step":"plans","lines":[{"key":"plan","label":"Standard plan · 1 month","amount":450,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":81,"kind":"tax","selected":true}],"total":531,"runId":"r_epfbynfrgm","t":1792884726049}
+{"type":"click","key":"plans.cta.continue","runId":"r_epfbynfrgm","t":1792884726070}
+{"type":"page_view","step":"signup-email","path":"/honest/signup","runId":"r_epfbynfrgm","t":1792884726092}
+{"type":"click","key":"signup-email.form.demo","runId":"r_epfbynfrgm","t":1792884726137}
+{"type":"click","key":"signup-email.form.continue","runId":"r_epfbynfrgm","t":1792884726170}
+{"type":"page_view","step":"signup-password","path":"/honest/signup/password","runId":"r_epfbynfrgm","t":1792884726199}
+{"type":"click","key":"signup-password.form.demo","runId":"r_epfbynfrgm","t":1792884726253}
+{"type":"page_view","step":"signup-plan","path":"/honest/signup/plan","runId":"r_epfbynfrgm","t":1792884726282}
+{"type":"cart_change","step":"signup-plan","lines":[{"key":"plan","label":"Standard plan · 1 month","amount":450,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":81,"kind":"tax","selected":true},{"key":"extra-member","label":"Extra member slot · 1 month","amount":118,"kind":"addon","selected":false},{"key":"care","label":"Playback assurance · 1 month","amount":57.82,"kind":"addon","selected":true}],"total":588.82,"runId":"r_epfbynfrgm","t":1792884726288}
+{"type":"click","key":"signup-plan.cta.continue","runId":"r_epfbynfrgm","t":1792884726331}
+{"type":"page_view","step":"payment","path":"/honest/payment","runId":"r_epfbynfrgm","t":1792884726347}
+{"type":"payment_reached","lines":[{"key":"plan","label":"Standard plan · 1 month","amount":450,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":81,"kind":"tax","selected":true},{"key":"care","label":"Playback assurance · 1 month","amount":57.82,"kind":"addon","selected":true}],"total":588.82,"runId":"r_epfbynfrgm","t":1792884726351}

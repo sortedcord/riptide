@@ -1,0 +1,50 @@
+{
+  "suiteId": "riptide-suite-0.3.0",
+  "createdAt": "2026-10-24T23:11:22.341Z",
+  "items": [
+    {
+      "shop": "market",
+      "variantId": "v_w9my2j",
+      "branch": "variant/market/v_w9my2j",
+      "commit": "0e0de9b46ad7090df0e5ea2f66e9b3bbfbe39d3b",
+      "tricksterVersion": "v2",
+      "taskIds": [
+        "t1",
+        "t2"
+      ]
+    },
+    {
+      "shop": "saas",
+      "variantId": "v_ts8zx7",
+      "branch": "variant/saas/v_ts8zx7",
+      "commit": "56a4e9e44120eafcca8e6b1f50cccca4e37ef093",
+      "tricksterVersion": "v2",
+      "taskIds": [
+        "t1",
+        "t2",
+        "t3"
+      ]
+    },
+    {
+      "shop": "market",
+      "variantId": "control-market",
+      "branch": "master",
+      "commit": "c304a4ff79a1a1efe8e91788cad41a1b24a9e909",
+      "tricksterVersion": null,
+      "taskIds": [
+        "t1"
+      ]
+    },
+    {
+      "shop": "saas",
+      "variantId": "control-saas",
+      "branch": "master",
+      "commit": "c304a4ff79a1a1efe8e91788cad41a1b24a9e909",
+      "tricksterVersion": null,
+      "taskIds": [
+        "t1",
+        "t2"
+      ]
+    }
+  ]
+}

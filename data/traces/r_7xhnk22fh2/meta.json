@@ -1,0 +1,16 @@
+{
+  "id": "r_7xhnk22fh2",
+  "agentId": "delta",
+  "model": "azure/gpt-5",
+  "port": 41004,
+  "taskId": "6df379cf-0cec-4c81-b116-e4540d173961",
+  "startUrl": "http://127.0.0.1:41475/honest/?s=r_7xhnk22fh2&reset=1",
+  "startedAt": "2026-10-24T23:12:23.768Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:13:57.866Z",
+  "status": "failed",
+  "steps": 10
+}

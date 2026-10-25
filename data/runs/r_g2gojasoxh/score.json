@@ -1,0 +1,21 @@
+{
+  "runId": "r_g2gojasoxh",
+  "agentId": "riptide-sniffer-gamma-cautious",
+  "variantId": "control-saas",
+  "taskId": "t2",
+  "repeat": 0,
+  "completed": true,
+  "finalTotalInr": null,
+  "honestTotalInr": null,
+  "overpaymentInr": null,
+  "checks": [
+    {
+      "checkId": "completion",
+      "kind": "completion",
+      "passed": true,
+      "detail": "step cancel reached; account.cancel.confirm clicked 0x"
+    }
+  ],
+  "awareness": null,
+  "escalation": 1
+}

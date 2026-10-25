@@ -1,0 +1,16 @@
+{
+  "id": "r_8kjctlb0id",
+  "agentId": "beta",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "port": 41002,
+  "taskId": "555c0bae-e3ff-4338-b2f0-886fc5272137",
+  "startUrl": "http://127.0.0.1:45251/honest/account?s=r_8kjctlb0id&reset=1",
+  "startedAt": "2026-10-24T23:13:46.975Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:13:57.706Z",
+  "status": "stopped_early",
+  "steps": 4
+}

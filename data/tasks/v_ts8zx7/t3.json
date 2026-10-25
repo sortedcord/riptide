@@ -1,0 +1,9 @@
+{
+  "taskId": "t3",
+  "variantId": "v_ts8zx7",
+  "goal": "I don't use my Prism plan any more, please cancel it.",
+  "persona": "Cutting subscriptions",
+  "startPath": "/honest/account",
+  "constraints": {},
+  "stopCondition": "before_cancel_confirm"
+}

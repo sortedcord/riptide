@@ -1,0 +1,16 @@
+{
+  "id": "r_sos4tqey9h",
+  "agentId": "alpha",
+  "model": "azure/gpt-4o",
+  "port": 41001,
+  "taskId": "5054d61a-ec22-4c1e-8806-1f1217d68248",
+  "startUrl": "http://127.0.0.1:45251/honest/pricing?s=r_sos4tqey9h&reset=1",
+  "startedAt": "2026-10-24T23:12:36.420Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:13:22.585Z",
+  "status": "stopped_early",
+  "steps": 4
+}

@@ -1,0 +1,16 @@
+{
+  "id": "r_ptpvzqqit9",
+  "agentId": "beta",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "port": 41002,
+  "taskId": "6f965ab2-f10c-46c5-acbc-31da67b372b5",
+  "startUrl": "http://127.0.0.1:33797/honest/?s=r_ptpvzqqit9&reset=1",
+  "startedAt": "2026-10-24T23:14:15.414Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:15:19.701Z",
+  "status": "reached_payment",
+  "steps": 11
+}

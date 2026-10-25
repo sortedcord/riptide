@@ -1,0 +1,13 @@
+{"type":"page_view","step":"home","path":"/honest","runId":"r_7xhnk22fh2","t":1792883543932}
+{"type":"page_view","step":"home","path":"/honest","runId":"r_7xhnk22fh2","t":1792883552728}
+{"type":"page_view","step":"search","path":"/honest/search","runId":"r_7xhnk22fh2","t":1792883563969}
+{"type":"click","key":"search.results.item.noisewave-n2-earbuds","runId":"r_7xhnk22fh2","t":1792883567849}
+{"type":"page_view","step":"product","path":"/honest/product/noisewave-n2-earbuds","runId":"r_7xhnk22fh2","t":1792883567892}
+{"type":"click","key":"product.addons.warranty-decline","runId":"r_7xhnk22fh2","t":1792883575131}
+{"type":"click","key":"product.addons.giftwrap","runId":"r_7xhnk22fh2","t":1792883579887}
+{"type":"toggle","key":"product.addons.giftwrap","value":true,"runId":"r_7xhnk22fh2","t":1792883579895}
+{"type":"click","key":"product.cta.add","runId":"r_7xhnk22fh2","t":1792883584110}
+{"type":"page_view","step":"cart","path":"/honest/cart","runId":"r_7xhnk22fh2","t":1792883589970}
+{"type":"cart_change","step":"cart","lines":[{"key":"item:noisewave-n2-earbuds.0","label":"Noisewave N2 Wireless Earbuds with ANC","amount":2499,"kind":"item","selected":true},{"key":"delivery","label":"Delivery fee","amount":0,"kind":"fee","selected":true},{"key":"platform","label":"Platform fee","amount":7,"kind":"fee","selected":true},{"key":"warranty","label":"Device protection plan (1 year)","amount":299,"kind":"addon","selected":false},{"key":"giftwrap","label":"Gift wrap","amount":49,"kind":"addon","selected":true}],"total":2555,"runId":"r_7xhnk22fh2","t":1792883589976}
+{"type":"click","key":"cart.coupon.apply","runId":"r_7xhnk22fh2","t":1792883612109}
+{"type":"cart_change","step":"cart","lines":[{"key":"item:noisewave-n2-earbuds.0","label":"Noisewave N2 Wireless Earbuds with ANC","amount":2499,"kind":"item","selected":true},{"key":"delivery","label":"Delivery fee","amount":0,"kind":"fee","selected":true},{"key":"platform","label":"Platform fee","amount":7,"kind":"fee","selected":true},{"key":"coupon","label":"Coupon CART10","amount":-250,"kind":"discount","selected":true},{"key":"warranty","label":"Device protection plan (1 year)","amount":299,"kind":"addon","selected":false},{"key":"giftwrap","label":"Gift wrap","amount":49,"kind":"addon","selected":true}],"total":2305,"runId":"r_7xhnk22fh2","t":1792883612117}

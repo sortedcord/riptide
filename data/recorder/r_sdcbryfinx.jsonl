@@ -1,0 +1,15 @@
+{"type":"page_view","step":"home","path":"/honest","runId":"r_sdcbryfinx","t":1792884735359}
+{"type":"page_view","step":"plans","path":"/honest/plans","runId":"r_sdcbryfinx","t":1792884736007}
+{"type":"click","key":"plans.card.standard","runId":"r_sdcbryfinx","t":1792884736588}
+{"type":"cart_change","step":"plans","lines":[{"key":"plan","label":"Standard plan · 1 month","amount":450,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":81,"kind":"tax","selected":true}],"total":531,"runId":"r_sdcbryfinx","t":1792884736596}
+{"type":"click","key":"plans.cta.continue","runId":"r_sdcbryfinx","t":1792884736628}
+{"type":"page_view","step":"signup-email","path":"/honest/signup","runId":"r_sdcbryfinx","t":1792884736645}
+{"type":"click","key":"signup-email.form.demo","runId":"r_sdcbryfinx","t":1792884736687}
+{"type":"click","key":"signup-email.form.continue","runId":"r_sdcbryfinx","t":1792884736741}
+{"type":"page_view","step":"signup-password","path":"/honest/signup/password","runId":"r_sdcbryfinx","t":1792884736760}
+{"type":"click","key":"signup-password.form.demo","runId":"r_sdcbryfinx","t":1792884736807}
+{"type":"page_view","step":"signup-plan","path":"/honest/signup/plan","runId":"r_sdcbryfinx","t":1792884736828}
+{"type":"cart_change","step":"signup-plan","lines":[{"key":"plan","label":"Standard plan · 1 month","amount":450,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":81,"kind":"tax","selected":true},{"key":"extra-member","label":"Extra member slot · 1 month","amount":118,"kind":"addon","selected":false}],"total":531,"runId":"r_sdcbryfinx","t":1792884736833}
+{"type":"click","key":"signup-plan.cta.continue","runId":"r_sdcbryfinx","t":1792884736870}
+{"type":"page_view","step":"payment","path":"/honest/payment","runId":"r_sdcbryfinx","t":1792884736892}
+{"type":"payment_reached","lines":[{"key":"plan","label":"Standard plan · 1 month","amount":450,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":81,"kind":"tax","selected":true}],"total":531,"runId":"r_sdcbryfinx","t":1792884736895}

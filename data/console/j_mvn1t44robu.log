@@ -1,0 +1,7 @@
+
+$ rm -rf data/mutations/v_zgh8kc.json data/tasks/v_zgh8kc data/rubrics/v_zgh8kc ../riptide-wt/v_zgh8kc
+
+$ sh -c rm -f data/gates/v_zgh8kc.json data/gates/v_zgh8kc.a*.json
+
+$ sh -c git worktree prune && for b in $(git branch --list 'variant/*/v_zgh8kc' --format='%(refname:short)'); do git branch -D "$b"; done
+Deleted branch variant/saas/v_zgh8kc (was c304a4f).

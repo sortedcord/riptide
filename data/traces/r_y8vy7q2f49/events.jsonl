@@ -1,0 +1,33 @@
+{"type":"nav","url":"http://127.0.0.1:43785/honest/pricing?s=r_y8vy7q2f49&reset=1","t":14}
+{"type":"frame","file":"00001.jpg","t":28}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/pricing?s=r_y8vy7q2f49&reset=1","t":100}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/pricing?s=r_y8vy7q2f49","t":106}
+{"type":"frame","file":"00002.jpg","t":283}
+{"type":"frame","file":"00003.jpg","t":537}
+{"type":"action","step":1,"tool":"goto","args":{"url":"http://127.0.0.1:43785/honest/pricing?s=r_y8vy7q2f49&reset=1"},"t":1451}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/pricing?s=r_y8vy7q2f49&reset=1","t":1489}
+{"type":"frame","file":"00004.jpg","t":1497}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/pricing?s=r_y8vy7q2f49&reset=1","t":1520}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/pricing?s=r_y8vy7q2f49","t":1522}
+{"type":"frame","file":"00005.jpg","t":1748}
+{"type":"result","step":1,"ok":true,"summary":"URL: /honest/pricing?s=r_y8vy7q2f49 · Title: Prism Studio","t":2076}
+{"type":"action","step":2,"tool":"click","args":{"ref":"f1e116"},"t":3462}
+{"type":"pointer","kind":"click","x":806.15625,"y":450.140625,"w":164.34375,"h":57.65625,"t":3532}
+{"type":"frame","file":"00006.jpg","t":3577}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/signup","t":3595}
+{"type":"frame","file":"00007.jpg","t":3827}
+{"type":"result","step":2,"ok":true,"summary":"URL: /honest/signup · Title: Prism Studio","t":4096}
+{"type":"action","step":3,"tool":"click","args":{"ref":"f1e274"},"t":5481}
+{"type":"pointer","kind":"click","x":252.421875,"y":507.515625,"w":198.84375,"h":44,"t":5520}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/review","t":5587}
+{"type":"frame","file":"00008.jpg","t":5594}
+{"type":"frame","file":"00009.jpg","t":5846}
+{"type":"result","step":3,"ok":true,"summary":"URL: /honest/review · Title: Prism Studio","t":6090}
+{"type":"action","step":4,"tool":"click","args":{"ref":"f1e344"},"t":7853}
+{"type":"pointer","kind":"click","x":1076.65625,"y":428.859375,"w":436.65625,"h":44,"t":7904}
+{"type":"frame","file":"00010.jpg","t":7970}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/payment","t":7973}
+{"type":"frame","file":"00011.jpg","t":8221}
+{"type":"frame","file":"00012.jpg","t":8473}
+{"type":"result","step":4,"ok":true,"summary":"URL: /honest/payment · Title: Prism Studio","t":8475}
+{"type":"end","status":"reached_payment","t":10181}

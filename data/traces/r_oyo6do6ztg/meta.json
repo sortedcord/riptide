@@ -1,0 +1,16 @@
+{
+  "id": "r_oyo6do6ztg",
+  "agentId": "alpha",
+  "model": "azure/gpt-4o",
+  "port": 41001,
+  "taskId": "c2fbab78-2bc4-419e-9024-a3d81244fc8f",
+  "startUrl": "http://127.0.0.1:33797/honest/?s=r_oyo6do6ztg&reset=1",
+  "startedAt": "2026-10-24T23:13:57.922Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:15:20.290Z",
+  "status": "reached_payment",
+  "steps": 12
+}

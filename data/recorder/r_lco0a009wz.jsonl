@@ -1,0 +1,15 @@
+{"type":"page_view","step":"plans","path":"/honest/pricing","runId":"r_lco0a009wz","t":1792883572317}
+{"type":"page_view","step":"plans","path":"/honest/pricing","runId":"r_lco0a009wz","t":1792883573689}
+{"type":"click","key":"plans.all.trial","runId":"r_lco0a009wz","t":1792883575741}
+{"type":"cart_change","step":"plans","lines":[{"key":"plan","label":"Prism All Apps · Monthly","amount":2999,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":539.82,"kind":"tax","selected":true},{"key":"trial","label":"14-day free trial · nothing due today","amount":-3538.82,"kind":"discount","selected":true}],"total":0,"runId":"r_lco0a009wz","t":1792883575761}
+{"type":"page_view","step":"signup","path":"/honest/signup","runId":"r_lco0a009wz","t":1792883575779}
+{"type":"click","key":"signup.demo.continue","runId":"r_lco0a009wz","t":1792883578085}
+{"type":"page_view","step":"review","path":"/honest/review","runId":"r_lco0a009wz","t":1792883578115}
+{"type":"click","key":"review.verify.start","runId":"r_lco0a009wz","t":1792883583197}
+{"type":"click","key":"review.verify.switch","runId":"r_lco0a009wz","t":1792883585874}
+{"type":"cart_change","step":"review","lines":[{"key":"plan","label":"Prism All Apps · Monthly","amount":2999,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":539.82,"kind":"tax","selected":true},{"key":"storage","label":"Stock assets & +1 TB cloud storage","amount":293.82,"kind":"addon","selected":false},{"key":"care","label":"Plan continuity & priority care","amount":175.82,"kind":"addon","selected":true}],"total":3714.64,"runId":"r_lco0a009wz","t":1792883585896}
+{"type":"click","key":"review.care.remove","runId":"r_lco0a009wz","t":1792883588476}
+{"type":"cart_change","step":"review","lines":[{"key":"plan","label":"Prism All Apps · Monthly","amount":2999,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":539.82,"kind":"tax","selected":true},{"key":"storage","label":"Stock assets & +1 TB cloud storage","amount":293.82,"kind":"addon","selected":false},{"key":"care","label":"Plan continuity & priority care","amount":175.82,"kind":"addon","selected":false}],"total":3538.82,"runId":"r_lco0a009wz","t":1792883588485}
+{"type":"click","key":"review.cta.continue","runId":"r_lco0a009wz","t":1792883592116}
+{"type":"page_view","step":"payment","path":"/honest/payment","runId":"r_lco0a009wz","t":1792883592147}
+{"type":"payment_reached","lines":[{"key":"plan","label":"Prism All Apps · Monthly","amount":2999,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":539.82,"kind":"tax","selected":true}],"total":3538.82,"runId":"r_lco0a009wz","t":1792883592153}

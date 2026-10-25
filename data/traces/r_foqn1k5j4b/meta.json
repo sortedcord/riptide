@@ -1,0 +1,16 @@
+{
+  "id": "r_foqn1k5j4b",
+  "agentId": "beta",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "port": 41002,
+  "taskId": "ef879acb-9b4c-4278-be27-4589589c94ed",
+  "startUrl": "http://127.0.0.1:45251/honest/pricing?s=r_foqn1k5j4b&reset=1",
+  "startedAt": "2026-10-24T23:13:22.642Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:13:33.274Z",
+  "status": "stopped_early",
+  "steps": 4
+}

@@ -1,0 +1,16 @@
+{
+  "id": "r_yjmfqeuy17",
+  "agentId": "delta",
+  "model": "azure/gpt-5",
+  "port": 41004,
+  "taskId": "d9e16645-f772-416b-adeb-f22c85ae2c2b",
+  "startUrl": "http://127.0.0.1:45251/honest/account?s=r_yjmfqeuy17&reset=1",
+  "startedAt": "2026-10-24T23:13:57.765Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:15:07.623Z",
+  "status": "reached_payment",
+  "steps": 5
+}

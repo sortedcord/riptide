@@ -1,0 +1,16 @@
+{
+  "id": "r_6hb7backwn",
+  "agentId": "alpha",
+  "model": "azure/gpt-4o",
+  "port": 41001,
+  "taskId": "9ff7c602-4bac-4cb2-b5e5-406b26dc0502",
+  "startUrl": "http://127.0.0.1:45251/honest/account?s=r_6hb7backwn&reset=1",
+  "startedAt": "2026-10-24T23:13:35.776Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:13:46.920Z",
+  "status": "reached_payment",
+  "steps": 4
+}

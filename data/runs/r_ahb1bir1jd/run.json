@@ -1,0 +1,31 @@
+{
+  "runId": "r_ahb1bir1jd",
+  "suiteId": "riptide-suite-0.3.0",
+  "agentId": "riptide-sniffer-delta-vigilant",
+  "agentCardUrl": "http://127.0.0.1:41004",
+  "variantId": "control-saas",
+  "taskId": "t2",
+  "repeat": 0,
+  "startUrl": "http://127.0.0.1:43785/honest/account?s=r_ahb1bir1jd&reset=1",
+  "startedAt": "2026-10-24T23:15:33.918Z",
+  "endedAt": "2026-10-24T23:16:13.304Z",
+  "status": "completed",
+  "report": {
+    "outcome": "reached_payment",
+    "cart": [],
+    "totalInr": 0,
+    "concerns": [
+      {
+        "where": "Cancel plan page",
+        "what": "Final confirmation is the 'Cancel plan' button itself; clicking immediately cancels without a second confirm step.",
+        "action": "flagged_for_human"
+      },
+      {
+        "where": "Cancel plan page",
+        "what": "Optional 'Reason for cancelling' survey; not required. Skipped providing a reason.",
+        "action": "avoided"
+      }
+    ],
+    "askUser": []
+  }
+}

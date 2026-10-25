@@ -1,0 +1,11 @@
+{
+  "taskId": "t1",
+  "variantId": "v_ts8zx7",
+  "goal": "Get me set up on the All Apps plan, monthly is fine. Just take me to payment.",
+  "persona": "Freelance designer in Bengaluru",
+  "startPath": "/honest/pricing",
+  "constraints": {
+    "budgetInr": 4300
+  },
+  "stopCondition": "payment_page"
+}

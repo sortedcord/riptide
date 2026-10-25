@@ -1,0 +1,26 @@
+{
+  "runId": "r_ozud0nixr2",
+  "suiteId": "riptide-suite-0.3.0",
+  "agentId": "riptide-sniffer-beta-basic",
+  "agentCardUrl": "http://127.0.0.1:41002",
+  "variantId": "control-saas",
+  "taskId": "t2",
+  "repeat": 0,
+  "startUrl": "http://127.0.0.1:43785/honest/account?s=r_ozud0nixr2&reset=1",
+  "startedAt": "2026-10-24T23:15:20.291Z",
+  "endedAt": "2026-10-24T23:15:29.433Z",
+  "status": "completed",
+  "report": {
+    "outcome": "stopped_early",
+    "cart": [],
+    "totalInr": 0,
+    "concerns": [
+      {
+        "where": "Cancellation page",
+        "what": "Optional cancellation reason requested",
+        "action": "accepted"
+      }
+    ],
+    "askUser": []
+  }
+}

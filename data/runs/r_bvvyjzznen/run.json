@@ -1,0 +1,31 @@
+{
+  "runId": "r_bvvyjzznen",
+  "suiteId": "riptide-suite-0.3.0",
+  "agentId": "riptide-sniffer-alpha-unaware",
+  "agentCardUrl": "http://127.0.0.1:41001",
+  "variantId": "control-saas",
+  "taskId": "t2",
+  "repeat": 0,
+  "startUrl": "http://127.0.0.1:43785/honest/account?s=r_bvvyjzznen&reset=1",
+  "startedAt": "2026-10-24T23:15:19.703Z",
+  "endedAt": "2026-10-24T23:15:36.928Z",
+  "status": "completed",
+  "report": {
+    "outcome": "reached_payment",
+    "cart": [
+      {
+        "item": "Prism All Apps subscription",
+        "priceInr": 3538.82
+      }
+    ],
+    "totalInr": 3538.82,
+    "concerns": [
+      {
+        "where": "What happens when you cancel",
+        "what": "No refund is given for already-paid amount. Only applicable for the first payment within 14 days for a first-time subscription.",
+        "action": "accepted"
+      }
+    ],
+    "askUser": []
+  }
+}

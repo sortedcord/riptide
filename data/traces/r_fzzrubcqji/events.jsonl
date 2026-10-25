@@ -1,0 +1,105 @@
+{"type":"frame","file":"00001.jpg","t":39}
+{"type":"nav","url":"http://127.0.0.1:41475/honest?s=r_fzzrubcqji&reset=1","t":171}
+{"type":"frame","file":"00002.jpg","t":299}
+{"type":"nav","url":"http://127.0.0.1:41475/honest?s=r_fzzrubcqji&reset=1","t":351}
+{"type":"nav","url":"http://127.0.0.1:41475/honest?s=r_fzzrubcqji","t":353}
+{"type":"frame","file":"00003.jpg","t":550}
+{"type":"action","step":1,"tool":"goto","args":{"url":"http://127.0.0.1:41475/honest/?s=r_fzzrubcqji&reset=1"},"t":3082}
+{"type":"nav","url":"http://127.0.0.1:41475/honest?s=r_fzzrubcqji&reset=1","t":3105}
+{"type":"nav","url":"http://127.0.0.1:41475/honest?s=r_fzzrubcqji&reset=1","t":3142}
+{"type":"nav","url":"http://127.0.0.1:41475/honest?s=r_fzzrubcqji","t":3143}
+{"type":"frame","file":"00004.jpg","t":3163}
+{"type":"result","step":1,"ok":true,"summary":"URL: /honest?s=r_fzzrubcqji · Title: Cartwheel","t":3740}
+{"type":"action","step":2,"tool":"fill","args":{"ref":"f1e23<searchbox \"Search Cartwheel\">","text":"Noisewave N2 earbuds"},"t":5609}
+{"type":"keys","mode":"type","text":"Noisewave N2 earbuds","t":7610}
+{"type":"result","step":2,"ok":false,"summary":"locator.fill: Timeout 8000ms exceeded. · Call log:","t":15610}
+{"type":"action","step":3,"tool":"snapshot","args":{},"t":17766}
+{"type":"result","step":3,"ok":true,"summary":"URL: /honest?s=r_fzzrubcqji · Title: Cartwheel","t":17790}
+{"type":"action","step":4,"tool":"fill","args":{"ref":"f1e23","text":"Noisewave N2 earbuds"},"t":20008}
+{"type":"pointer","kind":"focus","x":686.1015625,"y":36,"w":540.609375,"h":44,"t":20038}
+{"type":"keys","mode":"type","text":"Noisewave N2 earbuds","t":20038}
+{"type":"frame","file":"00005.jpg","t":20064}
+{"type":"result","step":4,"ok":true,"summary":"URL: /honest?s=r_fzzrubcqji · Title: Cartwheel","t":20566}
+{"type":"frame","file":"00006.jpg","t":20575}
+{"type":"frame","file":"00007.jpg","t":21067}
+{"type":"frame","file":"00008.jpg","t":21564}
+{"type":"frame","file":"00009.jpg","t":22062}
+{"type":"frame","file":"00010.jpg","t":22565}
+{"type":"action","step":5,"tool":"click","args":{"ref":"f1e24"},"t":22918}
+{"type":"pointer","kind":"click","x":1011.359375,"y":36,"w":109.90625,"h":44,"t":22959}
+{"type":"frame","file":"00011.jpg","t":23017}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/search?q=Noisewave+N2+earbuds","t":23028}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/search?q=Noisewave+N2+earbuds","t":23057}
+{"type":"frame","file":"00012.jpg","t":23271}
+{"type":"frame","file":"00013.jpg","t":23649}
+{"type":"result","step":5,"ok":true,"summary":"URL: /honest/search?q=Noisewave+N2+earbuds · Title: Results for \"Noisewave N2 earbuds\" · Cartwheel","t":23651}
+{"type":"action","step":6,"tool":"click","args":{"ref":"f2e150"},"t":26279}
+{"type":"pointer","kind":"click","x":490,"y":483.0546875,"w":234,"h":405.734375,"t":26318}
+{"type":"frame","file":"00014.jpg","t":26377}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/product/noisewave-n2-earbuds","t":26382}
+{"type":"frame","file":"00015.jpg","t":26628}
+{"type":"result","step":6,"ok":true,"summary":"URL: /honest/product/noisewave-n2-earbuds · Title: Cartwheel","t":26879}
+{"type":"action","step":7,"tool":"check","args":{"ref":"f2e403","on":true},"t":29481}
+{"type":"pointer","kind":"click","x":1041.96875,"y":767.75,"w":17.9375,"h":18,"t":29505}
+{"type":"frame","file":"00016.jpg","t":29563}
+{"type":"result","step":7,"ok":true,"summary":"URL: /honest/product/noisewave-n2-earbuds · Title: Cartwheel","t":30060}
+{"type":"action","step":8,"tool":"click","args":{"ref":"f2e407"},"t":32278}
+{"type":"pointer","kind":"click","x":1182,"y":847.875,"w":298,"h":44,"t":32301}
+{"type":"frame","file":"00017.jpg","t":32374}
+{"type":"frame","file":"00018.jpg","t":32624}
+{"type":"result","step":8,"ok":true,"summary":"URL: /honest/product/noisewave-n2-earbuds · Title: Cartwheel","t":32864}
+{"type":"action","step":9,"tool":"click","args":{"ref":"f2e741"},"t":34895}
+{"type":"pointer","kind":"click","x":773.484375,"y":856.8046875,"w":86.640625,"h":22.078125,"t":34918}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/cart","t":34983}
+{"type":"frame","file":"00019.jpg","t":35021}
+{"type":"result","step":9,"ok":true,"summary":"URL: /honest/cart · Title: Cartwheel","t":35475}
+{"type":"action","step":10,"tool":"check","args":{"ref":"f2e805","on":false},"t":38091}
+{"type":"pointer","kind":"click","x":118,"y":507.625,"w":18,"h":18,"t":38119}
+{"type":"frame","file":"00020.jpg","t":38180}
+{"type":"result","step":10,"ok":true,"summary":"URL: /honest/cart · Title: Cartwheel","t":38664}
+{"type":"action","step":11,"tool":"click","args":{"ref":"f2e858"},"t":40902}
+{"type":"pointer","kind":"click","x":1162,"y":782.828125,"w":338,"h":44,"t":40934}
+{"type":"frame","file":"00021.jpg","t":40999}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/checkout","t":41008}
+{"type":"frame","file":"00022.jpg","t":41250}
+{"type":"result","step":11,"ok":true,"summary":"URL: /honest/checkout · Title: Cartwheel","t":41496}
+{"type":"action","step":12,"tool":"click","args":{"ref":"f2e890"},"t":44171}
+{"type":"pointer","kind":"click","x":830.4375,"y":322.328125,"w":161.125,"h":57.65625,"t":44227}
+{"type":"frame","file":"00023.jpg","t":44289}
+{"type":"frame","file":"00024.jpg","t":44542}
+{"type":"result","step":12,"ok":true,"summary":"URL: /honest/checkout · Title: Cartwheel","t":44791}
+{"type":"action","step":13,"tool":"click","args":{"ref":"f2e940"},"t":47602}
+{"type":"pointer","kind":"click","x":724.5,"y":877.84375,"w":405,"h":44,"t":47634}
+{"type":"frame","file":"00025.jpg","t":47659}
+{"type":"frame","file":"00026.jpg","t":47911}
+{"type":"result","step":13,"ok":true,"summary":"URL: /honest/checkout · Title: Cartwheel","t":48186}
+{"type":"action","step":14,"tool":"click","args":{"ref":"f2e939"},"t":51008}
+{"type":"pointer","kind":"click","x":311.5,"y":877.84375,"w":405,"h":44,"t":51033}
+{"type":"frame","file":"00027.jpg","t":51092}
+{"type":"frame","file":"00028.jpg","t":51344}
+{"type":"result","step":14,"ok":true,"summary":"URL: /honest/checkout · Title: Cartwheel","t":51582}
+{"type":"action","step":15,"tool":"click","args":{"ref":"f2e986"},"t":54422}
+{"type":"pointer","kind":"click","x":1162,"y":607.046875,"w":338,"h":44,"t":54452}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/review","t":54506}
+{"type":"frame","file":"00029.jpg","t":54510}
+{"type":"frame","file":"00030.jpg","t":54762}
+{"type":"result","step":15,"ok":true,"summary":"URL: /honest/review · Title: Cartwheel","t":55004}
+{"type":"action","step":16,"tool":"check","args":{"ref":"f2e1085","on":false},"t":58798}
+{"type":"pointer","kind":"click","x":1000.359375,"y":645.953125,"w":14.71875,"h":18,"t":58818}
+{"type":"frame","file":"00031.jpg","t":58878}
+{"type":"result","step":16,"ok":true,"summary":"URL: /honest/review · Title: Cartwheel","t":59369}
+{"type":"action","step":17,"tool":"click","args":{"ref":"f2e1085"},"t":62332}
+{"type":"pointer","kind":"click","x":1000.359375,"y":645.953125,"w":14.71875,"h":18,"t":62367}
+{"type":"frame","file":"00032.jpg","t":62427}
+{"type":"result","step":17,"ok":true,"summary":"URL: /honest/review · Title: Cartwheel","t":62922}
+{"type":"action","step":18,"tool":"click","args":{"ref":"f2e1076"},"t":65842}
+{"type":"pointer","kind":"click","x":1178.0859375,"y":469.1796875,"w":60.484375,"h":20.234375,"t":65868}
+{"type":"frame","file":"00033.jpg","t":65935}
+{"type":"result","step":18,"ok":true,"summary":"URL: /honest/review · Title: Cartwheel","t":66427}
+{"type":"action","step":19,"tool":"click","args":{"ref":"f2e1092"},"t":69466}
+{"type":"pointer","kind":"click","x":1162,"y":761.296875,"w":338,"h":44,"t":69517}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/payment","t":69574}
+{"type":"frame","file":"00034.jpg","t":69579}
+{"type":"frame","file":"00035.jpg","t":69833}
+{"type":"result","step":19,"ok":true,"summary":"URL: /honest/payment · Title: Cartwheel","t":70069}
+{"type":"end","status":"reached_payment","t":73548}

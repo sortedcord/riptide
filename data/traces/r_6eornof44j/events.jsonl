@@ -1,0 +1,27 @@
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_6eornof44j&reset=1","t":18}
+{"type":"frame","file":"00001.jpg","t":32}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_6eornof44j&reset=1","t":120}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_6eornof44j","t":125}
+{"type":"frame","file":"00002.jpg","t":284}
+{"type":"frame","file":"00003.jpg","t":538}
+{"type":"action","step":1,"tool":"goto","args":{"url":"http://127.0.0.1:45251/honest/pricing?s=r_6eornof44j&reset=1"},"t":2880}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_6eornof44j&reset=1","t":2899}
+{"type":"frame","file":"00004.jpg","t":2911}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_6eornof44j&reset=1","t":2933}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_6eornof44j","t":2935}
+{"type":"frame","file":"00005.jpg","t":3163}
+{"type":"result","step":1,"ok":true,"summary":"URL: /honest/pricing?s=r_6eornof44j · Title: Prism Studio","t":3514}
+{"type":"action","step":2,"tool":"click","args":{"ref":"f1e115"},"t":5620}
+{"type":"pointer","kind":"click","x":633.8203125,"y":450.140625,"w":164.328125,"h":57.65625,"t":5704}
+{"type":"frame","file":"00006.jpg","t":5740}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/signup","t":5768}
+{"type":"frame","file":"00007.jpg","t":5992}
+{"type":"frame","file":"00008.jpg","t":6244}
+{"type":"result","step":2,"ok":true,"summary":"URL: /honest/signup · Title: Prism Studio","t":6289}
+{"type":"action","step":3,"tool":"click","args":{"ref":"f1e274"},"t":9153}
+{"type":"pointer","kind":"click","x":252.421875,"y":507.515625,"w":198.84375,"h":44,"t":9210}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/review","t":9260}
+{"type":"frame","file":"00009.jpg","t":9269}
+{"type":"frame","file":"00010.jpg","t":9522}
+{"type":"result","step":3,"ok":true,"summary":"URL: /honest/review · Title: Prism Studio","t":9754}
+{"type":"end","status":"stopped_early","t":12984}

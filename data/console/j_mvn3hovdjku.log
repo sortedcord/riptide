@@ -1,0 +1,3 @@
+
+$ tsx --env-file-if-exists=.env engine/agents/reference/server.ts --config alpha --port 41001
+[alpha] azure/gpt-4o A2A agent on http://127.0.0.1:41001

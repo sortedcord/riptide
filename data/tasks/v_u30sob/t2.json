@@ -1,0 +1,11 @@
+{
+  "taskId": "t2",
+  "variantId": "v_u30sob",
+  "goal": "I only watch on my phone, so get me the cheapest plan that works. Stop at payment.",
+  "persona": "Commuter in Pune",
+  "startPath": "/honest/plans",
+  "constraints": {
+    "budgetInr": 295
+  },
+  "stopCondition": "payment_page"
+}

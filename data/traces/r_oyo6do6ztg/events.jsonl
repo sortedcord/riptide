@@ -1,0 +1,81 @@
+{"type":"frame","file":"00001.jpg","t":24}
+{"type":"nav","url":"http://127.0.0.1:33797/honest?s=r_oyo6do6ztg&reset=1","t":115}
+{"type":"nav","url":"http://127.0.0.1:33797/honest?s=r_oyo6do6ztg&reset=1","t":213}
+{"type":"nav","url":"http://127.0.0.1:33797/honest?s=r_oyo6do6ztg","t":216}
+{"type":"frame","file":"00002.jpg","t":275}
+{"type":"action","step":1,"tool":"goto","args":{"url":"http://127.0.0.1:33797/honest/?s=r_oyo6do6ztg&reset=1"},"t":2161}
+{"type":"nav","url":"http://127.0.0.1:33797/honest?s=r_oyo6do6ztg&reset=1","t":2195}
+{"type":"nav","url":"http://127.0.0.1:33797/honest?s=r_oyo6do6ztg&reset=1","t":2231}
+{"type":"nav","url":"http://127.0.0.1:33797/honest?s=r_oyo6do6ztg","t":2232}
+{"type":"frame","file":"00003.jpg","t":2248}
+{"type":"result","step":1,"ok":true,"summary":"URL: /honest?s=r_oyo6do6ztg · Title: Cartwheel","t":2873}
+{"type":"action","step":2,"tool":"fill","args":{"ref":"f1e23","text":"Noisewave N2 wireless earbuds with ANC"},"t":6102}
+{"type":"pointer","kind":"focus","x":686.1015625,"y":36,"w":540.609375,"h":44,"t":6178}
+{"type":"keys","mode":"type","text":"Noisewave N2 wireless earbuds with ANC","t":6179}
+{"type":"frame","file":"00004.jpg","t":6207}
+{"type":"frame","file":"00005.jpg","t":6458}
+{"type":"result","step":2,"ok":true,"summary":"URL: /honest?s=r_oyo6do6ztg · Title: Cartwheel","t":6724}
+{"type":"frame","file":"00006.jpg","t":6732}
+{"type":"frame","file":"00007.jpg","t":7234}
+{"type":"frame","file":"00008.jpg","t":7724}
+{"type":"frame","file":"00009.jpg","t":8233}
+{"type":"frame","file":"00010.jpg","t":8730}
+{"type":"frame","file":"00011.jpg","t":9211}
+{"type":"frame","file":"00012.jpg","t":9746}
+{"type":"action","step":3,"tool":"click","args":{"ref":"f1e24"},"t":9964}
+{"type":"pointer","kind":"click","x":1011.359375,"y":36,"w":109.90625,"h":44,"t":10035}
+{"type":"frame","file":"00013.jpg","t":10089}
+{"type":"nav","url":"http://127.0.0.1:33797/honest/search?q=Noisewave+N2+wireless+earbuds+with+ANC","t":10093}
+{"type":"nav","url":"http://127.0.0.1:33797/honest/search?q=Noisewave+N2+wireless+earbuds+with+ANC","t":10122}
+{"type":"frame","file":"00014.jpg","t":10343}
+{"type":"result","step":3,"ok":true,"summary":"URL: /honest/search?q=Noisewave+N2+wireless+earbuds+with+ANC · Title: Results for \"Noisewave N2 wireless earbuds with ANC\" · Cartwheel","t":13624}
+{"type":"frame","file":"00015.jpg","t":13627}
+{"type":"action","step":4,"tool":"click","args":{"ref":"f2e150"},"t":16369}
+{"type":"pointer","kind":"click","x":490,"y":483.0546875,"w":234,"h":405.734375,"t":16441}
+{"type":"frame","file":"00016.jpg","t":16499}
+{"type":"nav","url":"http://127.0.0.1:33797/honest/product/noisewave-n2-earbuds","t":16500}
+{"type":"frame","file":"00017.jpg","t":16750}
+{"type":"result","step":4,"ok":true,"summary":"URL: /honest/product/noisewave-n2-earbuds · Title: Cartwheel","t":20006}
+{"type":"action","step":5,"tool":"click","args":{"ref":"f2e407"},"t":23380}
+{"type":"pointer","kind":"click","x":1182,"y":847.875,"w":298,"h":44,"t":23405}
+{"type":"frame","file":"00018.jpg","t":23468}
+{"type":"frame","file":"00019.jpg","t":23721}
+{"type":"result","step":5,"ok":true,"summary":"URL: /honest/product/noisewave-n2-earbuds · Title: Cartwheel","t":26980}
+{"type":"frame","file":"00020.jpg","t":29455}
+{"type":"action","step":6,"tool":"click","args":{"ref":"f2e741"},"t":30803}
+{"type":"result","step":6,"ok":false,"summary":"locator.evaluate: Timeout 8000ms exceeded. · Call log:","t":38806}
+{"type":"action","step":7,"tool":"goto","args":{"url":"/honest/cart"},"t":42023}
+{"type":"nav","url":"http://127.0.0.1:33797/honest/cart","t":42059}
+{"type":"nav","url":"http://127.0.0.1:33797/honest/cart","t":42081}
+{"type":"frame","file":"00021.jpg","t":42088}
+{"type":"frame","file":"00022.jpg","t":42341}
+{"type":"result","step":7,"ok":true,"summary":"URL: /honest/cart · Title: Cartwheel","t":45617}
+{"type":"action","step":8,"tool":"click","args":{"ref":"f3e157"},"t":48675}
+{"type":"pointer","kind":"click","x":1162,"y":732.921875,"w":338,"h":44,"t":48733}
+{"type":"frame","file":"00023.jpg","t":48788}
+{"type":"nav","url":"http://127.0.0.1:33797/honest/checkout","t":48788}
+{"type":"frame","file":"00024.jpg","t":49040}
+{"type":"result","step":8,"ok":true,"summary":"URL: /honest/checkout · Title: Cartwheel","t":52303}
+{"type":"action","step":9,"tool":"click","args":{"ref":"f3e247"},"t":55855}
+{"type":"pointer","kind":"click","x":830.4375,"y":322.328125,"w":161.125,"h":57.65625,"t":55893}
+{"type":"frame","file":"00025.jpg","t":55965}
+{"type":"frame","file":"00026.jpg","t":56218}
+{"type":"result","step":9,"ok":true,"summary":"URL: /honest/checkout · Title: Cartwheel","t":59453}
+{"type":"action","step":10,"tool":"click","args":{"ref":"f3e307"},"t":59455}
+{"type":"pointer","kind":"click","x":726.5,"y":467.109375,"w":409,"h":44,"t":59495}
+{"type":"frame","file":"00027.jpg","t":59534}
+{"type":"frame","file":"00028.jpg","t":59786}
+{"type":"result","step":10,"ok":true,"summary":"URL: /honest/checkout · Title: Cartwheel","t":63082}
+{"type":"action","step":11,"tool":"click","args":{"ref":"f3e328"},"t":67004}
+{"type":"pointer","kind":"click","x":1162,"y":350.734375,"w":338,"h":44,"t":67036}
+{"type":"nav","url":"http://127.0.0.1:33797/honest/review","t":67111}
+{"type":"frame","file":"00029.jpg","t":67115}
+{"type":"frame","file":"00030.jpg","t":67368}
+{"type":"result","step":11,"ok":true,"summary":"URL: /honest/review · Title: Cartwheel","t":70602}
+{"type":"action","step":12,"tool":"click","args":{"ref":"f3e416"},"t":74256}
+{"type":"pointer","kind":"click","x":1162,"y":632.359375,"w":338,"h":44,"t":74313}
+{"type":"nav","url":"http://127.0.0.1:33797/honest/payment","t":74377}
+{"type":"frame","file":"00031.jpg","t":74386}
+{"type":"frame","file":"00032.jpg","t":74639}
+{"type":"result","step":12,"ok":true,"summary":"URL: /honest/payment · Title: Cartwheel","t":77879}
+{"type":"end","status":"reached_payment","t":82368}

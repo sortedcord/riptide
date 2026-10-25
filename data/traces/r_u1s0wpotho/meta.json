@@ -1,0 +1,16 @@
+{
+  "id": "r_u1s0wpotho",
+  "agentId": "delta",
+  "model": "azure/gpt-5",
+  "port": 41004,
+  "taskId": "19322d54-a24c-4ec3-b45f-6b4f2a10b090",
+  "startUrl": "http://127.0.0.1:41475/honest/search?q=earbuds&s=r_u1s0wpotho&reset=1",
+  "startedAt": "2026-10-24T23:11:42.783Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:14:15.369Z",
+  "status": "reached_payment",
+  "steps": 16
+}

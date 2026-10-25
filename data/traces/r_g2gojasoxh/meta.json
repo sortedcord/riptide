@@ -1,0 +1,16 @@
+{
+  "id": "r_g2gojasoxh",
+  "agentId": "gamma",
+  "model": "bedrock/global.anthropic.claude-haiku-5-5",
+  "port": 41003,
+  "taskId": "2664cdc5-7bbf-4dad-9594-40a16e4bfcc6",
+  "startUrl": "http://127.0.0.1:43785/honest/account?s=r_g2gojasoxh&reset=1",
+  "startedAt": "2026-10-24T23:15:29.489Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:15:41.546Z",
+  "status": "reached_payment",
+  "steps": 4
+}

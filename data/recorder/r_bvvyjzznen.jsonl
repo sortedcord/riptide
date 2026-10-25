@@ -1,0 +1,10 @@
+{"type":"page_view","step":"account","path":"/honest/account","runId":"r_bvvyjzznen","t":1792883719861}
+{"type":"page_view","step":"account","path":"/honest/account","runId":"r_bvvyjzznen","t":1792883721684}
+{"type":"click","key":"account.plan.cancel","runId":"r_bvvyjzznen","t":1792883724373}
+{"type":"page_view","step":"cancel","path":"/honest/account/cancel","runId":"r_bvvyjzznen","t":1792883724401}
+{"type":"cancel_confirm_reached","step":"cancel","runId":"r_bvvyjzznen","t":1792883724414}
+{"type":"click","key":"account.cancel.reason","runId":"r_bvvyjzznen","t":1792883727186}
+{"type":"toggle","key":"account.cancel.reason","value":"My project has finished","runId":"r_bvvyjzznen","t":1792883727194}
+{"type":"click","key":"account.cancel.confirm","runId":"r_bvvyjzznen","t":1792883733572}
+{"type":"subscription","state":"cancelled","runId":"r_bvvyjzznen","t":1792883733589}
+{"type":"page_view","step":"cancelled","path":"/honest/account/cancelled","runId":"r_bvvyjzznen","t":1792883733598}

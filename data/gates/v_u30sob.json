@@ -1,0 +1,32 @@
+{
+  "variantId": "v_u30sob",
+  "passed": true,
+  "gates": [
+    {
+      "gate": "scope",
+      "passed": true
+    },
+    {
+      "gate": "telltale",
+      "passed": true
+    },
+    {
+      "gate": "build",
+      "passed": true
+    },
+    {
+      "gate": "record",
+      "passed": true
+    },
+    {
+      "gate": "smoke",
+      "passed": true
+    },
+    {
+      "gate": "verify",
+      "passed": true,
+      "detail": "run r_crx8py9x0k, honest total 531: p1 line_present: ok (care in final payment); p1 total_delta_from_honest: ok (delta 57.82 vs [57.82, 57.82]); p1 avoid: ok (a passive shopper is caught); p2 step_reached: ok (step signup-plan reached); p2 element_not_clicked: ok (signup-plan.partners.toggle clicked 0x); p2 avoid: ok (a passive shopper is caught); p3 step_reached: ok (step signup-plan reached); p3 avoid: not checked (offPath: the driver walk never makes this choice); p4 element_not_clicked: ok (account.cancel.offer-accept clicked 0x); p4 avoid: ok (a passive shopper is caught)"
+    }
+  ],
+  "attempt": 2
+}

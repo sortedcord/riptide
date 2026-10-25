@@ -1,0 +1,16 @@
+{
+  "id": "r_iud46nk7s9",
+  "agentId": "beta",
+  "model": "gemini/gemini-3.5-flash-lite",
+  "port": 41002,
+  "taskId": "3b279688-9fe7-4329-b64e-925149611615",
+  "startUrl": "http://127.0.0.1:41475/honest/search?q=earbuds&s=r_iud46nk7s9&reset=1",
+  "startedAt": "2026-10-24T23:11:42.825Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:12:23.722Z",
+  "status": "reached_payment",
+  "steps": 13
+}

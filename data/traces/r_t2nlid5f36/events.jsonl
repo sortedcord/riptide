@@ -1,0 +1,39 @@
+{"type":"nav","url":"http://127.0.0.1:45251/honest/account?s=r_t2nlid5f36&reset=1","t":12}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/account?s=r_t2nlid5f36&reset=1","t":85}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/account?s=r_t2nlid5f36","t":87}
+{"type":"frame","file":"00001.jpg","t":101}
+{"type":"frame","file":"00002.jpg","t":354}
+{"type":"action","step":1,"tool":"goto","args":{"url":"http://127.0.0.1:45251/honest/account?s=r_t2nlid5f36&reset=1"},"t":1598}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/account?s=r_t2nlid5f36&reset=1","t":1611}
+{"type":"frame","file":"00003.jpg","t":1620}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/account?s=r_t2nlid5f36&reset=1","t":1641}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/account?s=r_t2nlid5f36","t":1643}
+{"type":"frame","file":"00004.jpg","t":1874}
+{"type":"result","step":1,"ok":true,"summary":"URL: /honest/account?s=r_t2nlid5f36 · Title: Prism Studio","t":2203}
+{"type":"action","step":2,"tool":"snapshot","args":{},"t":2203}
+{"type":"result","step":2,"ok":true,"summary":"URL: /honest/account?s=r_t2nlid5f36 · Title: Prism Studio","t":2215}
+{"type":"action","step":3,"tool":"goto","args":{"url":"http://127.0.0.1:45251/honest/account/cancel"},"t":4354}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/account/cancel","t":4385}
+{"type":"frame","file":"00005.jpg","t":4393}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/account/cancel","t":4405}
+{"type":"frame","file":"00006.jpg","t":4644}
+{"type":"result","step":3,"ok":true,"summary":"URL: /honest/account/cancel · Title: Prism Studio","t":4977}
+{"type":"action","step":4,"tool":"snapshot","args":{},"t":4978}
+{"type":"result","step":4,"ok":true,"summary":"URL: /honest/account/cancel · Title: Prism Studio","t":4986}
+{"type":"frame","file":"00007.jpg","t":8415}
+{"type":"action","step":5,"tool":"check","args":{"ref":"f2e74","on":false},"t":8880}
+{"type":"pointer","kind":"click","x":416.734375,"y":890.859375,"w":15.46875,"h":18,"t":8967}
+{"type":"frame","file":"00008.jpg","t":8993}
+{"type":"frame","file":"00009.jpg","t":9246}
+{"type":"result","step":5,"ok":true,"summary":"URL: /honest/account/cancel · Title: Prism Studio","t":9527}
+{"type":"action","step":6,"tool":"snapshot","args":{},"t":9527}
+{"type":"result","step":6,"ok":true,"summary":"URL: /honest/account/cancel · Title: Prism Studio","t":9542}
+{"type":"action","step":7,"tool":"click","args":{"ref":"f2e79"},"t":13286}
+{"type":"pointer","kind":"click","x":891,"y":450.234375,"w":330,"h":44,"t":13301}
+{"type":"frame","file":"00010.jpg","t":13330}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/account/cancelled","t":13357}
+{"type":"frame","file":"00011.jpg","t":13582}
+{"type":"result","step":7,"ok":true,"summary":"URL: /honest/account/cancelled · Title: Prism Studio","t":13866}
+{"type":"action","step":8,"tool":"snapshot","args":{},"t":13868}
+{"type":"result","step":8,"ok":true,"summary":"URL: /honest/account/cancelled · Title: Prism Studio","t":13890}
+{"type":"end","status":"reached_payment","t":22893}

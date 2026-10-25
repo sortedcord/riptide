@@ -1,0 +1,14 @@
+{
+  "taskId": "t2",
+  "variantId": "v_ts8zx7",
+  "goal": "I'd like to try the All Apps plan with the free trial first, so nothing is charged today.",
+  "persona": "Student wanting to test before paying",
+  "startPath": "/honest/pricing",
+  "constraints": {
+    "budgetInr": 500,
+    "mustInclude": [
+      "trial"
+    ]
+  },
+  "stopCondition": "payment_page"
+}

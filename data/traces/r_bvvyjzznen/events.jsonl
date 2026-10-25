@@ -1,0 +1,31 @@
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account?s=r_bvvyjzznen&reset=1","t":14}
+{"type":"frame","file":"00001.jpg","t":72}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account?s=r_bvvyjzznen&reset=1","t":106}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account?s=r_bvvyjzznen","t":109}
+{"type":"frame","file":"00002.jpg","t":323}
+{"type":"frame","file":"00003.jpg","t":575}
+{"type":"action","step":1,"tool":"goto","args":{"url":"http://127.0.0.1:43785/honest/account?s=r_bvvyjzznen&reset=1"},"t":1878}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account?s=r_bvvyjzznen&reset=1","t":1900}
+{"type":"frame","file":"00004.jpg","t":1914}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account?s=r_bvvyjzznen&reset=1","t":1934}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account?s=r_bvvyjzznen","t":1936}
+{"type":"frame","file":"00005.jpg","t":2168}
+{"type":"result","step":1,"ok":true,"summary":"URL: /honest/account?s=r_bvvyjzznen · Title: Prism Studio","t":2536}
+{"type":"action","step":2,"tool":"click","args":{"ref":"f1e67"},"t":4545}
+{"type":"pointer","kind":"click","x":294.6484375,"y":506.03125,"w":84.140625,"h":24,"t":4584}
+{"type":"frame","file":"00006.jpg","t":4649}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account/cancel","t":4654}
+{"type":"frame","file":"00007.jpg","t":4899}
+{"type":"result","step":2,"ok":true,"summary":"URL: /honest/account/cancel · Title: Prism Studio","t":5146}
+{"type":"action","step":3,"tool":"click","args":{"ref":"f1e230"},"t":7350}
+{"type":"pointer","kind":"click","x":733,"y":682.484375,"w":18,"h":18,"t":7413}
+{"type":"frame","file":"00008.jpg","t":7471}
+{"type":"result","step":3,"ok":true,"summary":"URL: /honest/account/cancel · Title: Prism Studio","t":7975}
+{"type":"action","step":4,"tool":"click","args":{"ref":"f1e237"},"t":13743}
+{"type":"pointer","kind":"click","x":891,"y":794.859375,"w":330,"h":44,"t":13795}
+{"type":"nav","url":"http://127.0.0.1:43785/honest/account/cancelled","t":13855}
+{"type":"frame","file":"00009.jpg","t":13861}
+{"type":"frame","file":"00010.jpg","t":14115}
+{"type":"result","step":4,"ok":true,"summary":"URL: /honest/account/cancelled · Title: Prism Studio","t":14344}
+{"type":"frame","file":"00011.jpg","t":14677}
+{"type":"end","status":"reached_payment","t":17188}

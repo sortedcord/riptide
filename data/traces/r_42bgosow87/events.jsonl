@@ -1,0 +1,54 @@
+{"type":"frame","file":"00001.jpg","t":31}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/search?q=earbuds&s=r_42bgosow87&reset=1","t":195}
+{"type":"frame","file":"00002.jpg","t":288}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/search?q=earbuds&s=r_42bgosow87&reset=1","t":337}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/search?q=earbuds&s=r_42bgosow87","t":337}
+{"type":"frame","file":"00003.jpg","t":540}
+{"type":"action","step":1,"tool":"goto","args":{"url":"http://127.0.0.1:41475/honest/search?q=earbuds&s=r_42bgosow87&reset=1"},"t":4368}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/search?q=earbuds&s=r_42bgosow87&reset=1","t":4384}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/search?q=earbuds&s=r_42bgosow87&reset=1","t":4418}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/search?q=earbuds&s=r_42bgosow87","t":4419}
+{"type":"frame","file":"00004.jpg","t":4429}
+{"type":"frame","file":"00005.jpg","t":5007}
+{"type":"result","step":1,"ok":true,"summary":"URL: /honest/search?q=earbuds&s=r_42bgosow87 · Title: Results for \"earbuds\" · Cartwheel","t":5016}
+{"type":"action","step":2,"tool":"click","args":{"ref":"f1e150"},"t":7404}
+{"type":"pointer","kind":"click","x":490,"y":447.0546875,"w":234,"h":405.734375,"t":7446}
+{"type":"frame","file":"00006.jpg","t":7504}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/product/noisewave-n2-earbuds","t":7508}
+{"type":"frame","file":"00007.jpg","t":7755}
+{"type":"result","step":2,"ok":true,"summary":"URL: /honest/product/noisewave-n2-earbuds · Title: Cartwheel","t":8024}
+{"type":"action","step":3,"tool":"click","args":{"ref":"f1e407"},"t":10448}
+{"type":"pointer","kind":"click","x":1182,"y":847.875,"w":298,"h":44,"t":10478}
+{"type":"frame","file":"00008.jpg","t":10549}
+{"type":"frame","file":"00009.jpg","t":10800}
+{"type":"result","step":3,"ok":true,"summary":"URL: /honest/product/noisewave-n2-earbuds · Title: Cartwheel","t":11050}
+{"type":"action","step":4,"tool":"click","args":{"ref":"f1e741"},"t":14538}
+{"type":"pointer","kind":"click","x":773.484375,"y":856.8046875,"w":86.640625,"h":22.078125,"t":14559}
+{"type":"frame","file":"00010.jpg","t":14618}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/cart","t":14622}
+{"type":"frame","file":"00011.jpg","t":14869}
+{"type":"result","step":4,"ok":true,"summary":"URL: /honest/cart · Title: Cartwheel","t":15112}
+{"type":"action","step":5,"tool":"click","args":{"ref":"f1e854"},"t":17787}
+{"type":"pointer","kind":"click","x":1162,"y":782.828125,"w":338,"h":44,"t":17827}
+{"type":"frame","file":"00012.jpg","t":17892}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/checkout","t":17895}
+{"type":"frame","file":"00013.jpg","t":18145}
+{"type":"result","step":5,"ok":true,"summary":"URL: /honest/checkout · Title: Cartwheel","t":18377}
+{"type":"action","step":6,"tool":"click","args":{"ref":"f1e886"},"t":21461}
+{"type":"pointer","kind":"click","x":830.4375,"y":322.328125,"w":161.125,"h":57.65625,"t":21497}
+{"type":"frame","file":"00014.jpg","t":21558}
+{"type":"frame","file":"00015.jpg","t":21809}
+{"type":"result","step":6,"ok":true,"summary":"URL: /honest/checkout · Title: Cartwheel","t":22046}
+{"type":"action","step":7,"tool":"click","args":{"ref":"f1e982"},"t":22047}
+{"type":"pointer","kind":"click","x":1162,"y":651.046875,"w":338,"h":44,"t":22076}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/review","t":22132}
+{"type":"frame","file":"00016.jpg","t":22136}
+{"type":"frame","file":"00017.jpg","t":22387}
+{"type":"result","step":7,"ok":true,"summary":"URL: /honest/review · Title: Cartwheel","t":22636}
+{"type":"action","step":8,"tool":"click","args":{"ref":"f1e1087"},"t":25840}
+{"type":"pointer","kind":"click","x":1162,"y":855.203125,"w":338,"h":44,"t":25877}
+{"type":"nav","url":"http://127.0.0.1:41475/honest/payment","t":25933}
+{"type":"frame","file":"00018.jpg","t":25937}
+{"type":"frame","file":"00019.jpg","t":26187}
+{"type":"result","step":8,"ok":true,"summary":"URL: /honest/payment · Title: Cartwheel","t":26421}
+{"type":"end","status":"reached_payment","t":30523}

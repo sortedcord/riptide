@@ -1,0 +1,107 @@
+[
+  {
+    "type": "page_view",
+    "step": "plans",
+    "path": "/honest/pricing",
+    "runId": "r_f2hcpkt23z",
+    "t": 1792883715125
+  },
+  {
+    "type": "page_view",
+    "step": "plans",
+    "path": "/honest/pricing",
+    "runId": "r_f2hcpkt23z",
+    "t": 1792883717511
+  },
+  {
+    "type": "click",
+    "key": "plans.all.buy",
+    "runId": "r_f2hcpkt23z",
+    "t": 1792883720796
+  },
+  {
+    "type": "cart_change",
+    "step": "plans",
+    "lines": [
+      {
+        "key": "plan",
+        "label": "Prism All Apps · Monthly",
+        "amount": 2999,
+        "kind": "item",
+        "selected": true
+      },
+      {
+        "key": "gst",
+        "label": "GST (18%)",
+        "amount": 539.82,
+        "kind": "tax",
+        "selected": true
+      },
+      {
+        "key": "storage",
+        "label": "Stock assets & +1 TB cloud storage",
+        "amount": 293.82,
+        "kind": "addon",
+        "selected": false
+      }
+    ],
+    "total": 3538.82,
+    "runId": "r_f2hcpkt23z",
+    "t": 1792883720807
+  },
+  {
+    "type": "page_view",
+    "step": "signup",
+    "path": "/honest/signup",
+    "runId": "r_f2hcpkt23z",
+    "t": 1792883720826
+  },
+  {
+    "type": "click",
+    "key": "signup.demo.continue",
+    "runId": "r_f2hcpkt23z",
+    "t": 1792883724289
+  },
+  {
+    "type": "page_view",
+    "step": "review",
+    "path": "/honest/review",
+    "runId": "r_f2hcpkt23z",
+    "t": 1792883724310
+  },
+  {
+    "type": "click",
+    "key": "review.cta.continue",
+    "runId": "r_f2hcpkt23z",
+    "t": 1792883728444
+  },
+  {
+    "type": "page_view",
+    "step": "payment",
+    "path": "/honest/payment",
+    "runId": "r_f2hcpkt23z",
+    "t": 1792883728466
+  },
+  {
+    "type": "payment_reached",
+    "lines": [
+      {
+        "key": "plan",
+        "label": "Prism All Apps · Monthly",
+        "amount": 2999,
+        "kind": "item",
+        "selected": true
+      },
+      {
+        "key": "gst",
+        "label": "GST (18%)",
+        "amount": 539.82,
+        "kind": "tax",
+        "selected": true
+      }
+    ],
+    "total": 3538.82,
+    "runId": "r_f2hcpkt23z",
+    "t": 1792883728469
+  }
+]

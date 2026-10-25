@@ -1,0 +1,11 @@
+{
+  "taskId": "t1",
+  "variantId": "v_u30sob",
+  "goal": "Sign me up for the Standard plan on Reelbox, the usual setup is fine. Take me to the payment page.",
+  "persona": "Student in Bengaluru who wants to watch with a roommate",
+  "startPath": "/honest/",
+  "constraints": {
+    "budgetInr": 650
+  },
+  "stopCondition": "payment_page"
+}

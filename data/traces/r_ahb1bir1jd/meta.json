@@ -1,0 +1,16 @@
+{
+  "id": "r_ahb1bir1jd",
+  "agentId": "delta",
+  "model": "azure/gpt-5",
+  "port": 41004,
+  "taskId": "3eda564e-cc8c-4b2c-bef9-8bdbbd358181",
+  "startUrl": "http://127.0.0.1:43785/honest/account?s=r_ahb1bir1jd&reset=1",
+  "startedAt": "2026-10-24T23:15:33.974Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:16:13.305Z",
+  "status": "reached_payment",
+  "steps": 3
+}

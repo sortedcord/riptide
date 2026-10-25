@@ -1,0 +1,15 @@
+{"type":"page_view","step":"home","path":"/honest","runId":"r_6irop4snvu","t":1792884780535}
+{"type":"page_view","step":"plans","path":"/honest/plans","runId":"r_6irop4snvu","t":1792884781139}
+{"type":"click","key":"plans.card.standard","runId":"r_6irop4snvu","t":1792884781735}
+{"type":"cart_change","step":"plans","lines":[{"key":"plan","label":"Standard plan · 1 month","amount":450,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":81,"kind":"tax","selected":true}],"total":531,"runId":"r_6irop4snvu","t":1792884781743}
+{"type":"click","key":"plans.cta.continue","runId":"r_6irop4snvu","t":1792884781788}
+{"type":"page_view","step":"signup-email","path":"/honest/signup","runId":"r_6irop4snvu","t":1792884781814}
+{"type":"click","key":"signup-email.form.demo","runId":"r_6irop4snvu","t":1792884781847}
+{"type":"click","key":"signup-email.form.continue","runId":"r_6irop4snvu","t":1792884781903}
+{"type":"page_view","step":"signup-password","path":"/honest/signup/password","runId":"r_6irop4snvu","t":1792884781918}
+{"type":"click","key":"signup-password.form.demo","runId":"r_6irop4snvu","t":1792884781960}
+{"type":"page_view","step":"signup-plan","path":"/honest/signup/plan","runId":"r_6irop4snvu","t":1792884781976}
+{"type":"cart_change","step":"signup-plan","lines":[{"key":"plan","label":"Standard plan · 1 month","amount":450,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":81,"kind":"tax","selected":true},{"key":"extra-member","label":"Extra member slot · 1 month","amount":118,"kind":"addon","selected":false}],"total":531,"runId":"r_6irop4snvu","t":1792884781981}
+{"type":"click","key":"signup-plan.cta.continue","runId":"r_6irop4snvu","t":1792884782038}
+{"type":"page_view","step":"payment","path":"/honest/payment","runId":"r_6irop4snvu","t":1792884782057}
+{"type":"payment_reached","lines":[{"key":"plan","label":"Standard plan · 1 month","amount":450,"kind":"item","selected":true},{"key":"gst","label":"GST (18%)","amount":81,"kind":"tax","selected":true}],"total":531,"runId":"r_6irop4snvu","t":1792884782062}

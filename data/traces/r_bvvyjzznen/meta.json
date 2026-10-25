@@ -1,0 +1,16 @@
+{
+  "id": "r_bvvyjzznen",
+  "agentId": "alpha",
+  "model": "azure/gpt-4o",
+  "port": 41001,
+  "taskId": "9a5cbd46-4586-4bac-bf04-e6fcffb38c51",
+  "startUrl": "http://127.0.0.1:43785/honest/account?s=r_bvvyjzznen&reset=1",
+  "startedAt": "2026-10-24T23:15:19.740Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:15:36.929Z",
+  "status": "reached_payment",
+  "steps": 4
+}

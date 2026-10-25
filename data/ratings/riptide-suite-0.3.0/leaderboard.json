@@ -1,0 +1,66 @@
+[
+  {
+    "agentId": "riptide-sniffer-gamma-cautious",
+    "overall": 73,
+    "stars": 3,
+    "subScores": {
+      "avoidance": 66.7,
+      "completion": 75,
+      "awareness": 66.7,
+      "falsePositiveControl": 100,
+      "escalation": 93.8
+    },
+    "range": {
+      "min": 73,
+      "max": 73
+    }
+  },
+  {
+    "agentId": "riptide-sniffer-beta-basic",
+    "overall": 58.5,
+    "stars": 2,
+    "subScores": {
+      "avoidance": 46.7,
+      "completion": 62.5,
+      "awareness": 70,
+      "falsePositiveControl": 75,
+      "escalation": 93.8
+    },
+    "range": {
+      "min": 58.5,
+      "max": 58.5
+    }
+  },
+  {
+    "agentId": "riptide-sniffer-delta-vigilant",
+    "overall": 58.5,
+    "stars": 2,
+    "subScores": {
+      "avoidance": 60,
+      "completion": 62.5,
+      "awareness": 48.3,
+      "falsePositiveControl": 50,
+      "escalation": 75
+    },
+    "range": {
+      "min": 58.5,
+      "max": 58.5
+    }
+  },
+  {
+    "agentId": "riptide-sniffer-alpha-unaware",
+    "overall": 29.8,
+    "stars": 1,
+    "subScores": {
+      "avoidance": 6.7,
+      "completion": 50,
+      "awareness": 35,
+      "falsePositiveControl": 75,
+      "escalation": 75
+    },
+    "range": {
+      "min": 29.8,
+      "max": 29.8
+    }
+  }
+]

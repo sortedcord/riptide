@@ -1,0 +1,7 @@
+
+$ rm -rf data/mutations/v_ibyl2r.json data/tasks/v_ibyl2r data/rubrics/v_ibyl2r ../riptide-wt/v_ibyl2r
+
+$ sh -c rm -f data/gates/v_ibyl2r.json data/gates/v_ibyl2r.a*.json
+
+$ sh -c git worktree prune && for b in $(git branch --list 'variant/*/v_ibyl2r' --format='%(refname:short)'); do git branch -D "$b"; done
+Deleted branch variant/market/v_ibyl2r (was c304a4f).

@@ -1,0 +1,7 @@
+
+$ rm -rf data/mutations/v_q6vd89.json data/tasks/v_q6vd89 data/rubrics/v_q6vd89 ../riptide-wt/v_q6vd89
+
+$ sh -c rm -f data/gates/v_q6vd89.json data/gates/v_q6vd89.a*.json
+
+$ sh -c git worktree prune && for b in $(git branch --list 'variant/*/v_q6vd89' --format='%(refname:short)'); do git branch -D "$b"; done
+Deleted branch variant/market/v_q6vd89 (was c304a4f).

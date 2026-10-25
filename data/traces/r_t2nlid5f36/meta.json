@@ -1,0 +1,16 @@
+{
+  "id": "r_t2nlid5f36",
+  "agentId": "gamma",
+  "model": "bedrock/global.anthropic.claude-haiku-5-5",
+  "port": 41003,
+  "taskId": "36dde6d5-e29e-470a-ad31-1152ba1019ad",
+  "startUrl": "http://127.0.0.1:45251/honest/account?s=r_t2nlid5f36&reset=1",
+  "startedAt": "2026-10-24T23:13:54.826Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:14:17.719Z",
+  "status": "reached_payment",
+  "steps": 8
+}

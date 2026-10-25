@@ -1,0 +1,34 @@
+{
+  "variantId": "v_w9my2j",
+  "passed": false,
+  "gates": [
+    {
+      "gate": "scope",
+      "passed": true
+    },
+    {
+      "gate": "telltale",
+      "passed": false,
+      "detail": "+import { Slot, SlotButton, formatINR, useHydrated, useLineToggle, usePrice, useRiptide } from \"@riptide/core\";"
+    },
+    {
+      "gate": "build",
+      "passed": true
+    },
+    {
+      "gate": "record",
+      "passed": true
+    },
+    {
+      "gate": "smoke",
+      "passed": false,
+      "detail": "reached payment but with errors: HTTP 404 GET http://127.0.0.1:34201/honest/policies/terms?_rsc=7phJoRXQh02FgcOZ | console: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:34201/honest/checkout | HTTP 404 GET http://127.0.0.1:34201/honest/policies/returns?_rsc=7phJoRXQh02FgcOZ | console: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:34201/honest/checkout | HTTP 404 GET http://127.0.0.1:34201/honest/policies/privacy?_rsc=7phJoRXQh02FgcOZ | console: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:34201/honest/checkout | HTTP 404 GET http://127.0.0.1:34201/honest/policies/shipping?_rsc=7phJoRXQh02FgcOZ | console: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:34201/honest/checkout | HTTP 404 GET http://127.0.0.1:34201/honest/policies/terms?_rsc=8FOfBDVVICgJRdZi | console: Failed to load resource: the server responded with a status of 404 (Not Found) @ http://127.0.0.1:34201/honest/payment"
+    },
+    {
+      "gate": "verify",
+      "passed": false,
+      "detail": "not run: smoke failed"
+    }
+  ],
+  "attempt": 1
+}

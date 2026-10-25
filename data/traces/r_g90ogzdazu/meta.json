@@ -1,0 +1,16 @@
+{
+  "id": "r_g90ogzdazu",
+  "agentId": "alpha",
+  "model": "azure/gpt-4o",
+  "port": 41001,
+  "taskId": "7b951c96-68c1-4a4e-bc38-3cace1c7d933",
+  "startUrl": "http://127.0.0.1:43785/honest/pricing?s=r_g90ogzdazu&reset=1",
+  "startedAt": "2026-10-24T23:15:00.069Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:15:14.958Z",
+  "status": "reached_payment",
+  "steps": 4
+}

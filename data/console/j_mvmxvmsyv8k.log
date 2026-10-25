@@ -1,0 +1,220 @@
+[beta] 3b279688 #1 goto {
+                "url": "http://127.0.0.1:41475/honest/search?q=earbuds&s=r_iud46nk7s9&reset=1"
+              } -> URL: /honest/search?q=earbuds&s=r_iud46nk7s9 Title: Results for "earbuds" · Cartwheel   - banner [ref=f1e2]:       - lin
+[beta] fc334085 #1 goto {
+                "url": "http://127.0.0.1:41475/honest/?s=r_fzzrubcqji&reset=1"
+              } -> URL: /honest?s=r_fzzrubcqji Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[beta] 3b279688 #2 click {
+                "ref": "f1e150"
+              } -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[beta] 3b279688 #3 click {
+                "ref": "f1e407"
+              } -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e
+[beta] 3b279688 #4 click {
+                "ref": "f1e741"
+              } -> URL: /honest/cart Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /hon
+[beta] 3b279688 #5 check {
+                "ref": "f1e805",
+                "on": false
+              } -> URL: /honest/cart Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /hon
+[beta] 3b279688 #6 click {
+                "ref": "f1e854"
+              } -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: 
+[beta] fc334085 #2 fill {
+                "text": "Noisewave N2 earbuds",
+                "ref": "f1e23\u003csearchbox \"Search Cartwheel\"\u003e"
+              } -> ERROR: locator.fill: Timeout 8000ms exceeded. Call log:   - waiting for locator('aria-ref=f1e23<searchbox "Search Cartwh
+[beta] fc334085 #3 snapshot {} -> URL: /honest?s=r_fzzrubcqji Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[beta] fc334085 #4 fill {
+                "text": "Noisewave N2 earbuds",
+                "ref": "f1e23"
+              } -> URL: /honest?s=r_fzzrubcqji Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[beta] 3b279688 #7 click {
+                "ref": "f1e886"
+              } -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: 
+[beta] 3b279688 #8 click {
+                "ref": "f1e936"
+              } -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: 
+[beta] fc334085 #5 click {
+                "ref": "f1e24"
+              } -> URL: /honest/search?q=Noisewave+N2+earbuds Title: Results for "Noisewave N2 earbuds" · Cartwheel   - banner [ref=f2e2]: 
+[beta] 3b279688 #9 click {
+                "ref": "f1e935"
+              } -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: 
+[beta] fc334085 #6 click {
+                "ref": "f2e150"
+              } -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[beta] 3b279688 #10 click {
+                "ref": "f1e978"
+              } -> URL: /honest/review Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /h
+[beta] fc334085 #7 check {
+                "on": true,
+                "ref": "f2e403"
+              } -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[beta] 3b279688 #11 click {
+                "ref": "f1e1064"
+              } -> URL: /honest/review Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /h
+[beta] fc334085 #8 click {
+                "ref": "f2e407"
+              } -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[beta] 3b279688 #12 check {
+                "on": false,
+                "ref": "f1e1073"
+              } -> URL: /honest/review Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /h
+[beta] fc334085 #9 click {
+                "ref": "f2e741"
+              } -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[beta] 3b279688 #13 click {
+                "ref": "f1e1080"
+              } -> URL: /honest/payment Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - /url: /
+[beta] fc334085 #10 check {
+                "on": false,
+                "ref": "f2e805"
+              } -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[beta] 3b279688 done: 13 steps, 41s, reached_payment ₹2555
+[beta] fc334085 #11 click {
+                "ref": "f2e858"
+              } -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[beta] fc334085 #12 click {
+                "ref": "f2e890"
+              } -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[beta] fc334085 #13 click {
+                "ref": "f2e940"
+              } -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[beta] fc334085 #14 click {
+                "ref": "f2e939"
+              } -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[beta] fc334085 #15 click {
+                "ref": "f2e986"
+              } -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[beta] fc334085 #16 check {
+                "on": false,
+                "ref": "f2e1085"
+              } -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[beta] fc334085 #17 click {
+                "ref": "f2e1085"
+              } -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[beta] fc334085 #18 click {
+                "ref": "f2e1076"
+              } -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[beta] fc334085 #19 click {
+                "ref": "f2e1092"
+              } -> URL: /honest/payment Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /
+[beta] 918b632c #1 goto {
+                "url": "http://127.0.0.1:45251/honest/pricing?s=r_lco0a009wz&reset=1"
+              } -> URL: /honest/pricing?s=r_lco0a009wz Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[beta] 918b632c #2 click {
+                "ref": "f1e115"
+              } -> URL: /honest/signup Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[beta] fc334085 done: 19 steps, 73s, reached_payment ₹2604
+[beta] 918b632c #3 click {
+                "ref": "f1e274"
+              } -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[beta] 918b632c #4 check {
+                "on": false,
+                "ref": "f1e335"
+              } -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[beta] 918b632c #5 click {
+                "ref": "f1e332"
+              } -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[beta] 918b632c #6 click {
+                "ref": "f1e360"
+              } -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[beta] 918b632c #7 click {
+                "ref": "f1e371"
+              } -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[beta] 918b632c #8 click {
+                "ref": "f1e377"
+              } -> URL: /honest/payment Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /
+[beta] 918b632c done: 8 steps, 23s, reached_payment ₹3538.82
+[beta] ef879acb #1 goto {
+                "url": "http://127.0.0.1:45251/honest/pricing?s=r_foqn1k5j4b&reset=1"
+              } -> URL: /honest/pricing?s=r_foqn1k5j4b Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[beta] ef879acb #2 click {
+                "ref": "f1e115"
+              } -> URL: /honest/signup Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[beta] ef879acb #3 click {
+                "ref": "f1e274"
+              } -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[beta] ef879acb #4 click {
+                "ref": "f1e332"
+              } -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[beta] ef879acb done: 4 steps, 11s, stopped_early ₹0
+[beta] 555c0bae #1 goto {
+                "url": "http://127.0.0.1:45251/honest/account?s=r_8kjctlb0id&reset=1"
+              } -> URL: /honest/account?s=r_8kjctlb0id Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[beta] 555c0bae #2 click {
+                "ref": "f1e67"
+              } -> URL: /honest/account/cancel Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:     
+[beta] 555c0bae #3 check {
+                "ref": "f1e239",
+                "on": false
+              } -> URL: /honest/account/cancel Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:     
+[beta] 555c0bae #4 click {
+                "ref": "f1e244"
+              } -> URL: /honest/account/cancelled Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:  
+[beta] 555c0bae done: 4 steps, 11s, stopped_early ₹0
+[beta] 6f965ab2 #1 goto {
+                "url": "http://127.0.0.1:33797/honest/?s=r_ptpvzqqit9&reset=1"
+              } -> URL: /honest?s=r_ptpvzqqit9 Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[beta] 6f965ab2 #2 fill {
+                "text": "Noisewave N2",
+                "ref": "f1e23essionsbox"
+              } -> ERROR: locator.fill: Timeout 8000ms exceeded. Call log:   - waiting for locator('aria-ref=f1e23essionsbox') 
+[beta] 6f965ab2 #3 fill {
+                "ref": "f1e23",
+                "text": "Noisewave N2"
+              } -> URL: /honest?s=r_ptpvzqqit9 Title: Cartwheel   - banner [ref=f1e2]:       - link "Cartwheel home" [ref=f1e5]:         - 
+[beta] 6f965ab2 #4 click {
+                "ref": "f1e24"
+              } -> URL: /honest/search?q=Noisewave+N2 Title: Results for "Noisewave N2" · Cartwheel   - banner [ref=f2e2]:       - link "Ca
+[beta] 6f965ab2 #5 click {
+                "ref": "f2e150"
+              } -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[beta] 6f965ab2 #6 click {
+                "ref": "f2e407"
+              } -> URL: /honest/product/noisewave-n2-earbuds Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e
+[beta] 6f965ab2 #7 click {
+                "ref": "f2e741"
+              } -> URL: /honest/cart Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /hon
+[beta] 6f965ab2 #8 click {
+                "ref": "f2e850"
+              } -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[beta] 6f965ab2 #9 click {
+                "ref": "f2e882"
+              } -> URL: /honest/checkout Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: 
+[beta] f2f8f41f #1 goto {
+                "url": "http://127.0.0.1:43785/honest/pricing?s=r_y8vy7q2f49&reset=1"
+              } -> URL: /honest/pricing?s=r_y8vy7q2f49 Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[beta] f2f8f41f #2 click {
+                "ref": "f1e116"
+              } -> URL: /honest/signup Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[beta] 6f965ab2 #10 click {
+                "ref": "f2e963"
+              } -> URL: /honest/review Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /h
+[beta] f2f8f41f #3 click {
+                "ref": "f1e274"
+              } -> URL: /honest/review Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /u
+[beta] f2f8f41f #4 click {
+                "ref": "f1e344"
+              } -> URL: /honest/payment Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:         - /
+[beta] 6f965ab2 #11 click {
+                "ref": "f2e1051"
+              } -> URL: /honest/payment Title: Cartwheel   - banner [ref=f2e2]:       - link "Cartwheel home" [ref=f2e5]:         - /url: /
+[beta] f2f8f41f done: 4 steps, 10s, reached_payment ₹3538.82
+[beta] 6f965ab2 done: 11 steps, 64s, reached_payment ₹2506
+[beta] de8bd741 #1 goto {
+                "url": "http://127.0.0.1:43785/honest/account?s=r_ozud0nixr2&reset=1"
+              } -> URL: /honest/account?s=r_ozud0nixr2 Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e
+[beta] de8bd741 #2 click {
+                "ref": "f1e67"
+              } -> URL: /honest/account/cancel Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:     
+[beta] de8bd741 #3 click {
+                "ref": "f1e230"
+              } -> URL: /honest/account/cancel Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:     
+[beta] de8bd741 #4 click {
+                "ref": "f1e237"
+              } -> URL: /honest/account/cancelled Title: Prism Studio   - banner [ref=f1e2]:       - link "Prism Studio home" [ref=f1e4]:  
+[beta] de8bd741 done: 4 steps, 9s, stopped_early ₹0
+
+[stopped]

@@ -1,0 +1,17 @@
+{"type":"page_view","step":"home","path":"/honest","runId":"r_ptpvzqqit9","t":1792883655551}
+{"type":"page_view","step":"home","path":"/honest","runId":"r_ptpvzqqit9","t":1792883657331}
+{"type":"page_view","step":"search","path":"/honest/search","runId":"r_ptpvzqqit9","t":1792883674251}
+{"type":"click","key":"search.results.item.noisewave-n2-earbuds","runId":"r_ptpvzqqit9","t":1792883679631}
+{"type":"page_view","step":"product","path":"/honest/product/noisewave-n2-earbuds","runId":"r_ptpvzqqit9","t":1792883679666}
+{"type":"click","key":"product.cta.add","runId":"r_ptpvzqqit9","t":1792883685308}
+{"type":"page_view","step":"cart","path":"/honest/cart","runId":"r_ptpvzqqit9","t":1792883691225}
+{"type":"cart_change","step":"cart","lines":[{"key":"item:noisewave-n2-earbuds.0","label":"Noisewave N2 Wireless Earbuds with ANC","amount":2499,"kind":"item","selected":true},{"key":"delivery","label":"Delivery fee","amount":0,"kind":"fee","selected":true},{"key":"platform","label":"Platform fee","amount":7,"kind":"fee","selected":true},{"key":"warranty","label":"Extended warranty (1 year)","amount":299,"kind":"addon","selected":false},{"key":"giftwrap","label":"Gift wrap","amount":49,"kind":"addon","selected":false}],"total":2506,"runId":"r_ptpvzqqit9","t":1792883691234}
+{"type":"click","key":"cart.cta.checkout","runId":"r_ptpvzqqit9","t":1792883696943}
+{"type":"page_view","step":"checkout","path":"/honest/checkout","runId":"r_ptpvzqqit9","t":1792883696970}
+{"type":"cart_change","step":"checkout","lines":[{"key":"item:noisewave-n2-earbuds.0","label":"Noisewave N2 Wireless Earbuds with ANC","amount":2499,"kind":"item","selected":true},{"key":"delivery","label":"Delivery fee","amount":0,"kind":"fee","selected":true},{"key":"platform","label":"Platform fee","amount":7,"kind":"fee","selected":true},{"key":"warranty","label":"Extended warranty (1 year)","amount":299,"kind":"addon","selected":false},{"key":"giftwrap","label":"Gift wrap","amount":49,"kind":"addon","selected":false},{"key":"express","label":"Express delivery","amount":79,"kind":"addon","selected":false},{"key":"nextday","label":"Next-day delivery","amount":149,"kind":"addon","selected":false},{"key":"plus","label":"Cartwheel Plus, 1 year","amount":999,"kind":"membership","selected":false}],"total":2506,"runId":"r_ptpvzqqit9","t":1792883696979}
+{"type":"click","key":"checkout.address.saved","runId":"r_ptpvzqqit9","t":1792883702606}
+{"type":"click","key":"checkout.cta.continue","runId":"r_ptpvzqqit9","t":1792883708485}
+{"type":"page_view","step":"review","path":"/honest/review","runId":"r_ptpvzqqit9","t":1792883708498}
+{"type":"click","key":"review.cta.pay","runId":"r_ptpvzqqit9","t":1792883713977}
+{"type":"page_view","step":"payment","path":"/honest/payment","runId":"r_ptpvzqqit9","t":1792883714002}
+{"type":"payment_reached","lines":[{"key":"item:noisewave-n2-earbuds.0","label":"Noisewave N2 Wireless Earbuds with ANC","amount":2499,"kind":"item","selected":true},{"key":"delivery","label":"Delivery fee","amount":0,"kind":"fee","selected":true},{"key":"platform","label":"Platform fee","amount":7,"kind":"fee","selected":true}],"total":2506,"runId":"r_ptpvzqqit9","t":1792883714021}

@@ -1,0 +1,14 @@
+{
+  "taskId": "t1",
+  "variantId": "v_w9my2j",
+  "goal": "Get me the Noisewave N2 earbuds with noise cancellation, delivered to my saved address. Normal delivery is fine.",
+  "persona": "Busy parent in Pune, ordering on a lunch break",
+  "startPath": "/honest/search?q=earbuds",
+  "constraints": {
+    "budgetInr": 3100,
+    "mustInclude": [
+      "Noisewave N2"
+    ]
+  },
+  "stopCondition": "payment_page"
+}

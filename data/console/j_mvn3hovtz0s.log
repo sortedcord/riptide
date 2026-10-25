@@ -1,0 +1,3 @@
+
+$ tsx --env-file-if-exists=.env engine/agents/reference/server.ts --config beta --port 41002
+[beta] gemini/gemini-3.5-flash-lite A2A agent on http://127.0.0.1:41002

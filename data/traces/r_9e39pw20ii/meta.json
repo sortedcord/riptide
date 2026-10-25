@@ -1,0 +1,16 @@
+{
+  "id": "r_9e39pw20ii",
+  "agentId": "delta",
+  "model": "azure/gpt-5",
+  "port": 41004,
+  "taskId": "7cc28ae9-7fd8-4f84-b324-ac677f9416c4",
+  "startUrl": "http://127.0.0.1:43785/honest/pricing?s=r_9e39pw20ii&reset=1",
+  "startedAt": "2026-10-24T23:15:17.878Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "endedAt": "2026-10-24T23:16:10.320Z",
+  "status": "reached_payment",
+  "steps": 4
+}

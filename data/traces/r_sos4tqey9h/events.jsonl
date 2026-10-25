@@ -1,0 +1,31 @@
+{"type":"frame","file":"00001.jpg","t":22}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_sos4tqey9h&reset=1","t":108}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_sos4tqey9h&reset=1","t":218}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_sos4tqey9h","t":221}
+{"type":"frame","file":"00002.jpg","t":272}
+{"type":"frame","file":"00003.jpg","t":523}
+{"type":"action","step":1,"tool":"goto","args":{"url":"http://127.0.0.1:45251/honest/pricing?s=r_sos4tqey9h&reset=1"},"t":2023}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_sos4tqey9h&reset=1","t":2039}
+{"type":"frame","file":"00004.jpg","t":2047}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_sos4tqey9h&reset=1","t":2075}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_sos4tqey9h","t":2078}
+{"type":"frame","file":"00005.jpg","t":2299}
+{"type":"result","step":1,"ok":true,"summary":"URL: /honest/pricing?s=r_sos4tqey9h · Title: Prism Studio","t":2654}
+{"type":"action","step":2,"tool":"click","args":{"ref":"f1e115"},"t":5023}
+{"type":"pointer","kind":"click","x":633.8203125,"y":450.140625,"w":164.328125,"h":57.65625,"t":5065}
+{"type":"frame","file":"00006.jpg","t":5090}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/signup","t":5123}
+{"type":"frame","file":"00007.jpg","t":5341}
+{"type":"result","step":2,"ok":true,"summary":"URL: /honest/signup · Title: Prism Studio","t":5618}
+{"type":"action","step":3,"tool":"click","args":{"ref":"f1e274"},"t":7452}
+{"type":"pointer","kind":"click","x":252.421875,"y":507.515625,"w":198.84375,"h":44,"t":7478}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/review","t":7534}
+{"type":"frame","file":"00008.jpg","t":7556}
+{"type":"frame","file":"00009.jpg","t":7808}
+{"type":"result","step":3,"ok":true,"summary":"URL: /honest/review · Title: Prism Studio","t":8022}
+{"type":"action","step":4,"tool":"click","args":{"ref":"f1e332"},"t":10249}
+{"type":"pointer","kind":"click","x":203.0703125,"y":877.546875,"w":116.140625,"h":44,"t":10284}
+{"type":"frame","file":"00010.jpg","t":10306}
+{"type":"frame","file":"00011.jpg","t":10556}
+{"type":"result","step":4,"ok":true,"summary":"URL: /honest/review · Title: Prism Studio","t":10829}
+{"type":"end","status":"stopped_early","t":46163}

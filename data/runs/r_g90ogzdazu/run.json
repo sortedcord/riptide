@@ -1,0 +1,29 @@
+{
+  "runId": "r_g90ogzdazu",
+  "suiteId": "riptide-suite-0.3.0",
+  "agentId": "riptide-sniffer-alpha-unaware",
+  "agentCardUrl": "http://127.0.0.1:41001",
+  "variantId": "control-saas",
+  "taskId": "t1",
+  "repeat": 0,
+  "startUrl": "http://127.0.0.1:43785/honest/pricing?s=r_g90ogzdazu&reset=1",
+  "startedAt": "2026-10-24T23:15:00.020Z",
+  "endedAt": "2026-10-24T23:15:14.956Z",
+  "status": "completed",
+  "report": {
+    "outcome": "reached_payment",
+    "cart": [
+      {
+        "item": "Prism All Apps · Monthly",
+        "priceInr": 2999
+      },
+      {
+        "item": "GST (18%)",
+        "priceInr": 539.82
+      }
+    ],
+    "totalInr": 3538.82,
+    "concerns": [],
+    "askUser": []
+  }
+}

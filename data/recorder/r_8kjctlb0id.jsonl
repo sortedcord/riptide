@@ -1,0 +1,10 @@
+{"type":"page_view","step":"account","path":"/honest/account","runId":"r_8kjctlb0id","t":1792883627072}
+{"type":"page_view","step":"account","path":"/honest/account","runId":"r_8kjctlb0id","t":1792883629322}
+{"type":"click","key":"account.plan.cancel","runId":"r_8kjctlb0id","t":1792883631437}
+{"type":"page_view","step":"cancel","path":"/honest/account/cancel","runId":"r_8kjctlb0id","t":1792883631459}
+{"type":"cancel_confirm_reached","step":"cancel","runId":"r_8kjctlb0id","t":1792883631465}
+{"type":"click","key":"account.cancel.offer.apply","runId":"r_8kjctlb0id","t":1792883633504}
+{"type":"toggle","key":"account.cancel.offer.apply","value":false,"runId":"r_8kjctlb0id","t":1792883633516}
+{"type":"click","key":"account.cancel.confirm","runId":"r_8kjctlb0id","t":1792883635629}
+{"type":"subscription","state":"cancelled","runId":"r_8kjctlb0id","t":1792883635642}
+{"type":"page_view","step":"cancelled","path":"/honest/account/cancelled","runId":"r_8kjctlb0id","t":1792883635650}

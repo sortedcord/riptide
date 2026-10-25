@@ -1,0 +1,50 @@
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_lco0a009wz&reset=1","t":19}
+{"type":"frame","file":"00001.jpg","t":22}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_lco0a009wz&reset=1","t":124}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_lco0a009wz","t":128}
+{"type":"frame","file":"00002.jpg","t":274}
+{"type":"frame","file":"00003.jpg","t":528}
+{"type":"action","step":1,"tool":"goto","args":{"url":"http://127.0.0.1:45251/honest/pricing?s=r_lco0a009wz&reset=1"},"t":1433}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_lco0a009wz&reset=1","t":1463}
+{"type":"frame","file":"00004.jpg","t":1468}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_lco0a009wz&reset=1","t":1496}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/pricing?s=r_lco0a009wz","t":1497}
+{"type":"frame","file":"00005.jpg","t":1720}
+{"type":"result","step":1,"ok":true,"summary":"URL: /honest/pricing?s=r_lco0a009wz · Title: Prism Studio","t":2074}
+{"type":"action","step":2,"tool":"click","args":{"ref":"f1e115"},"t":3442}
+{"type":"pointer","kind":"click","x":633.8203125,"y":450.140625,"w":164.328125,"h":57.65625,"t":3494}
+{"type":"frame","file":"00006.jpg","t":3559}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/signup","t":3582}
+{"type":"frame","file":"00007.jpg","t":3811}
+{"type":"frame","file":"00008.jpg","t":4065}
+{"type":"result","step":2,"ok":true,"summary":"URL: /honest/signup · Title: Prism Studio","t":4090}
+{"type":"action","step":3,"tool":"click","args":{"ref":"f1e274"},"t":5791}
+{"type":"pointer","kind":"click","x":252.421875,"y":507.515625,"w":198.84375,"h":44,"t":5855}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/review","t":5919}
+{"type":"frame","file":"00009.jpg","t":5931}
+{"type":"frame","file":"00010.jpg","t":6182}
+{"type":"result","step":3,"ok":true,"summary":"URL: /honest/review · Title: Prism Studio","t":6425}
+{"type":"action","step":4,"tool":"check","args":{"ref":"f1e335","on":false},"t":8718}
+{"type":"pointer","kind":"click","x":152.328125,"y":449.546875,"w":14.65625,"h":18,"t":8755}
+{"type":"frame","file":"00011.jpg","t":8791}
+{"type":"result","step":4,"ok":true,"summary":"URL: /honest/review · Title: Prism Studio","t":9286}
+{"type":"action","step":5,"tool":"click","args":{"ref":"f1e332"},"t":10944}
+{"type":"pointer","kind":"click","x":203.0703125,"y":342.546875,"w":116.140625,"h":44,"t":10979}
+{"type":"frame","file":"00012.jpg","t":11055}
+{"type":"result","step":5,"ok":true,"summary":"URL: /honest/review · Title: Prism Studio","t":11544}
+{"type":"action","step":6,"tool":"click","args":{"ref":"f1e360"},"t":13586}
+{"type":"pointer","kind":"click","x":232.125,"y":362.546875,"w":174.25,"h":44,"t":13658}
+{"type":"frame","file":"00013.jpg","t":13727}
+{"type":"result","step":6,"ok":true,"summary":"URL: /honest/review · Title: Prism Studio","t":14234}
+{"type":"action","step":7,"tool":"click","args":{"ref":"f1e371"},"t":16199}
+{"type":"pointer","kind":"click","x":329.7109375,"y":339.53125,"w":43.734375,"h":16,"t":16257}
+{"type":"frame","file":"00014.jpg","t":16316}
+{"type":"frame","file":"00015.jpg","t":16569}
+{"type":"result","step":7,"ok":true,"summary":"URL: /honest/review · Title: Prism Studio","t":16815}
+{"type":"action","step":8,"tool":"click","args":{"ref":"f1e377"},"t":19821}
+{"type":"pointer","kind":"click","x":1076.65625,"y":373.859375,"w":436.65625,"h":44,"t":19890}
+{"type":"frame","file":"00016.jpg","t":19947}
+{"type":"nav","url":"http://127.0.0.1:45251/honest/payment","t":19954}
+{"type":"frame","file":"00017.jpg","t":20198}
+{"type":"result","step":8,"ok":true,"summary":"URL: /honest/payment · Title: Prism Studio","t":20434}
+{"type":"end","status":"reached_payment","t":22677}
