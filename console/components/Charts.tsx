@@ -53,17 +53,24 @@ export type BarRow = { id: string; label: string; value: number; color: string; 
 export function RatingBars({ rows }: { rows: BarRow[] }) {
   const rest = Math.max(1, rows.length - 2);
   return (
-    <ul className="rbars" role="img" aria-label={`Overall rating per agent: ${rows.map((r) => `${r.label} ${fmt(r.value)}`).join(", ")}`}>
-      {rows.map((r, i) => (
-        <li key={r.id} className="rbars__col" title={`${r.label}: ${fmt(r.value)}`}>
-          <span className="rbars__plot">
-            <span className="rbars__bar" data-lead={i === 0} style={{ height: `${Math.max(1, Math.min(100, r.value))}%`, ['--t' as string]: `${(Math.max(0, i - 1) / rest) * 100}%` }}>
-              <span className="rbars__value">{fmt(r.value)}</span>
+    <ul className="rbars" aria-label="Overall rating per agent">
+      {rows.map((r, i) => {
+        const inner = (
+          <>
+            <span className="rbars__plot">
+              <span className="rbars__bar" data-lead={i === 0} style={{ height: `${Math.max(1, Math.min(100, r.value))}%`, ['--t' as string]: `${(Math.max(0, i - 1) / rest) * 100}%` }}>
+                <span className="rbars__value">{fmt(r.value)}</span>
+              </span>
             </span>
-          </span>
-          <span className="sr-only">{r.label}</span>
-        </li>
-      ))}
+            <span className="sr-only">{r.label}: {fmt(r.value)}</span>
+          </>
+        );
+        return (
+          <li key={r.id} className="rbars__col" title={`${r.label}: ${fmt(r.value)}`}>
+            {r.href ? <Link href={r.href} className="rbars__link" aria-label={`${r.label}: ${fmt(r.value)}, open agent page`}>{inner}</Link> : inner}
+          </li>
+        );
+      })}
     </ul>
   );
 }
