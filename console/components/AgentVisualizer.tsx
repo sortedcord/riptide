@@ -230,7 +230,7 @@ function Player({ id, startLive }: { id: string; startLive: boolean }) {
           )}
           {cursor && (
             <svg className="pointer-events-none absolute h-6 w-6 drop-shadow" viewBox="0 0 24 24" aria-hidden style={{ left: pct(cursor.x, vw), top: pct(cursor.y, vh), transform: "translate(-3px, -2px)" }}>
-              <path d="M3 2l16 9.5-6.6 1.4 3.8 7.6-3 1.5-3.8-7.6L4.8 19z" fill="#fff" stroke="#000" strokeWidth="1.4" strokeLinejoin="round" />
+              <path d="M3 2l16 9.5-6.6 1.4 3.8 7.6-3 1.5-3.8-7.6L4.8 19z" fill="#f8eedc" stroke="#0b0a07" strokeWidth="1.4" strokeLinejoin="round" />
             </svg>
           )}
 

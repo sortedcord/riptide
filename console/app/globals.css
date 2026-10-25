@@ -59,11 +59,17 @@ b, strong { font-weight: 600; }
 
 /* Page header */
 .es-title { font-size: clamp(2.25rem, 4.5vw, 3.5rem); line-height: 1.08; font-weight: 500; }
+/* Title spire: three stepped blades rising after the title's last word, on the system's one shear angle (drop = half the width). */
+.es-spire { display: inline-flex; align-items: flex-end; gap: 0.12em; height: 0.74em; margin-left: 0.3em; vertical-align: baseline; }
+.es-spire i { width: 0.2em; background: var(--es-gradient-blade); clip-path: polygon(0 0.1em, 100% 0, 100% 100%, 0 100%); }
+.es-spire i:nth-child(1) { height: 52%; } .es-spire i:nth-child(2) { height: 100%; } .es-spire i:nth-child(3) { height: 74%; }
 .es-sub { max-width: 46rem; color: var(--es-cream-dim); }
 
 /* Panels */
 .card { position: relative; background: var(--es-charcoal); border-radius: 14px; padding: 1.5rem; }
 .card-title { font-size: 1.25rem; font-weight: 500; line-height: 1.2; }
+/* A single blade marks every panel title. */
+.card-title::before { content: ""; display: inline-block; width: 0.42em; height: 0.82em; margin-right: 0.5em; background: var(--es-gradient-blade); clip-path: polygon(0 0.21em, 100% 0, 100% 100%, 0 100%); }
 .es-panel { position: relative; overflow: hidden; border-radius: 14px; padding: 1.5rem; background: var(--es-charcoal); }
 .es-panel--cream { background: var(--es-cream); color: var(--es-ink-on-light); }
 .es-panel--mesh { background: var(--es-gradient-mesh); color: var(--es-ink-on-light); }
@@ -171,7 +177,7 @@ table.t tbody tr:hover td { background: rgba(248, 238, 220, 0.03); }
 .stage__shape { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
 .stage__fill { fill: var(--surface); }
 .stage__edge { fill: none; stroke: var(--border); stroke-width: 1.5; stroke-linejoin: round; }
-.stage__progress { fill: none; stroke: var(--accent); stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; transition: stroke-dasharray .25s linear; filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 55%, transparent)); }
+.stage__progress { fill: none; stroke: var(--accent); stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; transition: stroke-dasharray .25s linear; }
 .stage__progress--over { stroke: var(--warn, var(--accent)); animation: stage-pulse 1.2s ease-in-out infinite; }
 .stage__body { position: relative; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .stage__title { font-weight: 600; font-size: 15px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -207,7 +213,7 @@ table.t tbody tr:hover td { background: rgba(248, 238, 220, 0.03); }
 .viz-legend li { display: inline-flex; align-items: center; gap: 6px; }
 .viz-swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; flex: none; }
 .viz-tip { position: absolute; z-index: 5; pointer-events: none; min-width: 150px; background: var(--es-ink, #0b0a07); color: var(--fg);
-  border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; font-size: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+  border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; font-size: 12px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.32), 0 8px 28px rgba(0, 0, 0, 0.36); }
 .viz-tip__head { display: flex; align-items: center; gap: 6px; font-weight: 600; margin-bottom: 4px; white-space: nowrap; }
 .viz-tip__row { display: flex; align-items: center; gap: 6px; white-space: nowrap; color: var(--muted); }
 .viz-tip__row b { color: var(--fg); font-variant-numeric: tabular-nums; min-width: 2.2em; }

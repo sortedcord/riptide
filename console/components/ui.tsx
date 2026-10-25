@@ -44,7 +44,7 @@ export const Page = ({ title, sub, actions, children }: { title: ReactNode; sub?
   <div className="space-y-6">
     <header className="flex flex-wrap items-end justify-between gap-4 pb-4">
       <div className="min-w-0">
-        <h1 className="es-title break-words">{title}</h1>
+        <h1 className="es-title break-words">{title}<span className="es-spire" aria-hidden><i /><i /><i /></span></h1>
         {sub && <p className="es-sub mt-3">{sub}</p>}
       </div>
       {actions}

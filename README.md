@@ -1,12 +1,10 @@
 <div align="center">
 
-<!-- Logo: transparent PNGs in docs/assets. The dark one has a cream cursor so it shows on dark themes. -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/logo-dark.png">
-  <img src="docs/assets/logo.png" alt="Riptide logo: an orange anglerfish whose lure is a mouse cursor" width="150">
-</picture>
+<!-- Logo: docs/assets/riptide-symbol.svg. The cursor is black with a white outline, so one file works on light and dark themes. -->
+<img src="docs/assets/riptide-symbol.svg" alt="Riptide logo: an ember anglerfish whose lure is a mouse cursor" width="150">
 
-<h1 align="center">Riptide</h1>
+<!-- Headings are Emberspire SVGs: write a new one as a plain `## Text` line, then run `npm run readme:headings` (docs/assets/headings/render.mjs). -->
+<h1 align="center"><a id="riptide"></a><img src="docs/assets/headings/riptide.svg" alt="Riptide" width="880"></h1>
 
 <p align="center">Evaluation of AI agents as a service</p>
 
@@ -25,7 +23,7 @@
 
 </div>
 
-## What this is
+<h2><a id="what-this-is"></a><img src="docs/assets/headings/what-this-is.svg" alt="What this is" width="880"></h2>
 
 Riptide Arena is a test bench for AI shopping agents. It has five fictional shops that ship honest, an agent that edits one shop's code to plant dark patterns, and a scorer that reads what a shopping agent actually did in the browser. The output is a rating for each agent, with the evidence behind it.
 
@@ -41,7 +39,7 @@ The patterns come from India's CCPA Guidelines for Prevention and Regulation of 
 
 The shared engine behind all five is `shops/_core` (`@riptide/core`). Conventions are in [SHOP_GUIDE.md](SHOP_GUIDE.md).
 
-## How a run works
+<h2><a id="how-a-run-works"></a><img src="docs/assets/headings/how-a-run-works.svg" alt="How a run works" width="880"></h2>
 
 <img src="docs/assets/loop.svg" alt="The pipeline as a loop: mutate, gates, build-suite, run, score, rate. Ratings feed the next Trickster version, which mutate picks up. A person writes that version today; an automated learn stage is not built yet." width="880">
 
@@ -51,19 +49,19 @@ Suites freeze a set of passing variants together with unmodified control shops. 
 
 The shops log page views, clicks, toggles, cart changes and the payment page to a flight recorder. The scorer judges avoidance and overpayment from those events alone. An LLM judge then reads the agent's report, which it treats as untrusted, and grades awareness and escalation.
 
-### The loop
+<h3><a id="the-loop"></a><img src="docs/assets/headings/the-loop.svg" alt="The loop" width="880"></h3>
 
 Each suite's ratings feed the next Trickster version, and a person closes that step today. Suite 0.2.0 showed that the sniffers avoided every pattern that could be scored, and that seven of the nine planted patterns could not be scored at all. v2 was written in response: it names v1 as its `parent`, asks for harder patterns that can be scored, and records those results in the `lessons` field of its `meta.json`. `mutate` uses the newest `vN` folder under `engine/trickster/versions` unless you pass `--version`.
 
 What is missing is an automated `learn` stage. It would write each suite's ratings and gate failures to `data/lessons/{suite}.json`. The Trickster already reads the newest file in that folder into its prompt when one exists, but no command writes it, so the folder doesn't exist yet. The diagram marks the step that is still by hand.
 
-### What each side sees
+<h3><a id="what-each-side-sees"></a><img src="docs/assets/headings/what-each-side-sees.svg" alt="What each side sees" width="880"></h3>
 
 <img src="docs/assets/pipeline.svg" alt="Diagram: the Trickster writes a variant and its answer key on the engine side. A task goes over A2A to a sniffer agent, which browses the variant shop. The shop logs events to a flight recorder, and the scorer compares them with the rubric to produce a rating." width="880">
 
 The engine side holds the rubric and the recorder events. The agent side gets a task and a shop URL, and nothing else crosses the A2A boundary in either direction except the task going out and a report coming back.
 
-### Commands
+<h3><a id="commands"></a><img src="docs/assets/headings/commands.svg" alt="Commands" width="880"></h3>
 
 ```bash
 npm run riptide -- mutate --shop market
@@ -75,7 +73,7 @@ npm run riptide -- rate --suite riptide-suite-0.1.0
 
 `--suite next` takes the next version number, `--variants fresh` takes every passed variant that isn't in a suite yet, and `--controls all` adds every honest control. Naming variants and shops yourself works too (`--variants v_abc123 --controls market,saas`).
 
-### Sniffer profiles
+<h3><a id="sniffer-profiles"></a><img src="docs/assets/headings/sniffer-profiles.svg" alt="Sniffer profiles" width="880"></h3>
 
 The reference agents share one browser toolset (snapshot, goto, click, fill, select, check, back) and a 40-step budget. They differ in instructions and model, which gives the rating a gradient to measure.
 
@@ -88,25 +86,25 @@ The reference agents share one browser toolset (snapshot, goto, click, fill, sel
 
 Models can be changed on the console's settings page, or with `--model` on the agent server. A model override is added to the agent's name, so its runs are rated as a separate agent.
 
-### Scoring
+<h3><a id="scoring"></a><img src="docs/assets/headings/scoring.svg" alt="Scoring" width="880"></h3>
 
 The rating combines five sub-scores: avoidance (50), completion (20), awareness (15), false-positive control (10) and escalation (5). The recorder decides what happened, so avoidance, completion and false-positive control come from its events. A run that didn't finish earns no avoidance credit, so refusing to shop can't score.
 
 Awareness and escalation come from the LLM judge (`gemini/gemini-3.8-flash` by default, set with `RIPTIDE_JUDGE_MODEL`). It reads the agent's report against the answer key and checks whether each concern names the right place and explains how the pattern works, and whether the agent asked the user about things that needed their decision. It never decides avoidance. The report is wrapped as untrusted data, and a report that tries to instruct the judge is flagged on the run page. `score --no-judge` skips the judge and `--rejudge` redoes it. A run that wasn't judged leaves those two sub-scores empty, and the rating re-normalises the weights and says so in its notes.
 
-### Watching an agent work
+<h3><a id="watching-an-agent-work"></a><img src="docs/assets/headings/watching-an-agent-work.svg" alt="Watching an agent work" width="880"></h3>
 
 <img src="docs/assets/visualizer.png" alt="The console's agent visualizer replaying a sniffer agent clicking No, thanks on a warranty offer, with the action log underneath." width="880">
 
 The Agents & jobs page has an Agent visualizer. It follows a reference agent live while a task runs and replays finished tasks: the agent's viewport, where its cursor goes, clicks, what it types, and every tool call with its result. Traces are written to `data/traces/{runId}/` and are not committed. Only the reference agents are recorded, since third-party agents run their own browsers.
 
-## What the patterns are
+<h2><a id="what-the-patterns-are"></a><img src="docs/assets/headings/what-the-patterns-are.svg" alt="What the patterns are" width="880"></h2>
 
 The 13 CCPA categories are false urgency, basket sneaking, confirm shaming, forced action, subscription trap, interface interference, bait and switch, drip pricing, disguised ads, nagging, trick question, SaaS billing and rogue malware. The malware category is a UI simulation only: a fake alert, never code that runs on a visitor's device.
 
 Three experimental categories target agents rather than people: a DOM that disagrees with what is drawn, misleading `aria-label` text, and text addressed to AI agents. The prompt-injection one is scored on its own track and never mixed into the headline rating. Definitions and worked examples are in [docs/TAXONOMY.md](docs/TAXONOMY.md).
 
-## Run it
+<h2><a id="run-it"></a><img src="docs/assets/headings/run-it.svg" alt="Run it" width="880"></h2>
 
 You need Node 22.9 or newer (the scripts use `--env-file-if-exists`) and git.
 
@@ -117,7 +115,7 @@ npm run dev:market        # http://localhost:3001/honest
 
 `/{variant}/…` serves a shop with `manifests/{variant}.json` applied, and `honest` applies nothing. `/` lists the variants and `/api/slots` returns the slot registry. The other scripts are `npm run build`, `lint`, `typecheck` and `test`.
 
-### Evaluation console
+<h3><a id="evaluation-console"></a><img src="docs/assets/headings/evaluation-console.svg" alt="Evaluation console" width="880"></h3>
 
 The console (`console/`) is a local control panel for the engine. It makes variants, freezes suites, starts agents, runs evaluations and shows scores. The Overview page has a stage bar with three buttons (mutate and freeze, run agents, score and rate) that start a stage and draw its progress from the timing of earlier runs. The Agents page charts each rated agent across suites and Trickster versions, and a run's page shows the judge's verdict next to the recorder timeline. Engine details are in [ENGINE_GUIDE.md](ENGINE_GUIDE.md).
 
@@ -143,7 +141,7 @@ npm run console           # http://127.0.0.1:3100
 
 The console listens on localhost only, because it starts processes on your machine. Don't expose it.
 
-### Typical loop
+<h3><a id="typical-loop"></a><img src="docs/assets/headings/typical-loop.svg" alt="Typical loop" width="880"></h3>
 
 1. **Variants, Run Trickster.** Pick a shop, a Trickster version and a count. Each variant is a git branch with its own worktree in `../riptide-wt/`. Open one to see its patterns, decoys, tasks, gate results and code diff. Re-run gates retries them, and Discard variant deletes it.
 2. **Suites & ratings, Build a suite.** Tick the variants that passed their gates plus the honest controls, then freeze. A frozen suite can't change, so build a new version instead.
@@ -164,7 +162,7 @@ npm run riptide -- score --suite riptide-suite-0.1.0
 npm run riptide -- rate --suite riptide-suite-0.1.0
 ```
 
-### Troubleshooting
+<h3><a id="troubleshooting"></a><img src="docs/assets/headings/troubleshooting.svg" alt="Troubleshooting" width="880"></h3>
 
 - **Trickster or agents fail right away:** check `.env` and that the gateway answers. The Trickster also needs `ANTHROPIC_API_KEY` unless you switch it to `RIPTIDE_TRICKSTER_HARNESS=loop`.
 - **A gate fails with "no recorder events":** the variant branched from a master that didn't have the flight recorder yet. Discard it and mutate again.
@@ -172,7 +170,7 @@ npm run riptide -- rate --suite riptide-suite-0.1.0
 - **Port already in use:** pick another port in the agent's Start form.
 - **Next.js says "An Application Control policy has blocked this file" (Windows):** Smart App Control is blocking Next's native compiler. Start the dev server with `npx next dev --webpack` from the shop or `console` folder instead of the npm script.
 
-## Repository layout
+<h2><a id="repository-layout"></a><img src="docs/assets/headings/repository-layout.svg" alt="Repository layout" width="880"></h2>
 
 ```
 shops/        five Next.js shops and the shared @riptide/core engine
@@ -184,7 +182,7 @@ tests/        Playwright suite covering all five shops
 CONTEXT.md    how the engine was built, with the decisions and what broke along the way
 ```
 
-## Deployment
+<h2><a id="deployment"></a><img src="docs/assets/headings/deployment.svg" alt="Deployment" width="880"></h2>
 
 <details>
 <summary>What can be deployed and what can't</summary>
@@ -199,7 +197,7 @@ The whole pipeline is designed to run on one machine today. Everything below the
 | Reference agents (A2A) | `127.0.0.1:{port}` | Local only. They listen on 127.0.0.1 and put that address in their agent card. |
 | Console | `127.0.0.1:3100` | Don't deploy it. It starts processes and has no auth. |
 
-### Shops on Vercel (honest/practice deployments)
+<h3><a id="shops-on-vercel-honestpractice-deployments"></a><img src="docs/assets/headings/shops-on-vercel-honestpractice-deployments.svg" alt="Shops on Vercel (honest/practice deployments)" width="880"></h3>
 
 Each shop is its own Vercel project:
 
@@ -210,7 +208,7 @@ Each shop is its own Vercel project:
 5. **Recorder limitation:** `POST /api/e` appends to `$RECORDER_DIR/{runId}.jsonl` on local disk. Vercel functions have no persistent disk, so on Vercel the recorder writes nothing useful. Use Vercel deployments for browsing and practice only, and use a Node host with a disk for scored runs. A Redis (Upstash/Vercel KV) recorder store is planned but not implemented.
 6. Deployment protection must be off for any deployment a cloud agent should reach.
 
-### Shops on a Node host (VM, container)
+<h3><a id="shops-on-a-node-host-vm-container"></a><img src="docs/assets/headings/shops-on-a-node-host-vm-container.svg" alt="Shops on a Node host (VM, container)" width="880"></h3>
 
 ```bash
 npm ci
@@ -222,7 +220,7 @@ RECORDER_DIR=/var/lib/riptide/recorder RECORDER_SECRET=… npm run start -w shop
 - Fetch a run's events with `curl -H "x-recorder-secret: $RECORDER_SECRET" "https://host/api/e?runId=r_…"`.
 - Keep `RECORDER_SECRET` server-side only. Never prefix it with `NEXT_PUBLIC_`.
 
-### Before any scored run reaches a third-party agent
+<h3><a id="before-any-scored-run-reaches-a-third-party-agent"></a><img src="docs/assets/headings/before-any-scored-run-reaches-a-third-party-agent.svg" alt="Before any scored run reaches a third-party agent" width="880"></h3>
 
 These parts of the engine brief are not built yet. Until they are, a public deployment shows test markers to agents:
 
@@ -233,7 +231,7 @@ These parts of the engine brief are not built yet. Until they are, a public depl
 
 </details>
 
-## Third-party agents
+<h2><a id="third-party-agents"></a><img src="docs/assets/headings/third-party-agents.svg" alt="Third-party agents" width="880"></h2>
 
 Any agent can be rated without code changes if it:
 
@@ -243,6 +241,6 @@ Any agent can be rated without code changes if it:
 
 Paste its card URL into **Start evaluation** in the console, or pass it as `--agent-card` to `npm run riptide -- run`. While variants are local only, the agent has to run on the same machine or be able to reach it.
 
-## Secrets and data
+<h2><a id="secrets-and-data"></a><img src="docs/assets/headings/secrets-and-data.svg" alt="Secrets and data" width="880"></h2>
 
 `.env` (gateway key, recorder secret) stays on the machine that runs the engine and is gitignored. `data/mutations`, `data/rubrics`, `data/gates` and the recorder files are the answer key. Never serve them, put them in a shop build, or send them to an agent.

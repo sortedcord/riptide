@@ -17,10 +17,12 @@
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "playwright test",
     "riptide": "tsx --env-file-if-exists=.env engine/cli.ts",
-    "console": "npm run dev -w console"
+    "console": "npm run dev -w console",
+    "readme:headings": "node docs/assets/headings/render.mjs"
   },
   "devDependencies": {
-    "@playwright/test": "1.64.1"
+    "@playwright/test": "1.64.1",
+    "opentype.js": "1.3.4"
   },
   "overrides": {
     "@earendil-works/pi-agent-core": "1.1.0",

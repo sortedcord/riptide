@@ -165,8 +165,8 @@ const suiteVersion = (id: string) => id.replace("riptide-suite-", "").split(".")
 const byVersion = (a: string, b: string) => { const [x, y] = [suiteVersion(a), suiteVersion(b)]; return x[0] - y[0] || x[1] - y[1] || x[2] - y[2]; };
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-/** Categorical slots 1–5 of the reference palette, dark steps, validated against the card surface (#2a2823). */
-export const AGENT_COLORS = ["#3987e5", "#d95926", "#199e70", "#c98500", "#d55181"] as const;
+/** Emberspire hues only, ordered for separation: ember, violet (lifted to 4:1 on charcoal #2a2823), cream, peach, deep violet. */
+export const AGENT_COLORS = ["#f08c2e", "#9d6bf5", "#f8eedc", "#fbcb8e", "#6e35d6"] as const;
 const OVERFLOW = "#8f8a7d"; // past 5 agents: neutral; every mark is labelled by name anyway
 
 /** Every agent that has a rating, in a fixed order, so each keeps its colour on every chart. */
