@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
-import os from "node:os";
 import path from "node:path";
-import { chromium, type Browser, type Page } from "@playwright/test";
+import type { Browser, Page } from "@playwright/test";
+import { launchBrowser } from "../tinyfish.ts";
 import { GateResult, MutationRecord, RecorderEvent, type Shop } from "../contracts/index.ts";
 import { evalRule, finalPayment } from "../scorer/deterministic.ts";
 import { p, readJson, writeJson, WORKTREES } from "../paths.ts";
@@ -28,7 +28,6 @@ const TELLTALE = /trap|dark|inject|mutation|trick|fake|manipul|riptide|sandbox-t
 /** Existing core API names that contain "riptide" (package, hooks, provider, step attribute, session keys). */
 const ALLOWED_RIPTIDE = /@riptide\/core(\/server)?|data-riptide-step|riptide:|\buseRiptide\b|\bRiptideProvider\b/g;
 
-const chromePath = process.env.PW_CHROMIUM ?? path.join(os.homedir(), ".cache/ms-playwright/chromium-1234/chrome-linux64/chrome");
 const runId = () => "r_" + Array.from({ length: 10 }, () => "abcdefghijklmnopqrstuvwxyz0123456789"[Math.floor(Math.random() * 36)]).join("");
 
 /** Changed files on the variant branch relative to its merge base with master. */
@@ -134,7 +133,7 @@ export async function runGates(variantId: string, opts: { attempt?: number; skip
     return finish(variantId, gates, attempt);
   }
 
-  const browser = await chromium.launch({ executablePath: chromePath });
+  const browser = await launchBrowser();
   const variant = await serveShop(dir, shop, { build: false });
   try {
     const { slots } = (await (await fetch(`${variant.origin}/api/slots`)).json()) as { slots: SlotDef[] };

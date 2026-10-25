@@ -1,19 +1,10 @@
-import os from "node:os";
-import path from "node:path";
-import { chromium, type Browser, type Page } from "playwright";
+import type { Page } from "playwright";
 import { z } from "zod";
 import type { Tool } from "../../llm.ts";
 import type { Trace } from "./trace.ts";
 
-/**
- * The browser. Local headless Chromium by default; set BROWSER_CDP_URL to drive a remote browser
- * (e.g. a TinyFish session) over CDP instead.
- */
-export function launchBrowser(): Promise<Browser> {
-  if (process.env.BROWSER_CDP_URL) return chromium.connectOverCDP(process.env.BROWSER_CDP_URL);
-  const executablePath = process.env.PW_CHROMIUM ?? path.join(os.homedir(), ".cache/ms-playwright/chromium-1234/chrome-linux64/chrome");
-  return chromium.launch({ headless: true, executablePath });
-}
+/** The browser: a TinyFish remote session, any CDP browser, or local Chromium (see engine/tinyfish.ts). */
+export { launchBrowser } from "../../tinyfish.ts";
 
 const SNAPSHOT_MAX = 40_000;
 
