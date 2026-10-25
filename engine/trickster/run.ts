@@ -1,37 +1,25 @@
-import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 import { MutationRecord, Task, TricksterOutput, type Shop } from "../contracts/index.ts";
-import { DEFAULT_MODEL, toolLoop, type Tool } from "../llm.ts";
+import { toolLoop, type Tool } from "../llm.ts";
 import { DATA, ROOT, listJson, p, writeJson } from "../paths.ts";
-import { SCOPE, branchOf, changedFiles, runGates } from "./gates.ts";
+import { branchOf, changedFiles, runGates } from "./gates.ts";
+import { runPi } from "./pi.ts";
+import { OUT, RUN_DESCRIPTION, SCOPE, sandbox } from "./sandbox.ts";
 import { ensureWorktree, git } from "./serve.ts";
 
-const OUT = "trickster-output.json";
 const MAX_RETRIES = 2;
+/** Model for the Trickster unless --model / console settings choose another. */
+const TRICKSTER_MODEL = process.env.RIPTIDE_TRICKSTER_MODEL || "anthropic/claude-sonnet-5-5";
+/** "pi" (default): the pi harness on the Anthropic Messages API. "loop": our own tool loop over the gateway's Responses API. */
+const HARNESS = process.env.RIPTIDE_TRICKSTER_HARNESS === "loop" ? "loop" : "pi";
 const newId = () => "v_" + Array.from({ length: 6 }, () => "abcdefghijklmnopqrstuvwxyz0123456789"[Math.floor(Math.random() * 36)]).join("");
-const clip = (s: string, n = 12000) => (s.length > n ? `${s.slice(0, n)}\n… [${s.length - n} more chars truncated]` : s);
 
 /** Tools for the Trickster, confined to the worktree; writes confined to shops/{shop}/ plus trickster-output.json. */
 function tools(dir: string, shop: Shop): Tool[] {
-  const inside = (rel: string) => {
-    const abs = path.resolve(dir, rel);
-    if (abs !== dir && !abs.startsWith(dir + path.sep)) throw new Error(`path outside the worktree: ${rel}`);
-    if (existsSync(abs)) {
-      const real = realpathSync(abs);
-      if (real !== dir && !real.startsWith(dir + path.sep)) throw new Error(`path resolves outside the worktree: ${rel}`);
-    }
-    return abs;
-  };
-  const writable = (rel: string) => {
-    const abs = inside(rel);
-    const r = path.relative(dir, abs);
-    if (r !== OUT && !r.startsWith(SCOPE(shop))) throw new Error(`you may only write under ${SCOPE(shop)} (or ${OUT})`);
-    if (/(^|\/)(node_modules|\.next)(\/|$)/.test(r)) throw new Error("not writable");
-    return abs;
-  };
-  const NPM_OK = new Set(["typecheck", "build", "lint"]);
+  const box = sandbox(dir, shop);
+  const { inside, writable } = box;
   return [
     {
       name: "list_dir", description: "List a directory (relative to the repo root). Skips node_modules and .next.",
@@ -72,28 +60,15 @@ function tools(dir: string, shop: Shop): Tool[] {
       },
     },
     {
-      name: "run",
-      description: `Run a command in the repo root (no shell, no pipes). Allowed: \`npm run typecheck|build|lint -w shops/${shop}\`, \`grep …\`, \`ls …\`, \`git diff|status …\`. Relative paths only.`,
+      name: "run", description: RUN_DESCRIPTION(shop),
       params: z.object({ cmd: z.string() }),
-      run: ({ cmd }: { cmd: string }) => {
-        const argv = (cmd.match(/"[^"]*"|'[^']*'|\S+/g) ?? []).map((a) => a.replace(/^(["'])(.*)\1$/, "$2"));
-        const [bin, ...args] = argv;
-        const okNpm = bin === "npm" && args.length === 4 && args[0] === "run" && NPM_OK.has(args[1]) && args[2] === "-w" && args[3] === `shops/${shop}`;
-        const okGit = bin === "git" && ["diff", "status"].includes(args[0]) && !args.some((a) => /^--(output|ext-diff)|^-o/.test(a));
-        if (!okNpm && !okGit && !(bin === "grep" || bin === "ls")) throw new Error("command not allowed");
-        if (args.some((a) => a.startsWith("/") || a.split("/").includes(".."))) throw new Error("relative paths inside the repo only");
-        try {
-          return clip(execFileSync(bin, args, { cwd: dir, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], timeout: 300_000, maxBuffer: 32 << 20 }) || "(no output, exit 0)", 8000);
-        } catch (e) {
-          const err = e as { status?: number; stdout?: string; stderr?: string; message: string };
-          return `exit ${err.status ?? "?"}\n${clip(`${err.stdout ?? ""}${err.stderr ?? ""}` || err.message, 8000)}`;
-        }
-      },
+      run: ({ cmd }: { cmd: string }) => box.run(cmd),
     },
   ];
 }
 
-function inputs(shop: Shop): string {
+/** Context for the Trickster. `catalog` adds docs/PATTERN_CATALOG.md (v2+ instructions ask for it; v1 stays as it was run). */
+function inputs(shop: Shop, catalog = false): string {
   const read = (f: string) => readFileSync(path.join(ROOT, f), "utf8");
   const lessonsDir = path.join(DATA, "lessons");
   const latest = listJson(lessonsDir).map((f) => path.join(lessonsDir, f)).sort((a, b) => statSync(a).mtimeMs - statSync(b).mtimeMs).pop();
@@ -102,6 +77,7 @@ function inputs(shop: Shop): string {
     `## shops/${shop}/README.md\n${read(`shops/${shop}/README.md`)}`,
     `## shops/${shop}/slots.ts\n${read(`shops/${shop}/slots.ts`)}`,
     `## docs/TAXONOMY.md\n${read("docs/TAXONOMY.md")}`,
+    ...(catalog ? [`## docs/PATTERN_CATALOG.md (real-world patterns, already mapped to this engine)\n${read("docs/PATTERN_CATALOG.md")}`] : []),
     `## tests/drivers.ts (the \`${shop}\` driver's buy walk must keep working; verify rules are checked on it)\n${read("tests/drivers.ts")}`,
     latest ? `## Lessons from earlier suites (${path.basename(latest)})\n${readFileSync(latest, "utf8")}` : "## Lessons\nNone yet.",
   ].join("\n\n");
@@ -132,26 +108,30 @@ function hunksByFile(branch: string): Record<string, string[]> {
 /** riptide mutate: new variant branch + mutation record + tasks, then gates (≤2 retries). */
 export async function mutate(opts: { shop: Shop; version?: string; model?: string }): Promise<{ variantId: string; passed: boolean }> {
   const { shop } = opts;
-  const version = opts.version ?? "v1";
+  // Newest version by default (v1, v2, …, v10 sorted numerically).
+  const version = opts.version ?? readdirSync(path.join(import.meta.dirname, "versions")).filter((v) => /^v\d+$/.test(v)).sort((a, b) => Number(a.slice(1)) - Number(b.slice(1))).at(-1)!;
   const skill = readFileSync(path.join(import.meta.dirname, "versions", version, "SKILL.md"), "utf8").replaceAll("{shop}", shop);
   const variantId = newId();
   const branch = branchOf({ shop, variantId });
   const baseCommit = git(["rev-parse", "master"]);
   const dir = ensureWorktree(variantId, baseCommit, branch);
-  console.log(`[mutate] ${variantId} on ${branch} at ${dir} with ${opts.model ?? DEFAULT_MODEL}`);
+  const model = opts.model || TRICKSTER_MODEL;
+  console.log(`[mutate] ${variantId} on ${branch} at ${dir} with ${model} (${version}, ${HARNESS} harness)`);
 
-  const base = inputs(shop);
+  const base = inputs(shop, skill.includes("PATTERN_CATALOG"));
   let feedback = "";
   let passed = false;
   for (let attempt = 1; attempt <= MAX_RETRIES + 1; attempt++) {
-    const r = await toolLoop({
-      model: opts.model,
-      instructions: skill,
-      input: feedback ? `${base}\n\n## Previous attempt failed\n${feedback}` : base,
-      tools: tools(dir, shop),
-      maxSteps: 120,
-      onStep: (name, args, out) => console.log(`[trickster] ${name} ${String(args).slice(0, 140)} → ${out.split("\n")[0].slice(0, 120)}`),
-    });
+    const input = feedback ? `${base}\n\n## Previous attempt failed\n${feedback}` : base;
+    const onStep = (name: string, args: unknown, out: string) => console.log(`[trickster] ${name} ${String(args).slice(0, 140)} → ${out.split("\n")[0].slice(0, 120)}`);
+    // pi keeps no state between attempts here: each attempt gets the inputs plus the gate feedback; the worktree keeps the edits.
+    const r = HARNESS === "pi"
+      ? await runPi({ dir, shop, model, instructions: skill, input, maxSteps: 120, onStep })
+      : await toolLoop({
+        model, instructions: skill, input, tools: tools(dir, shop), maxSteps: 120, onStep,
+        // Big context (instructions, catalog, driver code, growing transcript): one call can take minutes.
+        callTimeoutMs: Number(process.env.RIPTIDE_TRICKSTER_CALL_TIMEOUT_MS ?? 600_000),
+      });
     console.log(`[mutate] attempt ${attempt}: ${r.steps} tool calls${r.exhausted ? " (step limit hit)" : ""}\n${r.text.slice(0, 1500)}`);
 
     let parsed: ReturnType<typeof readOutput>;
