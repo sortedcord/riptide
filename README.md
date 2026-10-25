@@ -144,8 +144,11 @@ Each button runs a command you can type yourself:
 
 ```bash
 npm run riptide -- mutate --shop market
+npm run riptide -- build-suite --suite next --variants fresh --controls all
 npx tsx --env-file=.env engine/agents/reference/server.ts --config gamma --port 41001
-npm run riptide -- run --suite riptide-suite-0.1.0 --agent-card http://127.0.0.1:41001
+npm run riptide -- run --suite riptide-suite-0.1.0 --agent-card http://127.0.0.1:41001,http://127.0.0.1:41002 --concurrency 4
+npm run riptide -- score --suite riptide-suite-0.1.0
+npm run riptide -- rate --suite riptide-suite-0.1.0
 ```
 
 ### Troubleshooting
