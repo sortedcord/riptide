@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" role="img" aria-labelledby="t d">
   <title id="t">The whole Riptide pipeline as a loop</title>
-  <desc id="d">The stages run in a circuit: mutate, gates, build-suite, run, score, rate. A planned learn stage would turn ratings and gate failures into lessons in data/lessons, which the next mutate already reads. The learn stage is not built yet.</desc>
+  <desc id="d">The stages run in a circuit: mutate, gates, build-suite, run, score, rate. Ratings then feed the next Trickster version. A person writes that version today and records lessons in its meta.json, and mutate runs the newest version. An automated learn stage is not built.</desc>
   <style>
     .sans { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
     .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
@@ -26,7 +26,7 @@
   <path class="flow" d="M896 378 H852" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
   <path class="flow" d="M616 378 H572" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
   <path d="M336 378 H172 V268" fill="none" stroke="#8c8575" stroke-width="2" stroke-dasharray="3 6" marker-end="url(#ahg)"/>
-  <text x="254" y="366" class="mono" font-size="13" text-anchor="middle" fill="#b3ab9a">planned</text>
+  <text x="254" y="366" class="mono" font-size="13" text-anchor="middle" fill="#b3ab9a">by hand</text>
 
 
   <!-- the token: orange where the step exists, grey across the part that does not -->
@@ -67,7 +67,7 @@
     <rect class="hl" style="animation-delay:4.93s" x="896" y="70" width="232" height="96" rx="12" fill="none" stroke="#f08c2e" stroke-width="2.5"/>
     <text x="914" y="104" class="mono" font-size="19" font-weight="700" fill="#f8eedc">run</text>
     
-    <text x="914" y="131" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.78">task over A2A to a sniffer</text>
+    <text x="914" y="131" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.78">A2A tasks, 4 in parallel</text>
     <text x="914" y="151" class="mono" font-size="12.5" fill="#f8eedc" fill-opacity="0.55">data/runs, data/recorder</text>
   </g>
   <g>
@@ -75,7 +75,7 @@
     <rect class="hl" style="animation-delay:6.58s" x="896" y="330" width="232" height="96" rx="12" fill="none" stroke="#f08c2e" stroke-width="2.5"/>
     <text x="914" y="364" class="mono" font-size="19" font-weight="700" fill="#f8eedc">score</text>
     
-    <text x="914" y="391" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.78">recorder events vs rubric</text>
+    <text x="914" y="391" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.78">recorder checks + LLM judge</text>
     <text x="914" y="411" class="mono" font-size="12.5" fill="#f8eedc" fill-opacity="0.55">score.json per run</text>
   </g>
   <g>
@@ -90,21 +90,21 @@
     <rect x="336" y="330" width="232" height="96" rx="12" fill="#211e17" stroke="#8c8575" stroke-opacity="0.9" stroke-dasharray="6 5"/>
     <rect class="hl" style="animation-delay:10.14s" x="336" y="330" width="232" height="96" rx="12" fill="none" stroke="#f08c2e" stroke-width="2.5"/>
     <text x="354" y="364" class="mono" font-size="19" font-weight="700" fill="#f8eedc">learn</text>
-    <text x="552" y="360" class="mono" font-size="12" text-anchor="end" fill="#b3ab9a">not built yet</text>
-    <text x="354" y="391" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.78">ratings and gate failures</text>
-    <text x="354" y="411" class="mono" font-size="12.5" fill="#f8eedc" fill-opacity="0.55">become lessons</text>
+    <text x="552" y="360" class="mono" font-size="12" text-anchor="end" fill="#b3ab9a">by hand today</text>
+    <text x="354" y="391" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.78">ratings into next version</text>
+    <text x="354" y="411" class="mono" font-size="12.5" fill="#f8eedc" fill-opacity="0.55">lessons go in meta.json</text>
   </g>
 
-  <rect x="92" y="236" width="160" height="32" rx="16" fill="#211e17" stroke="#8c8575" stroke-dasharray="4 4"/>
-  <text x="172" y="257" class="mono" font-size="13" text-anchor="middle" fill="#f8eedc" fill-opacity="0.85">data/lessons</text>
+  <rect x="92" y="236" width="160" height="32" rx="16" fill="#211e17" stroke="#f8eedc" stroke-opacity="0.4"/>
+  <text x="172" y="257" class="mono" font-size="13" text-anchor="middle" fill="#f8eedc" fill-opacity="0.85">versions/vN</text>
   <path class="flow" d="M172 236 V170" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
-  <text x="184" y="206" class="mono" font-size="13" fill="#f8eedc" fill-opacity="0.85">next mutate reads the</text>
-  <text x="184" y="224" class="mono" font-size="13" fill="#f8eedc" fill-opacity="0.85">newest file (built)</text>
+  <text x="184" y="206" class="mono" font-size="13" fill="#f8eedc" fill-opacity="0.85">mutate runs the</text>
+  <text x="184" y="224" class="mono" font-size="13" fill="#f8eedc" fill-opacity="0.85">newest version</text>
 
   <g class="mono" font-size="13">
     <line x1="56" y1="486" x2="92" y2="486" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6"/>
-    <text x="104" y="491" fill="#f8eedc" fill-opacity="0.8">built and wired</text>
+    <text x="104" y="491" fill="#f8eedc" fill-opacity="0.8">automated</text>
     <line x1="296" y1="486" x2="332" y2="486" stroke="#8c8575" stroke-width="2" stroke-dasharray="3 6"/>
-    <text x="344" y="491" fill="#f8eedc" fill-opacity="0.8">not built yet</text>
+    <text x="344" y="491" fill="#f8eedc" fill-opacity="0.8">by hand today</text>
   </g>
 </svg>

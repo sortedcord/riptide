@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-labelledby="t d">
   <title id="t">How a Riptide run flows between the engine and the agent</title>
-  <desc id="d">The Trickster writes a variant and its answer key. The engine sends a task over A2A to a sniffer agent, which browses the variant shop. The shop logs events to a flight recorder. The scorer compares those events with the rubric and produces a rating. The answer key never crosses the A2A boundary.</desc>
+  <desc id="d">The Trickster writes a variant and its answer key. The engine sends a task over A2A to a sniffer agent, which browses the variant shop. The shop logs events to a flight recorder. The scorer checks those events against the rubric and an LLM judge grades the agent&apos;s report for awareness and escalation, producing a rating. The answer key never crosses the A2A boundary.</desc>
   <style>
     .sans { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
     .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
@@ -44,8 +44,8 @@
     <rect x="656" y="100" width="220" height="96" rx="12" fill="#211e17" stroke="#f8eedc" stroke-opacity="0.22"/>
     <rect class="hl" style="animation-delay:9.00s" x="656" y="100" width="220" height="96" rx="12" fill="none" stroke="#f08c2e" stroke-width="2.5"/>
     <text x="674" y="134" class="sans" font-size="20" font-weight="600" fill="#f8eedc">Scorer</text>
-    <text x="674" y="160" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">recorder events vs rubric</text>
-    <text x="674" y="180" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">avoidance, overpayment</text>
+    <text x="674" y="160" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">recorder checks + LLM judge</text>
+    <text x="674" y="180" class="sans" font-size="14" fill="#f8eedc" fill-opacity="0.72">overpayment, awareness</text>
   </g>
   <g>
     <rect x="956" y="100" width="220" height="96" rx="12" fill="#211e17" stroke="#f8eedc" stroke-opacity="0.22"/>
@@ -102,7 +102,7 @@
 
   <path class="flow" d="M766 410 V198" fill="none" stroke="#f08c2e" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ah)"/>
   <text x="774" y="318" class="mono" font-size="13" text-anchor="start" fill="#f8eedc" fill-opacity="0.85">events</text>
-  <text class="sans" x="956" y="428" font-size="15" fill="#f8eedc" fill-opacity="0.78">The recorder is the source of truth.</text>
-  <text class="sans" x="956" y="452" font-size="15" fill="#f8eedc" fill-opacity="0.78">The agent&apos;s own report shows what</text>
-  <text class="sans" x="956" y="476" font-size="15" fill="#f8eedc" fill-opacity="0.78">it says it noticed, nothing more.</text>
+  <text class="sans" x="936" y="428" font-size="15" fill="#f8eedc" fill-opacity="0.78">The recorder is the source of truth.</text>
+  <text class="sans" x="936" y="452" font-size="15" fill="#f8eedc" fill-opacity="0.78">The agent&apos;s report only feeds the</text>
+  <text class="sans" x="936" y="476" font-size="15" fill="#f8eedc" fill-opacity="0.78">judge, which grades awareness.</text>
 </svg>
