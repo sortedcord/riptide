@@ -133,7 +133,8 @@ const W = 880;
  * h1: the title rides a riptide. Each blade bobs on two travelling waves (outer <g> and inner <path>, different
  * periods), so the skyline rolls left to right. Blades translate rather than stretch, so the shear angle never
  * changes; each is drawn tall enough to stay anchored past the bottom edge at every point of the swell.
- * Reduced motion: the waves stop at their tallest.
+ * SMIL (<animateTransform>), not CSS: it runs in every viewer that shows the image, including ones that pause
+ * CSS animation inside images for reduced-motion users.
  */
 function h1(str) {
   const H = 210, size = 100, base = 132;
@@ -144,19 +145,17 @@ function h1(str) {
   const tx = (W - text(str, 0, base, size).width) / 2;
   const t = text(str, tx, base, size);
   const phase = (x, k, off) => 1 - (((x / W) * k + off) % 1);
+  // One ease-in-out bob down by 2A and back; a negative begin starts each blade part-way through, so phase follows x.
+  const bob = (A, T, ph) => `<animateTransform attributeName="transform" type="translate" values="0 0;0 ${2 * A};0 0" keyTimes="0;.5;1" calcMode="spline" keySplines=".42 0 .58 1;.42 0 .58 1" dur="${T}s" begin="-${r(T * ph)}s" repeatCount="indefinite"/>`;
   const blades = [];
   for (let x = 0; x + bw <= W; x += bw + gap) {
     const top = H - (rest(x + bw / 2) + A1 + A2);
     const d = `M${r(x)} ${r(top + bw / 2)}L${r(x + bw)} ${r(top)}V${H + 2 * (A1 + A2) + 4}H${r(x)}Z`;
-    blades.push(`<g class="w1" style="animation-delay:-${r(T1 * phase(x, K1, 0))}s"><path class="w2" fill="url(#g)" style="animation-delay:-${r(T2 * phase(x, K2, 0.35))}s" d="${d}"/></g>`);
+    blades.push(`<g>${bob(A1, T1, phase(x, K1, 0))}<path fill="url(#g)" d="${d}">${bob(A2, T2, phase(x, K2, 0.35))}</path></g>`);
   }
   // The wave dims under the word and stays bright at the edges.
   const a = r(Math.max(0, tx - 30) / W), b = r(Math.min(W, tx + t.width + 30) / W);
-  const defs = `<linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset="${a}" stop-color="#fff" stop-opacity=".4"/><stop offset="${b}" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff"/></linearGradient><mask id="m"><rect width="${W}" height="${H}" fill="url(#fade)"/></mask>
-<style>.w1{animation:w1 ${T1}s ease-in-out infinite}.w2{animation:w2 ${T2}s ease-in-out infinite}
-@keyframes w1{0%,100%{transform:translateY(0)}50%{transform:translateY(${2 * A1}px)}}
-@keyframes w2{0%,100%{transform:translateY(0)}50%{transform:translateY(${2 * A2}px)}}
-@media (prefers-reduced-motion:reduce){.w1,.w2{animation:none}}</style>`;
+  const defs = `<linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset="${a}" stop-color="#fff" stop-opacity=".4"/><stop offset="${b}" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff"/></linearGradient><mask id="m"><rect width="${W}" height="${H}" fill="url(#fade)"/></mask>`;
   return wrap(W, H, H - 150, str, defs, `<g mask="url(#m)">${blades.join("")}</g>\n${t.svg}`);
 }
 
