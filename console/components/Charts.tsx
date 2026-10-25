@@ -49,50 +49,22 @@ export function TableView({ head, rows }: { head: string[]; rows: (string | numb
 
 export type BarRow = { id: string; label: string; value: number; color: string; href?: string; detail: [string, number | null][] };
 
+/** Overall score per agent, best first. The leader takes the gradient; the rest go from ink toward 70% grey. Sits on the cream panel. */
 export function RatingBars({ rows }: { rows: BarRow[] }) {
-  const [ref, w] = useWidth<HTMLDivElement>();
-  const [hover, setHover] = useState<{ i: number; x: number; y: number } | null>(null);
-  const LABEL = Math.min(220, Math.max(120, w * 0.3)), BAR = 18, GAP = 14, VALUE = 44;
-  const plot = Math.max(0, w - LABEL - VALUE);
-  const H = rows.length * (BAR + GAP) + 22;
-  const x = (v: number) => LABEL + (plot * Math.max(0, Math.min(100, v))) / 100;
-
+  const rest = Math.max(1, rows.length - 2);
   return (
-    <div ref={ref} className="viz relative" onPointerLeave={() => setHover(null)}>
-      {w > 0 && (
-        <svg width={w} height={H} role="img" aria-label="Overall rating per agent, 0 to 100">
-          {[0, 25, 50, 75, 100].map((t) => (
-            <g key={t}>
-              <line x1={x(t)} x2={x(t)} y1={0} y2={H - 18} className="viz-grid" />
-              <text x={x(t)} y={H - 4} textAnchor="middle" className="viz-axis">{t}</text>
-            </g>
-          ))}
-          {rows.map((r, i) => {
-            const y = i * (BAR + GAP) + 4;
-            const bar = (
-              <g
-                onPointerMove={(e) => { const b = (e.currentTarget.ownerSVGElement as SVGSVGElement).getBoundingClientRect(); setHover({ i, x: e.clientX - b.left, y: e.clientY - b.top }); }}
-                onFocus={() => setHover({ i, x: x(r.value), y })} onBlur={() => setHover(null)}
-              >
-                <rect x={0} y={y - GAP / 2} width={w} height={BAR + GAP} fill="transparent" />
-                <text x={LABEL - 10} y={y + BAR / 2} dominantBaseline="central" textAnchor="end" className="viz-label">{r.label}</text>
-                <path d={`M ${LABEL} ${y} H ${Math.max(LABEL, x(r.value) - 4)} a 4 4 0 0 1 4 4 V ${y + BAR - 4} a 4 4 0 0 1 -4 4 H ${LABEL} Z`} fill={r.color} />
-                <text x={x(r.value) + 8} y={y + BAR / 2} dominantBaseline="central" className="viz-value">{fmt(r.value)}</text>
-              </g>
-            );
-            return r.href ? <Link key={r.id} href={r.href} aria-label={`${r.label}: ${fmt(r.value)}. Open agent page`}>{bar}</Link> : <g key={r.id}>{bar}</g>;
-          })}
-        </svg>
-      )}
-      {hover && rows[hover.i] && (
-        <Tip x={hover.x} y={hover.y} right={hover.x > w * 0.6}>
-          <div className="viz-tip__head"><span className="viz-swatch" style={{ background: rows[hover.i].color }} />{rows[hover.i].label}</div>
-          <div className="viz-tip__row"><b>{fmt(rows[hover.i].value)}</b> overall</div>
-          {rows[hover.i].detail.map(([k, v]) => <div key={k} className="viz-tip__row"><b>{fmt(v)}</b> {k}</div>)}
-        </Tip>
-      )}
-      <TableView head={["Agent", "Overall", ...(rows[0]?.detail.map(([k]) => k) ?? [])]} rows={rows.map((r) => [r.label, fmt(r.value), ...r.detail.map(([, v]) => fmt(v))])} />
-    </div>
+    <ul className="rbars" role="img" aria-label={`Overall rating per agent: ${rows.map((r) => `${r.label} ${fmt(r.value)}`).join(", ")}`}>
+      {rows.map((r, i) => (
+        <li key={r.id} className="rbars__col" title={`${r.label}: ${fmt(r.value)}`}>
+          <span className="rbars__plot">
+            <span className="rbars__bar" data-lead={i === 0} style={{ height: `${Math.max(1, Math.min(100, r.value))}%`, ['--t' as string]: `${(Math.max(0, i - 1) / rest) * 100}%` }}>
+              <span className="rbars__value">{fmt(r.value)}</span>
+            </span>
+          </span>
+          <span className="sr-only">{r.label}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 

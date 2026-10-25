@@ -26,7 +26,7 @@ export default function Overview() {
   }));
 
   return (
-    <Page title={<>Watch the<br />tricksters work</>} sub="Mutate, gate, freeze a suite, run agents, score and rate. Every stage of the loop, live.">
+    <Page title="Overview" sub="Mutate, gate, freeze a suite, run agents, score and rate. Every stage of the loop, live.">
       <StageBar />
 
       <Stats>
@@ -38,13 +38,16 @@ export default function Overview() {
       </Stats>
 
       <div className="grid gap-5 md:grid-cols-2">
-        <section className="es-panel es-panel--cream flex min-h-[12rem] md:min-h-[16rem] flex-col">
-          <h2 className="card-title">Top rated</h2>
-          {top ? (
+        <section className="es-panel es-panel--cream flex min-h-[26rem] flex-col !pb-0">
+          <h2 className="card-title">Top rated agents by overall score</h2>
+          {top && latest ? (
+            <p className="es-dim mt-2 text-sm">
+              Overall rating out of 100 per agent on <Link href={`/suites/${latest.suiteId}`}>{latest.suiteId}</Link>. Hover a bar for names.
+            </p>
+          ) : null}
+          {bars.length ? (
             <>
-              <p className="mt-auto text-[clamp(2.75rem,5vw,4rem)] leading-none font-medium tabular-nums">{top.overall}</p>
-              <p className="mt-3 break-words text-lg">{top.agentId}</p>
-              <p className="es-dim mt-1 text-sm">{top.stars} of 5 stars on <Link href={`/suites/${latest!.suiteId}`}>{latest!.suiteId}</Link></p>
+              <RatingBars rows={bars} />
             </>
           ) : <p className="es-dim mt-auto">No ratings yet. Freeze a suite and evaluate an agent.</p>}
         </section>
@@ -55,10 +58,6 @@ export default function Overview() {
           <Blades className="h-40" />
         </section>
       </div>
-
-      <Card title={latest ? <>Ratings · <Link className="link" href={`/suites/${latest.suiteId}`}>{latest.suiteId}</Link></> : "Ratings"} actions={<Link className="btn" href="/agents">All agents</Link>}>
-        {bars.length ? <RatingBars rows={bars} /> : <Empty>No ratings yet. Run the stages above.</Empty>}
-      </Card>
 
       <Card title="Pipeline" actions={<Link className="btn" href="/pipeline">Full size</Link>}>
         <Pipeline />
