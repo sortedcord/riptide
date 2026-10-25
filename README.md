@@ -6,6 +6,7 @@
   <img src="docs/assets/logo.png" alt="Riptide logo: an orange anglerfish whose lure is a mouse cursor" width="150">
 </picture>
 
+<!-- Headings are Emberspire SVGs: write a new one as a plain `## Text` line, then run `npm run readme:headings` (docs/assets/headings/render.mjs). -->
 <h1 align="center"><a id="riptide"></a><img src="docs/assets/headings/riptide.svg" alt="Riptide"></h1>
 
 <p align="center">Evaluation of AI agents as a service</p>
