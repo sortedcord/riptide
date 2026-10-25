@@ -17,7 +17,9 @@ export function ensureWorktree(name: string, ref: string, newBranch?: string): s
   if (!existsSync(dir)) {
     mkdirSync(WORKTREES, { recursive: true });
     git(["worktree", "add", "-q", ...(newBranch ? ["-b", newBranch, dir, ref] : ["--detach", dir, ref])]);
-  } else if (!newBranch) {
+  } else if (!newBranch && git(["rev-parse", "HEAD"], dir) !== git(["rev-parse", `${ref}^{commit}`])) {
+    // Only check out when the worktree is elsewhere: a needless checkout takes the index lock and fails if
+    // anything else (an editor's git status, a parallel job) holds it at that moment.
     git(["checkout", "-q", "--detach", ref], dir);
   }
   if (!existsSync(path.join(dir, "node_modules"))) execFileSync("cp", ["-al", path.join(ROOT, "node_modules"), path.join(dir, "node_modules")]);

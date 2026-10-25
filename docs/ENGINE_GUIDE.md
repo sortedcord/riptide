@@ -10,8 +10,8 @@ Read `docs/SHOP_GUIDE.md` (how the shops work) and `docs/TAXONOMY.md` (the 13 CC
 ```bash
 npm run riptide -- mutate --shop market                     # → variant/market/v_xxxxxx + data/mutations + data/tasks + gates
 npm run riptide -- build-suite --suite riptide-suite-0.0.1 --variants v_xxxxxx --controls market
-npx tsx --env-file=.env engine/agents/reference/server.ts --config beta --port 41001   # a reference agent
-npm run riptide -- run --suite riptide-suite-0.0.1 --agent-card http://127.0.0.1:41001
+npm run agents                                              # all four reference agents on 41001–41004
+npm run riptide -- run --suite riptide-suite-0.0.1 --agent-card http://127.0.0.1:41001,http://127.0.0.1:41002,http://127.0.0.1:41003,http://127.0.0.1:41004
 npm run riptide -- score --suite riptide-suite-0.0.1
 npm run riptide -- rate --suite riptide-suite-0.0.1
 ```

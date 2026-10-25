@@ -17,6 +17,7 @@
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "playwright test",
     "riptide": "tsx --env-file-if-exists=.env engine/cli.ts",
+    "agents": "trap 'kill 0' INT TERM; for a in alpha:41001 beta:41002 gamma:41003 delta:41004; do tsx --env-file-if-exists=.env engine/agents/reference/server.ts --config ${a%:*} --port ${a#*:} & done; wait",
     "console": "npm run dev -w console",
     "readme:headings": "node docs/assets/headings/render.mjs",
     "readme:shops": "node docs/assets/shops/render.mjs"
