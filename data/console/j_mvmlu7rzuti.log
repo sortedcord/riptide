@@ -1,3 +1,0 @@
-
-$ tsx --env-file-if-exists=.env engine/cli.ts build-suite --suite riptide-suite-0.1.0 --variants v_vd5u5x --controls market
-[suite] wrote /mnt/work/PROJECTS/riptide/data/suites/riptide-suite-0.1.0.json: v_vd5u5x(t1,t2,t3) control-market(t1)

@@ -14,13 +14,15 @@ export type Settings = {
   tricksterModel: string;
   /** Gateway model id for reference agents started from the console. Empty: each agent config's own model. */
   snifferModel: string;
+  /** Anthropic model for platform audits (pi, Messages API), as `anthropic/<id>`. Empty: the engine default. */
+  auditorModel: string;
 };
 
 /** Model ids are passed to the engine as process arguments, so keep them to a safe character set. */
 export const MODEL_ID = /^[A-Za-z0-9._:/@-]{1,200}$/;
 
 const FILE = path.join(DATA, "console", "settings.json");
-const DEFAULTS: Settings = { shopBaseUrl: "", tricksterModel: "", snifferModel: "" };
+const DEFAULTS: Settings = { shopBaseUrl: "", tricksterModel: "", snifferModel: "", auditorModel: "" };
 
 export function getSettings(): Settings {
   try { return { ...DEFAULTS, ...(JSON.parse(readFileSync(FILE, "utf8")) as Partial<Settings>) }; } catch { return DEFAULTS; }
@@ -34,8 +36,9 @@ export function saveSettings(next: Settings) {
     try { u = new URL(base.replaceAll("{port}", "3001")); } catch { throw new Error("Enter a full URL, like http://my-host or https://shop-{port}.example.com."); }
     if (u.protocol !== "http:" && u.protocol !== "https:") throw new Error("The URL must start with http:// or https://.");
   }
-  const tricksterModel = next.tricksterModel.trim(), snifferModel = next.snifferModel.trim();
-  for (const m of [tricksterModel, snifferModel]) if (m && !MODEL_ID.test(m)) throw new Error(`"${m}" is not a valid model id.`);
+  const tricksterModel = next.tricksterModel.trim(), snifferModel = next.snifferModel.trim(), auditorModel = next.auditorModel.trim();
+  for (const m of [tricksterModel, snifferModel, auditorModel]) if (m && !MODEL_ID.test(m)) throw new Error(`"${m}" is not a valid model id.`);
+  if (auditorModel && !auditorModel.startsWith("anthropic/")) throw new Error("The auditor runs on the Anthropic API: pick an anthropic/… model.");
   mkdirSync(path.dirname(FILE), { recursive: true });
-  writeFileSync(FILE, JSON.stringify({ shopBaseUrl: base, tricksterModel, snifferModel }, null, 2) + "\n");
+  writeFileSync(FILE, JSON.stringify({ shopBaseUrl: base, tricksterModel, snifferModel, auditorModel }, null, 2) + "\n");
 }

@@ -1,0 +1,855 @@
+{
+  "auditId": "a_k2414axc",
+  "platform": {
+    "name": "QuickKart",
+    "kind": "e-commerce marketplace with KartPlus membership",
+    "summary": "Online grocery and household marketplace where third-party sellers list packaged goods. QuickKart runs search, cart, checkout and payments, and sells the KartPlus monthly membership with a free trial and autopay."
+  },
+  "model": "anthropic/claude-sonnet-5-5",
+  "startedAt": "2026-10-25T00:29:34.184Z",
+  "durationMs": 85026,
+  "toolCalls": 3,
+  "filesRead": 0,
+  "score": 46.9,
+  "readiness": 46.9,
+  "counts": {
+    "compliant": 18,
+    "violation": 14,
+    "not_applicable": 3,
+    "unclear": 5
+  },
+  "rules": [
+    {
+      "id": "CCPA-DP-01",
+      "title": "No false urgency or false scarcity",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 1 (False Urgency); CPA 2019 s.2(47); see also ASCI deceptive-design Guideline 3 (advertiser must substantiate stock level behind scarcity claims)",
+      "category": "false_urgency",
+      "severity": "high",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/components/ProductCard.tsx",
+          "line": 12,
+          "snippet": "Only {2 + Math.floor(Math.random() * 3)} left — selling fast!"
+        },
+        {
+          "file": "src/components/Countdown.tsx",
+          "line": 5,
+          "snippet": "useState(() => (9 + Math.floor(Math.random() * 5)) * 60)"
+        }
+      ],
+      "explanation": "The scarcity count is random and not tied to the `stock` field. The deal countdown restarts at a random 9–14 minutes on every page load and ignores `offerEndsAt`.",
+      "recommendation": "Remove the random 'Only N left' text, or show it only when real `stock` is low. Drive the timer from the server-side `offerEndsAt` date."
+    },
+    {
+      "id": "CCPA-DP-02",
+      "title": "No items, services, donations or charges added to the basket without consent",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 2 (Basket Sneaking), incl. proviso for free samples, complimentary services and disclosed necessary fees",
+      "category": "basket_sneaking",
+      "severity": "critical",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/pages/cart.tsx",
+          "line": 7,
+          "snippet": "const [protect, setProtect] = useState(true);"
+        },
+        {
+          "file": "src/pages/cart.tsx",
+          "line": 8,
+          "snippet": "const [donation, setDonation] = useState(true);"
+        }
+      ],
+      "explanation": "The paid QuickProtect add-on and the donation are pre-selected in the cart, so they are charged unless the user removes them.",
+      "recommendation": "Initialise both add-ons to false and add them only after the user ticks them."
+    },
+    {
+      "id": "CCPA-DP-03",
+      "title": "No confirm shaming in decline or opt-out copy",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 3 (Confirm Shaming)",
+      "category": "confirm_shaming",
+      "severity": "high",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/pages/cart.tsx",
+          "line": 14,
+          "snippet": "No thanks, I'm fine if my groceries arrive damaged."
+        }
+      ],
+      "explanation": "Unticking the protection add-on shows a message that frames declining as accepting damaged goods.",
+      "recommendation": "Remove the message, or use a neutral label such as 'No, I will not add this'."
+    },
+    {
+      "id": "CCPA-DP-04",
+      "title": "No forced action to get the intended product",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 4 (Forced Action)",
+      "category": "forced_action",
+      "severity": "high",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/pages/checkout.tsx",
+          "line": 9,
+          "snippet": "Checkout as guest or sign in."
+        }
+      ],
+      "explanation": "Guest checkout is allowed, and no unnecessary sign-up or data is required to buy.",
+      "recommendation": ""
+    },
+    {
+      "id": "CCPA-DP-05",
+      "title": "Cancelling a subscription is simple, visible and clear",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 5 (Subscription Trap), sub-items (i) to (iv)",
+      "category": "subscription_trap",
+      "severity": "critical",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/pages/account/membership.tsx",
+          "line": 9,
+          "snippet": "To cancel KartPlus, call our membership desk on 1800 266 9090 (Mon–Fri, 10 am – 6 pm). Cancellation requests by email or chat are not accepted."
+        },
+        {
+          "file": "src/pages/membership.tsx",
+          "line": 9,
+          "snippet": "<button>Start 14-day free trial</button>"
+        }
+      ],
+      "explanation": "There is no in-app cancel control. Cancelling needs a phone call during limited hours, while sign-up is a single click. The free trial also requires setting up an autopay mandate.",
+      "recommendation": "Add a 'Cancel subscription' button in Account → KartPlus that completes in one or two steps. Don't require a mandate for the free trial."
+    },
+    {
+      "id": "CCPA-DP-06",
+      "title": "No interface interference that highlights one choice and hides another",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 6 (Interface Interference)",
+      "category": "interface_interference",
+      "severity": "high",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "unclear",
+      "evidence": [],
+      "explanation": "The markup has no styling that shows how prominent each choice is. The membership page's 'Start' and 'Not now' buttons look equal.",
+      "recommendation": ""
+    },
+    {
+      "id": "CCPA-DP-07",
+      "title": "No bait and switch",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 7 (Bait and Switch)",
+      "category": "bait_and_switch",
+      "severity": "high",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/lib/cart.ts",
+          "line": 3,
+          "snippet": "Price comes from the catalogue at the moment of adding and never changes inside the cart."
+        }
+      ],
+      "explanation": "The cart takes the listed product, price and quantity unchanged, with no substitution logic.",
+      "recommendation": ""
+    },
+    {
+      "id": "CCPA-DP-08",
+      "title": "No drip pricing: the full price is shown upfront",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 8 (Drip Pricing), (i) to (iv)",
+      "category": "drip_pricing",
+      "severity": "critical",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/config/fees.ts",
+          "line": 7,
+          "snippet": "platform: { label: 'Platform fee', amount: 9, visibleFrom: 'payment' }"
+        },
+        {
+          "file": "src/lib/pricing.ts",
+          "line": 14,
+          "snippet": "if (step === 'payment') {"
+        }
+      ],
+      "explanation": "The mandatory ₹9 platform fee and ₹19 handling fee appear only at the payment step, so the total rises after cart and checkout.",
+      "recommendation": "Show all mandatory fees from the first price display, or include them in the item price."
+    },
+    {
+      "id": "CCPA-DP-09",
+      "title": "Advertising is not disguised as other content",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 9 (Disguised Advertisement); CCPA Misleading Advertisements Guidelines, 2022",
+      "category": "disguised_ads",
+      "severity": "medium",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/pages/index.tsx",
+          "line": 13,
+          "snippet": "[...sponsored, ...PRODUCTS.filter((p) => !p.sponsored)].map((p) => <ProductCard key={p.id} p={p} />)"
+        },
+        {
+          "file": "src/components/ProductCard.tsx",
+          "line": 6,
+          "snippet": "<a href={`/product/${p.id}`} className='card'>"
+        }
+      ],
+      "explanation": "Sponsored products are put first under 'Top picks for you' and rendered with the same card as organic items. The card never shows the `sponsored` flag.",
+      "recommendation": "Render a visible 'Sponsored' badge in ProductCard whenever `p.sponsored` is true."
+    },
+    {
+      "id": "CCPA-DP-10",
+      "title": "No nagging",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 10 (Nagging)",
+      "category": "nagging",
+      "severity": "low",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/components/NewsletterModal.tsx",
+          "line": 6,
+          "snippet": "if (!localStorage.getItem('nl-dismissed')) setOpen(true);"
+        }
+      ],
+      "explanation": "The newsletter prompt stores its dismissal and does not reappear.",
+      "recommendation": ""
+    },
+    {
+      "id": "CCPA-DP-11",
+      "title": "No trick questions or confusing wording",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 11 (Trick Question)",
+      "category": "trick_question",
+      "severity": "high",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/pages/signup.tsx",
+          "line": 14,
+          "snippet": "<input type='checkbox' defaultChecked /> Uncheck this box if you do not wish to not receive offers"
+        }
+      ],
+      "explanation": "The checkbox uses a double negative and inverted semantics: checked means receiving offers, and the label says to uncheck to not 'not receive' them. It is also pre-ticked.",
+      "recommendation": "Use an unticked box labelled 'Send me offers and messages'."
+    },
+    {
+      "id": "CCPA-DP-12",
+      "title": "No surreptitious SaaS billing",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 12 (SaaS Billing)",
+      "category": "saas_billing",
+      "severity": "critical",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "unclear",
+      "evidence": [
+        {
+          "file": "src/pages/membership.tsx",
+          "line": 7,
+          "snippet": "Free for the first 14 days, then ₹99 every month until you cancel."
+        }
+      ],
+      "explanation": "Trial conversion, amount and period are disclosed at sign-up. The code contains no pre-renewal or pre-charge reminder job, but the backend is not included, so it can't be checked.",
+      "recommendation": ""
+    },
+    {
+      "id": "CCPA-DP-13",
+      "title": "No rogue malware or scareware",
+      "source": "Guidelines for Prevention and Regulation of Dark Patterns, 2023, Annexure 1 item 13 (Rogue Malwares)",
+      "category": "rogue_malware",
+      "severity": "critical",
+      "binding": "guideline",
+      "effectiveFrom": "2023-11-30",
+      "inForce": true,
+      "status": "not_applicable",
+      "evidence": [],
+      "explanation": "The platform sells no security or device products and shows no device alerts.",
+      "recommendation": ""
+    },
+    {
+      "id": "CPA-2.28-FREE",
+      "title": "'Free' claims disclose every condition",
+      "source": "Consumer Protection Act, 2019 s.2(28) (misleading advertisement); CCPA Guidelines for Prevention of Misleading Advertisements, 2022 (free claims); PhysicsWallah order (PIB, 3 Jun 2026)",
+      "category": "bait_and_switch",
+      "severity": "high",
+      "binding": "guideline",
+      "effectiveFrom": "2022-06-09",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/pages/membership.tsx",
+          "line": 7,
+          "snippet": "Free for the first 14 days, then ₹99 every month until you cancel."
+        }
+      ],
+      "explanation": "The free-trial claim states the later charge and the autopay requirement in the same view.",
+      "recommendation": ""
+    },
+    {
+      "id": "ECOM-4.9",
+      "title": "Purchase consent only by explicit affirmative action; no pre-ticked boxes",
+      "source": "Consumer Protection (E-Commerce) Rules, 2020, Rule 4(9)",
+      "category": "basket_sneaking",
+      "severity": "critical",
+      "binding": "law",
+      "effectiveFrom": "2020-07-23",
+      "inForce": true,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/pages/cart.tsx",
+          "line": 7,
+          "snippet": "useState(true)"
+        },
+        {
+          "file": "src/pages/signup.tsx",
+          "line": 14,
+          "snippet": "<input type='checkbox' defaultChecked />"
+        }
+      ],
+      "explanation": "The paid protection add-on and the donation are pre-selected. The marketing consent checkbox at sign-up is also pre-ticked.",
+      "recommendation": "Default all purchase and consent controls to unselected."
+    },
+    {
+      "id": "ECOM-4.2-4.4",
+      "title": "Entity identity, customer care and grievance officer shown on the platform",
+      "source": "Consumer Protection (E-Commerce) Rules, 2020, Rule 4(2) and 4(4); Rule 6(5)(e) for sellers; DPDP Act s.6(3) contact person (data requests)",
+      "category": "grievance_disclosure",
+      "severity": "medium",
+      "binding": "law",
+      "effectiveFrom": "2020-07-23",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/components/Footer.tsx",
+          "line": 9,
+          "snippet": "Grievance Officer: {g.name}, {g.designation} · {g.email} · {g.phone}"
+        }
+      ],
+      "explanation": "The footer shows the legal name, address, customer care, and the grievance officer's name, designation and contact. A data-protection contact is also listed.",
+      "recommendation": ""
+    },
+    {
+      "id": "ECOM-TOTAL-PRICE",
+      "title": "Total price in a single figure with a breakup of all charges",
+      "source": "Consumer Protection (E-Commerce) Rules, 2020, Rule 6(5)(b) (marketplace sellers) and Rule 7(1)(e) (inventory entities); Rule 5(3)(e)",
+      "category": "pricing_disclosure",
+      "severity": "high",
+      "binding": "law",
+      "effectiveFrom": "2020-07-23",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/pages/payment.tsx",
+          "line": 9,
+          "snippet": "<ul>{breakup.map((l) => <li key={l.key}>{l.label}: ₹{l.amount}</li>)}</ul>"
+        }
+      ],
+      "explanation": "The payment summary lists every line and a single total that is the sum of the lines. Taxes are stated as included in the item price.",
+      "recommendation": ""
+    },
+    {
+      "id": "ECOM-RETURNS",
+      "title": "Return, refund, exchange, warranty, delivery and payment info shown pre-purchase",
+      "source": "Consumer Protection (E-Commerce) Rules, 2020, Rule 5(3)(c), 6(5)(g)-(i), 7(1)(a); best-before date added by E-Commerce (Amendment) Rules, 2026 from 1 Jan 2027",
+      "category": "product_disclosure",
+      "severity": "medium",
+      "binding": "law",
+      "effectiveFrom": "2020-07-23",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/pages/product/[id].tsx",
+          "line": 27,
+          "snippet": "Returns: unopened packaged items can be returned within 7 days for a full refund."
+        }
+      ],
+      "explanation": "The product page shows the return terms and links the return policy. It also shows the delivery charge.",
+      "recommendation": ""
+    },
+    {
+      "id": "ECOM-PAY-CANCEL",
+      "title": "Payment methods, fees and how to cancel regular payments disclosed",
+      "source": "Consumer Protection (E-Commerce) Rules, 2020, Rule 5(3)(d) and Rule 7(1)(c)",
+      "category": "recurring_payments",
+      "severity": "high",
+      "binding": "law",
+      "effectiveFrom": "2020-07-23",
+      "inForce": true,
+      "status": "unclear",
+      "evidence": [
+        {
+          "file": "src/pages/payment.tsx",
+          "line": 12,
+          "snippet": "to stop recurring payments, call our membership desk on 1800 266 9090."
+        }
+      ],
+      "explanation": "Payment methods are listed. The only instruction for stopping autopay is to phone a desk. No per-method fee information or step-by-step cancel instructions are given.",
+      "recommendation": ""
+    },
+    {
+      "id": "ECOM-SELLER-INFO",
+      "title": "Seller details shown on marketplace listings",
+      "source": "Consumer Protection (E-Commerce) Rules, 2020, Rule 5(3)(a); seller website/email added by 2026 Amendment from 1 Jan 2027",
+      "category": "product_disclosure",
+      "severity": "medium",
+      "binding": "law",
+      "effectiveFrom": "2020-07-23",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/pages/product/[id].tsx",
+          "line": 26,
+          "snippet": "Sold by {p.seller.name}, {p.seller.address} · seller rating {p.seller.rating}"
+        }
+      ],
+      "explanation": "Seller name, address and rating are shown. The seller's customer-care number is not shown, but the product's consumer-care number is.",
+      "recommendation": ""
+    },
+    {
+      "id": "ECOM-4.6-COO",
+      "title": "Importer and country of origin shown for imported goods",
+      "source": "Consumer Protection (E-Commerce) Rules, 2020, Rule 4(6) and 6(5)(d),(f); Rule 4(6)(b) as amended 2026 (from 1 Jan 2027)",
+      "category": "product_disclosure",
+      "severity": "medium",
+      "binding": "law",
+      "effectiveFrom": "2020-07-23",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/pages/product/[id].tsx",
+          "line": 21,
+          "snippet": "<th>Country of origin</th><td>{p.countryOfOrigin}</td>"
+        },
+        {
+          "file": "src/pages/product/[id].tsx",
+          "line": 22,
+          "snippet": "{p.importer && <tr><th>Importer</th>"
+        }
+      ],
+      "explanation": "The product page renders country of origin and the importer where one exists.",
+      "recommendation": ""
+    },
+    {
+      "id": "ECOM-4.11-DISCRIM",
+      "title": "No price discrimination between consumers of the same class",
+      "source": "Consumer Protection (E-Commerce) Rules, 2020, Rule 4(11)(a)-(b); CCPA notices to Ola/Uber on device-based fares (Jan 2025)",
+      "category": "pricing_disclosure",
+      "severity": "high",
+      "binding": "law",
+      "effectiveFrom": "2020-07-23",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/lib/pricing.ts",
+          "line": 7,
+          "snippet": "priceBreakup(lines, selected, member, step)"
+        }
+      ],
+      "explanation": "Price calculation uses only items, selected add-ons, membership and step. It has no device, OS or user-agent inputs.",
+      "recommendation": ""
+    },
+    {
+      "id": "ECOM-RANKING",
+      "title": "Ranking parameters disclosed; search not manipulated",
+      "source": "Consumer Protection (E-Commerce) Rules, 2020, Rule 5(3)(f) (descending order from 2027) and Rule 4(11)(c) inserted by 2026 Amendment (from 1 Jan 2027)",
+      "category": "disguised_ads",
+      "severity": "low",
+      "binding": "law",
+      "effectiveFrom": "2020-07-23",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/pages/policies/ranking.tsx",
+          "line": 5,
+          "snippet": "Results are ordered by how well the product matches your search, then customer rating, then delivery speed."
+        }
+      ],
+      "explanation": "A ranking page describes the parameters, and the search code matches that description. Sponsored items are excluded from organic search results.",
+      "recommendation": ""
+    },
+    {
+      "id": "ECOM-4.12-SPONSORED",
+      "title": "Sponsored listings distinctly and prominently labelled",
+      "source": "Consumer Protection (E-Commerce) (Amendment) Rules, 2026, new Rule 4(12) (notified 9 Sep 2026, in force 1 Jan 2027)",
+      "category": "disguised_ads",
+      "severity": "high",
+      "binding": "law",
+      "effectiveFrom": "2027-01-01",
+      "inForce": false,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/components/ProductCard.tsx",
+          "line": 6,
+          "snippet": "<a href={`/product/${p.id}`} className='card'>"
+        },
+        {
+          "file": "src/pages/index.tsx",
+          "line": 8,
+          "snippet": "const sponsored = PRODUCTS.filter((p) => p.sponsored);"
+        }
+      ],
+      "explanation": "Sponsored items are boosted to the top of the home page, but the card renders no 'Sponsored' label.",
+      "recommendation": "Show a visible 'Sponsored' badge on every card where `p.sponsored` is true."
+    },
+    {
+      "id": "ECOM-4.13-PRIOR-PRICE",
+      "title": "Discounts show the prior price (lowest in the previous 30 days)",
+      "source": "Consumer Protection (E-Commerce) (Amendment) Rules, 2026, new Rule 4(13) (in force 1 Jan 2027)",
+      "category": "pricing_disclosure",
+      "severity": "high",
+      "binding": "law",
+      "effectiveFrom": "2027-01-01",
+      "inForce": false,
+      "status": "unclear",
+      "evidence": [
+        {
+          "file": "src/components/ProductCard.tsx",
+          "line": 9,
+          "snippet": "<s>MRP ₹{p.mrp}</s> {discount && <span>Lowest in last 30 days: ₹{p.lowest30d}</span>}"
+        }
+      ],
+      "explanation": "A prior-price field called `lowest30d` is displayed, but it is a static value on the product. No price-history store shows how it is derived.",
+      "recommendation": ""
+    },
+    {
+      "id": "ECOM-4.15-CERT",
+      "title": "Dark-pattern self-audit certificate displayed",
+      "source": "Consumer Protection (E-Commerce) (Amendment) Rules, 2026, new Rule 4(15) (in force 1 Jan 2027); CCPA advisory of 5 Jun 2025",
+      "category": "grievance_disclosure",
+      "severity": "low",
+      "binding": "law",
+      "effectiveFrom": "2027-01-01",
+      "inForce": false,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/components/Footer.tsx",
+          "line": 12,
+          "snippet": "Dark-pattern self-audit {COMPANY.selfAudit.year}"
+        }
+      ],
+      "explanation": "The footer links a 2026 dark-pattern self-audit certificate.",
+      "recommendation": ""
+    },
+    {
+      "id": "ECOM-5.7-BUNDLED-FEE",
+      "title": "No bundled fees for unrelated services",
+      "source": "Consumer Protection (E-Commerce) (Amendment) Rules, 2026, new Rule 5(7) (in force 1 Jan 2027); exception for loyalty/membership programmes",
+      "category": "basket_sneaking",
+      "severity": "medium",
+      "binding": "law",
+      "effectiveFrom": "2027-01-01",
+      "inForce": false,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/config/fees.ts",
+          "line": 7,
+          "snippet": "platform: { label: 'Platform fee', amount: 9 ..."
+        }
+      ],
+      "explanation": "Platform and handling fees are separate from the optional add-ons, which are their own lines.",
+      "recommendation": ""
+    },
+    {
+      "id": "DPDP-5-NOTICE",
+      "title": "Consent requests come with a clear, standalone notice",
+      "source": "Digital Personal Data Protection Act, 2023 s.5(1) and s.6(3); DPDP Rules, 2025 Rule 3 (in force 18 months after 14 Nov 2025)",
+      "category": "data_consent",
+      "severity": "medium",
+      "binding": "law",
+      "effectiveFrom": "2027-05-13",
+      "inForce": false,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/pages/signup.tsx",
+          "line": 11,
+          "snippet": "We collect your name, phone and delivery address to deliver your orders."
+        },
+        {
+          "file": "src/pages/policies/privacy.tsx",
+          "line": 8,
+          "snippet": "Available in English, हिन्दी and ಕನ್ನಡ."
+        }
+      ],
+      "explanation": "A notice sits with the consent request and lists the data, the purposes, withdrawal, and the Data Protection Board complaint route. Language options are offered.",
+      "recommendation": ""
+    },
+    {
+      "id": "DPDP-6.1-AFFIRM",
+      "title": "Data consent by clear affirmative action; no pre-ticked consent",
+      "source": "Digital Personal Data Protection Act, 2023 s.6(1)",
+      "category": "data_consent",
+      "severity": "high",
+      "binding": "law",
+      "effectiveFrom": "2027-05-13",
+      "inForce": false,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/pages/signup.tsx",
+          "line": 14,
+          "snippet": "<input type='checkbox' defaultChecked />"
+        }
+      ],
+      "explanation": "The marketing consent checkbox for offers from QuickKart and its partners is pre-ticked. This contradicts the notice's claim that each optional use is off by default.",
+      "recommendation": "Remove the pre-ticked box and use only the separate unticked per-purpose consents."
+    },
+    {
+      "id": "DPDP-6.1-UNBUNDLED",
+      "title": "Consent is specific, unbundled and not a condition for unnecessary data",
+      "source": "Digital Personal Data Protection Act, 2023 s.6(1) (free, specific, unconditional; limited to necessary data) and its telemedicine illustration",
+      "category": "forced_action",
+      "severity": "high",
+      "binding": "law",
+      "effectiveFrom": "2027-05-13",
+      "inForce": false,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/pages/signup.tsx",
+          "line": 14,
+          "snippet": "receive offers and messages from QuickKart and its partners."
+        }
+      ],
+      "explanation": "One pre-ticked checkbox covers offers and messages from QuickKart and its partners. It combines purposes and third-party sharing, and it duplicates the separate email and SMS consents.",
+      "recommendation": "Drop the combined checkbox. Keep separate unticked consents per purpose, and ask for partner sharing separately."
+    },
+    {
+      "id": "DPDP-6.4-WITHDRAW",
+      "title": "Withdrawing consent is as easy as giving it",
+      "source": "Digital Personal Data Protection Act, 2023 s.6(4); DPDP Rules, 2025 Rule 3(c)(i)",
+      "category": "data_consent",
+      "severity": "high",
+      "binding": "law",
+      "effectiveFrom": "2027-05-13",
+      "inForce": false,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/pages/account/privacy.tsx",
+          "line": 12,
+          "snippet": "withdrawConsent(consents, p.id)"
+        }
+      ],
+      "explanation": "Account → Privacy has a one-click toggle per optional consent.",
+      "recommendation": ""
+    },
+    {
+      "id": "DPDP-9-CHILDREN",
+      "title": "Children: verifiable parental consent; no tracking or targeted ads",
+      "source": "Digital Personal Data Protection Act, 2023 s.9(1) and 9(3); DPDP Rules, 2025 Rule 10",
+      "category": "data_consent",
+      "severity": "high",
+      "binding": "law",
+      "effectiveFrom": "2027-05-13",
+      "inForce": false,
+      "status": "not_applicable",
+      "evidence": [
+        {
+          "file": "src/pages/signup.tsx",
+          "line": 9,
+          "snippet": "You must be 18 or older to create an account."
+        }
+      ],
+      "explanation": "The platform is a grocery marketplace not aimed at children, and its sign-up states an 18+ requirement.",
+      "recommendation": ""
+    },
+    {
+      "id": "RBI-EMANDATE-1",
+      "title": "Recurring payments set up only through a disclosed, authenticated mandate",
+      "source": "RBI Digital Payments - E-mandate Framework, 2026 (21 Apr 2026), paras 4(a)-(c), 5(a), 8 (issuer/acquirer duties; acquirers must ensure merchant compliance, para 10(c))",
+      "category": "recurring_payments",
+      "severity": "critical",
+      "binding": "law",
+      "effectiveFrom": "2026-04-21",
+      "inForce": true,
+      "status": "unclear",
+      "evidence": [
+        {
+          "file": "src/pages/membership.tsx",
+          "line": 7,
+          "snippet": "Set up UPI AutoPay or a card mandate; you approve it with your UPI PIN or card OTP."
+        }
+      ],
+      "explanation": "The page discloses amount and frequency and says the mandate is authenticated. The gateway integration is not in the code, and no validity period is shown.",
+      "recommendation": ""
+    },
+    {
+      "id": "RBI-EMANDATE-2",
+      "title": "Users can see and withdraw a mandate; renewal is notified",
+      "source": "RBI Digital Payments - E-mandate Framework, 2026 (21 Apr 2026), paras 4(b) (withdraw at any time, communicated at registration), 6 (24-hour pre-debit notification and opt-out)",
+      "category": "recurring_payments",
+      "severity": "high",
+      "binding": "law",
+      "effectiveFrom": "2026-04-21",
+      "inForce": true,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/pages/account/membership.tsx",
+          "line": 9,
+          "snippet": "To cancel KartPlus, call our membership desk on 1800 266 9090"
+        }
+      ],
+      "explanation": "The account page shows the renewal date but has no revoke or cancel action for the mandate. Withdrawal needs a phone call, and the registration page doesn't say the mandate can be withdrawn.",
+      "recommendation": "Add an in-app mandate list with a revoke action that calls the gateway. State at registration that the mandate can be withdrawn."
+    },
+    {
+      "id": "MVAG-TIP",
+      "title": "Tips only after the service; no pay-more prompts during booking",
+      "source": "Motor Vehicle Aggregator Guidelines, 2025 (tipping only after ride, as cited by CCPA); CCPA Rapido order (PIB, 15 Sep 2026)",
+      "category": "confirm_shaming",
+      "severity": "high",
+      "binding": "guideline",
+      "effectiveFrom": "2025-07-01",
+      "inForce": true,
+      "status": "not_applicable",
+      "evidence": [],
+      "explanation": "The platform is a grocery marketplace with no tipping.",
+      "recommendation": ""
+    },
+    {
+      "id": "ASCI-DD-1",
+      "title": "Advertised and listed prices include non-optional fees",
+      "source": "ASCI Guidelines for Online Deceptive Design Patterns in Advertising (15 Jun 2023, applicable from 1 Sep 2023), Guideline 1 (Drip Pricing)",
+      "category": "drip_pricing",
+      "severity": "medium",
+      "binding": "self-regulatory",
+      "effectiveFrom": "2023-09-01",
+      "inForce": true,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/components/ProductCard.tsx",
+          "line": 9,
+          "snippet": "<b>₹{p.price}</b> <s>MRP ₹{p.mrp}</s>"
+        },
+        {
+          "file": "src/lib/pricing.ts",
+          "line": 15,
+          "snippet": "out.push({ key: 'platform' ..."
+        }
+      ],
+      "explanation": "Listing prices exclude the platform and handling fees that every buyer pays later at payment.",
+      "recommendation": "Include mandatory fees in the listed price, or disclose them on the listing."
+    },
+    {
+      "id": "ASCI-DD-2",
+      "title": "Ad symbols keep their usual meaning (X closes)",
+      "source": "ASCI Guidelines for Online Deceptive Design Patterns in Advertising (15 Jun 2023, applicable from 1 Sep 2023), Guideline 2 (Bait and Switch), example (c)",
+      "category": "interface_interference",
+      "severity": "medium",
+      "binding": "self-regulatory",
+      "effectiveFrom": "2023-09-01",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/components/NewsletterModal.tsx",
+          "line": 14,
+          "snippet": "<button aria-label='Close' onClick={close}>×</button>"
+        }
+      ],
+      "explanation": "The close button only dismisses the modal.",
+      "recommendation": ""
+    },
+    {
+      "id": "ASCI-DD-3",
+      "title": "Influencer, paid-review and editorial-style ads are labelled",
+      "source": "ASCI Guidelines for Online Deceptive Design Patterns in Advertising (15 Jun 2023, applicable from 1 Sep 2023), Guideline 4 (Disguised Ads; numbered DD-3 here because ASCI Guideline 3 is folded into CCPA-DP-01); ASCI influencer advertising guidelines",
+      "category": "disguised_ads",
+      "severity": "medium",
+      "binding": "self-regulatory",
+      "effectiveFrom": "2023-09-01",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/pages/index.tsx",
+          "line": 18,
+          "snippet": "{c.paid && <span className='badge'>Paid partnership</span>}"
+        }
+      ],
+      "explanation": "Paid creator picks show a 'Paid partnership' label.",
+      "recommendation": ""
+    },
+    {
+      "id": "LM-6.10",
+      "title": "Mandatory packaged-commodity declarations shown on product pages",
+      "source": "Legal Metrology (Packaged Commodities) Rules, 2011, Rule 6(10) (inserted 2017, effective 1 Jan 2018) read with Rule 6(1)",
+      "category": "product_disclosure",
+      "severity": "medium",
+      "binding": "law",
+      "effectiveFrom": "2018-01-01",
+      "inForce": true,
+      "status": "violation",
+      "evidence": [
+        {
+          "file": "src/pages/product/[id].tsx",
+          "line": 16,
+          "snippet": "<th>Net quantity</th> ... <th>Manufacturer</th> ... <th>Consumer care</th>"
+        }
+      ],
+      "explanation": "The product page shows MRP, net quantity, unit price, manufacturer, origin and consumer care. The product schema has no generic-name field, so it can't be shown.",
+      "recommendation": "Add and render a generic/common name for each packaged commodity."
+    },
+    {
+      "id": "LM-6.10A",
+      "title": "Searchable, sortable country-of-origin filter for imported goods",
+      "source": "Legal Metrology (Packaged Commodities) Amendment Rules, 2026, G.S.R. 128(E) of 13 Feb 2026, new Rule 6(10A) (reported in force 1 Jul 2026)",
+      "category": "product_disclosure",
+      "severity": "low",
+      "binding": "law",
+      "effectiveFrom": "2026-07-01",
+      "inForce": true,
+      "status": "compliant",
+      "evidence": [
+        {
+          "file": "src/pages/search.tsx",
+          "line": 11,
+          "snippet": "<label>Country of origin <select defaultValue=''>"
+        }
+      ],
+      "explanation": "Search has a country-of-origin filter backed by the product's `countryOfOrigin` field. No origin sort is present.",
+      "recommendation": ""
+    }
+  ]
+}

@@ -53,11 +53,16 @@ function ModelSelect({ name, label, value, onChange, catalog, defaultLabel, help
 }
 
 /** All console settings in one form: shop base URL and the models used by the Trickster and the sniffer agents. */
-export function SettingsForm({ initial, shops }: { initial: { shopBaseUrl: string; tricksterModel: string; snifferModel: string }; shops: { brand: string; port: number }[] }) {
+export function SettingsForm({ initial, shops, auditor }: {
+  initial: { shopBaseUrl: string; tricksterModel: string; snifferModel: string; auditorModel: string };
+  shops: { brand: string; port: number }[];
+  auditor: { models: Model[]; error?: string; defaultModel: string };
+}) {
   const [state, action, pending] = useActionState<SaveState, FormData>(save, { ok: true, message: "" });
   const [baseUrl, setBaseUrl] = useState(initial.shopBaseUrl);
   const [trickster, setTrickster] = useState(initial.tricksterModel);
   const [sniffer, setSniffer] = useState(initial.snifferModel);
+  const [auditorModel, setAuditorModel] = useState(initial.auditorModel);
   const [catalog, reload] = useModels();
   const host = useSyncExternalStore(noSubscribe, browserHost, () => "");
   const base = baseUrl.trim().replace(/\/+$/, "");
@@ -82,6 +87,10 @@ export function SettingsForm({ initial, shops }: { initial: { shopBaseUrl: strin
             </p>
           )}
           <p className="text-sm text-[var(--muted)]">Running agents keep their model; restart them on <Link className="link" href="/jobs#agents">Agents &amp; jobs</Link> to apply a change.</p>
+          <ModelSelect name="auditorModel" label="Auditor model" value={auditorModel} onChange={setAuditorModel}
+            catalog={auditor.models.length ? { status: "ready", models: auditor.models, defaultModel: auditor.defaultModel } : { status: "error", error: auditor.error ?? "No models.", defaultModel: auditor.defaultModel }}
+            defaultLabel={(d) => `Engine default (${d})`} help="Used by new platform audits. The auditor is a pi agent on the Anthropic Messages API, so this lists the models your Anthropic key can use." />
+          {auditor.error && <p role="alert" className="text-sm text-[var(--bad)]">{auditor.error}</p>}
         </div>
       </section>
 

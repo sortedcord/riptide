@@ -1,5 +1,0 @@
-
-$ tsx --env-file-if-exists=.env engine/agents/reference/server.ts --config careful-other-model --port 41001
-[careful-other-model] bedrock/minimax.minimax-m2.5 A2A agent on http://127.0.0.1:41001
-
-[stopped]

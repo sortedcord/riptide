@@ -1,0 +1,17 @@
+{"t":1792890610950,"type":"status","text":"extracted 38 files"}
+{"t":1792890611009,"type":"status","text":"live preview ready (bundle)"}
+{"t":1792890612779,"type":"tool","tool":"ls","path":".","pattern":null}
+{"t":1792890614292,"type":"tool","tool":"grep","path":"src","pattern":"."}
+{"t":1792890617397,"type":"tool","tool":"ls","path":"src/components","pattern":null}
+{"t":1792890617398,"type":"tool","tool":"ls","path":"src/pages","pattern":null}
+{"t":1792890617400,"type":"tool","tool":"ls","path":"src/pages/policies","pattern":null}
+{"t":1792890621736,"type":"tool","tool":"read","path":"src/components/Countdown.tsx","pattern":null}
+{"t":1792890621737,"type":"tool","tool":"read","path":"src/components/NewsletterModal.tsx","pattern":null}
+{"t":1792890621738,"type":"tool","tool":"read","path":"src/pages/index.tsx","pattern":null}
+{"t":1792890621738,"type":"tool","tool":"read","path":"src/components/ProductCard.tsx","pattern":null}
+{"t":1792890621739,"type":"tool","tool":"read","path":"src/pages/search.tsx","pattern":null}
+{"t":1792890621739,"type":"tool","tool":"read","path":"src/pages/payment.tsx","pattern":null}
+{"t":1792890621739,"type":"tool","tool":"read","path":"src/components/Footer.tsx","pattern":null}
+{"t":1792890621740,"type":"tool","tool":"ls","path":"src/pages/account","pattern":null}
+{"t":1792890623543,"type":"tool","tool":"read","path":"src/pages/account/membership.tsx","pattern":null}
+{"t":1792890661220,"type":"status","text":"done: 93.6% compliant"}

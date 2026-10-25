@@ -10,6 +10,7 @@ const NAV = [
   ["/variants", "Variants"],
   ["/suites", "Suites & ratings"],
   ["/agents", "Agent ratings"],
+  ["/audits", "Platform auditing"],
   ["/runs", "Runs"],
   ["/jobs", "Agents & jobs"],
   ["/settings", "Settings"],

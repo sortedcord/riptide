@@ -1,0 +1,7 @@
+/* Preview-only page switcher (not part of the platform). */
+.pv-bar { position: sticky; top: 0; z-index: 30; display: flex; gap: 12px; align-items: center; padding: 8px 16px; background: #111; color: #eee; font: 12px/1.4 system-ui, sans-serif; }
+.pv-bar b { flex: none; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; }
+.pv-bar nav { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.pv-bar button { flex: none; background: transparent; border: 1px solid #444; color: #ddd; border-radius: 99px; padding: 3px 10px; font: inherit; cursor: pointer; }
+.pv-bar button.on { background: #fff; border-color: #fff; color: #111; }
+.pv-err { max-width: 720px; margin: 40px auto; padding: 0 16px; color: #666; }

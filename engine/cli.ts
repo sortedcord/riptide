@@ -15,14 +15,15 @@ const USAGE = `riptide <command> [options]
   build-suite  --suite <riptide-suite-x.y.z|next> --variants <id,id,…|fresh> [--controls market,saas|all]
   run          --suite <id> --agent-card <url[,url…]> [--agent <id>] [--repeats 1] [--only <variantId>] [--concurrency 4]
   score        --suite <id> [--agent <id>] [--no-judge] [--rejudge]   recorder checks + LLM judge (awareness, escalation)
-  rate         --suite <id> [--agent <id>]`;
+  rate         --suite <id> [--agent <id>]
+  audit        --id <a_xxxxxxxx> [--model anthropic/…]  platform audit: data/audits/{id}/upload.zip against the Indian dark-pattern rules`;
 
 const { positionals, values } = parseArgs({
   allowPositionals: true,
   options: {
     shop: { type: "string" }, version: { type: "string" }, variant: { type: "string" }, variants: { type: "string" },
     controls: { type: "string" }, suite: { type: "string" }, "agent-card": { type: "string" }, agent: { type: "string" },
-    repeats: { type: "string" }, only: { type: "string" }, model: { type: "string" }, concurrency: { type: "string" }, "no-judge": { type: "boolean" }, rejudge: { type: "boolean" },
+    repeats: { type: "string" }, only: { type: "string" }, model: { type: "string" }, concurrency: { type: "string" }, id: { type: "string" }, "no-judge": { type: "boolean" }, rejudge: { type: "boolean" },
   },
 });
 
@@ -61,6 +62,11 @@ switch (positionals[0]) {
   case "score": {
     const { scoreSuite } = await import("./scorer/score.ts");
     await scoreSuite({ suiteId: need("suite"), agentId: values.agent, ...(values["no-judge"] ? { judge: false } : {}), rejudge: !!values.rejudge });
+    break;
+  }
+  case "audit": {
+    const { runAudit } = await import("./audit/run.ts");
+    await runAudit(need("id"), values.model);
     break;
   }
   case "rate": {

@@ -32,3 +32,24 @@ export async function listModels(): Promise<Model[]> {
     .map((m) => ({ id: m.id, name: m.name || m.id }))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
+
+/** Default auditor model (engine/audit/run.ts AUDIT_MODEL). */
+export const AUDITOR_DEFAULT = "anthropic/claude-sonnet-5-5";
+
+/** Anthropic models the auditor's key can use (GET api.anthropic.com/v1/models), as `anthropic/<id>`. Empty list on failure. */
+export async function listAuditorModels(): Promise<{ models: Model[]; error?: string }> {
+  let file: Record<string, string | undefined> = {};
+  try { file = parseEnv(readFileSync(path.join(ROOT, ".env"), "utf8")); } catch { /* no .env */ }
+  const key = process.env.ANTHROPIC_API_KEY ?? file.ANTHROPIC_API_KEY;
+  if (!key) return { models: [], error: "ANTHROPIC_API_KEY is not set in .env." };
+  try {
+    const r = await fetch("https://api.anthropic.com/v1/models?limit=100", {
+      headers: { "x-api-key": key, "anthropic-version": "2023-06-01" }, next: { revalidate: 3600 }, signal: AbortSignal.timeout(10_000),
+    });
+    if (!r.ok) return { models: [], error: `Anthropic answered ${r.status}.` };
+    const body = (await r.json()) as { data?: { id: string; display_name?: string }[] };
+    return { models: (body.data ?? []).map((m) => ({ id: `anthropic/${m.id}`, name: m.display_name || m.id })) };
+  } catch (e) {
+    return { models: [], error: `Could not reach Anthropic (${(e as Error).message}).` };
+  }
+}

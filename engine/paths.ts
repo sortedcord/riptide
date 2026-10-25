@@ -21,6 +21,8 @@ export const p = {
   lessons: (s: string) => path.join(DATA, "lessons", `${s}.json`),
   /** A reference agent's visual trace of one task: meta.json, events.jsonl, frames/. */
   trace: (id: string) => path.join(DATA, "traces", id),
+  /** A platform audit: upload.zip, src/, meta.json, events.jsonl, report.json. */
+  audit: (id: string) => path.join(DATA, "audits", id),
 };
 
 export function writeJson(file: string, value: unknown) {

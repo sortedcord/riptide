@@ -321,3 +321,98 @@ export const Lesson = z.object({
   gateFailures: z.array(z.object({ variantId: z.string(), reason: z.string() })),
 });
 export type Lesson = z.infer<typeof Lesson>;
+
+// ------------------------------------------------------------------ platform auditing (Indian dark-pattern rules)
+
+export const SEVERITIES = ["critical", "high", "medium", "low"] as const;
+export const SEVERITY_WEIGHT: Record<(typeof SEVERITIES)[number], number> = { critical: 4, high: 3, medium: 2, low: 1 };
+
+/** One rule of the Indian guidelines checklist (docs/india-guidelines.json). */
+export const GuidelineRule = z.object({
+  id: z.string(),
+  title: z.string(),
+  source: z.string(),
+  category: z.string(),
+  severity: z.enum(SEVERITIES),
+  binding: z.string(),
+  violation: z.string(),
+  compliant: z.string(),
+  notApplicableWhen: z.string().optional(),
+  /** ISO date the rule takes effect; rules not yet in force count towards readiness, not the headline score. */
+  effectiveFrom: z.string().optional(),
+});
+export type GuidelineRule = z.infer<typeof GuidelineRule>;
+
+export const AuditEvidence = z.object({ file: z.string(), line: z.number().int().nullable().optional(), snippet: z.string().optional() });
+
+/**
+ * A reconstruction of the offending UI as a user would see it, drawn as SVG by the console (never raw markup from the model).
+ * `flagged` marks the element(s) that break the rule.
+ */
+export const UiMock = z.object({
+  page: z.string().max(80),
+  elements: z.array(z.object({
+    kind: z.enum(["heading", "text", "checkbox", "toggle", "button", "price", "badge", "timer", "banner", "input", "link"]),
+    text: z.string().max(160),
+    checked: z.boolean().optional(),
+    emphasis: z.enum(["primary", "secondary", "muted", "tiny"]).optional(),
+    amount: z.string().max(24).optional(),
+    flagged: z.boolean().optional(),
+  })).min(1).max(8),
+});
+export type UiMock = z.infer<typeof UiMock>;
+
+/** What the auditor model returns (validated; the engine re-derives the score). */
+export const AuditVerdict = z.object({
+  platform: z.object({ name: z.string(), kind: z.string(), summary: z.string() }),
+  rules: z.array(z.object({
+    ruleId: z.string(),
+    status: z.enum(["violation", "compliant", "not_applicable", "unclear"]),
+    evidence: z.array(AuditEvidence).default([]),
+    explanation: z.string(),
+    recommendation: z.string().default(""),
+    /** Only for violations, and only when the rule concerns something the user sees. Dropped if malformed. */
+    ui: UiMock.optional().catch(undefined),
+  })),
+});
+export type AuditVerdict = z.infer<typeof AuditVerdict>;
+
+export const AuditMeta = z.object({
+  auditId: z.string().regex(/^a_[a-z0-9]{8}$/),
+  name: z.string(),
+  source: z.enum(["upload", "demo"]),
+  createdAt: z.string(),
+  status: z.enum(["queued", "extracting", "auditing", "done", "failed"]),
+  fileCount: z.number().optional(),
+  error: z.string().optional(),
+  /** Live preview of the platform's frontend (engine/audit/preview.ts), served sandboxed by the console. */
+  preview: z.object({ kind: z.enum(["bundle", "static", "none"]), note: z.string().optional() }).optional(),
+});
+export type AuditMeta = z.infer<typeof AuditMeta>;
+
+/** data/audits/{auditId}/report.json */
+export const AuditReport = z.object({
+  auditId: z.string(),
+  platform: AuditVerdict.shape.platform,
+  model: z.string(),
+  startedAt: z.string(),
+  durationMs: z.number(),
+  toolCalls: z.number(),
+  filesRead: z.number(),
+  /** Files in the upload after junk folders were dropped. */
+  filesInUpload: z.number().optional(),
+  /** Weighted compliance over applicable rules in force on the audit date, 0–100 (critical 4, high 3, medium 2, low 1). */
+  score: z.number(),
+  /** The same over all rules, including those that take effect later. */
+  readiness: z.number(),
+  counts: z.object({ compliant: z.number(), violation: z.number(), not_applicable: z.number(), unclear: z.number() }),
+  rules: z.array(GuidelineRule.pick({ id: true, title: true, source: true, category: true, severity: true, binding: true, effectiveFrom: true }).extend({
+    inForce: z.boolean(),
+    status: z.enum(["violation", "compliant", "not_applicable", "unclear"]),
+    evidence: z.array(AuditEvidence),
+    explanation: z.string(),
+    recommendation: z.string(),
+    ui: UiMock.optional(),
+  })),
+});
+export type AuditReport = z.infer<typeof AuditReport>;

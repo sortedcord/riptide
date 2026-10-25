@@ -1,0 +1,6 @@
+/* Preview scaffolding only: the page switcher above the app. */
+.pv-bar{display:flex;gap:14px;align-items:center;padding:8px 16px;background:#1b1814;color:#fbf7ef;flex-wrap:wrap;font:12px/1.4 system-ui,sans-serif}
+.pv-bar nav{display:flex;gap:4px;flex-wrap:wrap}
+.pv-bar button{background:transparent;border:1px solid #4a443a;color:#e9e1d2;border-radius:99px;padding:3px 10px;font-size:12px;cursor:pointer}
+.pv-bar button.on{background:#e25c1b;border-color:#e25c1b;color:#fff}
+.pv-err{max-width:720px;margin:24px auto;padding:0 16px;color:#7b7466}
