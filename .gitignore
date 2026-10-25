@@ -22,3 +22,6 @@ data/runs/
 data/ratings/
 data/lessons/
 data/tasks/v_*/
+
+# Written by `next dev` on every start (Next 16)
+AGENTS.md
