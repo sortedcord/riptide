@@ -54,7 +54,7 @@ See `slots.ts` or `GET /api/slots`. Fare-summary ids are generated for each step
 - a 390px mobile check;
 - no console errors on any of the above.
 
-To run it, start `npx next start -p 3003` in `shops/air`, then from the repo root run `npx playwright test -c shops/air/tests`. If Playwright's bundled browser revision is missing, set `PW_CHROMIUM=~/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome`.
+To run it, start `npx next start -p 3003` in `shops/air`, then from the repo root run `npx playwright test -c shops/air/tests`. If TinyFish's bundled browser revision is missing, set `PW_CHROMIUM=~/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome`.
 
 ## Known gaps
 - Infants (under 2) can't be booked online. The search form says so.

@@ -2,7 +2,7 @@
 
 The engine rates how well AI shopping agents resist dark patterns. A **Trickster** edits a shop's code on a variant branch and writes tasks; **agents under test** shop through A2A; the shops' **flight recorder** logs what really happened; the **Scorer** grades it into a **Riptide Rating**.
 
-Read `SHOP_GUIDE.md` (how the shops work) and `docs/TAXONOMY.md` (the 13 CCPA categories) first.
+Read `docs/SHOP_GUIDE.md` (how the shops work) and `docs/TAXONOMY.md` (the 13 CCPA categories) first.
 
 ## Pipeline
 `riptide mutate → build-suite → run → score → rate` (`learn` in pass 2). It is a deterministic pipeline: each stage is a function in `engine/`, called in order by `engine/cli.ts`, reading and writing JSON under `data/`. **A2A is used only at the boundary to agents under test.** No stage messages another.
@@ -30,7 +30,7 @@ npm run riptide -- rate --suite riptide-suite-0.0.1
 - LLM calls go through `engine/llm.ts`: `structured()` for one zod-typed answer, `toolLoop()` for agents, OpenAI **Responses API** on the gateway in `.env` (`OPENAI_BASE_URL`, `OPENAI_API_KEY`). Sniffers, the judge (`gemini/gemini-3.8-flash`) and report coercion use it. Model availability on the gateway changes; probe before relying on one.
 - **The Trickster runs on the pi harness** (`engine/trickster/pi.ts`, `@earendil-works/pi-coding-agent` 1.1.0, whole pi family pinned to 1.1.0 via root `overrides`): Anthropic **Messages API** directly with `ANTHROPIC_API_KEY`, model `anthropic/claude-sonnet-5-5`. pi owns the agent loop, context compaction and retries. Sandbox (`engine/trickster/sandbox.ts`, shared with the old loop, tested in `sandbox.test.ts`): pi's `read/write/edit/grep/find/ls` are path-checked by a `tool_call` hook (inside the worktree; writes only under `shops/{shop}/` or `trickster-output.json`), pi's `bash` is off, and a custom `run` tool allows only `npm run typecheck|build|lint -w shops/{shop}`, `grep`, `ls`, `git diff|status`. pi runs with an isolated agent dir (`../riptide-wt/.pi-agent`), an in-memory session and the SKILL as its whole system prompt, so `~/.pi` settings, skills and extensions are never loaded. `RIPTIDE_TRICKSTER_HARNESS=loop` switches back to our own tool loop on the gateway.
 - Shops are served from git worktrees by `engine/trickster/serve.ts` (`ensureWorktree`, `controlWorktree`, `serveShop`). Worktrees live in `../riptide-wt/`. Never build into the main checkout.
-- Browser: Playwright `chromium` with `executablePath = PW_CHROMIUM ?? ~/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome` (same as `playwright.config.ts`).
+- Browser: TinyFish `chromium` with `executablePath = PW_CHROMIUM ?? ~/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome` (same as `playwright.config.ts`).
 - No new npm dependencies without the lead. Already available: `zod`, `openai`, `@a2a-js/sdk` (v1.3, A2A spec 1.0), `express`, `playwright`/`@playwright/test`, `tsx`.
 - Keep it small. No abstractions with one implementation. A `ponytail:` comment marks a deliberate shortcut and its ceiling.
 

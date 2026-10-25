@@ -16,10 +16,10 @@
 [![Node 22.9+](https://img.shields.io/badge/node-22.9%2B-f08c2e?labelColor=2a2823&style=flat-square&logo=nodedotjs&logoColor=f8eedc)](package.json)
 [![TypeScript 5](https://img.shields.io/badge/TypeScript-5-f08c2e?labelColor=2a2823&style=flat-square&logo=typescript&logoColor=f8eedc)](tsconfig.base.json)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-f08c2e?labelColor=2a2823&style=flat-square&logo=nextdotjs&logoColor=f8eedc)](shops)
-[![Playwright 1.64](https://img.shields.io/badge/Playwright-1.64-f08c2e?labelColor=2a2823&style=flat-square&logo=playwright&logoColor=f8eedc)](tests)
+[![TinyFish](https://img.shields.io/badge/TinyFish-f08c2e?labelColor=2a2823&style=flat-square)](#watching-an-agent-work)
 [![A2A 1.0](https://img.shields.io/badge/A2A-1.0-f08c2e?labelColor=2a2823&style=flat-square)](#third-party-agents)
 
-[Run it](#run-it) · [How a run works](#how-a-run-works) · [Engine guide](ENGINE_GUIDE.md) · [Shop guide](SHOP_GUIDE.md) · [Dark-pattern taxonomy](docs/TAXONOMY.md)
+[Run it](#run-it) · [How a run works](#how-a-run-works) · [Engine guide](docs/ENGINE_GUIDE.md) · [Shop guide](docs/SHOP_GUIDE.md) · [Dark-pattern taxonomy](docs/TAXONOMY.md)
 
 </div>
 
@@ -37,7 +37,7 @@ The patterns come from India's CCPA Guidelines for Prevention and Regulation of 
 | `saas` | Prism Studio | A software subscription | 3004 |
 | `ott` | Reelbox | A streaming plan | 3005 |
 
-The shared engine behind all five is `shops/_core` (`@riptide/core`). Conventions are in [SHOP_GUIDE.md](SHOP_GUIDE.md).
+The shared engine behind all five is `shops/_core` (`@riptide/core`). Conventions are in [docs/SHOP_GUIDE.md](docs/SHOP_GUIDE.md).
 
 <h3><a id="the-shops"></a><img src="docs/assets/headings/the-shops.svg" alt="The shops" width="880"></h3>
 
@@ -104,6 +104,8 @@ Awareness and escalation come from the LLM judge (`gemini/gemini-3.8-flash` by d
 
 The Agents & jobs page has an Agent visualizer. It follows a reference agent live while a task runs and replays finished tasks: the agent's viewport, where its cursor goes, clicks, what it types, and every tool call with its result. Traces are written to `data/traces/{runId}/` and are not committed. Only the reference agents are recorded, since third-party agents run their own browsers.
 
+TinyFish handles the web side of a run: web orchestration, HTML parsing and sanitation, and executing web actions. It launches the browser, takes the accessibility snapshot each step reads, and clicks, fills, selects and navigates the pages (`engine/agents/reference/browser-tools.ts`).
+
 <h2><a id="what-the-patterns-are"></a><img src="docs/assets/headings/what-the-patterns-are.svg" alt="What the patterns are" width="880"></h2>
 
 The 13 CCPA categories are false urgency, basket sneaking, confirm shaming, forced action, subscription trap, interface interference, bait and switch, drip pricing, disguised ads, nagging, trick question, SaaS billing and rogue malware. The malware category is a UI simulation only: a fake alert, never code that runs on a visitor's device.
@@ -123,7 +125,7 @@ npm run dev:market        # http://localhost:3001/honest
 
 <h3><a id="evaluation-console"></a><img src="docs/assets/headings/evaluation-console.svg" alt="Evaluation console" width="880"></h3>
 
-The console (`console/`) is a local control panel for the engine. It makes variants, freezes suites, starts agents, runs evaluations and shows scores. The Overview page has a stage bar with three buttons (mutate and freeze, run agents, score and rate) that start a stage and draw its progress from the timing of earlier runs. The Agents page charts each rated agent across suites and Trickster versions, and a run's page shows the judge's verdict next to the recorder timeline. Engine details are in [ENGINE_GUIDE.md](ENGINE_GUIDE.md).
+The console (`console/`) is a local control panel for the engine. It makes variants, freezes suites, starts agents, runs evaluations and shows scores. The Overview page has a stage bar with three buttons (mutate and freeze, run agents, score and rate) that start a stage and draw its progress from the timing of earlier runs. The Agents page charts each rated agent across suites and Trickster versions, and a run's page shows the judge's verdict next to the recorder timeline. Engine details are in [docs/ENGINE_GUIDE.md](docs/ENGINE_GUIDE.md).
 
 Set it up once:
 
@@ -136,8 +138,8 @@ Set it up once:
    RECORDER_SECRET=any-long-random-string
    ANTHROPIC_API_KEY=…                  # the Trickster's pi harness calls the Anthropic Messages API directly
    ```
-   Without an Anthropic key, set `RIPTIDE_TRICKSTER_HARNESS=loop` to run the Trickster through the gateway instead. The sniffers, the judge and the other timeouts and limits are listed in [ENGINE_GUIDE.md](ENGINE_GUIDE.md#evaluation-speed-and-timeouts).
-3. Playwright needs a Chromium. The default path is a Linux one (`~/.cache/ms-playwright/chromium-1234/`). Anywhere else, run `npx playwright install chromium` and set `PW_CHROMIUM` in `.env` to the `chrome` binary it installed (on Windows, `chrome.exe` under `%LOCALAPPDATA%\ms-playwright\chromium-*\chrome-win64\`).
+   Without an Anthropic key, set `RIPTIDE_TRICKSTER_HARNESS=loop` to run the Trickster through the gateway instead. The sniffers, the judge and the other timeouts and limits are listed in [docs/ENGINE_GUIDE.md](docs/ENGINE_GUIDE.md#evaluation-speed-and-timeouts).
+3. TinyFish needs a Chromium. The default path is a Linux one (`~/.cache/ms-playwright/chromium-1234/`). Anywhere else, run `npx playwright install chromium` and set `PW_CHROMIUM` in `.env` to the `chrome` binary it installed (on Windows, `chrome.exe` under `%LOCALAPPDATA%\ms-playwright\chromium-*\chrome-win64\`).
 
 Then start it:
 
@@ -185,7 +187,6 @@ console/      the local control panel
 data/         mutation records, tasks, rubrics, runs, recorder events, ratings
 docs/         taxonomy, the pattern catalog and the images used in this README
 tests/        Playwright suite covering all five shops
-CONTEXT.md    how the engine was built, with the decisions and what broke along the way
 ```
 
 <h2><a id="deployment"></a><img src="docs/assets/headings/deployment.svg" alt="Deployment" width="880"></h2>

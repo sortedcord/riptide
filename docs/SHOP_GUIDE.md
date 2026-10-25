@@ -11,7 +11,7 @@ Riptide Arena measures whether AI shopping agents can be manipulated by dark pat
 ```
 riptide/
   package.json            npm workspaces: shops/*
-  SHOP_GUIDE.md           this file
+  docs/SHOP_GUIDE.md      this file
   shops/
     _core/                @riptide/core: shared engine. Only the lead edits it.
     market/ food/ air/ saas/ ott/     one standalone Next.js 16 app per shop

@@ -47,6 +47,9 @@ const arc = (cx, cy, rad, a0, a1) => {
 };
 const ib = (x, base, w, h) => blade(x, base, w, h, "url(#ig)");
 
+/** Placeholder TinyFish mark: a small ember fish with a tail and an ink eye. */
+const tinyFish = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})"><ellipse cx="0" cy="0" rx="6.5" ry="4" fill="url(#ig)"/><path d="M-6 0L-12 -4.5V4.5Z" fill="url(#ig)"/><circle cx="3" cy="-1" r="1.2" fill="${INK}"/></g>`;
+
 const ICONS = {
   // Two arcs chasing each other: the pipeline's loop.
   loop: () => G(arc(32, 32, 18, 195, 335), 7) + F("M53 22l1 15-12-6z") + G(arc(32, 32, 18, 15, 155), 7) + F("M11 42l-1-15 12 6z"),
@@ -54,8 +57,8 @@ const ICONS = {
   infinity: () => G("M32 32C25 20 10 20 10 32S25 44 32 32 39 20 54 32 39 44 32 32", 6) + `<circle cx="10" cy="32" r="4" fill="${CREAM}"/>`,
   // A gear: how the machinery runs.
   gear: () => [...Array(8).keys()].map((i) => `<rect x="28" y="8" width="8" height="12" rx="1.5" fill="url(#ig)" transform="rotate(${i * 45} 32 32)"/>`).join("") + `<circle cx="32" cy="32" r="16" fill="url(#ig)"/><circle cx="32" cy="32" r="6.5" fill="${CHARCOAL}"/>`,
-  // An eye with a cursor: watching an agent work.
-  eye: () => L("M6 30C16 15 48 15 58 30 48 45 16 45 6 30Z") + `<circle cx="32" cy="30" r="9" fill="url(#ig)"/>` + F("M40 38l14 6-6 2 4 7-3 1-3-7-5 4z", CREAM),
+  // An eye with a cursor: watching an agent work. The small fish is a placeholder for the TinyFish logo, to be swapped for the official mark.
+  eye: () => L("M6 30C16 15 48 15 58 30 48 45 16 45 6 30Z") + `<circle cx="32" cy="30" r="9" fill="url(#ig)"/>` + F("M40 38l14 6-6 2 4 7-3 1-3-7-5 4z", CREAM) + tinyFish(18, 53, 1.3),
   // Two panes: what the engine sees vs what the agent sees.
   split: () => L("M7 15h22v34H7z") + F("M35 15h22v34H35z") + L("M12 24h12M12 31h8M12 38h11", 3) + `<circle cx="46" cy="32" r="5" fill="${INK}"/>`,
   // Four-point spark.
