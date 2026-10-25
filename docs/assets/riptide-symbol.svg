@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none">
+  <title>Riptide anglerfish symbol</title>
+  <desc>Ember (Emberspire palette) anglerfish with its tail retained and side fin removed, without text, with a black mouse cursor outlined in white hanging from its lure. Transparent background.</desc>
+  <defs>
+    <linearGradient id="body" x1="235" y1="330" x2="690" y2="815" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBCB8E"/>
+      <stop offset=".45" stop-color="#F08C2E"/>
+      <stop offset="1" stop-color="#D97817"/>
+    </linearGradient>
+    <linearGradient id="stalk" x1="610" y1="225" x2="843" y2="380" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBCB8E"/>
+      <stop offset="1" stop-color="#F08C2E"/>
+    </linearGradient>
+    <linearGradient id="pointer" x1="830" y1="370" x2="907" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101C26"/>
+      <stop offset="1" stop-color="#071019"/>
+    </linearGradient>
+  </defs>
+  <!-- Lure stalk -->
+  <path d="M590 343 C606 229 682 175 756 205 C816 229 843 283 842 374" stroke="url(#stalk)" stroke-width="23" stroke-linecap="round"/>
+  <!-- Tail retained; side fin omitted. -->
+  <path d="M260 528 C229 528 211 497 178 476 C156 462 138 463 142 489 L155 558 Q157 567 155 578 L142 647 C138 673 156 674 178 660 C211 639 229 608 260 608Z" fill="url(#body)"/>
+  <!-- Body: the mouth is cut directly into the silhouette. -->
+  <path d="M749 480 C705 374 610 295 499 295 C350 295 229 416 229 565 C229 714 350 835 499 835 C627 835 730 750 765 631 L616 583 L749 502 Q757 494 749 480Z" fill="url(#body)"/>
+  <!-- Single tooth -->
+  <path d="M678 604 L704 568 Q707 564 710 571 L720 618Z" fill="url(#body)"/>
+  <!-- Eye and pupil, clipped by the sloping brow -->
+  <path d="M607 460 L670 483 C668 514 642 526 621 511 C606 501 603 481 607 460Z" fill="#FFF9ED"/>
+  <path d="M642 473 L670 483 C672 502 653 511 643 498 C638 491 638 482 642 473Z" fill="#09141E"/>
+  <!-- Black cursor with a continuous macOS-style white outline -->
+  <path d="M832 366 Q825 360 826 371 L840 507 Q841 517 848 510 L874 483 L897 531 Q900 537 906 534 L926 524 Q932 521 929 515 L906 468 L943 466 Q953 466 946 459Z" fill="url(#pointer)" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="round"/>
+</svg>

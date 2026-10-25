@@ -1,10 +1,7 @@
 <div align="center">
 
-<!-- Logo: transparent PNGs in docs/assets. The dark one has a cream cursor so it shows on dark themes. -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/logo-dark.png">
-  <img src="docs/assets/logo.png" alt="Riptide logo: an orange anglerfish whose lure is a mouse cursor" width="150">
-</picture>
+<!-- Logo: docs/assets/riptide-symbol.svg. The cursor is black with a white outline, so one file works on light and dark themes. -->
+<img src="docs/assets/riptide-symbol.svg" alt="Riptide logo: an ember anglerfish whose lure is a mouse cursor" width="150">
 
 <!-- Headings are Emberspire SVGs: write a new one as a plain `## Text` line, then run `npm run readme:headings` (docs/assets/headings/render.mjs). -->
 <h1 align="center"><a id="riptide"></a><img src="docs/assets/headings/riptide.svg" alt="Riptide" width="880"></h1>

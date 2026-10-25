@@ -129,22 +129,35 @@ ${body}
 
 const W = 880;
 
-/** h1: the title rides a riptide, a wave of blades rolling behind it across the whole width, with a cursor surfing a crest. */
+/**
+ * h1: the title rides a riptide. Each blade bobs on two travelling waves (outer <g> and inner <path>, different
+ * periods), so the skyline rolls left to right. Blades translate rather than stretch, so the shear angle never
+ * changes; each is drawn tall enough to stay anchored past the bottom edge at every point of the swell.
+ * Reduced motion: the waves stop at their tallest.
+ */
 function h1(str) {
   const H = 210, size = 100, base = 132;
   const bw = 12, gap = 6;
-  const wave = (x) => 56 + 52 * Math.sin((x / W) * Math.PI * 2.4 - 0.9) + 30 * Math.sin((x / W) * Math.PI * 5.3 + 1.4) ** 2;
+  const A1 = 26, T1 = 5.2, K1 = 1.3; // long swell: amplitude (px), period (s), waves across the width
+  const A2 = 12, T2 = 2.9, K2 = 3.1; // short chop
+  const rest = (x) => 62 + 26 * Math.sin((x / W) * Math.PI * 1.6 + 0.4);
   const tx = (W - text(str, 0, base, size).width) / 2;
   const t = text(str, tx, base, size);
-  const sky = skyline(0, W, H, bw, gap, (_, x) => wave(x + bw / 2));
-  const clear = (x) => x < tx - 40 || x > tx + t.width + 20;
-  const crest = [...Array(W - 60).keys()].map((x) => x + 30).filter(clear).reduce((a, b) => (wave(b) > wave(a) ? b : a));
-  const cy = H - wave(crest);
-  const cursor = `<path d="M${crest - 6} ${r(cy - 36)}l22 19-10 1.5 6 11-4.5 2.2-6-11-7.5 6.5z" fill="${CREAM}" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>`;
+  const phase = (x, k, off) => 1 - (((x / W) * k + off) % 1);
+  const blades = [];
+  for (let x = 0; x + bw <= W; x += bw + gap) {
+    const top = H - (rest(x + bw / 2) + A1 + A2);
+    const d = `M${r(x)} ${r(top + bw / 2)}L${r(x + bw)} ${r(top)}V${H + 2 * (A1 + A2) + 4}H${r(x)}Z`;
+    blades.push(`<g class="w1" style="animation-delay:-${r(T1 * phase(x, K1, 0))}s"><path class="w2" fill="url(#g)" style="animation-delay:-${r(T2 * phase(x, K2, 0.35))}s" d="${d}"/></g>`);
+  }
   // The wave dims under the word and stays bright at the edges.
   const a = r(Math.max(0, tx - 30) / W), b = r(Math.min(W, tx + t.width + 30) / W);
-  const defs = `<linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset="${a}" stop-color="#fff" stop-opacity=".4"/><stop offset="${b}" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff"/></linearGradient><mask id="m"><rect width="${W}" height="${H}" fill="url(#fade)"/></mask>`;
-  return wrap(W, H, H - 140, str, defs, `<g mask="url(#m)">${sky}</g>\n${t.svg}\n${cursor}`);
+  const defs = `<linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset="${a}" stop-color="#fff" stop-opacity=".4"/><stop offset="${b}" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff"/></linearGradient><mask id="m"><rect width="${W}" height="${H}" fill="url(#fade)"/></mask>
+<style>.w1{animation:w1 ${T1}s ease-in-out infinite}.w2{animation:w2 ${T2}s ease-in-out infinite}
+@keyframes w1{0%,100%{transform:translateY(0)}50%{transform:translateY(${2 * A1}px)}}
+@keyframes w2{0%,100%{transform:translateY(0)}50%{transform:translateY(${2 * A2}px)}}
+@media (prefers-reduced-motion:reduce){.w1,.w2{animation:none}}</style>`;
+  return wrap(W, H, H - 150, str, defs, `<g mask="url(#m)">${blades.join("")}</g>\n${t.svg}`);
 }
 
 /** h2: a skyline rising behind the heading toward its illustration tile on the right. */
