@@ -137,7 +137,7 @@ const W = 880;
  * CSS animation inside images for reduced-motion users.
  */
 function h1(str) {
-  const H = 210, size = 100, base = 132;
+  const H = 164, size = 100, base = 85;
   const bw = 12, gap = 6;
   const A1 = 26, T1 = 5.2, K1 = 1.3; // long swell: amplitude (px), period (s), waves across the width
   const A2 = 12, T2 = 2.9, K2 = 3.1; // short chop
@@ -156,7 +156,7 @@ function h1(str) {
   // The wave dims under the word and stays bright at the edges.
   const a = r(Math.max(0, tx - 30) / W), b = r(Math.min(W, tx + t.width + 30) / W);
   const defs = `<linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset="${a}" stop-color="#fff" stop-opacity=".4"/><stop offset="${b}" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff"/></linearGradient><mask id="m"><rect width="${W}" height="${H}" fill="url(#fade)"/></mask>`;
-  return wrap(W, H, H - 150, str, defs, `<g mask="url(#m)">${blades.join("")}</g>\n${t.svg}`);
+  return wrap(W, H, H - 130, str, defs, `<g mask="url(#m)">${blades.join("")}</g>\n${t.svg}`);
 }
 
 /** h2: a skyline rising behind the heading toward its illustration tile on the right. */
