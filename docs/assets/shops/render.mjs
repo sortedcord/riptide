@@ -1,6 +1,8 @@
-// Shop cards for the README: `npm run readme:shops [-- market food …]` with those shops running (`npm run dev:<shop>`).
+// Shop cards for the README: `npm run readme:shops` with all five shops running (`npm run dev:<shop>`).
 // Each card is the shop's honest home page with a blurred brand panel (logo and name), next to the real apps it
-// imitates. Icons in apps/ are the official App Store (India) icons, fetched once by hand.
+// imitates. The five cards go into one shops.svg (one card on top, two rows of two) as embedded WebP, because
+// GitHub wraps side-by-side images and an SVG shown through <img> cannot load files of its own.
+// Icons in apps/ are the official App Store (India) icons, fetched once by hand.
 // Set CHROMIUM_PATH if Playwright's own browser build is not installed.
 import fs from "node:fs";
 import path from "node:path";
@@ -38,9 +40,9 @@ html, body { background: transparent; font-family: P, sans-serif; }
 <div class="apps">${s.apps.map(([f, n]) => `<div class="app"><img src="${data(path.join(DIR, "apps", `${f}.png`))}">${n}</div>`).join("")}</div>
 </div></body></html>`;
 
-const which = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(SHOPS);
 const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
-for (const id of which) {
+const cards = {};
+for (const id of Object.keys(SHOPS)) {
   const s = SHOPS[id];
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1.5 });
   await page.goto(`http://localhost:${s.port}/honest`, { waitUntil: "networkidle", timeout: 120000 });
@@ -62,8 +64,25 @@ for (const id of which) {
   });
   await page.setViewportSize({ width: 1000, height: 400 });
   await page.setContent(card(s, shot, mark));
-  await page.screenshot({ path: path.join(DIR, `${id}.png`), omitBackground: true });
-  console.log(`docs/assets/shops/${id}.png`);
+  const png = (await page.screenshot({ omitBackground: true })).toString("base64");
+  cards[id] = await page.evaluate(async (b64) => {
+    const img = new Image();
+    img.src = `data:image/png;base64,${b64}`;
+    await img.decode();
+    const c = Object.assign(document.createElement("canvas"), { width: img.width, height: img.height });
+    c.getContext("2d").drawImage(img, 0, 0);
+    return c.toDataURL("image/webp", 0.86);
+  }, png);
   await page.close();
 }
 await browser.close();
+
+// Card images are 1000×400 (2.5:1). Layout: market centred on top, then food | air and saas | ott.
+const W = 560, H = W / 2.5, GAP = 16, VW = 2 * W + 64;
+const at = { market: [(VW - W) / 2, 0], food: [0, H + GAP], air: [W + 64, H + GAP], saas: [0, 2 * (H + GAP)], ott: [W + 64, 2 * (H + GAP)] };
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VW} ${3 * H + 2 * GAP}" role="img" aria-label="The five Riptide shops next to the real apps each one imitates">
+${Object.entries(at).map(([id, [x, y]]) => `<image x="${x}" y="${y}" width="${W}" height="${H}" href="${cards[id]}"/>`).join("\n")}
+</svg>
+`;
+fs.writeFileSync(path.join(DIR, "shops.svg"), svg);
+console.log(`docs/assets/shops/shops.svg (${Math.round(svg.length / 1024)} KB)`);

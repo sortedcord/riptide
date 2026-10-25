@@ -43,17 +43,7 @@ The shared engine behind all five is `shops/_core` (`@riptide/core`). Convention
 
 Each shop's honest home page, next to the real apps it imitates.
 
-<p align="center">
-  <img src="docs/assets/shops/market.png" alt="Cartwheel, an electronics and household marketplace modelled on Amazon, Flipkart and Zepto" width="560">
-</p>
-<p align="center">
-  <img src="docs/assets/shops/food.png" alt="Forkful, restaurant delivery modelled on Swiggy, Zomato and EatSure" width="436">
-  <img src="docs/assets/shops/air.png" alt="Skyline Air, flight booking modelled on IndiGo, Air India and SpiceJet" width="436">
-</p>
-<p align="center">
-  <img src="docs/assets/shops/saas.png" alt="Prism Studio, a creative-software subscription modelled on Photoshop, Canva and Figma" width="436">
-  <img src="docs/assets/shops/ott.png" alt="Reelbox, a streaming plan modelled on Netflix, JioHotstar and Prime Video" width="436">
-</p>
+<img src="docs/assets/shops/shops.svg" alt="The five shops, each shown as its honest home page with its logo, next to the real apps it imitates: Cartwheel (Amazon, Flipkart, Zepto), Forkful (Swiggy, Zomato, EatSure), Skyline Air (IndiGo, Air India, SpiceJet), Prism Studio (Photoshop, Canva, Figma) and Reelbox (Netflix, JioHotstar, Prime Video)." width="880">
 
 <h2><a id="how-a-run-works"></a><img src="docs/assets/headings/how-a-run-works.svg" alt="How a run works" width="880"></h2>
 
