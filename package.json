@@ -18,7 +18,8 @@
     "test": "playwright test",
     "riptide": "tsx --env-file-if-exists=.env engine/cli.ts",
     "console": "npm run dev -w console",
-    "readme:headings": "node docs/assets/headings/render.mjs"
+    "readme:headings": "node docs/assets/headings/render.mjs",
+    "readme:shops": "node docs/assets/shops/render.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",
