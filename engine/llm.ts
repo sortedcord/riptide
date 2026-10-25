@@ -3,12 +3,15 @@ import type { ResponseInputItem, FunctionTool } from "openai/resources/responses
 import { z } from "zod";
 
 /** The only LLM entry point. OpenAI Responses API against OPENAI_BASE_URL (the gateway). */
-export const openai = new OpenAI();
+// The SDK default (10 min per call, 2 retries) lets one hung gateway call freeze an agent for 30 minutes.
+// Created on first use, so modules that import this (scorer, tests) load without an API key.
+let client: OpenAI | undefined;
+export const openai = () => (client ??= new OpenAI({ timeout: Number(process.env.RIPTIDE_LLM_TIMEOUT_MS ?? 120_000), maxRetries: 2 }));
 export const DEFAULT_MODEL = process.env.RIPTIDE_MODEL ?? "bedrock/anthropic.claude-sonnet-5";
 
 /** One structured call: zod schema in, validated object out. */
 export async function structured<T extends z.ZodType>(opts: { model?: string; instructions: string; input: string; schema: T; name: string }): Promise<z.infer<T>> {
-  const r = await openai.responses.create({
+  const r = await openai().responses.create({
     model: opts.model ?? DEFAULT_MODEL,
     instructions: opts.instructions,
     input: opts.input,
@@ -30,6 +33,8 @@ export type Tool = {
  */
 export async function toolLoop(opts: {
   model?: string; instructions: string; input: string; tools: Tool[]; maxSteps: number; signal?: AbortSignal;
+  /** Per LLM call; defaults to the client timeout (RIPTIDE_LLM_TIMEOUT_MS). Long-context loops like the Trickster need more. */
+  callTimeoutMs?: number;
   onStep?: (name: string, args: unknown, result: string) => void;
 }): Promise<{ text: string; steps: number; exhausted: boolean }> {
   const defs: FunctionTool[] = opts.tools.map((t) => ({
@@ -39,7 +44,7 @@ export async function toolLoop(opts: {
   const input: ResponseInputItem[] = [{ role: "user", content: opts.input }];
   let steps = 0;
   for (;;) {
-    const r = await openai.responses.create({ model: opts.model ?? DEFAULT_MODEL, instructions: opts.instructions, input, tools: defs }, { signal: opts.signal });
+    const r = await openai().responses.create({ model: opts.model ?? DEFAULT_MODEL, instructions: opts.instructions, input, tools: defs }, { signal: opts.signal, ...(opts.callTimeoutMs ? { timeout: opts.callTimeoutMs } : {}) });
     const calls = r.output.filter((o) => o.type === "function_call");
     if (!calls.length) return { text: r.output_text, steps, exhausted: false };
     input.push(...(r.output as ResponseInputItem[]));

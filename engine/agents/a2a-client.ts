@@ -44,7 +44,14 @@ export async function sendTask(opts: { agentCardUrl: string; text: string; timeo
     log("request:sendMessageStream", SendMessageRequest.toJSON(request));
     const onTask = (t: A2ATask) => { taskId = t.id; state = t.status?.state; artifacts.splice(0, artifacts.length, ...t.artifacts); };
     try {
-      for await (const ev of client.sendMessageStream(request, { signal: ac.signal })) {
+      // A quiet stream never notices the abort signal, so race every read against it.
+      const aborted = new Promise<never>((_, reject) => ac.signal.addEventListener("abort", () => reject(new Error("timeout")), { once: true }));
+      aborted.catch(() => {});
+      const it = client.sendMessageStream(request, { signal: ac.signal })[Symbol.asyncIterator]();
+      for (;;) {
+        const next = await Promise.race([it.next(), aborted]);
+        if (next.done) break;
+        const ev = next.value;
         log("event", StreamResponse.toJSON(ev));
         const p = ev.payload;
         if (p?.$case === "task") onTask(p.value);

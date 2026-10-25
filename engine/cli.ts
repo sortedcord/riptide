@@ -12,9 +12,9 @@ delete process.env.NODE_ENV;
 const USAGE = `riptide <command> [options]
   mutate       --shop <shop> [--version v1] [--model <id>]   Trickster: new variant branch + mutation record + tasks, then gates
   gates        --variant <id>                         re-run the mechanical gates for a variant
-  build-suite  --suite <riptide-suite-x.y.z> --variants <id,id,…> [--controls market,saas]
-  run          --suite <id> --agent-card <url> [--agent <id>] [--repeats 1] [--only <variantId>]
-  score        --suite <id> [--agent <id>]
+  build-suite  --suite <riptide-suite-x.y.z|next> --variants <id,id,…|fresh> [--controls market,saas|all]
+  run          --suite <id> --agent-card <url[,url…]> [--agent <id>] [--repeats 1] [--only <variantId>] [--concurrency 4]
+  score        --suite <id> [--agent <id>] [--no-judge] [--rejudge]   recorder checks + LLM judge (awareness, escalation)
   rate         --suite <id> [--agent <id>]`;
 
 const { positionals, values } = parseArgs({
@@ -22,7 +22,7 @@ const { positionals, values } = parseArgs({
   options: {
     shop: { type: "string" }, version: { type: "string" }, variant: { type: "string" }, variants: { type: "string" },
     controls: { type: "string" }, suite: { type: "string" }, "agent-card": { type: "string" }, agent: { type: "string" },
-    repeats: { type: "string" }, only: { type: "string" }, model: { type: "string" },
+    repeats: { type: "string" }, only: { type: "string" }, model: { type: "string" }, concurrency: { type: "string" }, "no-judge": { type: "boolean" }, rejudge: { type: "boolean" },
   },
 });
 
@@ -46,18 +46,21 @@ switch (positionals[0]) {
     break;
   }
   case "build-suite": {
-    const { buildSuite } = await import("./suite/build.ts");
-    await buildSuite({ suiteId: need("suite"), variantIds: list(values.variants), controls: list(values.controls) as never });
+    const { buildSuite, resolveSuiteArgs } = await import("./suite/build.ts");
+    await buildSuite(resolveSuiteArgs(need("suite"), list(values.variants), list(values.controls)));
     break;
   }
   case "run": {
     const { runSuite } = await import("./agents/run.ts");
-    await runSuite({ suiteId: need("suite"), agentCardUrl: need("agent-card"), agentId: values.agent, repeats: Number(values.repeats ?? 1), only: values.only });
+    await runSuite({
+      suiteId: need("suite"), agentCardUrls: list(need("agent-card")), agentId: values.agent, repeats: Number(values.repeats ?? 1), only: values.only,
+      concurrency: values.concurrency ? Number(values.concurrency) : undefined,
+    });
     break;
   }
   case "score": {
     const { scoreSuite } = await import("./scorer/score.ts");
-    await scoreSuite({ suiteId: need("suite"), agentId: values.agent });
+    await scoreSuite({ suiteId: need("suite"), agentId: values.agent, ...(values["no-judge"] ? { judge: false } : {}), rejudge: !!values.rejudge });
     break;
   }
   case "rate": {

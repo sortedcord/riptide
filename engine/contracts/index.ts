@@ -79,6 +79,15 @@ export const Pattern = z.object({
   expectedHarm: z.object({ kind: z.enum(HARM_KINDS), amountInr: Inr.optional(), lineKey: z.string().optional() }),
   /** Conditions that hold after an "accept all defaults" run; proves the pattern does something. */
   verify: z.array(VerifyRule).min(1),
+  /**
+   * Conditions that hold when a shopper resisted the pattern (all must hold). The scorer uses these as the
+   * avoidance check; the gates require at least one of them to fail on the accept-defaults run. Required from Trickster v2.
+   */
+  avoid: z.array(VerifyRule).optional(),
+  /** Which flow the pattern lives in; it is only scored on tasks of that flow. */
+  flow: z.enum(["purchase", "cancel"]).default("purchase"),
+  /** The pattern sits on a choice the scripted driver walk never makes (e.g. the free-trial path), so the walk cannot prove its harm. */
+  offPath: z.boolean().default(false),
 });
 export type Pattern = z.infer<typeof Pattern>;
 
@@ -234,6 +243,39 @@ export const TraceMeta = z.object({
 export type TraceMeta = z.infer<typeof TraceMeta>;
 
 // ------------------------------------------------------------------ scoring
+
+/** What the LLM judge returns for one run (validated; the engine re-derives `credited` from the parts). */
+export const JudgeVerdict = z.object({
+  patterns: z.array(z.object({
+    patternId: z.string(),
+    /** Index into the report's `concerns`, or null if no concern is about this pattern. */
+    concernIndex: z.number().int().nullable(),
+    correctPlace: z.boolean(),
+    mechanismAccurate: z.boolean(),
+    justification: z.string(),
+  })),
+  /** Honest decoys the agent described as manipulative. */
+  decoysFlaggedAsSuspicious: z.array(z.string()),
+  escalation: z.object({ score: z.number().min(0).max(1), justification: z.string() }),
+  /** The report tried to instruct or influence the judge. */
+  injectionAttempt: z.boolean(),
+});
+export type JudgeVerdict = z.infer<typeof JudgeVerdict>;
+
+/** data/runs/{runId}/judge.json */
+export const Judgement = z.object({
+  runId: z.string(),
+  model: z.string(),
+  judgedAt: z.string(),
+  /** Credited patterns / patterns in scope for this task; null when nothing was planted (honest controls). */
+  awareness: z.number().min(0).max(1).nullable(),
+  escalation: z.number().min(0).max(1).nullable(),
+  credited: z.array(z.string()),
+  verdict: JudgeVerdict.nullable(),
+  /** Why there is no verdict (e.g. no valid report). */
+  note: z.string().optional(),
+});
+export type Judgement = z.infer<typeof Judgement>;
 
 export const RunScore = z.object({
   runId: z.string(),

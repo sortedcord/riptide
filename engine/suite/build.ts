@@ -1,8 +1,33 @@
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
+import path from "node:path";
 import { GateResult, MutationRecord, Rubric, Suite, Task, type Shop } from "../contracts/index.ts";
 import { deriveRubric } from "../scorer/rubric.ts";
-import { listJson, p, readJson, writeJson } from "../paths.ts";
+import { DATA, listJson, p, readJson, writeJson } from "../paths.ts";
 import { git } from "../trickster/serve.ts";
+
+/**
+ * Resolve the "auto" values one-click flows use, at run time (so they see variants made earlier in the same job):
+ * suite "next" → next patch version; variants "fresh" → passed variants not in any suite; controls "all" → every control-* task set.
+ */
+export function resolveSuiteArgs(suiteId: string, variantIds: string[], controls: string[]): { suiteId: string; variantIds: string[]; controls: Shop[] } {
+  const suites = listJson(path.join(DATA, "suites")).map((f) => readJson(path.join(DATA, "suites", f), Suite));
+  if (suiteId === "next") {
+    const [M, m, n] = suites.map((s) => s.suiteId.replace("riptide-suite-", "").split(".").map(Number))
+      .sort((a, b) => b[0] - a[0] || b[1] - a[1] || b[2] - a[2])[0] ?? [0, 0, -1];
+    suiteId = `riptide-suite-${M}.${m}.${n + 1}`;
+  }
+  if (variantIds.length === 1 && variantIds[0] === "fresh") {
+    const used = new Set(suites.flatMap((s) => s.items.map((i) => i.variantId)));
+    variantIds = listJson(path.join(DATA, "gates")).map((f) => f.slice(0, -5)).filter((v) => /^v_[a-z0-9]{6}$/.test(v) && !used.has(v))
+      .filter((v) => readJson(p.gate(v), GateResult).passed && existsSync(p.mutation(v)));
+    if (!variantIds.length) throw new Error("no passed variant that is not already in a suite");
+  }
+  if (controls.length === 1 && controls[0] === "all") {
+    const dir = path.join(DATA, "tasks");
+    controls = existsSync(dir) ? readdirSync(dir).filter((d) => d.startsWith("control-")).map((d) => d.slice("control-".length)) : [];
+  }
+  return { suiteId, variantIds, controls: controls as Shop[] };
+}
 
 /** Freeze passing variants (+ honest controls) with their tasks and derived rubrics. Refuses to overwrite a suite. */
 export async function buildSuite(opts: { suiteId: string; variantIds: string[]; controls: Shop[] }): Promise<Suite> {
